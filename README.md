@@ -26,3 +26,4 @@ Descending in priority:
     - Secret combinations?
     - Auto play feature?
     - Responsive design?
+    - Speed up/slow down functionality?
