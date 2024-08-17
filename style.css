@@ -1,8 +1,8 @@
-html, body {
-    height: 100%;
+html, body, #loading_screen, #page_ui {
+    height: 900px;
 }
 
-body {
+body, #page_ui {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -30,4 +30,21 @@ button {
 #layer_button_container {
     display: flex;
     flex-direction: row;
+}
+
+#loading_screen {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    transition: filter 0.3s ease;
+}
+
+.layer_button, .solo_button, #play_button:hover, #pause_button:hover{
+    filter: brightness(20%);
+}
+
+.layer_button:hover, .solo_button:hover {
+    filter: brightness(100%);
 }
