@@ -1,5 +1,5 @@
 html, body, #loading_screen, #page_ui {
-    height: 900px;
+    height: 100%;
 }
 
 body, #page_ui {
@@ -14,6 +14,8 @@ body, #page_ui {
 button {
     padding: 20px;
     margin: 5px;
+    transition: filter 0.3s ease;
+    
 }
 
 .solo_button {
@@ -37,14 +39,15 @@ button {
     align-items: center;
 }
 
-button {
-    transition: filter 0.3s ease;
-}
-
-.layer_button, .solo_button, #play_button:hover, #pause_button:hover{
+.layer_button, .solo_button, #play_button:hover, #pause_button:hover, #start_button:hover {
     filter: brightness(20%);
+    cursor: pointer;
 }
 
-.layer_button:hover, .solo_button:hover {
+.layer_button:hover, .undarken_button:hover {
     filter: brightness(100%);
+}
+
+.darken_button {
+    filter: brightness(5%);
 }

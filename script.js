@@ -1,8 +1,13 @@
-// element refernces
+/*
+VARIABLES
+*/
+
+// element refrences
 const layerButton = document.getElementsByClassName("layer_button");
-const soloButton = document.getElementsByClassName("solo_button")
+const soloButton = document.getElementsByClassName("solo_button");
 const pauseButton = document.getElementById("pause_button");
 const playAllButton = document.getElementById("play_button");
+const startButton = document.getElementById("start_button");
 const pageUI = document.getElementById("page_ui");
 const loadingScreen = document.getElementById("loading_screen");
 
@@ -15,7 +20,8 @@ let layerSoloed = false;
 let songStarted = false;
 let songPaused = false;
 let loadedLayers = [];
-let layerPlaying = [];
+let layersPlaying = [];
+let startingLayers = [];
 
 // this array is hardcoded to just store the threat layers for outskirts, but will 
 // be updated to be adaptable for the rest of the threat themes later in development
@@ -29,6 +35,10 @@ const SUThreatLayer = [
     new Audio("threat_music/SU/TH_SU - LEAD.mp3"),
     new Audio("threat_music/SU/TH_SU - NOISE.mp3"),
 ]
+
+/*
+LOADING AUDIO FILES
+*/
 
 // grabbing the audio context and establishing a GainNode
 const audioContext = new (window.AudioContext || window.webkitAudioContext);
@@ -70,95 +80,130 @@ Promise.all(loadSounds).then((audioBuffer) => {
             loadedLayers.push([bufferSource, gainNode, index]);
         });
 
+        // undarkening the solo buttons
+        Array.from(soloButton).forEach((element) => {
+            element.classList.remove("darken_button");
+            element.classList.add("undarken_button");
+        });
+
+        // setting up the layers
         for (let i = 0; i < loadedLayers.length; i++) {
-            if (!songStarted) {loadedLayers[i][1].gain.value = 0;} // if the play all button wasn't clicked, start all of the layers muted
-            else {loadedLayers[i][1].gain.value = 0.75;} // otherwise, let them all make sound
+
+            // this if statement checks for two scenarios
+            // 1. If any layers have been chosen to start first, or
+            // 2. If the play all button has been clicked
+            if (startingLayers.includes(i) || songStarted) {
+                loadedLayers[i][1].gain.value = 0.75;
+                layersPlaying.push(loadedLayers[i]);
+            }
+
+            // if neither of these are true, that must means this layer has to start muted
+            else {
+                loadedLayers[i][1].gain.value = 0;
+            }
+
             loadedLayers[i][0].start(audioContext.currentTime);
         }
         playAllButton.innerText = "End All"
     }
+
+
+/*
+BUTTON FUNCTIONALITY
+*/
 
     // using a for loop to check each button for inputs
     for (let i = 0; i < layerButton.length; i++) {
         // listening for if a layer button has been clicked
         layerButton[i].addEventListener("click", () => {
             if (!songStarted) {
-                prepLayers();
-                songStarted = true;
+                // these if statements handle pre-selecting layers
+                // we keep track of what layers have been chosen by simply storing the value of i
+                if (!startingLayers.includes(i)) {
+                    startingLayers.push(i);
+                    layerButton[i].style.filter = "brightness(100%)";
+                }
+
+                else {
+                    var startingLayerIndex = startingLayers.indexOf(i)
+                    startingLayers.splice(startingLayerIndex, 1);
+                    layerButton[i].style.filter = "brightness(20%)";
+                }
             }
 
             // muting and unmuting audio
-            if (!layerSoloed) {
+            else if (!layerSoloed) {
                 if (loadedLayers[i][1].gain.value == 0) {
                     loadedLayers[i][1].gain.value = 0.75;
-                    layerPlaying.push(loadedLayers[i]);
-                    layerButton[i].style.filter = "brightness(100%)"
+                    layersPlaying.push(loadedLayers[i]);
+                    layerButton[i].style.filter = "brightness(100%)";
                 }
+
                 else {
                     loadedLayers[i][1].gain.value = 0
-                    var indexOfLayer = layerPlaying.indexOf(loadedLayers[i])
-                    layerPlaying.splice(indexOfLayer, 1);
-                    layerButton[i].style.filter = "brightness(20%)"
+                    var indexOfLayer = layersPlaying.indexOf(loadedLayers[i])
+                    layersPlaying.splice(indexOfLayer, 1);
+                    layerButton[i].style.filter = "brightness(20%)";
                 }
-           }
-        })
+            }
+        });
 
         // listening for if a solo button has been clicked
         soloButton[i].addEventListener("click", () => {
-            try {
-                if (!layerSoloed && loadedLayers[i][1].gain.value != 0) {
-                    for (let j = 0; j < layerPlaying.length; j++) {
-                        if (layerPlaying[j] != loadedLayers[i]) { // if the layer doesn't match the layer we're trying to mute,
-                            layerPlaying[j][1].gain.value = 0; // mute it
-                            layerButton[layerPlaying[j][2]].style.filter = "brightness(20%)"
-                        }
-                        else {
-                            soloButton[layerPlaying[j][2]].style.filter = "brightness(100%)"
-                        }
-
-                        /*
-                        // nullifying this if statement for now, I'll fix it on the next push
-                        else if (layerPlaying[j][1].gain.value == 0) { // if the layer we're trying to solo is muted,
-                            loadedLayers[j][1].gain.value == 0.75; // unmute it
-                            layerButton[loadedLayers[j][2]].style.filter = "brightness(100%)"
-                        }
-                        */
-                    }
-                    layerSoloed = true;
+            if (!layerSoloed && songStarted) {
+                if (loadedLayers[i][1].gain.value == 0) { // if the layer we're trying to solo is muted,
+                    loadedLayers[i][1].gain.value = 0.75; // unmute it,
+                    layersPlaying.push(loadedLayers[i]); // add it to this array
+                    soloButton[loadedLayers[i][2]].style.filter = "brightness(100%)" // and brighten both buttons
+                    layerButton[loadedLayers[i][2]].style.filter = "brightness(100%)"
                 }
 
-                // this if handles un-soloing the song
-                else if (loadedLayers[i][1].gain.value != 0) {
-                    for (let j = 0; j < layerPlaying.length; j++) {
-                        layerPlaying[j][1].gain.value = 0.75;
-                        layerButton[layerPlaying[j][2]].style.filter = "brightness(100%)"
-                        soloButton[layerPlaying[j][2]].style.filter = "brightness(20%)"
+                for (let j = 0; j < layersPlaying.length; j++) {
+                    if (layersPlaying[j] != loadedLayers[i]) { // if this layer doesn't match the layer we're trying to mute,
+                        layersPlaying[j][1].gain.value = 0; // mute it
+                        layerButton[layersPlaying[j][2]].style.filter = "brightness(20%)"
                     }
-                    
-                    layerSoloed = false;
+
+                    else { // if it does,
+                        soloButton[layersPlaying[j][2]].style.filter = "brightness(100%)" // brighten the solo button
+                    }
                 }
+                layerSoloed = true;
             }
-            catch {
-                // note, probably should hide solo buttons before sounds are loaded to prevent errors
-                console.error(err)
+
+            // this if statement handles un-soloing the song
+            else if (loadedLayers[i][1].gain.value != 0) {
+                for (let j = 0; j < layersPlaying.length; j++) {
+                    layersPlaying[j][1].gain.value = 0.75;
+                    layerButton[layersPlaying[j][2]].style.filter = "brightness(100%)"
+                    soloButton[layersPlaying[j][2]].style.filter = "brightness(20%)"
+                }
+                layerSoloed = false;
             }
         })
     }
 
+    // start button functionality
+    startButton.addEventListener("click", () => {
+        if (!songStarted && startingLayers.length > 0) {
+            prepLayers();
+            songStarted = true;
+            startButton.classList.add("darken_button");
+        }
+    })
+
     // pause button functionality
     pauseButton.addEventListener("click", () => {
-        if (songStarted) {
-            if (!songPaused) {
-                audioContext.suspend();
-                songPaused = true;
-                pauseButton.innerText = "Unpause";
-            }
+        if (songStarted && !songPaused) {
+            audioContext.suspend();
+            songPaused = true;
+            pauseButton.innerText = "Unpause";
+        }
 
-            else {
-                audioContext.resume();
-                songPaused = false;
-                pauseButton.innerText = "Pause";
-            }
+        else {
+            audioContext.resume();
+            songPaused = false;
+            pauseButton.innerText = "Pause";
         }
     });
 
@@ -168,13 +213,12 @@ Promise.all(loadSounds).then((audioBuffer) => {
             songStarted = true;
             prepLayers();
 
-            // updating the layerPlaying array and brightness of the buttons
-            for (let i = 0; i < loadedLayers.length; i++) {
-                layerPlaying.push(loadedLayers[i]);
-                layerButton[i].style.filter = "brightness(100%)";
-            }
+            // brightening all of the buttons
+            Array.from(layerButton).forEach((element) => {
+                element.style.filter = "brightness(100%)"
+            });
 
-            playAllButton.innerText = "End All"
+            playAllButton.innerText = "End All";
         }
         
         else { // if we're trying to end all of them,
@@ -184,10 +228,22 @@ Promise.all(loadSounds).then((audioBuffer) => {
                 layerButton[i].style.filter = "brightness(20%)"
             }
 
+            // darkening the solo buttons
+            Array.from(soloButton).forEach((element) => {
+                element.removeAttribute("style");
+                element.classList.remove("undarken_button");
+                element.classList.add("darken_button");
+            });
+
+            // brightening start button
+            startButton.classList.remove("darken_button");
+            startButton.classList.add("undarken_button");
+
             // reseting variables and button text
             songStarted = false;
             loadedLayers = [];
-            layerPlaying = [];
+            layersPlaying = [];
+            startingLayers = [];
             playAllButton.innerText = "Play All"
             pauseButton.innerText = "Pause"
         }
