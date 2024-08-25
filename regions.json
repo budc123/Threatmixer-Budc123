@@ -1,0 +1,197 @@
+[
+    {
+        "name": "Chimney Canopy",
+        "layers": [
+            ["Kick", "threat_music/CC/TH_CC - KICK.mp3"],
+            ["Snare", "threat_music/CC/TH_CC - SNARE.mp3"],
+            ["Perc 1", "threat_music/CC/TH_CC - PERC1.mp3"],
+            ["Bass", "threat_music/CC/TH_CC - BASS.mp3"],
+            ["Perc 2", "threat_music/CC/TH_CC - PERC2.mp3"],
+            ["Arps", "threat_music/CC/TH_CC - ARPS.mp3"],
+            ["Vox", "threat_music/CC/TH_CC - VOX.mp3"],
+            ["Noise", "threat_music/CC/TH_CC - NOISE.mp3"],
+            ["Gutter Bass", "threat_music/CC/TH_CC_-_GUTTERBASS.mp3"],
+            ["Gutter Vox", "threat_music/CC/TH_CC_-_GUTTERVOX.mp3"]
+        ]
+    },
+    {
+        "name": "Farm Arrays",
+        "layers": [
+            ["Kick", "threat_music/LF/TH_LF - KICK.mp3"],
+            ["Shaker", "threat_music/LF/TH_LF - SHAKER.mp3"],
+            ["Perc 1", "threat_music/LF/TH_LF - PERC1.mp3"],
+            ["Bass", "threat_music/LF/TH_LF - BASS.mp3"],
+            ["Snare", "threat_music/LF/TH_LF - SNARE.mp3"],
+            ["Perc 2", "threat_music/LF/TH_LF - PERC2.mp3"],
+            ["Arps", "threat_music/LF/TH_LF - ARPS.mp3"],
+            ["Noise", "threat_music/LF/TH_LF - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Five Pebbles / The Rot",
+        "layers": [
+            ["Kick", "threat_music/SS/TH_SS - KICK.MP3"],
+            ["Bass", "threat_music/SS/TH_SS - BASS.MP3"],
+            ["Pop", "threat_music/SS/TH_SS - POP.MP3"],
+            ["Lead", "threat_music/SS/TH_SS - LEAD.MP3"],
+            ["Noise", "threat_music/SS/TH_SS - NOISE.MP3"]
+        ]
+    },
+    {
+        "name": "Garbage Wastes",
+        "layers": [
+            ["Kick", "threat_music/GW/TH_GW - KICK.mp3"],
+            ["Shaker", "threat_music/GW/TH_GW - SHAKE.mp3"],
+            ["Perc 1", "threat_music/GW/TH_GW - PERC1.mp3"],
+            ["Bass", "threat_music/GW/TH_GW - BASS.mp3"],
+            ["Perc 2", "threat_music/GW/TH_GW - PERC2.mp3"],
+            ["Weird", "threat_music/GW/TH_GW - WEIRD.mp3"],
+            ["Vox", "threat_music/GW/TH_GW - VOX.mp3"],
+            ["Lead", "threat_music/GW/TH_GW - LEAD.mp3"],
+            ["Noise", "threat_music/GW/TH_GW - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Industrial Complex",
+        "layers": [
+            ["Kick", "threat_music/HI/TH_HI - KICK.mp3"],
+            ["Shaker", "threat_music/HI/TH_HI - SHAKER.mp3"],
+            ["Perc", "threat_music/HI/TH_HI - PERC1.mp3"],
+            ["Snare", "threat_music/HI/TH_HI - SNARE.mp3"],
+            ["Bass", "threat_music/HI/TH_HI - BASS.mp3"],
+            ["Weird", "threat_music/HI/TH_HI - WEIRD.mp3"],
+            ["Vox", "threat_music/HI/TH_HI - VOX.mp3"],
+            ["Noise", "threat_music/HI/TH_HI - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Looks to the Moon",
+        "layers": [
+            ["Kick", "threat_music/DM/TH_DM - KICK.mp3"],
+            ["Shaker", "threat_music/DM/TH_DM - SHAKER.mp3"],
+            ["Snare", "threat_music/DM/TH_DM - SNARE.mp3"],
+            ["Bass", "threat_music/DM/TH_DM - BASS.mp3"],
+            ["Lead", "threat_music/DM/TH_DM - LEAD.mp3"],
+            ["Noise", "threat_music/DM/TH_DM - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Metropolis",
+        "layers": [
+            ["Day Kick", "threat_music/LC/TH_LC - DAYKICK.mp3"],
+            ["Day Atmos", "threat_music/LC/TH_LC - DAYATMOS.mp3"],
+            ["Day Sub", "threat_music/LC/TH_LC - DAYSUB.mp3"],
+            ["Day Shaker", "threat_music/LC/TH_LC - DAYSHAKER.mp3"],
+            ["Day Breaks", "threat_music/LC/TH_LC - DAYBREAKS.mp3"],
+            ["Day Perc", "threat_music/LC/TH_LC - DAYPERC.mp3"],
+            ["Day Tom", "threat_music/LC/TH_LC - DAYTOM.mp3"],
+            ["Day Arp", "threat_music/LC/TH_LC - DAYARP.mp3"],
+            ["Day Synth", "threat_music/LC/TH_LC - DAYSYNTH.mp3"],
+            ["Night Kick", "threat_music/LC/TH_LC - NIGHTKICK.mp3"],
+            ["Night Atmos", "threat_music/LC/TH_LC - NIGHTATMOS.mp3"],
+            ["Night Sub", "threat_music/LC/TH_LC - NIGHTSUB.mp3"],
+            ["Night Shaker", "threat_music/LC/TH_LC - NIGHTSHAKER.mp3"],
+            ["Night Noise", "threat_music/LC/TH_LC - NIGHTNOISE.mp3"],
+            ["Night Hat", "threat_music/LC/TH_LC - NIGHTHAT.mp3"],
+            ["Night Perc", "threat_music/LC/TH_LC - NIGHTPERC.mp3"],
+            ["Night Tom", "threat_music/LC/TH_LC - NIGHTTOM.mp3"],
+            ["Night Synth", "threat_music/LC/TH_LC - NIGHTSYNTH.mp3"]
+        ]
+    },
+    {
+        "name": "Outer Expanse",
+        "layers": [
+            ["Noise", "threat_music/OE/TH_OE - NOISE.mp3"],
+            ["Kick/Perc 1", "threat_music/OE/TH_OE - KICKPERC.mp3"],
+            ["Perc 2", "threat_music/OE/TH_OE - PERC2.mp3"],
+            ["Arp", "threat_music/OE/TH_OE - ARP.mp3"],
+            ["Lead", "threat_music/OE/TH_OE - LEAD.mp3"],
+            ["Noise", "threat_music/OE/TH_OE - NOISE.mp3"],
+            ["Flow", "threat_music/OE/TH_OE - FLOW.mp3"],
+            ["Waves", "threat_music/OE/TH_OE - WAVES.mp3"]
+        ]
+    },
+    {
+        "name": "Outskirts",
+        "layers": [
+            ["Kick", "threat_music/SU/TH_SU - KICK.mp3"],
+            ["Shaker", "threat_music/SU/TH_SU - SHAKER.mp3"],
+            ["Perc", "threat_music/SU/TH_SU - PERC1.mp3"],
+            ["Bass", "threat_music/SU/TH_SU - BASS.mp3"],
+            ["Hits", "threat_music/SU/TH_SU - HITS.mp3"],
+            ["Arps", "threat_music/SU/TH_SU - ARPS.mp3"],
+            ["Lead", "threat_music/SU/TH_SU - LEAD.mp3"],
+            ["Noise", "threat_music/SU/TH_SU - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Pipeyard",
+        "layers": [
+            ["Kick", "threat_music/VS/TH_VS - KICK.mp3"],
+            ["Perc 2", "threat_music/VS/TH_VS - PERC2.mp3"],
+            ["Shaker", "threat_music/VS/TH_VS - SHAKER.mp3"],
+            ["Perc 1", "threat_music/VS/TH_VS - PERC1.mp3"],
+            ["Bass", "threat_music/VS/TH_VS - BASS.mp3"],
+            ["Noise", "threat_music/VS/TH_VS - NOISE.mp3"],
+            ["Arps", "threat_music/VS/TH_VS - ARPS.mp3"],
+            ["Synth", "threat_music/VS/TH_VS - SYNTH.mp3"],
+            ["Weird", "threat_music/VS/TH_VS - WEIRD.mp3"]
+            
+        ]
+    },
+    {
+        "name": "Rubicon",
+        "layers": [
+            ["Kick", "threat_music/HR/TH_HR - KICK.mp3"],
+            ["Hat 1", "threat_music/HR/TH_HR - HAT1.mp3"],
+            ["Bass", "threat_music/HR/TH_HR - BASS.mp3"],
+            ["Perc", "threat_music/HR/TH_HR - PERC.mp3"],
+            ["Hat 2", "threat_music/HR/TH_HR - HAT2.mp3"],
+            ["Snare", "threat_music/HR/TH_HR - SNARE.mp3"],
+            ["Lead", "threat_music/HR/TH_HR - LEAD.mp3"],
+            ["Weird", "threat_music/HR/TH_HR - WEIRD.mp3"],
+            ["Pad", "threat_music/HR/TH_HR - PAD.mp3"],
+            ["Noise", "threat_music/HR/TH_HR - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Shoreline",
+        "layers": [
+            ["Kick", "threat_music/SL/TH_SL - KICK.mp3"],
+            ["Bass", "threat_music/SL/TH_SL - BASS.mp3"],
+            ["Snare", "threat_music/SL/TH_SL - SNARE.mp3"],
+            ["Perc 1", "threat_music/SL/TH_SL - PERC1.mp3"],
+            ["Perc 2", "threat_music/SL/TH_SL - PERC2.mp3"],
+            ["Arps", "threat_music/SL/TH_SL - ARPS.mp3"],
+            ["Lead", "threat_music/SL/TH_SL - LEAD.mp3"],
+            ["Noise", "threat_music/SL/TH_SL - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Sky Islands",
+        "layers": [
+            ["Kick", "threat_music/SI/TH_SI - KICK.mp3"],
+            ["Shaker", "threat_music/SI/TH_SI - SHAKER.mp3"],
+            ["Weird", "threat_music/SI/TH_SI - WEIRD.mp3"],
+            ["Perc", "threat_music/SI/TH_SI - PERC1.mp3"],
+            ["Bass", "threat_music/SI/TH_SI - BASS.mp3"],
+            ["Arps", "threat_music/SI/TH_SI - ARPS.mp3"],
+            ["Snare", "threat_music/SI/TH_SI - SNARE.mp3"],
+            ["Noise", "threat_music/SI/TH_SI - NOISE.mp3"]
+        ]
+    },
+    {
+        "name": "Waterfront Facility",
+        "layers": [
+            ["Kick", "threat_music/LM/TH_LM - KICK.mp3"],
+            ["Perc 2", "threat_music/LM/TH_LM - PERC2.mp3"],
+            ["Snare", "threat_music/LM/TH_LM - SNARE.mp3"],
+            ["Perc 1", "threat_music/LM/TH_LM - PERC1.mp3"],
+            ["Bass", "threat_music/LM/TH_LM - BASS.mp3"],
+            ["Pad", "threat_music/LM/TH_LM - PAD.mp3"],
+            ["Arps", "threat_music/LM/TH_LM - ARPS.mp3"],
+            ["Weird", "threat_music/LM/TH_LM - WEIRD.mp3"],
+            ["Noise", "threat_music/LM/TH_LM - NOISE.mp3"]
+        ]
+    }
+]

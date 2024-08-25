@@ -3,59 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threatibox</title>
+    <title>Threatmixer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="graphics/favicon/favicon.ico">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htm/3.1.1/htm.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/preact/10.23.2/preact.min.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
+
+    <!-- Selection Screen-->
+    <div id="selection_screen">
+        <h1>Select a region:</h1>
+        <select id="region_selector"></select>
+        <button id="select_button">Begin!</button>
+    </div>
+
+    <!-- Loading Screen-->
     <div id="loading_screen">
         <h1>Loading...</h1>
     </div>
 
-    <div id="page_ui">
-        <!-- Header and layer buttons -->
-        <h1>Threatmixer, Outskirts</h1>
-        <div id="layer_button_container">
-            <div class="layer_options">
-                <button class="layer_button">Kick</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Shaker</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Perc</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Bass</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Hits</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Arps</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Lead</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
-            <div class="layer_options">
-                <button class="layer_button">Noise</button>
-                <button class="solo_button darken_button">Solo</button>
-            </div>
+    <!-- Main Page -->
+    <div id="main_page">
+
+        <!-- Exit Button -->
+        <div id="exit_container">
+            <button id="exit_button">Back To Region Selection</button>
         </div>
+
+        <!-- Headers -->
+        <h1>Threatmixer</h1>
+        <h2 id="region_name"></h2>
+
+        <!-- Layer and solo buttons -->
+        <div id="layer_button_container"></div>
 
         <!-- Other buttons -->
         <div id="other_button_container">
-            <button id="start_button">Start</button>
-            <button id="play_button">Play All</button>
-            <button id="pause_button">Pause</button>
+            <button class="other_buttons darken_button" id="start_button">Start</button>
+            <button class="other_buttons" id="play_button">Play All</button>
+            <button class="other_buttons" id="pause_button">Pause</button>
+        </div>
+
+        <!-- Recording buttons -->
+        <div>
+            <button class="recording_buttons" id="record_button">Start Recording</button>
+            <button class="recording_buttons darken_button" id="save_button">Save Recording</button>
+            <button class="recording_buttons darken_button" id="delete_button">Delete Recording</button>
         </div>
     </div>
 

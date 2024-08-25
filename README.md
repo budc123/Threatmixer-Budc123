@@ -4,20 +4,16 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 ## Progress
 
-Got a start button working, as well as more UI improvements. Now, I'm moving into some unfamiliar territory with recording audio from the page and then saving it, but I'll figure it out. Aside from that, the next push will also include all of the other threat themes being intergrated, which is actually pretty exciting for me! I'm ready to listen to something other than the same Outskirts layers over and over again lol.
+Every vanilla and and downpour threat theme has now been added! Along with that, most of the program has been put into a recursive function which (hopefully) shouldn't eat a lot of memory. Because of this change, all .addEventListener() functions have been changed into onclick() functions due to strange behavior while inside of a recursive loop. For the newly added threat themes, I tried my best to sync together all of the layers as best as I could. There are some very, very minor cases of desync in some regions, but those cases might just annoy me more than it does anyone else lol. But yeah, the MVP for this website is practically finished, and it's time to move on to some decoration with the next push!
 
 ## TODO:
 
 Descending in priority:
 
-1. Recording feature
-2. Exporting recordings
-3. Other region threat themes
-4. Styling and detailing
-    - Audio visualizer
-    - Song progress bar
-    - General ui improvements
-5. Misc. and not totally necessary stuff
+1. Styling and detailing
+    - Audio visualizer / Song progress bar
+    - General ui improvements and decoration
+2. Misc. and not totally necessary stuff
     - Modded/Custom threat themes?
     - Secret combinations?
     - Auto play feature?

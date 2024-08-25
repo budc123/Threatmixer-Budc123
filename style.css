@@ -1,8 +1,8 @@
-html, body, #loading_screen, #page_ui {
+html, body, #selection_screen, #loading_screen, #main_page {
     height: 100%;
 }
 
-body, #page_ui {
+body, #main_page {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -11,10 +11,15 @@ body, #page_ui {
     background-color: black;
 }
 
+#main_page, #exit_container {
+    width: 100%;
+}
+
 button {
     padding: 20px;
     margin: 5px;
     transition: filter 0.3s ease;
+    cursor: pointer;
     
 }
 
@@ -34,14 +39,15 @@ button {
     flex-direction: row;
 }
 
-#loading_screen {
+#loading_screen, #selection_screen {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.layer_button, .solo_button, #play_button:hover, #pause_button:hover, #start_button:hover {
-    filter: brightness(20%);
-    cursor: pointer;
+.layer_button, .solo_button, .other_buttons:hover, .recording_buttons:hover, #select_button:hover, #exit_button:hover {
+    filter: brightness(40%);
 }
 
 .layer_button:hover, .undarken_button:hover {
@@ -50,4 +56,25 @@ button {
 
 .darken_button {
     filter: brightness(5%);
+    cursor: default;
+}
+
+.darken_button:hover {
+    filter: brightness(5%);
+}
+
+#select_button {
+    margin: 20px;
+    padding: 5px;
+}
+
+#exit_button {
+    padding: 5px;
+    margin-left: 30px;
+}
+
+#layer_button_container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
