@@ -197,7 +197,7 @@ OTHER FUNCTIONS
             audioBuffer.forEach((audioBuffer, index) => {
                 // creating the bufferSource
                 var bufferSource = audioContext.createBufferSource();
-                bufferSource.buffer = audioBuffer
+                bufferSource.buffer = audioBuffer;
                 bufferSource.loop = true;
                 
                 // creating a gainNode and connecting it to the oscillator
