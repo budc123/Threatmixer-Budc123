@@ -145,13 +145,7 @@ function runProgram() {
                     layerButtonContainer.appendChild(newButton); // adding those buttons to the page
 
                     // sounds
-<<<<<<< Updated upstream
                     regionThreatLayers.push(new Audio(layer[1]));
-=======
-
-                    regionThreatLayers.push(new Audio(layer[1]))
-                    
->>>>>>> Stashed changes
                 });
 
                 // managing layerButtonContainer width based on how many layers there are
