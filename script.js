@@ -157,6 +157,10 @@ function runProgram() {
                     case 6: // if metropolis is selected
                         layerButtonContainer.style.width = "1050px"
                         break;
+                    
+                    default: // if neither of these things were selected
+                        layerButtonContainer.style.width = "100%"
+                        break;
                 }
 
                 // once this has all been done, move onto the next step
