@@ -4,14 +4,13 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 ## Progress
 
-Every vanilla and and downpour threat theme has now been added! Along with that, most of the program has been put into a recursive function which (hopefully) shouldn't eat a lot of memory. Because of this change, all .addEventListener() functions have been changed into onclick() functions due to strange behavior while inside of a recursive loop. For the newly added threat themes, I tried my best to sync together all of the layers as best as I could. There are some very, very minor cases of desync in some regions, but those cases might just annoy me more than it does anyone else lol. But yeah, the MVP for this website is practically finished, and it's time to move on to some decoration with the next push!
+Added two features: Queuing recordings and a song progres bar. Just some minor things before I actually start moving onto detailing. I also made sure to get some feedback from friends so that I know what I'm doing right and what I'm doing wrong. Next push will ACTUALLY be the style update this time. Expect a considerable increase in css percentage.
 
 ## TODO:
 
 Descending in priority:
 
 1. Styling and detailing
-    - Audio visualizer / Song progress bar
     - General ui improvements and decoration
 2. Misc. and not totally necessary stuff
     - Modded/Custom threat themes?

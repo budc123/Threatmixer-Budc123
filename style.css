@@ -78,3 +78,11 @@ button {
     flex-flow: row wrap;
     justify-content: center;
 }
+
+progress {
+    width: 200px;
+    scale: 2;
+    border: none;
+    border-radius: 100px;
+    transition: ease all 0.3s;
+}

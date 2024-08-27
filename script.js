@@ -3,26 +3,27 @@ VARIABLES & OTHER SET UP
 */
 
 // preact and htm
-const {h, render} = preact;
-const html = htm.bind(h);
+const {h, render} = preact,
+    html = htm.bind(h);
 
 // element refrences
-const layerButton = document.getElementsByClassName("layer_button");
-const soloButton = document.getElementsByClassName("solo_button");
-const pauseButton = document.getElementById("pause_button");
-const playAllButton = document.getElementById("play_button");
-const startButton = document.getElementById("start_button");
-const recordButton = document.getElementById("record_button");
-const saveButton = document.getElementById("save_button");
-const deleteButton = document.getElementById("delete_button");
-const selectButton = document.getElementById("select_button");
-const exitButton = document.getElementById("exit_button");
-const mainPage = document.getElementById("main_page");
-const loadingScreen = document.getElementById("loading_screen");
-const selectionScreen = document.getElementById("selection_screen");
-const regionTitle = document.getElementById("region_name");
-const layerButtonContainer = document.getElementById("layer_button_container");
-const regionSelector = document.getElementById("region_selector");
+const layerButton = document.getElementsByClassName("layer_button"),
+    soloButton = document.getElementsByClassName("solo_button"),
+    pauseButton = document.getElementById("pause_button"),
+    playAllButton = document.getElementById("play_button"),
+    startButton = document.getElementById("start_button"),
+    recordButton = document.getElementById("record_button"),
+    saveButton = document.getElementById("save_button"),
+    deleteButton = document.getElementById("delete_button"),
+    selectButton = document.getElementById("select_button"),
+    exitButton = document.getElementById("exit_button"),
+    mainPage = document.getElementById("main_page"),
+    loadingScreen = document.getElementById("loading_screen"),
+    selectionScreen = document.getElementById("selection_screen"),
+    regionTitle = document.getElementById("region_name"),
+    layerButtonContainer = document.getElementById("layer_button_container"),
+    regionSelector = document.getElementById("region_selector"),
+    progressBar = document.getElementById("progress_bar");
 
 // grabbing the audio context and creating an oscillator with it
 let audioContext = new (window.AudioContext || window.webkitAudioContext);
@@ -49,8 +50,9 @@ recorder.onstop = () => {
 
     else {
         // creating the file
-        var audioFile = new Blob(recordedData, {"type": "audio/mp3; codecs=opus"});
-        var fileUrl = URL.createObjectURL(audioFile);
+        var audioFile = new Blob(recordedData, {"type": "audio/mp3; codecs=opus"}),
+            fileUrl = URL.createObjectURL(audioFile);
+            
 
         // sending the file to the user's computer
         var link = document.createElement("a");
@@ -70,12 +72,15 @@ recorder.onstop = () => {
 
 // declaring our global variables
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
-layersPlaying, startingLayers, recordedData, regionThreatLayers;
-let regionsAddedToSelector = false;
-const mute = 0;
-const unmute = 1;
-const dimmed = "brightness(40%)"
-const brightened = "brightness(100%)"
+    layersPlaying, startingLayers, recordedData, regionThreatLayers,
+    songDuration, barUpdateInterval
+    regionsAddedToSelector = false,
+    recorderQueued = false;
+
+const dimmed = "brightness(40%)",
+    brightened = "brightness(100%)",
+    unmute = 1,
+    mute = 0;
 
 /*
 MAIN PROGRAM
@@ -98,70 +103,69 @@ function runProgram() {
 
         // we will not move onto the next step until the select button has been clicked
         return new Promise((resolve) => {
-
-            // adding regions to the selector
-            if (!regionsAddedToSelector) {
-                regionData.forEach((region) => {
-                    var newOption = document.createElement("option");
-                    newOption.innerText = region.name;
-                    regionSelector.appendChild(newOption);
-                });
-                regionsAddedToSelector = true;
-            }
-
-            // begin loading once a layer has been chosen
-            selectButton.onclick = () => {
-                selectionScreen.style.display = "none";
-                loadingScreen.style.display = "flex";
-
-                // defining variables
-                layerSoloed = false;
-                songStarted = false;
-                eraseRecording = false;
-                loadedLayers = [];
-                layersPlaying = [];
-                startingLayers = [];
-                recordedData = [];
-                regionThreatLayers = [];
-
-                // storing the index of the region that was selected
-                var regionIndex = regionSelector.selectedIndex
-                
-                // setting the header to the region's name
-                regionTitle.innerText = regionData[regionIndex].name
-
-                // this variable stores the method of creating new buttons for each of the layers
-                var addLayerButtons = (layer) => html`
-                    <button class="layer_button">${layer[0]}</button>
-                    <button class="solo_button darken_button">Solo</button>
-                `;
-
-                // here, we dynamically create as many buttons and sounds as we need based on what's in the json
-                regionData[regionIndex].layers.forEach((layer) => {
-                    // buttons
-                    var newButton = document.createElement("div"); // creating a div to hold the buttons
-                    newButton.classList.add("layer_options"); 
-                    render(addLayerButtons(layer), newButton); // creating those buttons
-                    layerButtonContainer.appendChild(newButton); // adding those buttons to the page
-
-                    // sounds
-                    regionThreatLayers.push(new Audio(layer[1]));
-                });
-
-                // managing layerButtonContainer width based on how many layers there are
-                switch (regionIndex) {
-                    case 0: // if chimney canopy is selected
-                        layerButtonContainer.style.width = "700px"
-                        break;
-                    
-                    case 6: // if metropolis is selected
-                        layerButtonContainer.style.width = "1050px"
-                        break;
-                    
-                    default: // if neither of these things were selected
-                        layerButtonContainer.style.width = "100%"
-                        break;
+                // adding regions to the selector
+                if (!regionsAddedToSelector) {
+                    regionData.forEach((region) => {
+                        var newOption = document.createElement("option");
+                        newOption.innerText = region.name;
+                        regionSelector.appendChild(newOption);
+                    });
+                    regionsAddedToSelector = true;
                 }
+
+                // begin loading once a layer has been chosen
+                selectButton.onclick = () => {
+                    selectionScreen.style.display = "none";
+                    loadingScreen.style.display = "flex";
+
+                    // defining variables
+                    layerSoloed = false;
+                    songStarted = false;
+                    eraseRecording = false;
+                    loadedLayers = [];
+                    layersPlaying = [];
+                    startingLayers = [];
+                    recordedData = [];
+                    regionThreatLayers = [];
+
+                    // storing the index of the region that was selected
+                    var regionIndex = regionSelector.selectedIndex
+                    
+                    // setting the header to the region's name
+                    regionTitle.innerText = regionData[regionIndex].name
+
+                    // this variable stores the method of creating new buttons for each of the layers
+                    var addLayerButtons = (layer) => html`
+                        <button class="layer_button">${layer[0]}</button>
+                        <button class="solo_button darken_button">Solo</button>
+                    `;
+
+                    // here, we dynamically create as many buttons and sounds as we need based on what's in the json
+                    regionData[regionIndex].layers.forEach((layer) => {
+                        // buttons
+                        var newButton = document.createElement("div"); // creating a div to hold the buttons
+                        newButton.classList.add("layer_options"); 
+                        render(addLayerButtons(layer), newButton); // creating those buttons
+                        layerButtonContainer.appendChild(newButton); // adding those buttons to the page
+
+                        // sounds
+                        regionThreatLayers.push(new Audio(layer[1]));
+                    });
+
+                    // managing layerButtonContainer width based on how many layers there are
+                    switch (regionIndex) {
+                        case 0: // chimney canopy
+                            layerButtonContainer.style.width = "700px"
+                            break;
+                        
+                        case 6: // metroplis
+                            layerButtonContainer.style.width = "1050px"
+                            break;
+
+                        default: // if none of these things were selected
+                            layerButtonContainer.style.width = "100%"
+                            break;
+                    }
 
                 // once this has all been done, move onto the next step
                 resolve();
@@ -184,10 +188,10 @@ function runProgram() {
         }
 
         // we wait for all of the sounds to be buffered, then proceed
-        Promise.all(loadSounds).then((audioBuffer) => {
+        Promise.all(loadSounds).then((arrayBuffer) => {
             loadingScreen.style.display = "none";
             mainPage.style.display = "flex";
-
+            
             // if we paused the audioContext, resume it
             if (audioContext.state == "suspended") {audioContext.resume();}
 
@@ -195,63 +199,111 @@ function runProgram() {
 OTHER FUNCTIONS
 */
 
-        // this function stores the methods for how the layers will be set up
-        function prepLayers() {
-            // creating an AudioBufferSourceNode each time this function is called
-            audioBuffer.forEach((audioBuffer, index) => {
-                // creating the bufferSource
-                var bufferSource = audioContext.createBufferSource();
-                bufferSource.buffer = audioBuffer;
-                bufferSource.loop = true;
-                
-                // creating a gainNode and connecting it to the oscillator
-                var gainNode = audioContext.createGain();
-                gainNode.connect(oscillatorDestination);
-                gainNode.connect(audioContext.destination);
+            // this function stores the methods for how the layers will be set up
+            function prepSong() {
 
-                // connecting the audio to the gainNode
-                bufferSource.connect(gainNode);
+                // creating an AudioBufferSourceNode each time this function is called
+                arrayBuffer.forEach((audioBuffer, index) => {
+                    // creating the bufferSource
+                    var bufferSource = audioContext.createBufferSource();
+                    bufferSource.buffer = audioBuffer;
+                    bufferSource.loop = true;
+                    
+                    // creating a gainNode and connecting it to the oscillator
+                    var gainNode = audioContext.createGain();
+                    gainNode.connect(oscillatorDestination);
+                    gainNode.connect(audioContext.destination);
 
-                // returning the buffer and the gain in a pair
-                loadedLayers.push([bufferSource, gainNode, index]);
-            });
+                    // connecting the audio to the gainNode
+                    bufferSource.connect(gainNode);
 
-            // undarkening the solo buttons
-            Array.from(soloButton).forEach((element) => {
-                switchToBright(element);
-            });  
+                    // returning the buffer and the gain in a pair
+                    loadedLayers.push([bufferSource, gainNode, index]);
+                });
 
-            // setting up the layers
-            for (let i = 0; i < loadedLayers.length; i++) {
+                // undarkening the solo buttons
+                Array.from(soloButton).forEach((element) => {
+                    switchToBright(element);
+                });
 
-                // this if statement checks for two scenarios
-                // 1. If any layers have been chosen to start first, or
-                // 2. If the play all button has been clicked
-                if (startingLayers.includes(i) || songStarted) {
-                    loadedLayers[i][1].gain.value = unmute;
-                    layersPlaying.push(loadedLayers[i]);
+                // brightening the pause button
+                switchToBright(pauseButton);
+
+                // starting the recorder if it was queued
+                if (recorderQueued) {
+                    recorder.start();
+                    recordButton.innerText = "Recording..."
+
+                    // switching the other buttons on
+                    switchToBright(saveButton);
+                    switchToBright(deleteButton);
                 }
 
-                // if neither of these are true, that must means this layer has to start muted
-                else {
-                    loadedLayers[i][1].gain.value = mute;
+                // setting up the layers
+                for (let i = 0; i < loadedLayers.length; i++) {
+
+                    // this if statement checks for two scenarios
+                    // 1. If any layers have been chosen to start first, or
+                    // 2. If the play all button has been clicked
+                    if (startingLayers.includes(i) || songStarted) {
+                        loadedLayers[i][1].gain.value = unmute;
+                        layersPlaying.push(loadedLayers[i]);
+                    }
+
+                    // if neither of these are true, that must means this layer has to start muted
+                    else {
+                        loadedLayers[i][1].gain.value = mute;
+                    }
+
+                    loadedLayers[i][0].start(audioContext.currentTime);
                 }
 
-                loadedLayers[i][0].start(audioContext.currentTime);
+
+                playAllButton.innerText = "End All"
+
+                startUpdatingBar();
             }
-            playAllButton.innerText = "End All"
-        }
 
-        // functions for swapping button brightness
-        function switchToBright(element) {
-            element.classList.remove("darken_button");
-            element.classList.add("undarken_button");
-        }
+            // functions for swapping button brightness
+            function switchToBright(element) {
+                element.classList.remove("darken_button");
+                element.classList.add("undarken_button");
+            }
 
-        function switchToDark(element) {
-            element.classList.remove("undarken_button");
-            element.classList.add("darken_button");
-        }
+            function switchToDark(element) {
+                element.classList.remove("undarken_button");
+                element.classList.add("darken_button");
+            }
+
+            // these next functions handles the song progress bar
+            function startUpdatingBar() {
+                // storing the time at which the audio started
+                var startTime = audioContext.currentTime;
+
+                barUpdateInterval = setInterval(() => {
+                    // storing the amount of time that has passed since starting
+                    // this is a way of getting the current time of the audioBuffers since you can't just use .currentTime
+                    var ellapsedTime = audioContext.currentTime - startTime;
+                    var duration = arrayBuffer[0].duration;
+                    var progressPercent = (ellapsedTime / duration) * 100;
+
+                    progressBar.value = progressPercent;
+
+                    // resetting the progress bar if it gets full
+                    if (progressBar.value == 100) {
+                        progressBar.value = 0;
+                        startTime = audioContext.currentTime
+                    }
+                }, 10)
+            }
+
+            function stopUpdatingBar() {
+                clearInterval(barUpdateInterval);
+
+                // if the song wasn't paused or has been stopped, clear the bar
+                if (audioContext.state != "suspended" || !songStarted) {progressBar.value = 0;}
+                // otherwise, the bar will stay in place and resume once unpaused
+            }
 
 /*
 BUTTON FUNCTIONALITY
@@ -342,7 +394,7 @@ BUTTON FUNCTIONALITY
             // start button functionality
             startButton.onclick = () => {
                 if (!songStarted && startingLayers.length > 0) {
-                    prepLayers();
+                    prepSong();
                     songStarted = true;
                     switchToDark(startButton);
                 }
@@ -366,8 +418,12 @@ BUTTON FUNCTIONALITY
             // play all button functionality
             playAllButton.onclick = () => {
                 if (!songStarted) { // if we're trying to start all of them,
+
+                    // checking if the audio context is paused and resuming it if it was
+                    // the layers won't be paused when starting the song over again
+                    if (audioContext.state == "suspended") {audioContext.resume();}
                     songStarted = true;
-                    prepLayers();
+                    prepSong();
 
                     // brightening all of the buttons
                     Array.from(layerButton).forEach((element) => {
@@ -378,17 +434,32 @@ BUTTON FUNCTIONALITY
                 }
                 
                 else { // if we're trying to end all of them,
-                    for (let i = 0; i < loadedLayers.length; i++) { // clearing AudioBufferSourceNodes
-                        loadedLayers[i][0].stop();
-                        loadedLayers[i][0].disconnect();
-                        layerButton[i].style.filter = dimmed;
-                    }
+
+                    // clearing AudioBufferSourceNodes
+                    loadedLayers.forEach((audio, index) => {
+                        audio[0].stop();
+                        audio[0].disconnect();
+                        layerButton[index].style.filter = dimmed;
+                    }) 
 
                     // darkening the solo buttons
                     Array.from(soloButton).forEach((element) => {
                         element.removeAttribute("style");
                         switchToDark(element);
                     });
+
+                    // darking the pause button
+                    switchToDark(pauseButton);
+
+                    // stopping recording if is has started
+                    if (recorder.state != "inactive") {
+                        recorder.stop();
+                        eraseRecording = true;
+                        recordButton.innerText = "Start Recording";
+
+                        switchToDark(saveButton);
+                        switchToDark(deleteButton);
+                    }
 
                     // reseting variables and button text
                     songStarted = false;
@@ -397,18 +468,30 @@ BUTTON FUNCTIONALITY
                     startingLayers = [];
                     playAllButton.innerText = "Play All"
                     pauseButton.innerText = "Pause"
+
+                    stopUpdatingBar();
                 }
             };
 
             // record button functionality
             recordButton.onclick = () => {
                 if (recorder.state == "inactive") {
-                    recorder.start();
-                    recordButton.innerText = "Recording..."
+                    if (!songStarted) {
+                        recorderQueued = true;
+                        recordButton.innerText = "Recording Queued";
+                        deleteButton.innerText = "Cancle Queue";
 
-                    // switching the other buttons on
-                    switchToBright(saveButton);
-                    switchToBright(deleteButton);
+                        switchToBright(deleteButton);
+                    }
+
+                    else {
+                        recorder.start();
+                        recordButton.innerText = "Recording..."
+
+                        // switching the other buttons on
+                        switchToBright(saveButton);
+                        switchToBright(deleteButton);
+                    }
                 }
             };
 
@@ -435,16 +518,28 @@ BUTTON FUNCTIONALITY
                     switchToDark(saveButton);
                     switchToDark(deleteButton);
                 }
+
+                else if (recorderQueued && !songStarted) {
+                    recorderQueued = false;
+                    recordButton.innerText = "Start Recording";
+                    deleteButton.innerText = "Delete Recording";
+
+                    switchToDark(deleteButton);
+                }
             };
 
             // exit button functionality
             exitButton.onclick = () => {
                 // stoping all audio and any recordings
+                songStarted = false;
                 audioContext.suspend();
                 if (recorder.state != "inactive") {
                     recorder.stop();
                     eraseRecording = true;
                 }
+
+                // stopping the progress bar
+                stopUpdatingBar();
 
                 // deleting all audioBufferSourceNodes to prevent memory leaks
                 for (let i = 0; i < loadedLayers.length; i++) {
