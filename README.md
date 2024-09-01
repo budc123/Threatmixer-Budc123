@@ -14,6 +14,7 @@ Here, from top to bottom, you'll see:
 # 1. The name of the region you selected & back button
 
 The title is just a nice reminder of what region you've selected. Nothing more, nothing less.
+
 The exit button does what it says on the tin, and will bring you back to the region selector when you want to try out a different region.
 
 ![Title and Exit](assets/images/misc/example_2.png)
@@ -33,7 +34,9 @@ Each button in this row corresponds to a single layer in the Outskirts threat th
 # 4. Buttons to control how the song plays
 
 The "start" button begins the song with however many layers you've chosen to, well, start with. Simply click the layer button for each layer you want start off with as unmuted, and then hit the start button once you're ready. 
+
 The "play all" button will play every layer at once and start the song if it hasn't started yet. If the song has already started, then the button will turn into an "reset song" button, in which case it will do what it says on the label, bringin the song back to the beginning.
+
 The "pause" button will halt all layers without muting or unmuting them. You can still manually mute and unmute layers while the song is paused though. Use this to your advantage to get really creative with your mixes!
 
 ![Layer Buttons](assets/images/misc/example_5.png)
@@ -41,7 +44,9 @@ The "pause" button will halt all layers without muting or unmuting them. You can
 # 5. Buttons to handle recording your mixes
 
 The "record" button will begin listening to the audio produced by the page (not your mic or any other audio source) once clicked. If the song hasn't started yet, pressing this button will queue the recording for it to start as soon as the song does. The "pause" button also pauses recordings, so don't worry about any gaps in audio when frequenetly pausing and unpausing while recording.
+
 The "save recording" button will bring up a prompt for you to enter the name of your recording before downloading it as an mp3 onto your computer. Entering nothing into the prompt will simply make the page return to you with a "null.mp3", which will still function like any other mp3 exported from this page.
+
 The "delete recording" button will stop a recording and won't save it onto you computer, allowing you to begin a new one right after. You can also cancle queued recordings with this button before the song starts, in case you change your mind. Returning to the region selector and/or refreshing the page will also automatically stop any recordings.
 
 ![Layer Buttons](assets/images/misc/example_6.png)
