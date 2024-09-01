@@ -1,11 +1,21 @@
-## Audio Credits
+## Asset Credits
 
-Rain World is a property of Videocult. All audio stored inside of the threat_music folder was created by members of Videocult as well as others who worked on Rain World Downpour. I own none of the music present on this webpage.
+Rain World is a property of Videocult. All audio stored inside of the threat_music folder was created by members of Videocult as well as others who worked on Rain World Downpour. I own none of the assets present on the page.
 
+# Music
 Audio files were taken from [cookiecaker's repository](https://github.com/cookiecaker/Rain-World-Sounds).
 
-## preact
+# Fonts
+The Rodondo font (the one used as the title font for Rain World) was created by @ollywood on twitter and uploaded to [dafont.com](https://www.dafont.com/rodondo.font).
 
+The Rain World menu font was recreated by DANNYY1TDM on [fontstruct](https://fontstruct.com/fontstructions/show/2392353/rain-world-menu).
+
+# Images
+All images were taken from the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Rain_World_Wiki).
+
+## Library Licenses
+
+# preact
 The MIT License (MIT)
 
 Copyright (c) 2015-present Jason Miller
@@ -28,7 +38,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## htm
+# htm
 Copyright 2018 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");

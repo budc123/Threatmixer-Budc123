@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Threatmixer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="graphics/favicon/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/htm/3.1.1/htm.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/preact/10.23.2/preact.min.js" defer></script>
@@ -15,36 +15,35 @@
 
     <!-- Selection Screen-->
     <div id="selection_screen">
-        <h1>Select a region:</h1>
+        <h1 id="page_name">Threatmixer</h1>
+        <h2 id="select_header">Select a region to get started!</h2>
         <select id="region_selector"></select>
         <button id="select_button">Begin!</button>
     </div>
 
     <!-- Loading Screen-->
     <div id="loading_screen">
-        <h1>Loading...</h1>
+        <h1 id="loading_header">Loading...</h1>
     </div>
 
     <!-- Main Page -->
     <div id="main_page">
 
-        <!-- Exit Button -->
-        <div id="exit_container">
+        <!-- Exit Button and Header -->
+        <div id="exit_and_header_container">
             <button id="exit_button">Back To Region Selection</button>
+            <h1 id="region_name"></h1>
+            <div id="empty_div"></div>
         </div>
-
-        <!-- Headers -->
-        <h1>Threatmixer</h1>
-        <h2 id="region_name"></h2>
-
-        <!-- Layer and solo buttons -->
-        <div id="layer_button_container"></div>
 
         <!-- Song Progress Bar -->
         <progress id="progress_bar" value="0" max="100"></progress>
 
+        <!-- Layer and solo buttons -->
+        <div id="layer_button_container"></div>
+
         <!-- Other buttons -->
-        <div id="other_button_container">
+        <div>
             <button class="other_buttons darken_button" id="start_button">Start</button>
             <button class="other_buttons" id="play_button">Play All</button>
             <button class="other_buttons darken_button" id="pause_button">Pause</button>
@@ -52,9 +51,9 @@
 
         <!-- Recording buttons -->
         <div>
-            <button class="recording_buttons" id="record_button">Start Recording</button>
-            <button class="recording_buttons darken_button" id="save_button">Save Recording</button>
-            <button class="recording_buttons darken_button" id="delete_button">Delete Recording</button>
+            <button class="other_buttons recording_buttons" id="record_button">Start Recording</button>
+            <button class="other_buttons recording_buttons darken_button" id="save_button">Save Recording</button>
+            <button class="other_buttons recording_buttons darken_button" id="delete_button">Delete Recording</button>
         </div>
     </div>
 
