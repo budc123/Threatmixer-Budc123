@@ -11,6 +11,7 @@ After a short loading screen, you'll then be brought to your region's "home" scr
 ![Whole Layer Screen](assets/images/misc/example_1.png)
 
 Here, from top to bottom, you'll see:
+
 # 1. The name of the region you selected & back button
 
 The title is just a nice reminder of what region you've selected. Nothing more, nothing less.
@@ -55,7 +56,7 @@ And that's pretty much everything you need to know about how to use this webpage
 
 ## Developement progress
 
-With a large graphics overhaul, the page is finally finished...-ish. While I'm pretty happy with its presentation now, it doesn't quite feel complete yet. I know that there are a few things I need to touch up on, mainly some more ui things and the audio files themselves, but those are pretty minor things overall. The webpage consistently functions how I want it to, which is amazing. There's just some very small things that need some changes in order for this to truly feel nearly perfect to me. Perfect enough for it to be considered the first actual version anyways. Consider this version 0.9. The next push will be the actual finished product.
+So uh, there's quite a few changes between this version and the last one. New graphics are being added for stylization, and the selection screen is being overhauled. There's a lot of stuff that's changed, and a lot of stuff to still be changed, so all I can say right now is to just stay tuned. The carousel doesn't work perfectly, but jsut try not to press the arrow buttons too quickly. That will be fixed in the next push. Oh and be sure to check out Outskirts, you can see a full set of completed button icons in there.
 
 ## TODO:
 
@@ -63,8 +64,8 @@ With a large graphics overhaul, the page is finally finished...-ish. While I'm p
 
 1. Finishing touches
     - Refining audio files
-    - Pts.js integration?
-2. Extra stuff
+    - Pts.js integration
+2. Extra / Post-release stuff
     - Modded/Custom threat themes
     - Auto play feature?
     - Responsive design?

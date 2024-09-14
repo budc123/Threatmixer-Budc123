@@ -6,19 +6,25 @@
     <title>Threatmixer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/htm/3.1.1/htm.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/preact/10.23.2/preact.min.js" defer></script>
     <script src="script.js" defer></script>
+    
 </head>
 <body>
 
-    <!-- Selection Screen-->
-    <div id="selection_screen">
+    <!-- Home Screen -->
+    <div id="home_screen">
         <h1 id="page_name">Threatmixer</h1>
-        <h2 id="select_header">Select a region to get started!</h2>
-        <select id="region_selector"></select>
         <button id="select_button">Begin!</button>
+    </div>
+
+    <!-- Selection Screen -->
+    <div id="selection_screen">
+        <h1>Vanilla / Downpour</h1>
+        <div id="carousel_container">
+            <button class="carrot_buttons">&lt;</button>
+            <div id="carousel"></div>
+            <button class="carrot_buttons">&gt;</button>
+        </div>
     </div>
 
     <!-- Loading Screen-->
@@ -27,7 +33,7 @@
     </div>
 
     <!-- Main Page -->
-    <div id="main_page">
+    <div id="music_screen">
 
         <!-- Exit Button and Header -->
         <div id="exit_and_header_container">
@@ -41,7 +47,6 @@
 
         <!-- Layer and solo buttons -->
         <div id="layer_button_container"></div>
-
         <!-- Other buttons -->
         <div>
             <button class="other_buttons darken_button" id="start_button">Start</button>

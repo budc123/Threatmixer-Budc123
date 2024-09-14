@@ -1,10 +1,6 @@
 /*
-VARIABLES & OTHER SET UP
+SET UP
 */
-
-// preact and htm
-const {h, render} = preact,
-    html = htm.bind(h);
 
 // element refrences
 const layerButtons = document.getElementsByClassName("layer_button"),
@@ -17,18 +13,23 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     deleteButton = document.getElementById("delete_button"),
     selectButton = document.getElementById("select_button"),
     exitButton = document.getElementById("exit_button"),
-    mainPage = document.getElementById("main_page"),
+    musicScreen = document.getElementById("music_screen"),
     loadingScreen = document.getElementById("loading_screen"),
+    homeScreen = document.getElementById("home_screen"),
+    regionButton = document.getElementsByClassName("region_button"),
     selectionScreen = document.getElementById("selection_screen"),
+    carousel = document.getElementById("carousel"),
+    carrotButtons = document.getElementsByClassName("carrot_buttons"),
+    regionButtonContainer = document.getElementsByClassName("region_button_container"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
-    regionSelector = document.getElementById("region_selector"),
-    progressBar = document.getElementById("progress_bar"),
-    buttons = document.querySelectorAll("button");
+    progressBar = document.getElementById("progress_bar");
 
-    // hiding these screens initially for cleaner page loading
+
+// hiding these screens initially for cleaner page loading
 loadingScreen.style.display = "none";
-mainPage.style.display= "none";
+musicScreen.style.display = "none";
+selectionScreen.style.display = "flex";
 
 // grabbing the audio context and creating an oscillator with it
 let audioContext = new (window.AudioContext || window.webkitAudioContext);
@@ -42,9 +43,7 @@ oscillator.connect(oscillatorDestination);
 const recorder = new MediaRecorder(oscillatorDestination.stream);
 
 // saving what the recorder picks up
-recorder.ondataavailable = (noise) => {
-   recordedData.push(noise.data)
-}
+recorder.ondataavailable = (noise) => {recordedData.push(noise.data)}
 
 // turning tha recorder's data into a file
 recorder.onstop = () => {
@@ -58,7 +57,6 @@ recorder.onstop = () => {
         var audioFile = new Blob(recordedData, {"type": "audio/mp3; codecs=opus"}),
             fileUrl = URL.createObjectURL(audioFile);
             
-
         // sending the file to the user's computer
         var link = document.createElement("a");
         link.href = fileUrl;
@@ -78,14 +76,17 @@ recorder.onstop = () => {
 // declaring our global variables
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
-    songDuration, barUpdateInterval
+    songDuration, barUpdateInterval, altColorNeeded, hovering;
     regionsAddedToSelector = false,
-    recorderQueued = false;
+    recorderQueued = false,
+    divIndex = -1;
 
 const brightened = "brightness(100%)",
     dimmed = "brightness(50%)",
     unmute = 1,
-    mute = 0;
+    mute = 0,
+    soloIcon1 = "assets/images/button_icons/solo_icon_1.png",
+    soloIcon2 = "assets/images/button_icons/solo_icon_2.png";
 
 /*
 MAIN PROGRAM
@@ -101,109 +102,107 @@ function runProgram() {
     })
     .then((regionData) => {
 
-        // only showing the selection screen until a region is chosen
+        // only showing the home screen until the user is ready to move on
         hideScreen(loadingScreen);
-        hideScreen(mainPage);
+        hideScreen(musicScreen);
+        hideScreen(homeScreen);
         showScreen(selectionScreen);
 
         // we will not move onto the next step until the select button has been clicked
         return new Promise((resolve) => {
-                // adding regions to the selector
-                if (!regionsAddedToSelector) {
-                    regionData.forEach((region) => {
-                        var newOption = document.createElement("option");
-                        newOption.innerText = region.name;
-                        regionSelector.appendChild(newOption);
-                    });
-                    regionsAddedToSelector = true;
+            // adding buttons to the selection page
+            regionData.forEach((region) => {
+
+                // creating a new div for the carousel every 6 buttons
+                if (Array.from(regionButton).length % 6 == 0) {
+                    divIndex++;
+                    var newDiv = document.createElement("div");
+                    newDiv.classList.add("region_button_container");
+                    carousel.appendChild(newDiv);
                 }
 
-                // begin loading once a layer has been chosen
-                selectButton.onclick = () => {                    
-                    hideScreen(selectionScreen);
-                    showScreen(loadingScreen);
+                // creating a button
+                var newRegionButton = document.createElement("button");
+                newRegionButton.classList.add("region_button");
 
-                    // defining variables
-                    layerSoloed = false;
-                    songStarted = false;
-                    eraseRecording = false;
-                    loadedLayers = [];
-                    layersPlaying = [];
-                    startingLayers = [];
-                    recordedData = [];
-                    regionThreatLayers = [];
+                // styling
+                newRegionButton.style.backgroundImage = `url(${region.background})`;
+                newRegionButton.innerText = region.name;
+                newRegionButton.style.color = `${region.color}`;
+                newRegionButton.style.border = `5px solid`;
 
-                    // storing the index of the region that was selected, as well as the region itself
-                    var regionIndex = regionSelector.selectedIndex
-                    var regionChosen = regionData[regionIndex]
-                    
-                    // setting the header to the region's name
-                    regionTitle.innerText = regionData[regionIndex].name
+                // adding song snippets for when you hover over buttons
+                var songPreview = document.createElement("audio");
+                songPreview.preload = "auto";
+                songPreview.loop = true;
+                songPreview.src = region.preview;
 
-                    // this variable stores the method of creating new buttons for each of the layers
-                    var addLayerButtons = (layer) => html`
-                        <button class="layer_button layer_button_darkened">${layer[0]}</button>
-                        <button class="solo_button darken_button">Solo</button>
-                    `;
+                regionButtonContainer[divIndex].appendChild(newRegionButton);
 
-                    // here, we dynamically create as many buttons and sounds as we need based on what's in the json
-                    regionChosen.layers.forEach((layer) => {
+                // this onplay listener adds a fade in effect to the audio
+                songPreview.onplay = () => {
+                    var volume = 0;
+                    songPreview.volume = volume;
+                    songPreview.play();
+                    hovering = true
 
-                        // buttons
-                        var newButton = document.createElement("div"); // creating a div to hold the buttons
-                        newButton.classList.add("layer_options"); 
-                        render(addLayerButtons(layer), newButton); // creating those buttons
-                        layerButtonContainer.appendChild(newButton); // adding those buttons to the page
+                    const fadeIn = setInterval(() => {
+                        if (songPreview.volume + 0.1 <= 1 && hovering) {
+                            volume += 0.1;
+                            songPreview.volume = volume;
+                        }
 
-                        // sounds
-                        regionThreatLayers.push(new Audio(layer[1]));
-                    });
-
-                    // managing layerButtonContainer width based on how many layers there are
-                    switch (regionIndex) {
-                        case 0: // chimney canopy
-                            layerButtonContainer.style.width = "800px"
-                            break;
-                        
-                        case 6: // metroplis
-                            layerButtonContainer.style.width = "1225px"
-                            break;
-
-                        default: // if none of these things were selected
-                            layerButtonContainer.style.width = "100%"
-                            break;
-                    }
-
-                // adding color changes based on the chosen region
-                var pageStyle = regionChosen.color
-                var styleChanges = document.createElement("style");
-                styleChanges.textContent = `
-                #exit_button, #region_name, .layer_button, .solo_button, .other_buttons {
-                    color: ${pageStyle};
+                        else {
+                            clearInterval(fadeIn)
+                        }
+                    }, 150)
                 }
 
-                #exit_button, .layer_button, .solo_button, .other_buttons {
-                    border: 3px solid ${pageStyle};
+                newRegionButton.appendChild(songPreview);
+
+                // here, we give each button some events
+                // this one just makes it so that they glow their respective color when hoevered over
+                newRegionButton.onmouseover = () => {
+                    newRegionButton.style.boxShadow = `0px 0px 20px 10px ${region.color}99`;
+                    songPreview.play();
                 }
 
-                .layer_button_brightened {
-                    box-shadow: 0px 0px 20px 3px ${pageStyle}99;
+                // and then this one does the exact opposite
+                newRegionButton.onmouseout = () => {
+                    newRegionButton.style.boxShadow = "";
+
+                    // all of this handles fading out the song
+                    var volume = songPreview.volume;
+                    hovering = false;
+
+                    const fadeOut = setInterval(() => {
+                        if (songPreview.volume - 0.1 >= 0 && !hovering) {
+                            volume -= 0.1;
+                            songPreview.volume = volume;
+                        }
+
+                        else {
+                            clearInterval(fadeOut);
+                            songPreview.pause();
+                            songPreview.currentTime = 0;
+                        }
+                    }, 50)
                 }
 
-                progress::-moz-progress-bar, progress::-webkit-progress-bar {
-                    background-color: ${pageStyle};
-                }
-                `;
-                
-                // adding these changes
-                document.head.appendChild(styleChanges);
+                // this function adds an onclick event to each button that will cause them to begin loading their respective song screen 
+                addOnClick(newRegionButton, regionData, resolve);
+            });
 
-                // changing the background image depending on the region
-                mainPage.style.backgroundImage = `url(${regionChosen.background})`
+            // carousel functionality 
+            var scrollDistance = carousel.offsetWidth
 
-                // once this has all been done, move onto the next step
-                resolve();
-            };
+            carrotButtons[0].onclick = () => { // left carrot button
+                carousel.scrollLeft -= scrollDistance;
+            }
+
+            carrotButtons[1].onclick = () => { // right carrot button
+                carousel.scrollLeft += scrollDistance;
+            }
         });
     })
     .then(() => {
@@ -211,7 +210,7 @@ function runProgram() {
         // more web API junk
         try {
             loadSounds = 
-                regionThreatLayers.map((audio) => { //personal note: .map is like .forEach except it turns each item into a promise, basically
+                regionThreatLayers.map((audio) => { //personal note: .map is like .forEach except it basically turns each item into a promise
                     return fetch(audio.src)
                         .then((result) => {return result.arrayBuffer();}) // turning the audio into a buffer
                         .then((arrayBuffer) => {return audioContext.decodeAudioData(arrayBuffer);}) // decoding that buffer
@@ -224,7 +223,7 @@ function runProgram() {
         // we wait for all of the sounds to be buffered, then proceed
         Promise.all(loadSounds).then((arrayBuffer) => {
             hideScreen(loadingScreen);
-            showScreen(mainPage);
+            showScreen(musicScreen);
             
             // if we paused the audioContext, resume it
             if (audioContext.state == "suspended") {audioContext.resume();}
@@ -287,6 +286,7 @@ BUTTON FUNCTIONALITY
                             loadedLayers[i][1].gain.value = unmute; // unmute it,
                             layersPlaying.push(loadedLayers[i]); // add it to this array
                             soloButton[loadedLayers[i][2]].style.filter = brightened // and brighten both buttons
+                            soloButton[loadedLayers[i][2]].querySelector("img").src = soloIcon2;
                             switchToBright(layerButtons[loadedLayers[i][2]]);
                         }
 
@@ -298,6 +298,7 @@ BUTTON FUNCTIONALITY
 
                             else { // if it does,
                                 soloButton[layersPlaying[j][2]].style.filter = brightened // brighten the solo button
+                                soloButton[layersPlaying[j][2]].querySelector("img").src = soloIcon2;
                             }
                         }
                         layerSoloed = true;
@@ -307,8 +308,12 @@ BUTTON FUNCTIONALITY
                     else if (loadedLayers[i][1].gain.value != mute) {
                         for (let j = 0; j < layersPlaying.length; j++) {
                             layersPlaying[j][1].gain.value = 1;
-                            switchToBright(layerButtons[layersPlaying[j][2]]);
+                            // brightening the other layer buttons that were playing before, making sure to skip over the one that's already bright
+                            if (loadedLayers[i][2] != layersPlaying[j][2]) {
+                                switchToBright(layerButtons[layersPlaying[j][2]]);
+                            }
                             soloButton[layersPlaying[j][2]].style.filter = dimmed
+                            soloButton[layersPlaying[j][2]].querySelector("img").src = soloIcon1;
                         }
                         layerSoloed = false;
                     }
@@ -362,7 +367,7 @@ BUTTON FUNCTIONALITY
                 
                 else { // if we're trying to end all of them,
 
-                    // clearing AudioBufferSourceNodes
+                    // clearing AudioBufferSourceNodes and darkening layer buttons
                     loadedLayers.forEach((audio, index) => {
                         audio[0].stop();
                         audio[0].disconnect();
@@ -371,7 +376,8 @@ BUTTON FUNCTIONALITY
 
                     // darkening the solo buttons
                     Array.from(soloButton).forEach((element) => {
-                        element.removeAttribute("style");
+                        element.style.removeProperty("filter");
+                        element.querySelector("img").src = soloIcon1;
                         switchToDark(element);
                     });
 
@@ -383,19 +389,18 @@ BUTTON FUNCTIONALITY
                         recorder.stop();
                         eraseRecording = true;
                         recordButton.innerText = "Start Recording";
-
                         switchToDark(saveButton);
                         switchToDark(deleteButton);
                     }
 
                     // reseting variables and button text
+                    layerSoloed = false;
                     songStarted = false;
                     loadedLayers = [];
                     layersPlaying = [];
                     startingLayers = [];
                     playAllButton.innerText = "Play All"
                     pauseButton.innerText = "Pause"
-
                     stopUpdatingBar();
                 }
             };
@@ -407,7 +412,6 @@ BUTTON FUNCTIONALITY
                         recorderQueued = true;
                         recordButton.innerText = "Recording Queued";
                         deleteButton.innerText = "Cancle Queue";
-
                         switchToBright(deleteButton);
                     }
 
@@ -474,8 +478,10 @@ BUTTON FUNCTIONALITY
                     loadedLayers[i][0].disconnect();
                 }
 
-                // emptying the button container
+                // reseting containers
                 layerButtonContainer.innerHTML = "";
+                carousel.innerHTML = "";
+                divIndex = -1;
 
                 // reseting button labels and lighting
                 playAllButton.innerText = "Play All";
@@ -494,6 +500,139 @@ BUTTON FUNCTIONALITY
 /* 
 FUNCTIONS
 */
+
+// loading song screen on region button click
+function addOnClick(element, regionData, resolve) {
+    element.onclick = () => {                    
+        hideScreen(selectionScreen);
+        showScreen(loadingScreen);
+
+        // defining variables
+        layerSoloed = false;
+        songStarted = false;
+        eraseRecording = false;
+        loadedLayers = [];
+        layersPlaying = [];
+        startingLayers = [];
+        recordedData = [];
+        regionThreatLayers = [];
+
+        // storing the index of the region that was selected, as well as the region itself
+        var regionButtonArray = Array.from(regionButton)
+        var regionIndex = regionButtonArray.indexOf(element),
+            regionChosen = regionData[regionIndex];
+        
+        // setting the header to the region's name
+        regionTitle.innerText = regionData[regionIndex].name
+
+        // managing layerButtonContainer width based on how many layers there are
+        switch (regionIndex) {
+            case 0: // chimney canopy
+                layerButtonContainer.style.width = "750px";
+                altColorNeeded = true;
+                break;
+            
+            case 6: // metroplis
+                layerButtonContainer.style.width = "850px";
+                altColorNeeded = true;
+                break;
+
+            default: // if none of these things were selected
+                layerButtonContainer.style.width = "100%";
+                altColorNeeded = false;
+                break;
+        }
+
+        // storing the color changes we'll need based on the chosen region
+        if (altColorNeeded) {
+            var altColor = regionChosen.altColor
+            var altFilter = regionChosen.altFilter
+        }
+        var pageStyle = regionChosen.color;
+        var iconFilter = regionChosen.filter;
+
+        // here, we dynamically create as many buttons and sounds as we need based on what's in the json
+        regionChosen.layers.forEach((layer) => {
+
+            // buttons
+            // creating a div to hold each of the buttons
+            var newDiv = document.createElement("div");
+            newDiv.classList.add("layer_options");
+
+            // creating the layer and solo buttons
+            var newLayerButton = document.createElement("button"); 
+            newLayerButton.classList.add("layer_button", "layer_button_darkened");
+            newLayerButton.style.border = `3px solid ${pageStyle}`;
+
+            var newSoloButton = document.createElement("button");
+            newSoloButton.classList.add("solo_button", "darken_button");
+            newSoloButton.style.border = `3px solid ${pageStyle}`;
+
+            // creating the icons to put in each button
+            var newLayerIcon = document.createElement("img");
+            newLayerIcon.classList.add("button_icon");
+            newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
+            newLayerIcon.style.filter = `${iconFilter}`;
+
+            var newSoloIcon = document.createElement("img");
+            newSoloIcon.classList.add("button_icon");
+            newSoloIcon.src = soloIcon1;
+            newSoloIcon.style.filter = `${iconFilter}`;
+
+            // applying alternate colors to buttons if needed
+            if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) ||
+                (altColorNeeded && regionIndex == 6 && layerButtons.length > 8)) {
+                newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
+                newLayerButton.style.border = `3px solid ${altColor}`;
+                newSoloButton.style.border = `3px solid ${altColor}`;
+                newLayerIcon.style.filter = `${altFilter}`;
+                newSoloIcon.style.filter = `${altFilter}`;
+            }
+
+            // adding our new elements onto the page
+            newLayerButton.appendChild(newLayerIcon);
+            newSoloButton.appendChild(newSoloIcon);
+            newDiv.appendChild(newLayerButton);
+            newDiv.appendChild(newSoloButton);
+            layerButtonContainer.appendChild(newDiv);
+        
+            // sounds
+            regionThreatLayers.push(new Audio(layer[1]));
+        });
+
+        var styleChanges = document.createElement("style");
+        styleChanges.textContent = `
+        #exit_button, #region_name, .other_buttons {
+            color: ${pageStyle};
+        }
+
+        #exit_button, .other_buttons {
+            border: 3px solid ${pageStyle};
+        }
+
+        .layer_button_brightened {
+            box-shadow: 0px 0px 20px 6px ${pageStyle}99;
+        }
+
+        .alt_layer_button_brightened {
+            box-shadow: 0px 0px 20px 6px ${altColor}99;
+        }
+
+        progress::-moz-progress-bar, progress::-webkit-progress-bar {
+            background-color: ${pageStyle};
+        }
+        `;
+        
+        // adding these changes
+        document.head.appendChild(styleChanges);
+
+        // changing the background image depending on the region
+        musicScreen.style.backgroundImage = `url(${regionChosen.background})`
+
+        // once this has all been done, move onto the next step
+        resolve();
+    }
+}
 
 // this function stores the methods for how the layers will be set up
 function prepSong(arrayBuffer) {
@@ -563,29 +702,39 @@ function prepSong(arrayBuffer) {
 
 // functions for swapping button brightness
 function switchToBright(element) {
-
     // if we're switching a layer button on or off, change that element to a unique class
     if (Array.from(layerButtons).includes(element)) {
-        element.classList.remove("layer_button_darkened");
-        element.classList.add("layer_button_brightened");
+        // if the layer button is of an alternate color,
+        if (element.classList.contains("alt_layer_button_darkened")) {
+            element.classList.replace("alt_layer_button_darkened", "alt_layer_button_brightened");
+        }
+
+        // otherwise,
+        else {
+            element.classList.replace("layer_button_darkened", "layer_button_brightened");
+        }
     }
 
     // otherwise, set the element to the normal class
     else {
-        element.classList.remove("darken_button");
-        element.classList.add("brighten_button");
+        element.classList.replace("darken_button", "brighten_button");
     }
 }
 
 function switchToDark(element) {
+    // same sort of logic as in switchToBright()
     if (Array.from(layerButtons).includes(element)) {
-        element.classList.remove("layer_button_brightened");
-        element.classList.add("layer_button_darkened");
+        if (element.classList.contains("alt_layer_button_brightened")) {
+            element.classList.replace("alt_layer_button_brightened", "alt_layer_button_darkened");
+        }
+
+        else {
+            element.classList.replace("layer_button_brightened", "layer_button_darkened");
+        }
     }
 
     else {
-        element.classList.remove("brighten_button");
-        element.classList.add("darken_button");
+        element.classList.replace("brighten_button", "darken_button");
     }
 }
 
@@ -635,7 +784,7 @@ function startUpdatingBar(arrayBuffer) {
 function stopUpdatingBar() {
     clearInterval(barUpdateInterval);
 
-    // if the song wasn't paused or has been stopped, clear the bar
+    // if the song wasn't paused and has been reset, clear the bar
     if (audioContext.state != "suspended" || !songStarted) {progressBar.value = 0;}
     // otherwise, the bar will stay in place and resume once unpaused
 }
@@ -643,5 +792,6 @@ function stopUpdatingBar() {
 // unhiding the other screens once they've been flattened
 setTimeout(() => {
     loadingScreen.style.display = "flex";
-    mainPage.style.display = "flex";
+    musicScreen.style.display = "flex";
+    selectionScreen.display = "flex";
 }, 300);

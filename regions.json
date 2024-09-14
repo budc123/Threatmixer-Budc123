@@ -2,223 +2,255 @@
     {
         "name": "Chimney Canopy",
         "layers": [
-            ["Kick", "assets/threat_music/CC/TH_CC - KICK.mp3"],
-            ["Snare", "assets/threat_music/CC/TH_CC - SNARE.mp3"],
-            ["Perc 1", "assets/threat_music/CC/TH_CC - PERC1.mp3"],
-            ["Bass", "assets/threat_music/CC/TH_CC - BASS.mp3"],
-            ["Perc 2", "assets/threat_music/CC/TH_CC - PERC2.mp3"],
-            ["Arps", "assets/threat_music/CC/TH_CC - ARPS.mp3"],
-            ["Vox", "assets/threat_music/CC/TH_CC - VOX.mp3"],
-            ["Noise", "assets/threat_music/CC/TH_CC - NOISE.mp3"],
-            ["Gutter Bass", "assets/threat_music/CC/TH_CC_-_GUTTERBASS.mp3"],
-            ["Gutter Vox", "assets/threat_music/CC/TH_CC_-_GUTTERVOX.mp3"]
+            ["kick_icon.png", "assets/threat_music/CC/TH_CC - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC - SNARE.mp3"],
+            ["shaker_icon.png", "assets/threat_music/CC/TH_CC - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC - ARPS.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC - VOX.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC - NOISE.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC_-_GUTTERBASS.mp3"],
+            ["test_icon.png", "assets/threat_music/CC/TH_CC_-_GUTTERVOX.mp3"]
         ],
-        "color": "#493e55",
-        "background": "assets/images/region_backgrounds/chimney_canopy.png"
+        "color": "#51455e",
+        "altColor": "#54371d",
+        "filter": "invert(21%) sepia(28%) saturate(558%) hue-rotate(226deg) brightness(93%) contrast(83%)",
+        "altFilter": "invert(20%) sepia(21%) saturate(1418%) hue-rotate(347deg) brightness(92%) contrast(88%)",
+        "background": "assets/images/backgrounds/chimney_canopy.png",
+        "preview": "assets/music_snippets/CC_snippet.MP3"
     },
     {
         "name": "Farm Arrays",
         "layers": [
-            ["Kick", "assets/threat_music/LF/TH_LF - KICK.mp3"],
-            ["Shaker", "assets/threat_music/LF/TH_LF - SHAKER.mp3"],
-            ["Perc 1", "assets/threat_music/LF/TH_LF - PERC1.mp3"],
-            ["Bass", "assets/threat_music/LF/TH_LF - BASS.mp3"],
-            ["Snare", "assets/threat_music/LF/TH_LF - SNARE.mp3"],
-            ["Perc 2", "assets/threat_music/LF/TH_LF - PERC2.mp3"],
-            ["Arps", "assets/threat_music/LF/TH_LF - ARPS.mp3"],
-            ["Noise", "assets/threat_music/LF/TH_LF - NOISE.mp3"]
+            ["kick_icon.png", "assets/threat_music/LF/TH_LF - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - SHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - ARPS.mp3"],
+            ["test_icon.png", "assets/threat_music/LF/TH_LF - NOISE.mp3"]
         ],
         "color": "#7b462b",
-        "background": "assets/images/region_backgrounds/farm_arrays.png"
+        "filter": "invert(29%) sepia(7%) saturate(3588%) hue-rotate(335deg) brightness(99%) contrast(92%)",
+        "background": "assets/images/backgrounds/farm_arrays.png",
+        "preview": "assets/music_snippets/LF_snippet.MP3"
     },
     {
         "name": "Five Pebbles / The Rot",
         "layers": [
-            ["Kick", "assets/threat_music/SS/TH_SS - KICK.MP3"],
-            ["Bass", "assets/threat_music/SS/TH_SS - BASS.MP3"],
-            ["Pop", "assets/threat_music/SS/TH_SS - POP.MP3"],
-            ["Lead", "assets/threat_music/SS/TH_SS - LEAD.MP3"],
-            ["Noise", "assets/threat_music/SS/TH_SS - NOISE.MP3"]
+            ["kick_icon.png", "assets/threat_music/SS/TH_SS - KICK.MP3"],
+            ["test_icon.png", "assets/threat_music/SS/TH_SS - BASS.MP3"],
+            ["test_icon.png", "assets/threat_music/SS/TH_SS - POP.MP3"],
+            ["test_icon.png", "assets/threat_music/SS/TH_SS - LEAD.MP3"],
+            ["test_icon.png", "assets/threat_music/SS/TH_SS - NOISE.MP3"]
         ],
-        "color": "#170c55",
-        "background": "assets/images/region_backgrounds/five_pebbles.png"
+        "color": "#3e1bfa",
+        "filter": "invert(15%) sepia(93%) saturate(4199%) hue-rotate(250deg) brightness(89%) contrast(123%)",
+        "background": "assets/images/backgrounds/five_pebbles.png",
+        "preview": "assets/music_snippets/SS_snippet.MP3"
     },
     {
         "name": "Garbage Wastes",
         "layers": [
-            ["Kick", "assets/threat_music/GW/TH_GW - KICK.mp3"],
-            ["Shaker", "assets/threat_music/GW/TH_GW - SHAKE.mp3"],
-            ["Perc 1", "assets/threat_music/GW/TH_GW - PERC1.mp3"],
-            ["Bass", "assets/threat_music/GW/TH_GW - BASS.mp3"],
-            ["Perc 2", "assets/threat_music/GW/TH_GW - PERC2.mp3"],
-            ["Weird", "assets/threat_music/GW/TH_GW - WEIRD.mp3"],
-            ["Vox", "assets/threat_music/GW/TH_GW - VOX.mp3"],
-            ["Lead", "assets/threat_music/GW/TH_GW - LEAD.mp3"],
-            ["Noise", "assets/threat_music/GW/TH_GW - NOISE.mp3"]
+            ["kick_icon.png", "assets/threat_music/GW/TH_GW - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - SHAKE.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - WEIRD.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - VOX.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - LEAD.mp3"],
+            ["test_icon.png", "assets/threat_music/GW/TH_GW - NOISE.mp3"]
         ],
-        "color": "#c4dd58",
-        "background": "assets/images/region_backgrounds/garbage_wastes.png"
+        "color": "#94a649",
+        "filter": "invert(63%) sepia(6%) saturate(3156%) hue-rotate(31deg) brightness(97%) contrast(90%)",
+        "background": "assets/images/backgrounds/garbage_wastes.png",
+        "preview": "assets/music_snippets/GW_snippet.MP3"
     },
     {
         "name": "Industrial Complex",
         "layers": [
-            ["Kick", "assets/threat_music/HI/TH_HI - KICK.mp3"],
-            ["Shaker", "assets/threat_music/HI/TH_HI - SHAKER.mp3"],
-            ["Perc", "assets/threat_music/HI/TH_HI - PERC1.mp3"],
-            ["Snare", "assets/threat_music/HI/TH_HI - SNARE.mp3"],
-            ["Bass", "assets/threat_music/HI/TH_HI - BASS.mp3"],
-            ["Weird", "assets/threat_music/HI/TH_HI - WEIRD.mp3"],
-            ["Vox", "assets/threat_music/HI/TH_HI - VOX.mp3"],
-            ["Noise", "assets/threat_music/HI/TH_HI - NOISE.mp3"]
+            ["kick_icon.png", "assets/threat_music/HI/TH_HI - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - SHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - WEIRD.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - VOX.mp3"],
+            ["test_icon.png", "assets/threat_music/HI/TH_HI - NOISE.mp3"]
         ],
         "color": "#416053",
-        "background": "assets/images/region_backgrounds/industrial_complex.png"
+        "filter": "invert(36%) sepia(10%) saturate(960%) hue-rotate(103deg) brightness(91%) contrast(94%)",
+        "background": "assets/images/backgrounds/industrial_complex.png",
+        "preview": "assets/music_snippets/HI_snippet.MP3"
     },
     {
         "name": "Looks to the Moon",
         "layers": [
-            ["Kick", "assets/threat_music/DM/TH_DM - KICK.mp3"],
-            ["Shaker", "assets/threat_music/DM/TH_DM - SHAKER.mp3"],
-            ["Snare", "assets/threat_music/DM/TH_DM - SNARE.mp3"],
-            ["Bass", "assets/threat_music/DM/TH_DM - BASS.mp3"],
-            ["Lead", "assets/threat_music/DM/TH_DM - LEAD.mp3"],
-            ["Noise", "assets/threat_music/DM/TH_DM - NOISE.mp3"]
+            ["test_icon.png", "assets/threat_music/DM/TH_DM - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/DM/TH_DM - SHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/DM/TH_DM - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/DM/TH_DM - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/DM/TH_DM - LEAD.mp3"],
+            ["test_icon.png", "assets/threat_music/DM/TH_DM - NOISE.mp3"]
         ],
         "color": "#5054c2",
-        "background": "assets/images/region_backgrounds/looks_to_the_moon.png"
+        "filter": "invert(33%) sepia(17%) saturate(4801%) hue-rotate(216deg) brightness(90%) contrast(89%)",
+        "background": "assets/images/backgrounds/looks_to_the_moon.png",
+        "preview": "assets/music_snippets/DM_snippet.MP3"
     },
     {
         "name": "Metropolis",
         "layers": [
-            ["Day Kick", "assets/threat_music/LC/TH_LC - DAYKICK.mp3"],
-            ["Day Atmos", "assets/threat_music/LC/TH_LC - DAYATMOS.mp3"],
-            ["Day Sub", "assets/threat_music/LC/TH_LC - DAYSUB.mp3"],
-            ["Day Shaker", "assets/threat_music/LC/TH_LC - DAYSHAKER.mp3"],
-            ["Day Breaks", "assets/threat_music/LC/TH_LC - DAYBREAKS.mp3"],
-            ["Day Perc", "assets/threat_music/LC/TH_LC - DAYPERC.mp3"],
-            ["Day Tom", "assets/threat_music/LC/TH_LC - DAYTOM.mp3"],
-            ["Day Arp", "assets/threat_music/LC/TH_LC - DAYARP.mp3"],
-            ["Day Synth", "assets/threat_music/LC/TH_LC - DAYSYNTH.mp3"],
-            ["Night Kick", "assets/threat_music/LC/TH_LC - NIGHTKICK.mp3"],
-            ["Night Atmos", "assets/threat_music/LC/TH_LC - NIGHTATMOS.mp3"],
-            ["Night Sub", "assets/threat_music/LC/TH_LC - NIGHTSUB.mp3"],
-            ["Night Shaker", "assets/threat_music/LC/TH_LC - NIGHTSHAKER.mp3"],
-            ["Night Noise", "assets/threat_music/LC/TH_LC - NIGHTNOISE.mp3"],
-            ["Night Hat", "assets/threat_music/LC/TH_LC - NIGHTHAT.mp3"],
-            ["Night Perc", "assets/threat_music/LC/TH_LC - NIGHTPERC.mp3"],
-            ["Night Tom", "assets/threat_music/LC/TH_LC - NIGHTTOM.mp3"],
-            ["Night Synth", "assets/threat_music/LC/TH_LC - NIGHTSYNTH.mp3"]
+            ["kick_icon.png", "assets/threat_music/LC/TH_LC - DAYKICK.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYATMOS.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYSUB.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYSHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYBREAKS.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYPERC.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYTOM.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYARP.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - DAYSYNTH.mp3"],
+            ["kick_icon.png", "assets/threat_music/LC/TH_LC - NIGHTKICK.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTATMOS.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTSUB.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTSHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTNOISE.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTHAT.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTPERC.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTTOM.mp3"],
+            ["test_icon.png", "assets/threat_music/LC/TH_LC - NIGHTSYNTH.mp3"]
         ],
         "color": "#842b44",
-        "background": "assets/images/region_backgrounds/metropolis.png"
+        "altColor": "#1e2b58",
+        "filter": "invert(20%) sepia(17%) saturate(5971%) hue-rotate(313deg) brightness(93%) contrast(87%)",
+        "altFilter": "invert(14%) sepia(49%) saturate(1531%) hue-rotate(202deg) brightness(94%) contrast(94%)",
+        "background": "assets/images/backgrounds/metropolis.png",
+        "preview": "assets/music_snippets/LC_snippet.MP3"
     },
     {
         "name": "Outer Expanse",
         "layers": [
-            ["Noise", "assets/threat_music/OE/TH_OE - NOISE.mp3"],
-            ["Kick/Perc 1", "assets/threat_music/OE/TH_OE - KICKPERC.mp3"],
-            ["Perc 2", "assets/threat_music/OE/TH_OE - PERC2.mp3"],
-            ["Bass", "assets/threat_music/OE/TH_OE - BASS.mp3"],
-            ["Arp", "assets/threat_music/OE/TH_OE - ARP.mp3"],
-            ["Lead", "assets/threat_music/OE/TH_OE - LEAD.mp3"],
-            ["Flow", "assets/threat_music/OE/TH_OE - FLOW.mp3"],
-            ["Waves", "assets/threat_music/OE/TH_OE - WAVES.mp3"]
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - NOISE.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - KICKPERC.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - ARP.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - LEAD.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - FLOW.mp3"],
+            ["test_icon.png", "assets/threat_music/OE/TH_OE - WAVES.mp3"]
         ],
-        "color": "#dbb48f",
-        "background": "assets/images/region_backgrounds/outer_expanse.png"
+        "color": "#bd9c7d",
+        "filter": "invert(65%) sepia(37%) saturate(291%) hue-rotate(348deg) brightness(92%) contrast(89%)",
+        "background": "assets/images/backgrounds/outer_expanse.png",
+        "preview": "assets/music_snippets/OE_snippet.MP3"
     },
     {
         "name": "Outskirts",
         "layers": [
-            ["Kick", "assets/threat_music/SU/TH_SU - KICK.mp3"],
-            ["Shaker", "assets/threat_music/SU/TH_SU - SHAKER.mp3"],
-            ["Perc", "assets/threat_music/SU/TH_SU - PERC1.mp3"],
-            ["Bass", "assets/threat_music/SU/TH_SU - BASS.mp3"],
-            ["Hits", "assets/threat_music/SU/TH_SU - HITS.mp3"],
-            ["Arps", "assets/threat_music/SU/TH_SU - ARPS.mp3"],
-            ["Lead", "assets/threat_music/SU/TH_SU - LEAD.mp3"],
-            ["Noise", "assets/threat_music/SU/TH_SU - NOISE.mp3"]
+            ["kick_icon.png", "assets/threat_music/SU/TH_SU - KICK.mp3"],
+            ["shaker_icon.png", "assets/threat_music/SU/TH_SU - SHAKER.mp3"],
+            ["perc_icon.png", "assets/threat_music/SU/TH_SU - PERC1.mp3"],
+            ["bass_icon.png", "assets/threat_music/SU/TH_SU - BASS.mp3"],
+            ["hit_icon.png", "assets/threat_music/SU/TH_SU - HITS.mp3"],
+            ["arps_icon.png", "assets/threat_music/SU/TH_SU - ARPS.mp3"],
+            ["wawa_icon.png", "assets/threat_music/SU/TH_SU - LEAD.mp3"],
+            ["noise_icon.png", "assets/threat_music/SU/TH_SU - NOISE.mp3"]
         ],
-        "color": "#546a68",
-        "background": "assets/images/region_backgrounds/outskirts.png"
+        "color": "#516664",
+        "filter": "invert(39%) sepia(21%) saturate(350%) hue-rotate(125deg) brightness(92%) contrast(82%)",
+        "background": "assets/images/backgrounds/outskirts.png",
+        "preview": "assets/music_snippets/SU_snippet.MP3"
     },
     {
         "name": "Pipeyard",
         "layers": [
-            ["Kick", "assets/threat_music/VS/TH_VS - KICK.mp3"],
-            ["Perc 2", "assets/threat_music/VS/TH_VS - PERC2.mp3"],
-            ["Shaker", "assets/threat_music/VS/TH_VS - SHAKER.mp3"],
-            ["Perc 1", "assets/threat_music/VS/TH_VS - PERC1.mp3"],
-            ["Bass", "assets/threat_music/VS/TH_VS - BASS.mp3"],
-            ["Noise", "assets/threat_music/VS/TH_VS - NOISE.mp3"],
-            ["Arps", "assets/threat_music/VS/TH_VS - ARPS.mp3"],
-            ["Synth", "assets/threat_music/VS/TH_VS - SYNTH.mp3"],
-            ["Weird", "assets/threat_music/VS/TH_VS - WEIRD.mp3"]
+            ["kick_icon.png", "assets/threat_music/VS/TH_VS - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - SHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - NOISE.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - ARPS.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - SYNTH.mp3"],
+            ["test_icon.png", "assets/threat_music/VS/TH_VS - WEIRD.mp3"]
         ],
-        "color": "#7f5147",
-        "background": "assets/images/region_backgrounds/pipeyard.png"
+        "color": "#b57c70",
+        "filter": "invert(53%) sepia(40%) saturate(379%) hue-rotate(323deg) brightness(93%) contrast(87%)",
+        "background": "assets/images/backgrounds/pipeyard.png",
+        "preview": "assets/music_snippets/VS_snippet.MP3"
     },
     {
         "name": "Rubicon",
         "layers": [
-            ["Kick", "assets/threat_music/HR/TH_HR - KICK.mp3"],
-            ["Hat 1", "assets/threat_music/HR/TH_HR - HAT1.mp3"],
-            ["Bass", "assets/threat_music/HR/TH_HR - BASS.mp3"],
-            ["Perc", "assets/threat_music/HR/TH_HR - PERC.mp3"],
-            ["Hat 2", "assets/threat_music/HR/TH_HR - HAT2.mp3"],
-            ["Snare", "assets/threat_music/HR/TH_HR - SNARE.mp3"],
-            ["Lead", "assets/threat_music/HR/TH_HR - LEAD.mp3"],
-            ["Weird", "assets/threat_music/HR/TH_HR - WEIRD.mp3"],
-            ["Pad", "assets/threat_music/HR/TH_HR - PAD.mp3"],
-            ["Noise", "assets/threat_music/HR/TH_HR - NOISE.mp3"]
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - HAT1.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - PERC.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - HAT2.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - LEAD.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - WEIRD.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - PAD.mp3"],
+            ["test_icon.png", "assets/threat_music/HR/TH_HR - NOISE.mp3"]
         ],
         "color": "#f9de45",
-        "background": "assets/images/region_backgrounds/rubicon.png"
+        "filter": "invert(77%) sepia(67%) saturate(439%) hue-rotate(360deg) brightness(104%) contrast(95%)",
+        "background": "assets/images/backgrounds/rubicon.png",
+        "preview": "assets/music_snippets/HR_snippet.MP3"
     },
     {
         "name": "Shoreline",
         "layers": [
-            ["Kick", "assets/threat_music/SL/TH_SL - KICK.mp3"],
-            ["Bass", "assets/threat_music/SL/TH_SL - BASS.mp3"],
-            ["Snare", "assets/threat_music/SL/TH_SL - SNARE.mp3"],
-            ["Perc 1", "assets/threat_music/SL/TH_SL - PERC1.mp3"],
-            ["Perc 2", "assets/threat_music/SL/TH_SL - PERC2.mp3"],
-            ["Arps", "assets/threat_music/SL/TH_SL - ARPS.mp3"],
-            ["Lead", "assets/threat_music/SL/TH_SL - LEAD.mp3"],
-            ["Noise", "assets/threat_music/SL/TH_SL - NOISE.mp3"]
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - ARPS.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - LEAD.mp3"],
+            ["test_icon.png", "assets/threat_music/SL/TH_SL - NOISE.mp3"]
         ],
         "color": "#79887b",
-        "background": "assets/images/region_backgrounds/shoreline.png"
+        "filter": "invert(56%) sepia(13%) saturate(312%) hue-rotate(77deg) brightness(90%) contrast(86%)",
+        "background": "assets/images/backgrounds/shoreline.png",
+        "preview": "assets/music_snippets/SL_snippet.MP3"
     },
     {
         "name": "Sky Islands",
         "layers": [
-            ["Kick", "assets/threat_music/SI/TH_SI - KICK.mp3"],
-            ["Shaker", "assets/threat_music/SI/TH_SI - SHAKER.mp3"],
-            ["Weird", "assets/threat_music/SI/TH_SI - WEIRD.mp3"],
-            ["Perc", "assets/threat_music/SI/TH_SI - PERC1.mp3"],
-            ["Bass", "assets/threat_music/SI/TH_SI - BASS.mp3"],
-            ["Arps", "assets/threat_music/SI/TH_SI - ARPS.mp3"],
-            ["Snare", "assets/threat_music/SI/TH_SI - SNARE.mp3"],
-            ["Noise", "assets/threat_music/SI/TH_SI - NOISE.mp3"]
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - SHAKER.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - WEIRD.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - ARPS.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/SI/TH_SI - NOISE.mp3"]
         ],
-        "color": "#e8aa9c",
-        "background": "assets/images/region_backgrounds/sky_islands.png"
+        "color": "#e08a77",
+        "filter": "invert(62%) sepia(32%) saturate(651%) hue-rotate(323deg) brightness(95%) contrast(84%)",
+        "background": "assets/images/backgrounds/sky_islands.png",
+        "preview": "assets/music_snippets/SI_snippet.MP3"
     },
     {
         "name": "Waterfront Facility",
         "layers": [
-            ["Kick", "assets/threat_music/LM/TH_LM - KICK.mp3"],
-            ["Perc 2", "assets/threat_music/LM/TH_LM - PERC2.mp3"],
-            ["Snare", "assets/threat_music/LM/TH_LM - SNARE.mp3"],
-            ["Perc 1", "assets/threat_music/LM/TH_LM - PERC1.mp3"],
-            ["Bass", "assets/threat_music/LM/TH_LM - BASS.mp3"],
-            ["Pad", "assets/threat_music/LM/TH_LM - PAD.mp3"],
-            ["Arps", "assets/threat_music/LM/TH_LM - ARPS.mp3"],
-            ["Weird", "assets/threat_music/LM/TH_LM - WEIRD.mp3"],
-            ["Noise", "assets/threat_music/LM/TH_LM - NOISE.mp3"]
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - KICK.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - PERC2.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - SNARE.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - PERC1.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - BASS.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - PAD.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - ARPS.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - WEIRD.mp3"],
+            ["test_icon.png", "assets/threat_music/LM/TH_LM - NOISE.mp3"]
         ],
-        "color": "#4e4630",
-        "background": "assets/images/region_backgrounds/waterfront_facility.png"
+        "color": "#8c7c53",
+        "filter": "invert(50%) sepia(8%) saturate(1833%) hue-rotate(5deg) brightness(95%) contrast(79%)",
+        "background": "assets/images/backgrounds/waterfront_facility.png",
+        "preview": "assets/music_snippets/LM_snippet.MP3"
     }
 ]

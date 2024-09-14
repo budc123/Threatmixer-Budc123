@@ -1,12 +1,12 @@
 /* General page formatting */
 @font-face {
     font-family: Rodondo;
-    src: url(assets/fonts/Rodondo.otf);
+    src: url(assets/fonts/Rodondo.woff);
     font-family: RWmenu;
-    src: url(assets/fonts/rain-world-menu.otf);
+    src: url(assets/fonts/RainWorldMenu.woff);
 }
 
-html, body, #selection_screen, #loading_screen, #main_page {
+html, body, #home_screen, #loading_screen, #music_screen {
     height: 100%;
 }
 
@@ -32,12 +32,16 @@ select {
 
 button, select, option {
     font-family: RWmenu;
-    font-size: 17px;
+    font-size: 8.5px;
     background-color: rgba(0, 0, 0, 0.9);
-    box-shadow: 5px 5px 5px #000000e6;
+    box-shadow: 7px 7px 5px #000000e6;
 }
 
-select, option, #select_button {
+option {
+    font-size: 17px;
+}
+
+select, option, #select_button, .carrot_buttons {
     color: #dadbdd;
     border: 3px solid #dadbdd;
 }
@@ -52,22 +56,84 @@ progress {
 }
 
 #region_name {
-    text-shadow: 10px 10px 5px #000000e6;
+    text-shadow: 5px 5px 5px #000000e6;
 }
 
 #region_name, #page_name, #loading_header {
     letter-spacing: 5px;
 }
 
-/* Selection and loading screen styling */
+.region_button {
+    font-family: Rodondo;
+    color: white;
+    font-size: 3.5vw;
+    text-shadow: 4px 4px 4px #000000e6;
+    white-space: normal;
+    text-align: center;
+    width: 380px;
+    height: 260px;
+    margin-bottom: 40px;
+    background-size: 25vw;
+    background-position: left;
+}
 
+.region_button:hover {
+    scale: 1.1;
+    box-shadow: 0px 0px 20px 3px #ffffff99;
+    animation: sway 8s ease alternate infinite;
+}
+
+#selection_screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+        ),
+        url(assets/images/backgrounds/selection_screen_bg.png);
+    background-size: cover;
+}
+
+.region_button_container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    flex-basis: 70vw;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: 2vw;
+}
+
+#carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    width: 70.1vw;
+}
+
+#carousel_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrot_buttons {
+    font-size: 0.8vw;
+    padding: 5px;
+    height: max-content;
+}
+
+/* Home and loading screen styling */
 #page_name {
     font-size: 150px;
     margin: 40px;
-}
-
-#select_header {
-    margin-bottom: 20px;
 }
 
 #select_button {
@@ -75,13 +141,13 @@ progress {
     padding: 5px;
 }
 
-#selection_screen {
+#home_screen {
     width: 100%;
     background-size: cover;
-    background-image: url("assets/images/region_backgrounds/selection_screen_bg.png");
+    background-image: url(assets/images/backgrounds/home_screen_bg.png);
 }
 
-#loading_screen, #selection_screen {
+#loading_screen, #home_screen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,12 +155,12 @@ progress {
 }
 
 /* Main page things */
-#main_page {
+#music_screen {
     width: 100%;
     background-size: cover;
 }
 
-body, #main_page {
+body, #music_screen {
     margin: 0px;
     display: flex;
     flex-direction: column;
@@ -105,7 +171,8 @@ body, #main_page {
 }
 
 .solo_button {
-    padding: 5px;
+    padding: 10px;
+    padding-bottom: 5px;
 }
 
 .layer_options {
@@ -118,6 +185,14 @@ body, #main_page {
 #layer_button_container {
     display: flex;
     flex-direction: row;
+}
+
+.layer_button {
+    padding: 20px;
+}
+
+.button_icon {
+    scale: 1.75;
 }
 
 #exit_and_header_container {
@@ -142,21 +217,23 @@ body, #main_page {
     height: max-content;
 }
 
-.layer_button_brightened:hover, .solo_button, .other_buttons:hover, 
-    .recording_buttons:hover, #select_button:hover, #exit_button:hover,
-    .layer_button_darkened {
+.layer_button_brightened:hover, .layer_button_brightened:hover, .solo_button, 
+    .other_buttons:hover, .recording_buttons:hover, #select_button:hover, 
+    #exit_button:hover, .layer_button_darkened, .alt_layer_button_darkened {
     filter: brightness(60%);
 }
 
 .solo_button:hover {
-    filter: brightness(40%);
-}
-
-.layer_button_darkened:hover, .layer_button_brightened {
     filter: brightness(100%);
 }
 
-.layer_button_brightened {
+.layer_button_darkened:hover, .alt_layer_button_darkened:hover,
+    .layer_button_brightened, .alt_layer_button_brightened {
+    filter: brightness(100%);
+}
+
+.layer_button_brightened, .alt_layer_button_brightened,
+    .layer_button_darkened, .alt_layer_button_darkened {
     transition: box-shadow 0.3s ease;
 }
 
@@ -171,7 +248,21 @@ body, #main_page {
     justify-content: center;
 }
 
-/* Smooth transition between screens */
-#selection_screen, #loading_screen, #main_page {
+/* transitions and animations */
+#home_screen, #loading_screen, #selection_screen, #music_screen {
     transition: height 0.6s ease;
+}
+
+.region_button {
+    transition: all 0.2s ease;
+}
+
+@keyframes sway {
+    from {
+        background-position: left;
+    }
+
+    to {
+        background-position: right;
+    }
 }
