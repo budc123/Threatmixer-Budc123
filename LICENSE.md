@@ -19,3 +19,6 @@ The Rain World menu font was recreated by DANNYY1TDM on [fontstruct](https://fon
 
 # Images
 Region backgrounds were taken from the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Official_Art).
+
+# Code
+The visualizer present in the music screen was made by following a tutorial made by [QuickCodingTuts](https://www.youtube.com/watch?v=sb6C1XNqJzA) on YouTube.

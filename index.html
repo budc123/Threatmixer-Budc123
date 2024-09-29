@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
     <script src="script.js" defer></script>
-    
 </head>
 <body>
-
     <!-- Home Screen -->
     <div id="home_screen">
         <h1 id="page_name">Threatmixer</h1>
@@ -19,11 +17,13 @@
 
     <!-- Selection Screen -->
     <div id="selection_screen">
-        <h1>Vanilla / Downpour</h1>
-        <div id="carousel_container">
-            <button class="carrot_buttons">&lt;</button>
-            <div id="carousel"></div>
-            <button class="carrot_buttons">&gt;</button>
+        <div id="selection_container">
+            <h1 id="selection_header">Vanilla / Downpour</h1>
+            <div id="carousel_container">
+                <button class="carrot_buttons" id="left_button">&lt;</button>
+                <div id="carousel"></div>
+                <button class="carrot_buttons" id="right_button">&gt;</button>
+            </div>
         </div>
     </div>
 
@@ -32,21 +32,26 @@
         <h1 id="loading_header">Loading...</h1>
     </div>
 
-    <!-- Main Page -->
+    <!-- Music Screen -->
     <div id="music_screen">
+        <!-- Visualizer -->
+        <canvas id="canvas"></canvas>
 
-        <!-- Exit Button and Header -->
-        <div id="exit_and_header_container">
-            <button id="exit_button">Back To Region Selection</button>
-            <h1 id="region_name"></h1>
-            <div id="empty_div"></div>
-        </div>
+        <!-- Exit Button -->
+        <button id="exit_button">Back</button>
+
+        <!-- Header -->
+        <h1 id="region_name"></h1>
+
+        <!-- Visualizer Toggle -->
+        <button id="visualizer_toggle">Visualizer: On</button>
 
         <!-- Song Progress Bar -->
         <progress id="progress_bar" value="0" max="100"></progress>
 
         <!-- Layer and solo buttons -->
         <div id="layer_button_container"></div>
+
         <!-- Other buttons -->
         <div>
             <button class="other_buttons darken_button" id="start_button">Start</button>
@@ -61,6 +66,5 @@
             <button class="other_buttons recording_buttons darken_button" id="delete_button">Delete Recording</button>
         </div>
     </div>
-
 </body>
 </html>

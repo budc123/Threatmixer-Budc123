@@ -2,7 +2,7 @@
 
 Threatmixer is a webpage which will allow the user to play with and mix the various threat themes from the game Rain World. I was heavily inspired by Incredibox, a game where you take various sound elements and mash them together to make your own music. Thinking about how fun it was to expiriment with different sound combinations in Incredibox, I thought about how cool it'd be if you could mix and match the layers of a threat theme at will, sparking the idea for this project.
 
-## How to use it
+## Tutorial
 
 When you first open the page, you'll be greeted with a screen which prompts you to select a region name from a drop-down menu. Once you've made your choice, hit the "Begin!" button to start mixing that region's threat themes! 
 
@@ -12,7 +12,7 @@ After a short loading screen, you'll then be brought to your region's "home" scr
 
 Here, from top to bottom, you'll see:
 
-# 1. The name of the region you selected & back button
+# 1. Region Name and Exit Button
 
 The title is just a nice reminder of what region you've selected. Nothing more, nothing less.
 
@@ -20,19 +20,19 @@ The exit button does what it says on the tin, and will bring you back to the reg
 
 ![Title and Exit](assets/images/misc/example_2.png)
 
-# 2. A progress bar to let you know how much longer the song is
+# 2. Progress Bar
 
 Like the title and exit button, this one is also pretty self-explanatory. When the song loop begins, the bar will begin to fill up as the song continues. When the loop reaches its end, the bar will automatically restart at the beginning in time with the song. Use it to get a feel for when you should add or remove layers from the threat theme for the perfect mix!
 
 ![Progress Bar](assets/images/misc/example_3.png)
 
-# 3. Buttons corresponding to that region's threat layers
+# 3. Music Buttons
 
 Each button in this row corresponds to a single layer in the Outskirts threat theme. Clicking them after the song has started will toggle whether that layer is muted or not. The smaller buttons labeled "solo" can single out the layer above them, making that sound the only thing that's unmuted. Only one layer can be soloed at a time, and you must hit the same solo button twice in order to unmute all of the other layers that were playing before.
 
 ![Layer Buttons](assets/images/misc/example_4.png)
 
-# 4. Buttons to control how the song plays
+# 4. Song Controls
 
 The "start" button begins the song with however many layers you've chosen to, well, start with. Simply click the layer button for each layer you want start off with as unmuted, and then hit the start button once you're ready. 
 
@@ -42,7 +42,7 @@ The "pause" button will halt all layers without muting or unmuting them. You can
 
 ![Layer Buttons](assets/images/misc/example_5.png)
 
-# 5. Buttons to handle recording your mixes
+# 5. Recording
 
 The "record" button will begin listening to the audio produced by the page (not your mic or any other audio source) once clicked. If the song hasn't started yet, pressing this button will queue the recording for it to start as soon as the song does. The "pause" button also pauses recordings, so don't worry about any gaps in audio when frequenetly pausing and unpausing while recording.
 
@@ -56,16 +56,15 @@ And that's pretty much everything you need to know about how to use this webpage
 
 ## Developement progress
 
-So uh, there's quite a few changes between this version and the last one. New graphics are being added for stylization, and the selection screen is being overhauled. There's a lot of stuff that's changed, and a lot of stuff to still be changed, so all I can say right now is to just stay tuned. The carousel doesn't work perfectly, but jsut try not to press the arrow buttons too quickly. That will be fixed in the next push. Oh and be sure to check out Outskirts, you can see a full set of completed button icons in there.
+Added a sweet new visualizer, as well as some visual changes. This may be the last update I make to this page feature-wise. Once the home-page and all of the icons are completed, the project will finally be finished. Stay tuned.
 
 ## TODO:
 
 ? = unsure if actually adding
 
 1. Finishing touches
+    - Home screen
     - Refining audio files
-    - Pts.js integration
 2. Extra / Post-release stuff
     - Modded/Custom threat themes
-    - Auto play feature?
-    - Responsive design?
+    - Icon revamps

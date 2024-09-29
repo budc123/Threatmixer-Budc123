@@ -13,6 +13,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     deleteButton = document.getElementById("delete_button"),
     selectButton = document.getElementById("select_button"),
     exitButton = document.getElementById("exit_button"),
+    visButton = document.getElementById("visualizer_toggle"),
     musicScreen = document.getElementById("music_screen"),
     loadingScreen = document.getElementById("loading_screen"),
     homeScreen = document.getElementById("home_screen"),
@@ -23,8 +24,8 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     regionButtonContainer = document.getElementsByClassName("region_button_container"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
-    progressBar = document.getElementById("progress_bar");
-
+    progressBar = document.getElementById("progress_bar"),
+    canvas = document.getElementById("canvas");
 
 // hiding these screens initially for cleaner page loading
 loadingScreen.style.display = "none";
@@ -43,7 +44,7 @@ oscillator.connect(oscillatorDestination);
 const recorder = new MediaRecorder(oscillatorDestination.stream);
 
 // saving what the recorder picks up
-recorder.ondataavailable = (noise) => {recordedData.push(noise.data)}
+recorder.ondataavailable = (noise) => {recordedData.push(noise.data);}
 
 // turning tha recorder's data into a file
 recorder.onstop = () => {
@@ -60,7 +61,7 @@ recorder.onstop = () => {
         // sending the file to the user's computer
         var link = document.createElement("a");
         link.href = fileUrl;
-        fileName = prompt("Please enter a name for this recording:")
+        fileName = prompt("Please enter a name for this recording:");
         link.download = fileName + ".mp3";
         link.style.display = "none";
         document.body.appendChild(link);
@@ -73,10 +74,23 @@ recorder.onstop = () => {
     }
 }
 
+// creating the visualizer
+const visualizer = audioContext.createAnalyser();
+visualizer.fftSize = 512;
+const bufferLength = visualizer.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+const barWidth = canvas.width / bufferLength * 3;
+const canvasContext = canvas.getContext("2d");
+
+// making sure the canvas isn't blurry
+canvasContext.imageSmoothingEnabled = false;
+
 // declaring our global variables
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
-    songDuration, barUpdateInterval, altColorNeeded, hovering;
+    songDuration, barUpdateInterval, altColorNeeded, hovering, 
+    animation,
+    clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
     divIndex = -1;
@@ -94,7 +108,7 @@ MAIN PROGRAM
 
 runProgram();
 
-// we utelize recursion to go back and forth between region selection and layer playing
+// we utelize recursion to go back and forth between the selection screen and the music screen
 function runProgram() {
     // fetching the json and getting the data we need
     fetch("regions.json").then((data) => {
@@ -107,6 +121,9 @@ function runProgram() {
         hideScreen(musicScreen);
         hideScreen(homeScreen);
         showScreen(selectionScreen);
+
+        // setting the page name
+        document.title = "Threatmixer - Selection Screen";
 
         // we will not move onto the next step until the select button has been clicked
         return new Promise((resolve) => {
@@ -129,7 +146,7 @@ function runProgram() {
                 newRegionButton.style.backgroundImage = `url(${region.background})`;
                 newRegionButton.innerText = region.name;
                 newRegionButton.style.color = `${region.color}`;
-                newRegionButton.style.border = `5px solid`;
+                newRegionButton.style.border = `0.2vw solid`;
 
                 // adding song snippets for when you hover over buttons
                 var songPreview = document.createElement("audio");
@@ -144,7 +161,7 @@ function runProgram() {
                     var volume = 0;
                     songPreview.volume = volume;
                     songPreview.play();
-                    hovering = true
+                    hovering = true;
 
                     const fadeIn = setInterval(() => {
                         if (songPreview.volume + 0.1 <= 1 && hovering) {
@@ -163,7 +180,7 @@ function runProgram() {
                 // here, we give each button some events
                 // this one just makes it so that they glow their respective color when hoevered over
                 newRegionButton.onmouseover = () => {
-                    newRegionButton.style.boxShadow = `0px 0px 20px 10px ${region.color}99`;
+                    newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
                     songPreview.play();
                 }
 
@@ -194,14 +211,17 @@ function runProgram() {
             });
 
             // carousel functionality 
-            var scrollDistance = carousel.offsetWidth
+            var scrollDistance = carousel.getBoundingClientRect().width;
+
 
             carrotButtons[0].onclick = () => { // left carrot button
-                carousel.scrollLeft -= scrollDistance;
+                if (!clickOnTimeout) {carousel.scrollLeft -= scrollDistance;}
+                setClickTimout();
             }
 
             carrotButtons[1].onclick = () => { // right carrot button
-                carousel.scrollLeft += scrollDistance;
+                if (!clickOnTimeout) {carousel.scrollLeft += scrollDistance;}
+                setClickTimout();
             }
         });
     })
@@ -263,7 +283,7 @@ BUTTON FUNCTIONALITY
                             loadedLayers[i][1].gain.value = mute
                             var indexOfLayer = layersPlaying.indexOf(loadedLayers[i])
                             layersPlaying.splice(indexOfLayer, 1);
-                            switchToDark(layerButtons[i])
+                            switchToDark(layerButtons[i]);
                         }
                     }
 
@@ -285,7 +305,7 @@ BUTTON FUNCTIONALITY
                         if (loadedLayers[i][1].gain.value == mute) { // if the layer we're trying to solo is muted,
                             loadedLayers[i][1].gain.value = unmute; // unmute it,
                             layersPlaying.push(loadedLayers[i]); // add it to this array
-                            soloButton[loadedLayers[i][2]].style.filter = brightened // and brighten both buttons
+                            soloButton[loadedLayers[i][2]].style.filter = brightened; // and brighten both buttons
                             soloButton[loadedLayers[i][2]].querySelector("img").src = soloIcon2;
                             switchToBright(layerButtons[loadedLayers[i][2]]);
                         }
@@ -297,7 +317,7 @@ BUTTON FUNCTIONALITY
                             }
 
                             else { // if it does,
-                                soloButton[layersPlaying[j][2]].style.filter = brightened // brighten the solo button
+                                soloButton[layersPlaying[j][2]].style.filter = brightened; // brighten the solo button
                                 soloButton[layersPlaying[j][2]].querySelector("img").src = soloIcon2;
                             }
                         }
@@ -312,7 +332,7 @@ BUTTON FUNCTIONALITY
                             if (loadedLayers[i][2] != layersPlaying[j][2]) {
                                 switchToBright(layerButtons[layersPlaying[j][2]]);
                             }
-                            soloButton[layersPlaying[j][2]].style.filter = dimmed
+                            soloButton[layersPlaying[j][2]].style.filter = dimmed;
                             soloButton[layersPlaying[j][2]].querySelector("img").src = soloIcon1;
                         }
                         layerSoloed = false;
@@ -459,6 +479,19 @@ BUTTON FUNCTIONALITY
                 }
             };
 
+            // visualizer toggle functionality
+            visButton.onclick = () => {
+                canvas.classList.toggle("hide_canvas")
+
+                if (canvas.classList.contains("hide_canvas")) {
+                    visButton.innerText = "Visualizer: Off";
+                }
+
+                else {
+                    visButton.innerText = "Visualizer: On";
+                }
+            }
+
             // exit button functionality
             exitButton.onclick = () => {
                 // stoping all audio and any recordings
@@ -478,7 +511,7 @@ BUTTON FUNCTIONALITY
                     loadedLayers[i][0].disconnect();
                 }
 
-                // reseting containers
+                // reseting containers and button text
                 layerButtonContainer.innerHTML = "";
                 carousel.innerHTML = "";
                 divIndex = -1;
@@ -489,6 +522,9 @@ BUTTON FUNCTIONALITY
                 recordButton.innerText = "Start Recording";
                 switchToDark(saveButton);
                 switchToDark(deleteButton);
+
+                // resetting page name
+                document.title = "Threatmixer";
 
                 // recursion point
                 runProgram();
@@ -503,6 +539,8 @@ FUNCTIONS
 
 // loading song screen on region button click
 function addOnClick(element, regionData, resolve) {
+
+    // taking the button and making it work
     element.onclick = () => {                    
         hideScreen(selectionScreen);
         showScreen(loadingScreen);
@@ -518,9 +556,12 @@ function addOnClick(element, regionData, resolve) {
         regionThreatLayers = [];
 
         // storing the index of the region that was selected, as well as the region itself
-        var regionButtonArray = Array.from(regionButton)
-        var regionIndex = regionButtonArray.indexOf(element),
+        var regionButtonArray = Array.from(regionButton),
+            regionIndex = regionButtonArray.indexOf(element),
             regionChosen = regionData[regionIndex];
+        
+        // changing the title of the page
+        document.title = `Threatmixer - ${regionChosen.name}`;
         
         // setting the header to the region's name
         regionTitle.innerText = regionData[regionIndex].name
@@ -528,12 +569,12 @@ function addOnClick(element, regionData, resolve) {
         // managing layerButtonContainer width based on how many layers there are
         switch (regionIndex) {
             case 0: // chimney canopy
-                layerButtonContainer.style.width = "750px";
+                layerButtonContainer.style.width = "50vw";
                 altColorNeeded = true;
                 break;
             
             case 6: // metroplis
-                layerButtonContainer.style.width = "850px";
+                layerButtonContainer.style.width = "55vw";
                 altColorNeeded = true;
                 break;
 
@@ -562,11 +603,11 @@ function addOnClick(element, regionData, resolve) {
             // creating the layer and solo buttons
             var newLayerButton = document.createElement("button"); 
             newLayerButton.classList.add("layer_button", "layer_button_darkened");
-            newLayerButton.style.border = `3px solid ${pageStyle}`;
+            newLayerButton.style.border = `0.16vw solid ${pageStyle}`;
 
             var newSoloButton = document.createElement("button");
             newSoloButton.classList.add("solo_button", "darken_button");
-            newSoloButton.style.border = `3px solid ${pageStyle}`;
+            newSoloButton.style.border = `0.16vw solid ${pageStyle}`;
 
             // creating the icons to put in each button
             var newLayerIcon = document.createElement("img");
@@ -583,8 +624,8 @@ function addOnClick(element, regionData, resolve) {
             if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) ||
                 (altColorNeeded && regionIndex == 6 && layerButtons.length > 8)) {
                 newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
-                newLayerButton.style.border = `3px solid ${altColor}`;
-                newSoloButton.style.border = `3px solid ${altColor}`;
+                newLayerButton.style.border = `0.16vw solid ${altColor}`;
+                newSoloButton.style.border = `0.16vw solid ${altColor}`;
                 newLayerIcon.style.filter = `${altFilter}`;
                 newSoloIcon.style.filter = `${altFilter}`;
             }
@@ -600,22 +641,23 @@ function addOnClick(element, regionData, resolve) {
             regionThreatLayers.push(new Audio(layer[1]));
         });
 
+        // creating more style changes for classes
         var styleChanges = document.createElement("style");
         styleChanges.textContent = `
-        #exit_button, #region_name, .other_buttons {
+        #exit_button, #region_name, #visualizer_toggle, .other_buttons {
             color: ${pageStyle};
         }
 
-        #exit_button, .other_buttons {
-            border: 3px solid ${pageStyle};
+        #exit_button, #visualizer_toggle, .other_buttons {
+            border: 0.16vw solid ${pageStyle};
         }
 
         .layer_button_brightened {
-            box-shadow: 0px 0px 20px 6px ${pageStyle}99;
+            box-shadow: 0vw 0vw 1.3vw 0.4vw ${pageStyle}99;
         }
 
         .alt_layer_button_brightened {
-            box-shadow: 0px 0px 20px 6px ${altColor}99;
+            box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
         }
 
         progress::-moz-progress-bar, progress::-webkit-progress-bar {
@@ -627,7 +669,11 @@ function addOnClick(element, regionData, resolve) {
         document.head.appendChild(styleChanges);
 
         // changing the background image depending on the region
-        musicScreen.style.backgroundImage = `url(${regionChosen.background})`
+        musicScreen.style.backgroundImage = `url(${regionChosen.background})`;
+
+        // changing the color of the visualizer
+        canvasContext.fillStyle = `${pageStyle}`;
+        canvasContext.strokeStyle = `${pageStyle}`;
 
         // once this has all been done, move onto the next step
         resolve();
@@ -652,9 +698,13 @@ function prepSong(arrayBuffer) {
         // connecting the audio to the gainNode
         bufferSource.connect(gainNode);
 
+        // connecting the gain to the visualizer
+        gainNode.connect(visualizer);
+
         // returning the buffer and the gain in a pair
         loadedLayers.push([bufferSource, gainNode, index]);
     });
+    
 
     // undarkening the solo buttons
     Array.from(soloButton).forEach((element) => {
@@ -697,6 +747,8 @@ function prepSong(arrayBuffer) {
 
     playAllButton.innerText = "Reset Song"
 
+    // starting the progress bar and visualizer
+    startVisualizer();
     startUpdatingBar(arrayBuffer);
 }
 
@@ -754,9 +806,7 @@ function showScreen(screen) {
 
     // grabbing all of the items in the screen and showing them
     var screenContent = screen.querySelectorAll("*");
-    screenContent.forEach((element) => {
-        element.style.visibility = "visible";
-    })
+    screenContent.forEach((element) => {element.style.visibility = "visible";})
 }
 
 // these next functions handles the song progress bar
@@ -778,15 +828,54 @@ function startUpdatingBar(arrayBuffer) {
             progressBar.value = 0;
             startTime = audioContext.currentTime
         }
-    }, 10)
+    }, 10);
 }
 
 function stopUpdatingBar() {
     clearInterval(barUpdateInterval);
 
     // if the song wasn't paused and has been reset, clear the bar
-    if (audioContext.state != "suspended" || !songStarted) {progressBar.value = 0;}
     // otherwise, the bar will stay in place and resume once unpaused
+    if (audioContext.state != "suspended" || !songStarted) {progressBar.value = 0;}
+}
+
+// creating timeout for how fast carousel buttons can be clicked
+// this prevents the carousel from getting caught inbetween slides
+function setClickTimout() {
+    clickOnTimeout = true;
+    setTimeout(() => {clickOnTimeout = false;}, 500);
+}
+
+// visualizer functions
+// drawing the bars
+function drawLine() {
+    canvasContext.beginPath();
+    canvasContext.moveTo(0, canvas.height - 2);
+    canvasContext.lineWidth = 3;
+    canvasContext.stroke();
+}
+
+// visualizer functionality
+function startVisualizer() {
+    // all credit goes towards QuickCodingTuts for this code
+    // find out more about them and their channel in the LICENSE.md
+    function animate() {
+        animation = window.requestAnimationFrame(animate)
+
+        var x = 0;
+        canvasContext.clearRect(0, 0, canvas.clientWidth, canvas.height);
+        visualizer.getByteFrequencyData(dataArray);
+
+        for (let i = 0; i < bufferLength; i++) {
+            drawLine();
+            var rawBarHeight = dataArray[i];
+            var dynamicBarHeight = (rawBarHeight / 255) * canvas.height;
+            canvasContext.fillRect(x, canvas.height - dynamicBarHeight, barWidth, dynamicBarHeight);
+            x += barWidth + 2;
+        }
+    }
+
+    animate()
 }
 
 // unhiding the other screens once they've been flattened

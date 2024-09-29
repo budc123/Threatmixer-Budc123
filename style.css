@@ -13,79 +13,60 @@ html, body, #home_screen, #loading_screen, #music_screen {
 body {
     overflow: hidden;
     font-family: Rodondo;
-    font-size: 40px;
+    font-size: 2vw;
 }
 
 button {
-    padding: 20px;
-    border-radius: 10px;
-    margin: 5px;
+    padding: 3vw;
+    border-radius: 0.6vw;
+    margin: 0.5vw;
     transition: filter 0.3s ease;
     cursor: pointer;
     text-align: center;
-}
-
-select {
-    border-radius: 10px;
-    padding: 4px
-}
-
-button, select, option {
     font-family: RWmenu;
-    font-size: 8.5px;
+    font-size: 0.6vw;
     background-color: rgba(0, 0, 0, 0.9);
-    box-shadow: 7px 7px 5px #000000e6;
+    box-shadow: 0.5vw 0.5vw 0.4vw #000000e6;
 }
 
-option {
-    font-size: 17px;
-}
-
-select, option, #select_button, .carrot_buttons {
+#select_button, .carrot_buttons {
     color: #dadbdd;
-    border: 3px solid #dadbdd;
+    border: 0.15vw solid #dadbdd;
 }
 
 progress {
     appearance: none;
-    width: 800px;
-    border-radius: 100px;
+    width: 53vw;
+    border-radius: 2vw;
     background-color: #2a2a2a;
-    border: 3px solid #202222;
-    box-shadow: 10px 10px 5px #000000e6;
-}
-
-#region_name {
-    text-shadow: 5px 5px 5px #000000e6;
+    border: 0.16vw solid #202222;
+    box-shadow: 0.5vw 0.5vw 0.4vw #000000e6;
 }
 
 #region_name, #page_name, #loading_header {
-    letter-spacing: 5px;
+    letter-spacing: 0.3vw;
 }
 
 .region_button {
     font-family: Rodondo;
-    color: white;
-    font-size: 3.5vw;
-    text-shadow: 4px 4px 4px #000000e6;
+    font-size: 3.1vw;
+    text-shadow: 0.25vw 0.25vw 0.25vw #000000e6;
     white-space: normal;
     text-align: center;
-    width: 380px;
-    height: 260px;
-    margin-bottom: 40px;
+    width: 20vw;
+    height: 14vw;
+    margin-bottom: 3vw;
     background-size: 25vw;
     background-position: left;
 }
 
 .region_button:hover {
     scale: 1.1;
-    box-shadow: 0px 0px 20px 3px #ffffff99;
     animation: sway 8s ease alternate infinite;
 }
 
 #selection_screen {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -95,6 +76,18 @@ progress {
         ),
         url(assets/images/backgrounds/selection_screen_bg.png);
     background-size: cover;
+}
+
+#selection_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.16vw solid #dadbdd;
+    border-radius: 1vw;
+    padding: 1vw;
+    background-color: rgba(44, 44, 44, 0.4);
+    height: 43vw;
 }
 
 .region_button_container {
@@ -126,8 +119,22 @@ progress {
 
 .carrot_buttons {
     font-size: 0.8vw;
-    padding: 5px;
+    padding: 0.4vw;
     height: max-content;
+}
+
+#left_button {
+    padding-left: 0.5vw
+}
+
+.carrot_buttons:hover {
+    filter: brightness(60%);
+}
+
+#selection_header {
+    font-size: 6vw;
+    letter-spacing: 0.3vw;
+    margin: 1vw;
 }
 
 /* Home and loading screen styling */
@@ -154,14 +161,18 @@ progress {
     justify-content: center;
 }
 
-/* Main page things */
+#loading_header {
+    font-size: 5vw;
+}
+
+/* Music screen things */
 #music_screen {
     width: 100%;
     background-size: cover;
 }
 
 body, #music_screen {
-    margin: 0px;
+    margin: 0vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -170,9 +181,23 @@ body, #music_screen {
     background-color: black;
 }
 
+#canvas {
+    z-index: 0;
+    pointer-events: none;    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    image-rendering: pixelated;
+}
+
+.hide_canvas {
+    display: none;
+}
+
 .solo_button {
-    padding: 10px;
-    padding-bottom: 5px;
+    padding: 0.7vw;
+    padding-bottom: 0.4vw;
 }
 
 .layer_options {
@@ -188,43 +213,49 @@ body, #music_screen {
 }
 
 .layer_button {
-    padding: 20px;
+    padding: 1.3vw;
 }
 
 .button_icon {
-    scale: 1.75;
+    scale: 1.9;
 }
 
-#exit_and_header_container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#empty_div {
-    width: 250px;
+.other_buttons {
+    padding: 1.5vw;
+    position: relative;
 }
 
 #region_name {
-    margin: 0px;
+    margin: 0vw;
+    font-size: 7vw;
+    text-shadow: 0.3vw 0.3vw 0.25vw #000000e6;
 }
 
 #exit_button {
-    padding: 10px;
-    margin-left: 30px;
-    height: max-content;
+    padding: 0.6vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#visualizer_toggle {
+    padding: 0.6vw;
+    margin-top: 2vw;
+    margin-right: 2vw;
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .layer_button_brightened:hover, .layer_button_brightened:hover, .solo_button, 
     .other_buttons:hover, .recording_buttons:hover, #select_button:hover, 
-    #exit_button:hover, .layer_button_darkened, .alt_layer_button_darkened {
+    #exit_button:hover, #visualizer_toggle:hover, .layer_button_darkened, 
+    .alt_layer_button_darkened {
     filter: brightness(60%);
-}
-
-.solo_button:hover {
-    filter: brightness(100%);
 }
 
 .layer_button_darkened:hover, .alt_layer_button_darkened:hover,
@@ -235,6 +266,10 @@ body, #music_screen {
 .layer_button_brightened, .alt_layer_button_brightened,
     .layer_button_darkened, .alt_layer_button_darkened {
     transition: box-shadow 0.3s ease;
+}
+
+.solo_button:hover {
+    filter: brightness(100%);
 }
 
 .darken_button {
@@ -255,6 +290,10 @@ body, #music_screen {
 
 .region_button {
     transition: all 0.2s ease;
+}
+
+.layer_button {
+    transition: all 0.2 ease;
 }
 
 @keyframes sway {
