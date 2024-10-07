@@ -101,6 +101,7 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
+    visActive = false,
     divIndex = -1,
     baseSlideNum = 1,
     modSlideNum = 1,
@@ -847,7 +848,7 @@ function prepSong(arrayBuffer) {
     playAllButton.innerText = "Reset Song"
 
     // starting the progress bar and visualizer
-    startVisualizer();
+    if (!visActive) {startVisualizer();}
     startUpdatingBar(arrayBuffer);
 }
 
@@ -956,6 +957,8 @@ function drawLine() {
 
 // visualizer functionality
 function startVisualizer() {
+    visActive = true;
+
     // all credit goes towards QuickCodingTuts for this code
     // find out more about them and their channel in the LICENSE.md
     function animate() {
