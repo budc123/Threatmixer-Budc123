@@ -56,11 +56,9 @@ And that's pretty much everything you need to know about how to use this webpage
 
 ## Developement progress
 
-Added a sweet new visualizer, as well as some visual changes. This may be the last update I make to this page feature-wise. Once the home-page and all of the icons are completed, the project will finally be finished. Stay tuned.
+With this push, a bunch of new icons were added, and there's now a tab for modded regions on the selection screen. This way, it'll be really easy for me to add new regions onto this project in the future. Next, I plan on gathering some feedback to see what else I should change before truly wrapping it up, so expect some new names to be in the credits on the next push.
 
 ## TODO:
-
-? = unsure if actually adding
 
 1. Finishing touches
     - Home screen

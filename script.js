@@ -19,18 +19,26 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     homeScreen = document.getElementById("home_screen"),
     regionButton = document.getElementsByClassName("region_button"),
     selectionScreen = document.getElementById("selection_screen"),
-    carousel = document.getElementById("carousel"),
+    selectionHeader = document.getElementById("selection_header"),
+    moddedButton = document.getElementById("modded_button"),
+    baseButton = document.getElementById("base_button"),
+    baseCarousel = document.getElementById("base_carousel"),
+    modCarousel = document.getElementById("mod_carousel"),
     carrotButtons = document.getElementsByClassName("carrot_buttons"),
     regionButtonContainer = document.getElementsByClassName("region_button_container"),
+    slideNum = document.getElementById("slide_number"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
     progressBar = document.getElementById("progress_bar"),
     canvas = document.getElementById("canvas");
 
-// hiding these screens initially for cleaner page loading
+// hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
 musicScreen.style.display = "none";
 selectionScreen.style.display = "flex";
+
+// also setting carousel visibility
+modCarousel.style.display = "none";
 
 // grabbing the audio context and creating an oscillator with it
 let audioContext = new (window.AudioContext || window.webkitAudioContext);
@@ -93,7 +101,12 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
-    divIndex = -1;
+    divIndex = -1,
+    baseSlideNum = 1,
+    modSlideNum = 1,
+    baseSlideNumMax = 0,
+    modSlideNumMax = 0,
+    selectionState = "base";
 
 const brightened = "brightness(100%)",
     dimmed = "brightness(50%)",
@@ -101,6 +114,27 @@ const brightened = "brightness(100%)",
     mute = 0,
     soloIcon1 = "assets/images/button_icons/solo_icon_1.png",
     soloIcon2 = "assets/images/button_icons/solo_icon_2.png";
+
+// giving the side carousel buttons functionality to switch between region groups
+baseButton.onclick = () => {
+    selectionState = "base";
+    selectionHeader.innerText = "Vanilla / Downpour";
+    modCarousel.scrollLeft = 0;
+    baseSlideNum = 1;
+    slideNum.innerText = `${baseSlideNum}.`
+    modCarousel.style.display = "none";
+    baseCarousel.style.display = "flex";
+}
+
+moddedButton.onclick = () => {
+    selectionState = "mods";
+    selectionHeader.innerText = "Modded Regions";
+    baseCarousel.scrollLeft = 0;
+    modSlideNum = 1;
+    slideNum.innerText = `${modSlideNum}.`
+    baseCarousel.style.display = "none";
+    modCarousel.style.display = "flex";
+}
 
 /*
 MAIN PROGRAM
@@ -130,12 +164,36 @@ function runProgram() {
             // adding buttons to the selection page
             regionData.forEach((region) => {
 
-                // creating a new div for the carousel every 6 buttons
-                if (Array.from(regionButton).length % 6 == 0) {
-                    divIndex++;
-                    var newDiv = document.createElement("div");
-                    newDiv.classList.add("region_button_container");
-                    carousel.appendChild(newDiv);
+                // storing the amount of buttons in each container
+                var baseButtonArray = baseCarousel.querySelectorAll("button");
+                var modButtonArray = modCarousel.querySelectorAll("button");
+
+                // this switch case handles updating the carousel slides based on how many buttons there are
+                switch (region.group) {
+
+                    // if it's a vanilla/msc region,
+                    case ("base"):
+                        // add a new slide to that carousel if there's already 6 buttons
+                        if (baseButtonArray.length % 6 == 0) {
+                            divIndex++;
+                            baseSlideNumMax++;
+                            var newDiv = document.createElement("div");
+                            newDiv.classList.add("region_button_container");
+                            baseCarousel.appendChild(newDiv);
+                        }
+
+                        break;
+                    
+                    case ("mods"):
+                        if (modButtonArray.length % 6 == 0) {
+                            divIndex++;
+                            modSlideNumMax++;
+                            var newDiv = document.createElement("div");
+                            newDiv.classList.add("region_button_container");
+                            modCarousel.appendChild(newDiv);
+                        }
+
+                        break;
                 }
 
                 // creating a button
@@ -148,79 +206,116 @@ function runProgram() {
                 newRegionButton.style.color = `${region.color}`;
                 newRegionButton.style.border = `0.2vw solid`;
 
-                // adding song snippets for when you hover over buttons
-                var songPreview = document.createElement("audio");
-                songPreview.preload = "auto";
-                songPreview.loop = true;
-                songPreview.src = region.preview;
+                // adding song snippets for when you hover over buttons (if the button has one)
+                if (region.preview != "N/A") {
+                    var songPreview = document.createElement("audio");
+                    songPreview.preload = "auto";
+                    songPreview.loop = true;
+                    songPreview.src = region.preview;
 
-                regionButtonContainer[divIndex].appendChild(newRegionButton);
+                    // this onplay listener adds a fade in effect to the audio
+                    songPreview.onplay = () => {
+                        var volume = 0;
+                        songPreview.volume = volume;
+                        songPreview.play();
+                        hovering = true;
 
-                // this onplay listener adds a fade in effect to the audio
-                songPreview.onplay = () => {
-                    var volume = 0;
-                    songPreview.volume = volume;
-                    songPreview.play();
-                    hovering = true;
+                        const fadeIn = setInterval(() => {
+                            if (songPreview.volume + 0.1 <= 1 && hovering) {
+                                volume += 0.1;
+                                songPreview.volume = volume;
+                            }
 
-                    const fadeIn = setInterval(() => {
-                        if (songPreview.volume + 0.1 <= 1 && hovering) {
-                            volume += 0.1;
-                            songPreview.volume = volume;
-                        }
-
-                        else {
-                            clearInterval(fadeIn)
-                        }
-                    }, 150)
+                            else {
+                                clearInterval(fadeIn)
+                            }
+                        }, 150)
+                    }
+                
+                    newRegionButton.appendChild(songPreview);
                 }
 
-                newRegionButton.appendChild(songPreview);
+                regionButtonContainer[divIndex].appendChild(newRegionButton);
 
                 // here, we give each button some events
                 // this one just makes it so that they glow their respective color when hoevered over
                 newRegionButton.onmouseover = () => {
                     newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
-                    songPreview.play();
+                    if (region.preview != "N/A") {songPreview.play();}
                 }
 
                 // and then this one does the exact opposite
                 newRegionButton.onmouseout = () => {
                     newRegionButton.style.boxShadow = "";
 
-                    // all of this handles fading out the song
-                    var volume = songPreview.volume;
-                    hovering = false;
+                    // fading out the song preview
+                    if (region.preview != "N/A") {
+                        var volume = songPreview.volume;
+                        hovering = false;
 
-                    const fadeOut = setInterval(() => {
-                        if (songPreview.volume - 0.1 >= 0 && !hovering) {
-                            volume -= 0.1;
-                            songPreview.volume = volume;
-                        }
+                        const fadeOut = setInterval(() => {
+                            if (songPreview.volume - 0.1 >= 0 && !hovering) {
+                                volume -= 0.1;
+                                songPreview.volume = volume;
+                            }
 
-                        else {
-                            clearInterval(fadeOut);
-                            songPreview.pause();
-                            songPreview.currentTime = 0;
-                        }
-                    }, 50)
+                            else {
+                                clearInterval(fadeOut);
+                                songPreview.pause();
+                                songPreview.currentTime = 0;
+                            }
+                        }, 50)
+                    }
                 }
 
-                // this function adds an onclick event to each button that will cause them to begin loading their respective song screen 
-                addOnClick(newRegionButton, regionData, resolve);
+                // this function adds an onclick event to each button that will cause them to begin loading their respective song screen
+                if (region.name != "Coming Soon!") {
+                    addOnClick(newRegionButton, regionData, resolve);
+                }
             });
 
-            // carousel functionality 
-            var scrollDistance = carousel.getBoundingClientRect().width;
-
+            // carousel scrolling functionality
+            // I just grab the width from baseCarousel since it doesn't really matter which carousel I get the width from
+            var scrollDistance = baseCarousel.getBoundingClientRect().width;
 
             carrotButtons[0].onclick = () => { // left carrot button
-                if (!clickOnTimeout) {carousel.scrollLeft -= scrollDistance;}
+                if (!clickOnTimeout) {
+                    // checking to see what carousel we're trying to move
+                    switch (selectionState) {
+                        case ("base"):
+                            baseCarousel.scrollLeft -= scrollDistance;
+                            if (baseSlideNum > 1) {baseSlideNum--;};
+                            slideNum.innerText = `${baseSlideNum}.`;
+                            break;
+                        
+                        case ("mods"):
+                            modCarousel.scrollLeft -= scrollDistance;
+                            if (modSlideNum > 1) {modSlideNum--;};
+                            console.log(modSlideNum)
+                            slideNum.innerText = `${modSlideNum}.`;
+                            break;
+                    }
+                }
                 setClickTimout();
             }
 
             carrotButtons[1].onclick = () => { // right carrot button
-                if (!clickOnTimeout) {carousel.scrollLeft += scrollDistance;}
+                if (!clickOnTimeout) {
+                    switch (selectionState) {
+                        case ("base"):
+                            baseCarousel.scrollLeft += scrollDistance;
+                            if (baseSlideNum < baseSlideNumMax) {baseSlideNum++;}
+                            slideNum.innerText = `${baseSlideNum}.`;
+                            break;
+                        
+                        case ("mods"):
+                            modCarousel.scrollLeft += scrollDistance;
+                            if (modSlideNum < modSlideNumMax) {modSlideNum++;};
+                            console.log(modSlideNum)
+                            slideNum.innerText = `${modSlideNum}.`;
+                            break;
+                    }
+                }
                 setClickTimout();
             }
         });
@@ -511,10 +606,17 @@ BUTTON FUNCTIONALITY
                     loadedLayers[i][0].disconnect();
                 }
 
-                // reseting containers and button text
+                // reseting variables, containers, and button text
                 layerButtonContainer.innerHTML = "";
-                carousel.innerHTML = "";
+                baseCarousel.innerHTML = "";
+                modCarousel.innerHTML = "";
+                slideNum.innerText = "1.";
+                document.title = "Threatmixer";
                 divIndex = -1;
+                baseSlideNum = 1;
+                baseSlideNumMax = 0;
+                modSlideNum = 1;
+                modSlideNumMax = 0;
 
                 // reseting button labels and lighting
                 playAllButton.innerText = "Play All";
@@ -522,9 +624,6 @@ BUTTON FUNCTIONALITY
                 recordButton.innerText = "Start Recording";
                 switchToDark(saveButton);
                 switchToDark(deleteButton);
-
-                // resetting page name
-                document.title = "Threatmixer";
 
                 // recursion point
                 runProgram();
@@ -839,8 +938,8 @@ function stopUpdatingBar() {
     if (audioContext.state != "suspended" || !songStarted) {progressBar.value = 0;}
 }
 
-// creating timeout for how fast carousel buttons can be clicked
-// this prevents the carousel from getting caught inbetween slides
+// creating timeout for how fast baseCarousel buttons can be clicked
+// this prevents the baseCarousel from getting caught inbetween slides
 function setClickTimout() {
     clickOnTimeout = true;
     setTimeout(() => {clickOnTimeout = false;}, 500);

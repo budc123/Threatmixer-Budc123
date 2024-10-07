@@ -17,13 +17,23 @@
 
     <!-- Selection Screen -->
     <div id="selection_screen">
+
+        <!-- Side Buttons-->
+        <div id="side_button_container">
+            <button class="side_button" id="modded_button">Modded Regions</button>
+            <button class="side_button" id="base_button">Vanilla / Downpour</button>
+        </div>
+
+        <!-- Carousel-->
         <div id="selection_container">
             <h1 id="selection_header">Vanilla / Downpour</h1>
             <div id="carousel_container">
                 <button class="carrot_buttons" id="left_button">&lt;</button>
-                <div id="carousel"></div>
+                <div id="base_carousel"></div>
+                <div id="mod_carousel"></div>
                 <button class="carrot_buttons" id="right_button">&gt;</button>
             </div>
+            <p id="slide_number">1.</p>
         </div>
     </div>
 
