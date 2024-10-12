@@ -103,6 +103,7 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     recorderQueued = false,
     visActive = false,
     programStarted = false,
+    regionButtonClicked = false,
     divIndex = -1,
     baseSlideNum = 1,
     modSlideNum = 1,
@@ -635,6 +636,7 @@ BUTTON FUNCTIONALITY
                 modCarousel.innerHTML = "";
                 slideNum.innerText = "1.";
                 document.title = "Threatmixer";
+                regionButtonClicked = false;
                 divIndex = -1;
                 baseSlideNum = 1;
                 baseSlideNumMax = 0;
@@ -661,148 +663,151 @@ FUNCTIONS
 
 // loading song screen on region button click
 function addOnClick(element, regionData, resolve) {
-
-    // taking the button and making it work
-    element.onclick = () => {                    
-        hideScreen(selectionScreen);
-        showScreen(loadingScreen);
-
-        // defining variables
-        layerSoloed = false;
-        songStarted = false;
-        eraseRecording = false;
-        loadedLayers = [];
-        layersPlaying = [];
-        startingLayers = [];
-        recordedData = [];
-        regionThreatLayers = [];
-
-        // storing the index of the region that was selected, as well as the region itself
-        var regionButtonArray = Array.from(regionButton),
-            regionIndex = regionButtonArray.indexOf(element),
-            regionChosen = regionData[regionIndex];
-        
-        // changing the title of the page
-        document.title = `Threatmixer - ${regionChosen.name}`;
-        
-        // setting the header to the region's name
-        regionTitle.innerText = regionData[regionIndex].name
-
-        // managing layerButtonContainer width based on how many layers there are
-        switch (regionIndex) {
-            case 0: // chimney canopy
-                layerButtonContainer.style.width = "50vw";
-                altColorNeeded = true;
-                break;
+    element.onclick = () => {    
+        // preventing this code from running twice via a double click
+        if (!regionButtonClicked) {
+            regionButtonClicked = true;
             
-            case 6: // metroplis
-                layerButtonContainer.style.width = "55vw";
-                altColorNeeded = true;
-                break;
+            hideScreen(selectionScreen);
+            showScreen(loadingScreen);
 
-            default: // if none of these things were selected
-                layerButtonContainer.style.width = "100%";
-                altColorNeeded = false;
-                break;
-        }
+            // defining variables
+            layerSoloed = false;
+            songStarted = false;
+            eraseRecording = false;
+            loadedLayers = [];
+            layersPlaying = [];
+            startingLayers = [];
+            recordedData = [];
+            regionThreatLayers = [];
 
-        // storing the color changes we'll need based on the chosen region
-        if (altColorNeeded) {
-            var altColor = regionChosen.altColor
-            var altFilter = regionChosen.altFilter
-        }
-        var pageStyle = regionChosen.color;
-        var iconFilter = regionChosen.filter;
+            // storing the index of the region that was selected, as well as the region itself
+            var regionButtonArray = Array.from(regionButton),
+                regionIndex = regionButtonArray.indexOf(element),
+                regionChosen = regionData[regionIndex];
+            
+            // changing the title of the page
+            document.title = `Threatmixer - ${regionChosen.name}`;
+            
+            // setting the header to the region's name
+            regionTitle.innerText = regionData[regionIndex].name
 
-        // here, we dynamically create as many buttons and sounds as we need based on what's in the json
-        regionChosen.layers.forEach((layer) => {
+            // managing layerButtonContainer width based on how many layers there are
+            switch (regionIndex) {
+                case 0: // chimney canopy
+                    layerButtonContainer.style.width = "50vw";
+                    altColorNeeded = true;
+                    break;
+                
+                case 6: // metroplis
+                    layerButtonContainer.style.width = "55vw";
+                    altColorNeeded = true;
+                    break;
 
-            // buttons
-            // creating a div to hold each of the buttons
-            var newDiv = document.createElement("div");
-            newDiv.classList.add("layer_options");
-
-            // creating the layer and solo buttons
-            var newLayerButton = document.createElement("button"); 
-            newLayerButton.classList.add("layer_button", "layer_button_darkened");
-            newLayerButton.style.border = `0.16vw solid ${pageStyle}`;
-
-            var newSoloButton = document.createElement("button");
-            newSoloButton.classList.add("solo_button", "darken_button");
-            newSoloButton.style.border = `0.16vw solid ${pageStyle}`;
-
-            // creating the icons to put in each button
-            var newLayerIcon = document.createElement("img");
-            newLayerIcon.classList.add("button_icon");
-            newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
-            newLayerIcon.style.filter = `${iconFilter}`;
-
-            var newSoloIcon = document.createElement("img");
-            newSoloIcon.classList.add("button_icon");
-            newSoloIcon.src = soloIcon1;
-            newSoloIcon.style.filter = `${iconFilter}`;
-
-            // applying alternate colors to buttons if needed
-            if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) ||
-                (altColorNeeded && regionIndex == 6 && layerButtons.length > 8)) {
-                newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
-                newLayerButton.style.border = `0.16vw solid ${altColor}`;
-                newSoloButton.style.border = `0.16vw solid ${altColor}`;
-                newLayerIcon.style.filter = `${altFilter}`;
-                newSoloIcon.style.filter = `${altFilter}`;
+                default: // if none of these things were selected
+                    layerButtonContainer.style.width = "100%";
+                    altColorNeeded = false;
+                    break;
             }
 
-            // adding our new elements onto the page
-            newLayerButton.appendChild(newLayerIcon);
-            newSoloButton.appendChild(newSoloIcon);
-            newDiv.appendChild(newLayerButton);
-            newDiv.appendChild(newSoloButton);
-            layerButtonContainer.appendChild(newDiv);
-        
-            // sounds
-            regionThreatLayers.push(new Audio(layer[1]));
-        });
+            // storing the color changes we'll need based on the chosen region
+            if (altColorNeeded) {
+                var altColor = regionChosen.altColor
+                var altFilter = regionChosen.altFilter
+            }
+            var pageStyle = regionChosen.color;
+            var iconFilter = regionChosen.filter;
 
-        // creating more style changes for classes
-        var styleChanges = document.createElement("style");
-        styleChanges.textContent = `
-        #exit_button, #region_name, #visualizer_toggle, .other_buttons {
-            color: ${pageStyle};
+            // here, we dynamically create as many buttons and sounds as we need based on what's in the json
+            regionChosen.layers.forEach((layer) => {
+
+                // buttons
+                // creating a div to hold each of the buttons
+                var newDiv = document.createElement("div");
+                newDiv.classList.add("layer_options");
+
+                // creating the layer and solo buttons
+                var newLayerButton = document.createElement("button"); 
+                newLayerButton.classList.add("layer_button", "layer_button_darkened");
+                newLayerButton.style.border = `0.16vw solid ${pageStyle}`;
+
+                var newSoloButton = document.createElement("button");
+                newSoloButton.classList.add("solo_button", "darken_button");
+                newSoloButton.style.border = `0.16vw solid ${pageStyle}`;
+
+                // creating the icons to put in each button
+                var newLayerIcon = document.createElement("img");
+                newLayerIcon.classList.add("button_icon");
+                newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
+                newLayerIcon.style.filter = `${iconFilter}`;
+
+                var newSoloIcon = document.createElement("img");
+                newSoloIcon.classList.add("button_icon");
+                newSoloIcon.src = soloIcon1;
+                newSoloIcon.style.filter = `${iconFilter}`;
+
+                // applying alternate colors to buttons if needed
+                if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) ||
+                    (altColorNeeded && regionIndex == 6 && layerButtons.length > 8)) {
+                    newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
+                    newLayerButton.style.border = `0.16vw solid ${altColor}`;
+                    newSoloButton.style.border = `0.16vw solid ${altColor}`;
+                    newLayerIcon.style.filter = `${altFilter}`;
+                    newSoloIcon.style.filter = `${altFilter}`;
+                }
+
+                // adding our new elements onto the page
+                newLayerButton.appendChild(newLayerIcon);
+                newSoloButton.appendChild(newSoloIcon);
+                newDiv.appendChild(newLayerButton);
+                newDiv.appendChild(newSoloButton);
+                layerButtonContainer.appendChild(newDiv);
+            
+                // sounds
+                regionThreatLayers.push(new Audio(layer[1]));
+            });
+
+            // creating more style changes for classes
+            var styleChanges = document.createElement("style");
+            styleChanges.textContent = `
+            #exit_button, #region_name, #visualizer_toggle, .other_buttons {
+                color: ${pageStyle};
+            }
+
+            #exit_button, #visualizer_toggle, .other_buttons {
+                border: 0.16vw solid ${pageStyle};
+            }
+
+            .layer_button_brightened {
+                box-shadow: 0vw 0vw 1.3vw 0.4vw ${pageStyle}99;
+            }
+
+            .alt_layer_button_brightened {
+                box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
+            }
+
+            progress::-moz-progress-bar {
+                background-color: ${pageStyle};
+            }
+
+            progress::-webkit-progress-value {
+                background-color: ${pageStyle};
+            }
+            `;
+            
+            // adding these changes
+            document.head.appendChild(styleChanges);
+
+            // changing the background image depending on the region
+            musicScreen.style.backgroundImage = `url(${regionChosen.background})`;
+
+            // changing the color of the visualizer
+            canvasContext.fillStyle = `${pageStyle}`;
+            canvasContext.strokeStyle = `${pageStyle}`;
+
+            // once this has all been done, move onto the next step
+            resolve(); 
         }
-
-        #exit_button, #visualizer_toggle, .other_buttons {
-            border: 0.16vw solid ${pageStyle};
-        }
-
-        .layer_button_brightened {
-            box-shadow: 0vw 0vw 1.3vw 0.4vw ${pageStyle}99;
-        }
-
-        .alt_layer_button_brightened {
-            box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
-        }
-
-        progress::-moz-progress-bar {
-            background-color: ${pageStyle};
-        }
-
-        progress::-webkit-progress-value {
-            background-color: ${pageStyle};
-        }
-        `;
-        
-        // adding these changes
-        document.head.appendChild(styleChanges);
-
-        // changing the background image depending on the region
-        musicScreen.style.backgroundImage = `url(${regionChosen.background})`;
-
-        // changing the color of the visualizer
-        canvasContext.fillStyle = `${pageStyle}`;
-        canvasContext.strokeStyle = `${pageStyle}`;
-
-        // once this has all been done, move onto the next step
-        resolve();
     }
 }
 

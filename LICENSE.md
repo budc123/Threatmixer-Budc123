@@ -1,3 +1,7 @@
+## Disclaimer
+
+# I am not affilated with Videocult or Akupara Games in any way. This is a fan project.
+
 ## Credits
 
 # Contibuters

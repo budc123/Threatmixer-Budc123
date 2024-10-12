@@ -1,9 +1,9 @@
 /* General page formatting */
 @font-face {
     font-family: Rodondo;
-    src: url(assets/fonts/rodondo.woff);
+    src: url(assets/fonts/rodondo.woff2);
     font-family: RWmenu;
-    src: url(assets/fonts/rainworldmenu.woff);
+    src: url(assets/fonts/rainworldmenu.woff2);
 }
 
 html, body, #home_screen, #loading_screen, #music_screen {
