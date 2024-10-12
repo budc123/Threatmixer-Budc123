@@ -35,7 +35,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
 // hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
 musicScreen.style.display = "none";
-selectionScreen.style.display = "none";
+homeScreen.style.display = "none";
 
 // also setting carousel visibility
 modCarousel.style.display = "none";
@@ -165,7 +165,9 @@ function runProgram() {
         // only showing the home screen until the user is ready to move on
         hideScreen(loadingScreen);
         hideScreen(musicScreen);
-
+        hideScreen(homeScreen);
+        showScreen(selectionScreen);
+        /*
         if (!programStarted) {
             hideScreen(selectionScreen);
             showScreen(homeScreen);
@@ -175,6 +177,7 @@ function runProgram() {
             hideScreen(homeScreen);
             showScreen(selectionScreen);
         }
+        */
 
         // setting the page name
         document.title = "Threatmixer - Selection Screen";
