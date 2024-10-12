@@ -782,7 +782,11 @@ function addOnClick(element, regionData, resolve) {
             box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
         }
 
-        progress::-moz-progress-bar, progress::-webkit-progress-value {
+        progress::-moz-progress-bar {
+            background-color: ${pageStyle};
+        }
+
+        progress::-webkit-progress-value {
             background-color: ${pageStyle};
         }
         `;
