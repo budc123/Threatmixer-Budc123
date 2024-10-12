@@ -11,7 +11,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     recordButton = document.getElementById("record_button"),
     saveButton = document.getElementById("save_button"),
     deleteButton = document.getElementById("delete_button"),
-    selectButton = document.getElementById("select_button"),
+    beginButton = document.getElementById("begin_button"),
     exitButton = document.getElementById("exit_button"),
     visButton = document.getElementById("visualizer_toggle"),
     musicScreen = document.getElementById("music_screen"),
@@ -35,7 +35,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
 // hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
 musicScreen.style.display = "none";
-selectionScreen.style.display = "flex";
+selectionScreen.style.display = "none";
 
 // also setting carousel visibility
 modCarousel.style.display = "none";
@@ -102,6 +102,7 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     regionsAddedToSelector = false,
     recorderQueued = false,
     visActive = false,
+    programStarted = false,
     divIndex = -1,
     baseSlideNum = 1,
     modSlideNum = 1,
@@ -116,7 +117,17 @@ const brightened = "brightness(100%)",
     soloIcon1 = "assets/images/button_icons/solo_icon_1.png",
     soloIcon2 = "assets/images/button_icons/solo_icon_2.png";
 
-// giving the side carousel buttons functionality to switch between region groups
+/*
+NON-DYNAMIC ONCLICKS
+*/
+
+// home page buttons
+beginButton.onclick = () => {
+    hideScreen(homeScreen);
+    showScreen(selectionScreen);
+}
+
+// changing variables based on which region gorup was clicked
 baseButton.onclick = () => {
     selectionState = "base";
     selectionHeader.innerText = "Vanilla / Downpour";
@@ -154,8 +165,16 @@ function runProgram() {
         // only showing the home screen until the user is ready to move on
         hideScreen(loadingScreen);
         hideScreen(musicScreen);
-        hideScreen(homeScreen);
-        showScreen(selectionScreen);
+
+        if (!programStarted) {
+            hideScreen(selectionScreen);
+            showScreen(homeScreen);
+            programStarted = true;
+        }
+        else {
+            hideScreen(homeScreen);
+            showScreen(selectionScreen);
+        }
 
         // setting the page name
         document.title = "Threatmixer - Selection Screen";
@@ -760,7 +779,7 @@ function addOnClick(element, regionData, resolve) {
             box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
         }
 
-        progress::-moz-progress-bar, progress::-webkit-progress-bar {
+        progress::-moz-progress-bar, progress::-webkit-progress-value {
             background-color: ${pageStyle};
         }
         `;
@@ -984,5 +1003,5 @@ function startVisualizer() {
 setTimeout(() => {
     loadingScreen.style.display = "flex";
     musicScreen.style.display = "flex";
-    selectionScreen.display = "flex";
+    selectionScreen.style.display = "flex";
 }, 300);
