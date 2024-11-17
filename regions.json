@@ -4,7 +4,7 @@
         "group": "base",
         "layers": [
             ["kick_icon.png", "assets/threat_music/CC/TH_CC - KICK.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/CC/TH_CC - SNARE.mp3"],
+            ["hat_icon.png", "assets/threat_music/CC/TH_CC - SNARE.mp3"],
             ["shaker_icon.png", "assets/threat_music/CC/TH_CC - PERC1.mp3"],
             ["bass_icon.png", "assets/threat_music/CC/TH_CC - BASS.mp3"],
             ["perc_icon.png", "assets/threat_music/CC/TH_CC - PERC2.mp3"],
@@ -15,9 +15,9 @@
             ["wawa_icon.png", "assets/threat_music/CC/TH_CC_-_GUTTERVOX.mp3"]
         ],
         "color": "#51455e",
-        "altColor": "#54371d",
+        "altColor": "#85562d",
         "filter": "invert(21%) sepia(28%) saturate(558%) hue-rotate(226deg) brightness(93%) contrast(83%)",
-        "altFilter": "invert(20%) sepia(21%) saturate(1418%) hue-rotate(347deg) brightness(92%) contrast(88%)",
+        "altFilter": "invert(35%) sepia(42%) saturate(685%) hue-rotate(346deg) brightness(92%) contrast(87%)",
         "background": "assets/images/backgrounds/chimney_canopy.png",
         "preview": "assets/music_snippets/CC_snippet.MP3"
     },
@@ -29,8 +29,8 @@
             ["shaker_icon.png", "assets/threat_music/LF/TH_LF - SHAKER.mp3"],
             ["perc_icon.png", "assets/threat_music/LF/TH_LF - PERC1.mp3"],
             ["bass_icon.png", "assets/threat_music/LF/TH_LF - BASS.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/LF/TH_LF - SNARE.mp3"],
-            ["perc_icon.png", "assets/threat_music/LF/TH_LF - PERC2.mp3"],
+            ["weird_icon.png", "assets/threat_music/LF/TH_LF - SNARE.mp3"],
+            ["hat_icon.png", "assets/threat_music/LF/TH_LF - PERC2.mp3"],
             ["arps_icon.png", "assets/threat_music/LF/TH_LF - ARPS.mp3"],
             ["noise_icon.png", "assets/threat_music/LF/TH_LF - NOISE.mp3"]
         ],
@@ -62,10 +62,10 @@
             ["shaker_icon.png", "assets/threat_music/GW/TH_GW - SHAKE.mp3"],
             ["perc_icon.png", "assets/threat_music/GW/TH_GW - PERC1.mp3"],
             ["bass_icon.png", "assets/threat_music/GW/TH_GW - BASS.mp3"],
-            ["perc_icon.png", "assets/threat_music/GW/TH_GW - PERC2.mp3"],
+            ["tom_icon.png", "assets/threat_music/GW/TH_GW - PERC2.mp3"],
             ["weird_icon.png", "assets/threat_music/GW/TH_GW - WEIRD.mp3"],
             ["scug_sing_icon.png", "assets/threat_music/GW/TH_GW - VOX.mp3"],
-            ["lead_3_icon.png", "assets/threat_music/GW/TH_GW - LEAD.mp3"],
+            ["lead_4_icon.png", "assets/threat_music/GW/TH_GW - LEAD.mp3"],
             ["noise_icon.png", "assets/threat_music/GW/TH_GW - NOISE.mp3"]
         ],
         "color": "#94a649",
@@ -79,9 +79,9 @@
         "layers": [
             ["kick_icon.png", "assets/threat_music/HI/TH_HI - KICK.mp3"],
             ["shaker_icon.png", "assets/threat_music/HI/TH_HI - SHAKER.mp3"],
-            ["perc_icon.png", "assets/threat_music/HI/TH_HI - PERC1.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/HI/TH_HI - SNARE.mp3"],
-            ["bass_icon.png", "assets/threat_music/HI/TH_HI - BASS.mp3"],
+            ["snare_icon.png", "assets/threat_music/HI/TH_HI - PERC1.mp3"],
+            ["hat_icon.png", "assets/threat_music/HI/TH_HI - SNARE.mp3"],
+            ["pad_icon.png", "assets/threat_music/HI/TH_HI - BASS.mp3"],
             ["pop_icon.png", "assets/threat_music/HI/TH_HI - WEIRD.mp3"],
             ["scug_sing_icon.png", "assets/threat_music/HI/TH_HI - VOX.mp3"],
             ["noise_icon.png", "assets/threat_music/HI/TH_HI - NOISE.mp3"]
@@ -97,7 +97,7 @@
         "layers": [
             ["kick_icon.png", "assets/threat_music/DM/TH_DM - KICK.mp3"],
             ["shaker_icon.png", "assets/threat_music/DM/TH_DM - SHAKER.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/DM/TH_DM - SNARE.mp3"],
+            ["hat_icon.png", "assets/threat_music/DM/TH_DM - SNARE.mp3"],
             ["bass_icon.png", "assets/threat_music/DM/TH_DM - BASS.mp3"],
             ["wawa_icon.png", "assets/threat_music/DM/TH_DM - LEAD.mp3"],
             ["noise_icon.png", "assets/threat_music/DM/TH_DM - NOISE.mp3"]
@@ -125,15 +125,15 @@
             ["bass_icon.png", "assets/threat_music/LC/TH_LC - NIGHTSUB.mp3"],
             ["shaker_icon.png", "assets/threat_music/LC/TH_LC - NIGHTSHAKER.mp3"],
             ["radio_icon.png", "assets/threat_music/LC/TH_LC - NIGHTNOISE.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/LC/TH_LC - NIGHTHAT.mp3"],
+            ["hat_icon.png", "assets/threat_music/LC/TH_LC - NIGHTHAT.mp3"],
             ["perc_icon.png", "assets/threat_music/LC/TH_LC - NIGHTPERC.mp3"],
             ["tom_icon.png", "assets/threat_music/LC/TH_LC - NIGHTTOM.mp3"],
             ["synth_icon.png", "assets/threat_music/LC/TH_LC - NIGHTSYNTH.mp3"]
         ],
         "color": "#842b44",
-        "altColor": "#1e2b58",
+        "altColor": "#2d4491",
         "filter": "invert(20%) sepia(17%) saturate(5971%) hue-rotate(313deg) brightness(93%) contrast(87%)",
-        "altFilter": "invert(14%) sepia(49%) saturate(1531%) hue-rotate(202deg) brightness(94%) contrast(94%)",
+        "altFilter": "invert(21%) sepia(66%) saturate(1409%) hue-rotate(205deg) brightness(93%) contrast(92%)",
         "background": "assets/images/backgrounds/metropolis.png",
         "preview": "assets/music_snippets/LC_snippet.MP3"
     },
@@ -141,7 +141,7 @@
         "name": "Outer Expanse",
         "group": "base",
         "layers": [
-            ["placeholder_icon.png", "assets/threat_music/OE/TH_OE - NOISE.mp3"],
+            ["hat_icon.png", "assets/threat_music/OE/TH_OE - NOISE.mp3"],
             ["kick_icon.png", "assets/threat_music/OE/TH_OE - KICKPERC.mp3"],
             ["radio_icon.png", "assets/threat_music/OE/TH_OE - PERC2.mp3"],
             ["bass_icon.png", "assets/threat_music/OE/TH_OE - BASS.mp3"],
@@ -197,7 +197,7 @@
         "group": "base",
         "layers": [
             ["kick_icon.png", "assets/threat_music/HR/TH_HR - KICK.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/HR/TH_HR - HAT1.mp3"],
+            ["hat_icon.png", "assets/threat_music/HR/TH_HR - HAT1.mp3"],
             ["bass_icon.png", "assets/threat_music/HR/TH_HR - BASS.mp3"],
             ["scug_sing_icon.png", "assets/threat_music/HR/TH_HR - PERC.mp3"],
             ["shaker_icon.png", "assets/threat_music/HR/TH_HR - HAT2.mp3"],
@@ -218,9 +218,9 @@
         "layers": [
             ["kick_icon.png", "assets/threat_music/SL/TH_SL - KICK.mp3"],
             ["bass_icon.png", "assets/threat_music/SL/TH_SL - BASS.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/SL/TH_SL - SNARE.mp3"],
+            ["hat_icon.png", "assets/threat_music/SL/TH_SL - SNARE.mp3"],
             ["perc_icon.png", "assets/threat_music/SL/TH_SL - PERC1.mp3"],
-            ["perc_icon.png", "assets/threat_music/SL/TH_SL - PERC2.mp3"],
+            ["snare_icon.png", "assets/threat_music/SL/TH_SL - PERC2.mp3"],
             ["arps_icon.png", "assets/threat_music/SL/TH_SL - ARPS.mp3"],
             ["wawa_icon.png", "assets/threat_music/SL/TH_SL - LEAD.mp3"],
             ["noise_icon.png", "assets/threat_music/SL/TH_SL - NOISE.mp3"]
@@ -237,10 +237,10 @@
             ["kick_icon.png", "assets/threat_music/SI/TH_SI - KICK.mp3"],
             ["shaker_icon.png", "assets/threat_music/SI/TH_SI - SHAKER.mp3"],
             ["weird_icon.png", "assets/threat_music/SI/TH_SI - WEIRD.mp3"],
-            ["perc_icon.png", "assets/threat_music/SI/TH_SI - PERC1.mp3"],
+            ["snare_icon.png", "assets/threat_music/SI/TH_SI - PERC1.mp3"],
             ["bass_icon.png", "assets/threat_music/SI/TH_SI - BASS.mp3"],
             ["arps_icon.png", "assets/threat_music/SI/TH_SI - ARPS.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/SI/TH_SI - SNARE.mp3"],
+            ["hat_icon.png", "assets/threat_music/SI/TH_SI - SNARE.mp3"],
             ["radio_icon.png", "assets/threat_music/SI/TH_SI - NOISE.mp3"]
         ],
         "color": "#e08a77",
@@ -253,8 +253,8 @@
         "group": "base",
         "layers": [
             ["kick_icon.png", "assets/threat_music/LM/TH_LM - KICK.mp3"],
-            ["perc_icon.png", "assets/threat_music/LM/TH_LM - PERC2.mp3"],
-            ["placeholder_icon.png", "assets/threat_music/LM/TH_LM - SNARE.mp3"],
+            ["hat_icon.png", "assets/threat_music/LM/TH_LM - PERC2.mp3"],
+            ["snare_icon.png", "assets/threat_music/LM/TH_LM - SNARE.mp3"],
             ["perc_icon.png", "assets/threat_music/LM/TH_LM - PERC1.mp3"],
             ["bass_icon.png", "assets/threat_music/LM/TH_LM - BASS.mp3"],
             ["pad_icon.png", "assets/threat_music/LM/TH_LM - PAD.mp3"],

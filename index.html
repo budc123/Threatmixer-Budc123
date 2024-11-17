@@ -13,10 +13,11 @@
     <div id="home_screen">
         <h1 id="page_name">Threatmixer</h1>
         <div id="home_button_container">
-            <button class="home_buttons" id="begin_button">BEGIN</button>
-            <button class="home_buttons" id="info_button">INFO</button>
-            <button class="home_buttons" id="credits_button">CREDITS</button>
+            <button class="home_buttons" id="begin_button">BEGIN!</button>
+            <button class="home_buttons darken_button" id="info_button">INFO</button>
+            <button class="home_buttons darken_button" id="credits_button">CREDITS</button>
         </div>
+        <p id="disclaimer">DISCLAIMER: I am not affilated with Videocult or Akupara Games in any way. This is merely a fan project, and all background images and music featured on this page are owned by Videocult.</p>
     </div>
 
     <!-- Selection Screen -->
@@ -32,10 +33,10 @@
         <div id="selection_container">
             <h1 id="selection_header">Vanilla / Downpour</h1>
             <div id="carousel_container">
-                <button class="carrot_buttons" id="left_button">&lt;</button>
+                <button class="carrot_buttons brighten_button" id="left_button">&lt;</button>
                 <div id="base_carousel"></div>
                 <div id="mod_carousel"></div>
-                <button class="carrot_buttons" id="right_button">&gt;</button>
+                <button class="carrot_buttons brighten_button" id="right_button">&gt;</button>
             </div>
             <p id="slide_number">1.</p>
         </div>
@@ -52,13 +53,12 @@
         <canvas id="canvas"></canvas>
 
         <!-- Exit Button -->
-        <button id="exit_button">Back</button>
+        <button id="exit_button">
+            <img class="other_button_icons" src="assets/images/button_icons/exit_icon.png">
+        </button>
 
         <!-- Header -->
         <h1 id="region_name"></h1>
-
-        <!-- Visualizer Toggle -->
-        <button id="visualizer_toggle">Visualizer: On</button>
 
         <!-- Song Progress Bar -->
         <progress id="progress_bar" value="0" max="100"></progress>
@@ -67,17 +67,33 @@
         <div id="layer_button_container"></div>
 
         <!-- Other buttons -->
-        <div>
-            <button class="other_buttons darken_button" id="start_button">Start</button>
-            <button class="other_buttons" id="play_button">Play All</button>
-            <button class="other_buttons darken_button" id="pause_button">Pause</button>
-        </div>
+        <div id="option_buttons_container">
+            <!-- Music control -->
+            <button class="other_buttons darken_button" id="start_button">
+                <img class="other_button_icons" src="assets/images/button_icons/start_icon.png">
+            </button>
+            <button class="other_buttons" id="play_button">
+                <img class="other_button_icons" src="assets/images/button_icons/play_all_icon.png">
+            </button>
+            <button class="other_buttons darken_button" id="pause_button">
+                <img class="other_button_icons" src="assets/images/button_icons/pause_icon.png">
+            </button>
+        
+        <!-- Recording control -->
+            <button class="other_buttons recording_buttons" id="record_button">
+                <img class="other_button_icons" src="assets/images/button_icons/rec_icon.png">
+            </button>
+            <button class="other_buttons recording_buttons darken_button" id="save_button">
+                <img class="other_button_icons" src="assets/images/button_icons/save_icon.png">
+            </button>
+            <button class="other_buttons recording_buttons darken_button" id="delete_button">
+                <img class="other_button_icons" src="assets/images/button_icons/delete_icon.png">
+            </button>
 
-        <!-- Recording buttons -->
-        <div>
-            <button class="other_buttons recording_buttons" id="record_button">Start Recording</button>
-            <button class="other_buttons recording_buttons darken_button" id="save_button">Save Recording</button>
-            <button class="other_buttons recording_buttons darken_button" id="delete_button">Delete Recording</button>
+            <!-- Visualizer toggle -->
+            <button class="other_buttons" id="visualizer_toggle">
+                <img class="other_button_icons" src="assets/images/button_icons/vis_enabled_icon.png">
+            </button>
         </div>
     </div>
 </body>

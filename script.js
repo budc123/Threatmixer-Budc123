@@ -6,14 +6,18 @@ SET UP
 const layerButtons = document.getElementsByClassName("layer_button"),
     soloButton = document.getElementsByClassName("solo_button"),
     pauseButton = document.getElementById("pause_button"),
+    pauseIcon = pauseButton.querySelector("img"),
     playAllButton = document.getElementById("play_button"),
+    playAllIcon = playAllButton.querySelector("img"),
     startButton = document.getElementById("start_button"),
     recordButton = document.getElementById("record_button"),
+    recordIcon = recordButton.querySelector("img"),
     saveButton = document.getElementById("save_button"),
     deleteButton = document.getElementById("delete_button"),
     beginButton = document.getElementById("begin_button"),
     exitButton = document.getElementById("exit_button"),
     visButton = document.getElementById("visualizer_toggle"),
+    visIcon = visButton.querySelector("img"),
     musicScreen = document.getElementById("music_screen"),
     loadingScreen = document.getElementById("loading_screen"),
     homeScreen = document.getElementById("home_screen"),
@@ -35,7 +39,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
 // hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
 musicScreen.style.display = "none";
-homeScreen.style.display = "none";
+selectionScreen.display = "none";
 
 // also setting carousel visibility
 modCarousel.style.display = "none";
@@ -122,19 +126,15 @@ const brightened = "brightness(100%)",
 NON-DYNAMIC ONCLICKS
 */
 
-// home page buttons
-beginButton.onclick = () => {
-    hideScreen(homeScreen);
-    showScreen(selectionScreen);
-}
-
-// changing variables based on which region gorup was clicked
+// changing displayed information based on which region gorup was clicked
 baseButton.onclick = () => {
     selectionState = "base";
     selectionHeader.innerText = "Vanilla / Downpour";
     modCarousel.scrollLeft = 0;
     baseSlideNum = 1;
     slideNum.innerText = `${baseSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
     modCarousel.style.display = "none";
     baseCarousel.style.display = "flex";
 }
@@ -145,15 +145,24 @@ moddedButton.onclick = () => {
     baseCarousel.scrollLeft = 0;
     modSlideNum = 1;
     slideNum.innerText = `${modSlideNum}.`
+    switchToDark(carrotButtons[0]);
     baseCarousel.style.display = "none";
     modCarousel.style.display = "flex";
 }
 
+// home page buttons
+beginButton.onclick = () => {
+    hideScreen(homeScreen);
+    runProgram();
+}
+
+// hiding all other screens and showing the home screen first
+hideScreen(selectionScreen, musicScreen, loadingScreen);
+showScreen(homeScreen);
+
 /*
 MAIN PROGRAM
 */
-
-runProgram();
 
 // we utelize recursion to go back and forth between the selection screen and the music screen
 function runProgram() {
@@ -163,22 +172,10 @@ function runProgram() {
     })
     .then((regionData) => {
 
-        // only showing the home screen until the user is ready to move on
-        hideScreen(loadingScreen);
-        hideScreen(musicScreen);
-        hideScreen(homeScreen);
+        // hiding all other screens except the selection screen
+        hideScreen(musicScreen, loadingScreen);
         showScreen(selectionScreen);
-        /*
-        if (!programStarted) {
-            hideScreen(selectionScreen);
-            showScreen(homeScreen);
-            programStarted = true;
-        }
-        else {
-            hideScreen(homeScreen);
-            showScreen(selectionScreen);
-        }
-        */
+        switchToDark(carrotButtons[0]);
 
         // setting the page name
         document.title = "Threatmixer - Selection Screen";
@@ -228,7 +225,7 @@ function runProgram() {
                 newRegionButton.style.backgroundImage = `url(${region.background})`;
                 newRegionButton.innerText = region.name;
                 newRegionButton.style.color = `${region.color}`;
-                newRegionButton.style.border = `0.2vw solid`;
+                newRegionButton.style.border = `0.3vw solid`;
 
                 // adding song snippets for when you hover over buttons (if the button has one)
                 if (region.preview != "N/A") {
@@ -307,16 +304,44 @@ function runProgram() {
                     // checking to see what carousel we're trying to move
                     switch (selectionState) {
                         case ("base"):
+                            // switching the right slde button back on if we were on the last page
+                            if (baseSlideNum == baseSlideNumMax) {
+                                switchToBright(carrotButtons[1]);
+                            }
+
+                            // Trying to move the slide
                             baseCarousel.scrollLeft -= scrollDistance;
-                            if (baseSlideNum > 1) {baseSlideNum--;};
-                            slideNum.innerText = `${baseSlideNum}.`;
+
+                            // decreasing the slide number if its not already at 1
+                            if (baseSlideNum > 1) {
+                                baseSlideNum--;
+                                slideNum.innerText = `${baseSlideNum}.`;
+                            }
+
+                            // switching the left carrot button off if we're on the first slide
+                            if (baseSlideNum == 1) {
+                                switchToDark(carrotButtons[0])
+                            };
+
                             break;
                         
+                        // likewise logic for this case and the other button
                         case ("mods"):
+                            if (modSlideNum == modSlideNumMax) {
+                                switchToBright(carrotButtons[1]);
+                            }
+
                             modCarousel.scrollLeft -= scrollDistance;
-                            if (modSlideNum > 1) {modSlideNum--;};
-                            console.log(modSlideNum)
-                            slideNum.innerText = `${modSlideNum}.`;
+
+                            if (modSlideNum > 1) {
+                                modSlideNum--;
+                                slideNum.innerText = `${modSlideNum}.`;
+                            }
+
+                            if (modSlideNum == 1) {
+                                switchToDark(carrotButtons[0])
+                            }
+                            
                             break;
                     }
                 }
@@ -327,16 +352,39 @@ function runProgram() {
                 if (!clickOnTimeout) {
                     switch (selectionState) {
                         case ("base"):
+                            if (baseSlideNum == 1) {
+                                switchToBright(carrotButtons[0]);
+                            }
+
                             baseCarousel.scrollLeft += scrollDistance;
-                            if (baseSlideNum < baseSlideNumMax) {baseSlideNum++;}
-                            slideNum.innerText = `${baseSlideNum}.`;
+
+                            if (baseSlideNum < baseSlideNumMax) {
+                                baseSlideNum++;
+                                slideNum.innerText = `${baseSlideNum}.`;
+                            }
+                            
+                            if (baseSlideNum == baseSlideNumMax) {
+                                switchToDark(carrotButtons[1]);
+                            }
+                            
                             break;
                         
                         case ("mods"):
+                            if (modSlideNum == 1) {
+                                switchToBright(carrotButtons[0]);
+                            }
+
                             modCarousel.scrollLeft += scrollDistance;
-                            if (modSlideNum < modSlideNumMax) {modSlideNum++;};
-                            console.log(modSlideNum)
-                            slideNum.innerText = `${modSlideNum}.`;
+
+                            if (modSlideNum < modSlideNumMax) {
+                                modSlideNum++;
+                                slideNum.innerText = `${modSlideNum}.`;
+                            }
+                            
+                            if (modSlideNum == modSlideNumMax) {
+                                switchToDark(carrotButtons[1])
+                            }
+
                             break;
                     }
                 }
@@ -347,17 +395,12 @@ function runProgram() {
     .then(() => {
 
         // more web API junk
-        try {
-            loadSounds = 
-                regionThreatLayers.map((audio) => { //personal note: .map is like .forEach except it basically turns each item into a promise
-                    return fetch(audio.src)
-                        .then((result) => {return result.arrayBuffer();}) // turning the audio into a buffer
-                        .then((arrayBuffer) => {return audioContext.decodeAudioData(arrayBuffer);}) // decoding that buffer
-                });
-        }
-        catch {
-            alert("Failed to load assets. Please refresh the page and try again.")
-        }
+        loadSounds = 
+            regionThreatLayers.map((audio) => {
+                return fetch(audio.src)
+                    .then((result) => {return result.arrayBuffer();}) // turning the audio into an array buffer
+                    .then((arrayBuffer) => {return audioContext.decodeAudioData(arrayBuffer);}) // decoding that buffer
+            });
 
         // we wait for all of the sounds to be buffered, then proceed
         Promise.all(loadSounds).then((arrayBuffer) => {
@@ -368,7 +411,7 @@ function runProgram() {
             if (audioContext.state == "suspended") {audioContext.resume();}
 
 /*
-BUTTON FUNCTIONALITY
+MUSIC SCREEN FUNCTIONALITY
 */
 
             // using a for loop to check each button for inputs
@@ -473,13 +516,13 @@ BUTTON FUNCTIONALITY
                 if (songStarted && !(audioContext.state == "suspended")) {
                     audioContext.suspend();
                     if (recorder.state == "recording") {recorder.pause();}
-                    pauseButton.innerText = "Unpause";
+                    pauseIcon.src = "assets/images/button_icons/resume_icon.png";
                 }
 
                 else if (songStarted) {
                     audioContext.resume();
                     if (recorder.state == "paused") {recorder.resume();}
-                    pauseButton.innerText = "Pause";
+                    pauseIcon.src = "assets/images/button_icons/pause_icon.png";
                 }
             };
 
@@ -501,7 +544,7 @@ BUTTON FUNCTIONALITY
                     // darking the start button
                     switchToDark(startButton);
 
-                    playAllButton.innerText = "Reset Song";
+                    playAllIcon.src = "assets/images/button_icons/stop_icon.png";
                 }
                 
                 else { // if we're trying to end all of them,
@@ -520,16 +563,15 @@ BUTTON FUNCTIONALITY
                         switchToDark(element);
                     });
 
-                    // darking the pause button
+                    // darkening the pause button
                     switchToDark(pauseButton);
 
                     // stopping recording if is has started
                     if (recorder.state != "inactive") {
                         recorder.stop();
                         eraseRecording = true;
-                        recordButton.innerText = "Start Recording";
-                        switchToDark(saveButton);
-                        switchToDark(deleteButton);
+                        recordIcon.src = "assets/images/button_icons/rec_icon.png";
+                        switchToDark(saveButton, deleteButton);
                     }
 
                     // reseting variables and button text
@@ -538,8 +580,8 @@ BUTTON FUNCTIONALITY
                     loadedLayers = [];
                     layersPlaying = [];
                     startingLayers = [];
-                    playAllButton.innerText = "Play All"
-                    pauseButton.innerText = "Pause"
+                    playAllIcon.src = "assets/images/button_icons/play_all_icon.png";
+                    pauseIcon.src = "assets/images/button_icons/pause_icon.png"
                     stopUpdatingBar();
                 }
             };
@@ -547,20 +589,18 @@ BUTTON FUNCTIONALITY
             // record button functionality
             recordButton.onclick = () => {
                 if (recorder.state == "inactive") {
-                    if (!songStarted) {
+                    if (!songStarted) { // if we're trying to que the recording,
                         recorderQueued = true;
-                        recordButton.innerText = "Recording Queued";
-                        deleteButton.innerText = "Cancle Queue";
+                        recordIcon.src = "assets/images/button_icons/rec_pending_icon.png";
                         switchToBright(deleteButton);
                     }
 
                     else {
                         recorder.start();
-                        recordButton.innerText = "Recording..."
+                        recordIcon.src = "assets/images/button_icons/rec_progress_icon.png"
 
                         // switching the other buttons on
-                        switchToBright(saveButton);
-                        switchToBright(deleteButton);
+                        switchToBright(saveButton, deleteButton);
                     }
                 }
             };
@@ -569,11 +609,10 @@ BUTTON FUNCTIONALITY
             saveButton.onclick = () => {
                 if (recorder.state == "recording") {
                     recorder.stop();
-                    recordButton.innerText = "Start Recording";
+                    recordIcon.src = "assets/images/button_icons/rec_icon.png";
 
                     // switching the other buttons off
-                    switchToDark(saveButton);
-                    switchToDark(deleteButton);
+                    switchToDark(saveButton, deleteButton);
                 }
             };
 
@@ -582,17 +621,15 @@ BUTTON FUNCTIONALITY
                 if (recorder.state != "innactive" && !recorderQueued) {
                     eraseRecording = true;
                     recorder.stop();
-                    recordButton.innerText = "Start Recording";
+                    recordIcon.src = "assets/images/button_icons/rec_icon.png";
 
                     // switching the other buttons off
-                    switchToDark(saveButton);
-                    switchToDark(deleteButton);
+                    switchToDark(saveButton, deleteButton);
                 }
 
                 else if (recorderQueued && !songStarted) {
                     recorderQueued = false;
-                    recordButton.innerText = "Start Recording";
-                    deleteButton.innerText = "Delete Recording";
+                    recordIcon.src = "assets/images/button_icons/rec_icon.png";
 
                     switchToDark(deleteButton);
                 }
@@ -603,11 +640,11 @@ BUTTON FUNCTIONALITY
                 canvas.classList.toggle("hide_canvas")
 
                 if (canvas.classList.contains("hide_canvas")) {
-                    visButton.innerText = "Visualizer: Off";
+                    visIcon.src = "assets/images/button_icons/vis_disabled_icon.png";
                 }
 
                 else {
-                    visButton.innerText = "Visualizer: On";
+                    visIcon.src = "assets/images/button_icons/vis_enabled_icon.png";
                 }
             }
 
@@ -620,6 +657,9 @@ BUTTON FUNCTIONALITY
                     recorder.stop();
                     eraseRecording = true;
                 }
+
+                // unpausing the audio context if it was paused
+                if (audioContext.state == "suspended") {audioContext.resume();}
 
                 // stopping the progress bar
                 stopUpdatingBar();
@@ -644,11 +684,11 @@ BUTTON FUNCTIONALITY
                 modSlideNumMax = 0;
 
                 // reseting button labels and lighting
-                playAllButton.innerText = "Play All";
-                pauseButton.innerText = "Pause";
-                recordButton.innerText = "Start Recording";
-                switchToDark(saveButton);
-                switchToDark(deleteButton);
+                playAllIcon.src = "assets/images/button_icons/play_all_icon.png";
+                pauseIcon.src = "assets/images/button_icons/pause_icon.png";
+                recordIcon.src = "assets/images/button_icons/rec_icon.png";
+                switchToDark(saveButton, deleteButton, carrotButtons[0]);
+                switchToBright(carrotButtons[1]);
 
                 // recursion point
                 runProgram();
@@ -695,12 +735,12 @@ function addOnClick(element, regionData, resolve) {
             // managing layerButtonContainer width based on how many layers there are
             switch (regionIndex) {
                 case 0: // chimney canopy
-                    layerButtonContainer.style.width = "50vw";
+                    layerButtonContainer.style.width = "52vw";
                     altColorNeeded = true;
                     break;
                 
                 case 6: // metroplis
-                    layerButtonContainer.style.width = "55vw";
+                    layerButtonContainer.style.width = "58vw";
                     altColorNeeded = true;
                     break;
 
@@ -786,6 +826,10 @@ function addOnClick(element, regionData, resolve) {
                 box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
             }
 
+            .other_button_icons {
+                filter: ${iconFilter}
+            }
+
             progress::-moz-progress-bar {
                 background-color: ${pageStyle};
             }
@@ -832,7 +876,7 @@ function prepSong(arrayBuffer) {
         // connecting the gain to the visualizer
         gainNode.connect(visualizer);
 
-        // returning the buffer and the gain in a pair
+        // returning the buffer, gain, and index of the layer in an array for easy accessibility
         loadedLayers.push([bufferSource, gainNode, index]);
     });
     
@@ -848,13 +892,11 @@ function prepSong(arrayBuffer) {
     // starting the recorder if it was queued
     if (recorderQueued) {
         recorder.start();
-        recordButton.innerText = "Recording..."
-        deleteButton.innerText = "Delete Recording"
+        recordIcon.src = "assets/images/button_icons/rec_progress_icon.png";
         recorderQueued = false;
 
         // switching the other buttons on
-        switchToBright(saveButton);
-        switchToBright(deleteButton);
+        switchToBright(saveButton, deleteButton);
     }
 
     // setting up the layers
@@ -876,7 +918,7 @@ function prepSong(arrayBuffer) {
         loadedLayers[i][0].start(audioContext.currentTime);
     }
 
-    playAllButton.innerText = "Reset Song"
+    playAllIcon.src = "assets/images/button_icons/stop_icon.png";
 
     // starting the progress bar and visualizer
     if (!visActive) {startVisualizer();}
@@ -884,60 +926,66 @@ function prepSong(arrayBuffer) {
 }
 
 // functions for swapping button brightness
-function switchToBright(element) {
-    // if we're switching a layer button on or off, change that element to a unique class
-    if (Array.from(layerButtons).includes(element)) {
-        // if the layer button is of an alternate color,
-        if (element.classList.contains("alt_layer_button_darkened")) {
-            element.classList.replace("alt_layer_button_darkened", "alt_layer_button_brightened");
+function switchToBright(...elements) {
+    elements.forEach((element) => {
+        // if we're switching a layer button on or off, change that element to a unique class
+        if (Array.from(layerButtons).includes(element)) {
+            // if the layer button is of an alternate color,
+            if (element.classList.contains("alt_layer_button_darkened")) {
+                element.classList.replace("alt_layer_button_darkened", "alt_layer_button_brightened");
+            }
+
+            // otherwise,
+            else {
+                element.classList.replace("layer_button_darkened", "layer_button_brightened");
+            }
         }
 
-        // otherwise,
+        // otherwise, set the element to the normal class
         else {
-            element.classList.replace("layer_button_darkened", "layer_button_brightened");
+            element.classList.replace("darken_button", "brighten_button");
         }
-    }
-
-    // otherwise, set the element to the normal class
-    else {
-        element.classList.replace("darken_button", "brighten_button");
-    }
-}
-
-function switchToDark(element) {
-    // same sort of logic as in switchToBright()
-    if (Array.from(layerButtons).includes(element)) {
-        if (element.classList.contains("alt_layer_button_brightened")) {
-            element.classList.replace("alt_layer_button_brightened", "alt_layer_button_darkened");
-        }
-
-        else {
-            element.classList.replace("layer_button_brightened", "layer_button_darkened");
-        }
-    }
-
-    else {
-        element.classList.replace("brighten_button", "darken_button");
-    }
-}
-
-// functions for changing screen visibility
-function hideScreen(screen) {
-    screen.style.height = "0%";
-
-    // grabbing all of the items in the screen and hiding them
-    var screenContent = screen.querySelectorAll("*");
-    screenContent.forEach((element) => {
-        element.style.visibility = "hidden";
     })
 }
 
-function showScreen(screen) {
-    screen.style.height = "100%";
+function switchToDark(...elements) {
+    elements.forEach((element) => {
+        // same sort of logic as in switchToBright()
+        if (Array.from(layerButtons).includes(element)) {
+            if (element.classList.contains("alt_layer_button_brightened")) {
+                element.classList.replace("alt_layer_button_brightened", "alt_layer_button_darkened");
+            }
 
-    // grabbing all of the items in the screen and showing them
-    var screenContent = screen.querySelectorAll("*");
-    screenContent.forEach((element) => {element.style.visibility = "visible";})
+            else {
+                element.classList.replace("layer_button_brightened", "layer_button_darkened");
+            }
+        }
+
+        else {
+            element.classList.replace("brighten_button", "darken_button");
+        }
+    })
+}
+
+// functions for changing screen visibility
+function hideScreen(...screens) {
+    screens.forEach((screen) => {
+        screen.style.height = "0%";
+
+        // grabbing all of the items in the screen and hiding them
+        var screenContent = screen.querySelectorAll("*");
+        screenContent.forEach((element) => {element.style.visibility = "hidden";})
+    })
+}
+
+function showScreen(...screens) {
+    screens.forEach((screen) => {
+        screen.style.height = "100%";
+
+        // grabbing all of the items in the screen and showing them
+        var screenContent = screen.querySelectorAll("*");
+        screenContent.forEach((element) => {element.style.visibility = "visible";})
+    })
 }
 
 // these next functions handles the song progress bar

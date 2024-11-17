@@ -34,7 +34,7 @@ button {
 
 .home_buttons, .carrot_buttons {
     color: #dadbdd;
-    border: 0.15vw solid #dadbdd;
+    border: 0.2vw solid #dadbdd;
 }
 
 progress {
@@ -101,7 +101,7 @@ progress::-webkit-progress-value {
     justify-content: end;
     z-index: 0;
     position: absolute;
-    left: -3.2vw;
+    left: -3.25vw;
     top: 19vw;
 }
 
@@ -204,6 +204,16 @@ progress::-webkit-progress-value {
     background-image: url(assets/images/backgrounds/home_screen_bg.png);
 }
 
+#disclaimer {
+    font-family: RWmenu;
+    font-size: 0.5vw;
+    z-index: 999;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 0.7vw;
+}
+
 #loading_screen, #home_screen {
     display: flex;
     flex-direction: column;
@@ -263,15 +273,19 @@ body, #music_screen {
 }
 
 .layer_button {
-    padding: 1.3vw;
+    padding: 1.5vw;
 }
 
 .button_icon {
-    scale: 1.9;
+    scale: 1.8;
+}
+
+.other_button_icons {
+    scale: 1.7;
 }
 
 .other_buttons {
-    padding: 1.5vw;
+    padding: 1.2vw;
     position: relative;
 }
 
@@ -282,8 +296,8 @@ body, #music_screen {
 }
 
 #exit_button {
-    padding: 0.6vw;
-    margin-top: 2vw;
+    padding: 1.1vw;
+    margin-top: 2.6vw;
     margin-left: 2vw;
     z-index: 0;
     position: absolute;
@@ -291,14 +305,9 @@ body, #music_screen {
     top: 0;
 }
 
-#visualizer_toggle {
-    padding: 0.6vw;
-    margin-top: 2vw;
-    margin-right: 2vw;
-    z-index: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+.layer_button_brightened, .alt_layer_button_brightened,
+    .layer_button_darkened, .alt_layer_button_darkened {
+    transition: all 0.3s ease;
 }
 
 .layer_button_brightened:hover, .layer_button_brightened:hover, .solo_button, 
@@ -313,9 +322,8 @@ body, #music_screen {
     filter: brightness(100%);
 }
 
-.layer_button_brightened, .alt_layer_button_brightened,
-    .layer_button_darkened, .alt_layer_button_darkened {
-    transition: box-shadow 0.3s ease;
+.layer_button_brightened, .alt_layer_button_brightened {
+    scale: 1.125;
 }
 
 .solo_button:hover {
@@ -324,6 +332,11 @@ body, #music_screen {
 
 .darken_button {
     filter: brightness(10%);
+    pointer-events: none;
+}
+
+.darken_button.other_buttons {
+    filter: brightness(50%);
     pointer-events: none;
 }
 
@@ -340,10 +353,6 @@ body, #music_screen {
 
 .region_button {
     transition: all 0.2s ease;
-}
-
-.layer_button {
-    transition: all 0.2 ease;
 }
 
 @keyframes sway {
