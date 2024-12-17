@@ -6,22 +6,30 @@
     <title>Threatmixer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.3/marked.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Home Screen -->
     <div id="home_screen">
         <h1 id="page_name">Threatmixer</h1>
+        <h5 id="subheader1" class="subheaders">Created by Rotwall</h2>
+        <h5 id="subheader2" class="subheaders">Pixel Art by ECSP</h2>
         <div id="home_button_container">
             <button class="home_buttons" id="begin_button">BEGIN!</button>
-            <button class="home_buttons darken_button" id="info_button">INFO</button>
-            <button class="home_buttons darken_button" id="credits_button">CREDITS</button>
+            <button class="home_buttons" id="about_button">ABOUT</button>
+            <button class="home_buttons" id="help_button">HELP</button>
+            <button class="home_buttons" id="credits_button">CREDITS</button>
         </div>
         <p id="disclaimer">DISCLAIMER: I am not affilated with Videocult or Akupara Games in any way. This is merely a fan project, and all background images and music featured on this page are owned by Videocult.</p>
     </div>
 
     <!-- Selection Screen -->
     <div id="selection_screen">
+
+        <!-- Back Button -->
+        <button class="back_button selection_back_button" id="selection_back_button">X</button>
 
         <!-- Side Buttons-->
         <div id="side_button_container">

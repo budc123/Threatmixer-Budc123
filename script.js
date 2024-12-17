@@ -10,6 +10,9 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     playAllButton = document.getElementById("play_button"),
     playAllIcon = playAllButton.querySelector("img"),
     startButton = document.getElementById("start_button"),
+    aboutButton = document.getElementById("about_button"),
+    helpButton = document.getElementById("help_button"),
+    creditsButton = document.getElementById("credits_button"),
     recordButton = document.getElementById("record_button"),
     recordIcon = recordButton.querySelector("img"),
     saveButton = document.getElementById("save_button"),
@@ -31,6 +34,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     carrotButtons = document.getElementsByClassName("carrot_buttons"),
     regionButtonContainer = document.getElementsByClassName("region_button_container"),
     slideNum = document.getElementById("slide_number"),
+    selectionBackButton = document.getElementById("selection_back_button"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
     progressBar = document.getElementById("progress_bar"),
@@ -100,19 +104,22 @@ canvasContext.imageSmoothingEnabled = false;
 // declaring our global variables
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
-    songDuration, barUpdateInterval, altColorNeeded, hovering, 
-    animation,
+    songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
+    animation, 
     clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
     visActive = false,
     programStarted = false,
     regionButtonClicked = false,
+    isFadingOut = false,
     divIndex = -1,
     baseSlideNum = 1,
     modSlideNum = 1,
     baseSlideNumMax = 0,
     modSlideNumMax = 0,
+    storedBaseSlide = 0, 
+    storedModSlide = 0,
     selectionState = "base";
 
 const brightened = "brightness(100%)",
@@ -121,6 +128,82 @@ const brightened = "brightness(100%)",
     mute = 0,
     soloIcon1 = "assets/images/button_icons/solo_icon_1.png",
     soloIcon2 = "assets/images/button_icons/solo_icon_2.png";
+
+// markdown file handling
+let MDArray = ["README.md", "TUTORIAL.md", "LICENSE.md"]
+let MDArrayIndex = 0
+
+MDArray.forEach((file) => {
+    fetch(file).then((rawMD) => {    
+        return rawMD.text();
+    }).then((MDText) => {
+        // adding the containers
+        var MDAndButtonContainer = document.createElement("div");
+        MDAndButtonContainer.classList.add("markdown_and_back_container")
+        document.body.appendChild(MDAndButtonContainer);
+        MDAndButtonContainer.style.visibility = "hidden";
+        MDAndButtonContainer.style.opacity = "0";
+
+        var MDContainer = document.createElement("div");
+        MDContainer.classList.add("markdown_container")
+        MDAndButtonContainer.appendChild(MDContainer);
+
+        // putting the md text into the MDContainer
+        MDContainerContent = marked.parse(MDText);
+        MDContainer.innerHTML = MDContainerContent
+
+        // adding a back button
+        var backButton = document.createElement("button");
+        backButton.classList.add("back_button")
+        backButton.innerText = "X";
+        backButton.onclick = () => {
+            MDAndButtonContainer.style.visibility = "hidden";
+            MDAndButtonContainer.style.opacity = "0";
+        };
+        MDAndButtonContainer.appendChild(backButton);
+
+        // applying classes and other changes to elements within the markdown
+        MDContainer.querySelectorAll("img").forEach((element) => {
+            element.classList.add("markdown_img")
+            
+            if (element.alt == "Button Icon") {
+                element.classList.add("markdown_button_img");
+                element.parentElement.classList.add("markdown_button_img_container")
+            }
+        })
+
+        MDContainer.querySelectorAll("a").forEach((element) => {element.target = "_blank"});
+
+        // giving each file their respective class and button
+        switch (file) {
+            case ("README.md"):
+                aboutButton.onclick = () => {
+                    MDAndButtonContainer.style.visibility = "visible";
+                    MDAndButtonContainer.style.opacity = "1";
+                    MDContainer.scrollTop = 0
+                };
+                break;
+
+            case ("TUTORIAL.md"):
+                helpButton.onclick = () => {
+                    MDAndButtonContainer.style.visibility = "visible"
+                    MDAndButtonContainer.style.opacity = "1";
+                    MDContainer.scrollTop = 0
+                };
+                break;
+
+            case ("LICENSE.md"):
+                creditsButton.onclick = () => {
+                    MDAndButtonContainer.style.visibility = "visible"
+                    MDAndButtonContainer.style.opacity = "1";
+                    MDContainer.scrollTop = 0
+                };
+                break;
+        }
+
+        MDArrayIndex++;
+    })
+})
 
 /*
 NON-DYNAMIC ONCLICKS
@@ -150,7 +233,19 @@ moddedButton.onclick = () => {
     modCarousel.style.display = "flex";
 }
 
-// home page buttons
+selectionBackButton.onclick = () => {
+    showScreen(homeScreen)
+    hideScreen(selectionScreen)
+    clearSelectionScreen()
+    baseCarousel.scrollLeft = 0;
+    modCarousel.scrollLeft = 0;
+    baseSlideNum = 1;
+    modSlideNum = 1;
+    slideNum.innerText = 1;
+    switchToBright(carrotButtons[1])
+    switchToDark(carrotButtons[0])
+}
+
 beginButton.onclick = () => {
     hideScreen(homeScreen);
     runProgram();
@@ -171,11 +266,9 @@ function runProgram() {
         return data.json();
     })
     .then((regionData) => {
-
         // hiding all other screens except the selection screen
         hideScreen(musicScreen, loadingScreen);
         showScreen(selectionScreen);
-        switchToDark(carrotButtons[0]);
 
         // setting the page name
         document.title = "Threatmixer - Selection Screen";
@@ -227,65 +320,50 @@ function runProgram() {
                 newRegionButton.style.color = `${region.color}`;
                 newRegionButton.style.border = `0.3vw solid`;
 
-                // adding song snippets for when you hover over buttons (if the button has one)
+                // adding song snippets for when you hover over buttons using howler (if the button has one)
                 if (region.preview != "N/A") {
-                    var songPreview = document.createElement("audio");
-                    songPreview.preload = "auto";
-                    songPreview.loop = true;
-                    songPreview.src = region.preview;
-
-                    // this onplay listener adds a fade in effect to the audio
-                    songPreview.onplay = () => {
-                        var volume = 0;
-                        songPreview.volume = volume;
-                        songPreview.play();
-                        hovering = true;
-
-                        const fadeIn = setInterval(() => {
-                            if (songPreview.volume + 0.1 <= 1 && hovering) {
-                                volume += 0.1;
-                                songPreview.volume = volume;
-                            }
-
-                            else {
-                                clearInterval(fadeIn)
-                            }
-                        }, 150)
-                    }
-                
-                    newRegionButton.appendChild(songPreview);
+                    var songPreview =  new Howl({
+                        src: [region.preview, "sounds.mp3"],
+                        loop: true,
+                        onplay: () => {songPreview.fade(0, 1, 1000)}
+                    })
                 }
 
                 regionButtonContainer[divIndex].appendChild(newRegionButton);
 
-                // here, we give each button some events
-                // this one just makes it so that they glow their respective color when hoevered over
+                // giving each button hover events
                 newRegionButton.onmouseover = () => {
+                    // making the button glow
                     newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
-                    if (region.preview != "N/A") {songPreview.play();}
+
+                    // fading in the song preview
+                    if (region.preview != "N/A") {
+                        // this setInterval makes it so that if you're hovering over the button while the song is fading out,
+                        // it will fade in again as soon as it's done fading out
+                        hoverCheck = setInterval(() => { 
+                            if (!isFadingOut && !songPreview.playing()) {
+                                songPreview.play()
+                                clearInterval(hoverCheck)
+                            }
+                        }, 10)
+                    }
                 }
 
-                // and then this one does the exact opposite
                 newRegionButton.onmouseout = () => {
+                    // removing the glow
                     newRegionButton.style.boxShadow = "";
 
                     // fading out the song preview
                     if (region.preview != "N/A") {
-                        var volume = songPreview.volume;
-                        hovering = false;
+                        clearInterval(hoverCheck)
+                        isFadingOut = true;
 
-                        const fadeOut = setInterval(() => {
-                            if (songPreview.volume - 0.1 >= 0 && !hovering) {
-                                volume -= 0.1;
-                                songPreview.volume = volume;
-                            }
-
-                            else {
-                                clearInterval(fadeOut);
-                                songPreview.pause();
-                                songPreview.currentTime = 0;
-                            }
-                        }, 50)
+                        songPreview.fade(1, 0, 1000)
+                        // waiting for the song to fully fade before stopping it
+                        setTimeout(() => {
+                            songPreview.stop()
+                            isFadingOut = false;
+                        }, 1000)
                     }
                 }
 
@@ -295,21 +373,74 @@ function runProgram() {
                 }
             });
 
+            // setting the carousel screen
+            baseCarousel.scrollLeft = storedBaseSlide
+            modCarousel.scrollLeft = storedModSlide
+
+            // setting carrot button status based on what screen we got sent to
+            var atMidOfBaseCarousel = storedBaseSlide > 0 && storedBaseSlide < baseCarousel.scrollLeftMax,
+                atMidOfModCarousel = storedModSlide > 0 && storedModSlide < modCarousel.scrollLeftMax,
+                atStartOfBaseCarousel = storedBaseSlide == 0,
+                atStartOfModCarousel = storedModSlide == 0,
+                atEndOfBaseCarousel = storedBaseSlide == baseCarousel.scrollLeftMax,
+                atEndOfModCarousel = storedModSlide == modCarousel.scrollLeftMax;
+
+            switch (selectionState) {
+                case ("base"):
+                    
+                    // if on the first slide,
+                    if (atStartOfBaseCarousel) {
+                        switchToBright(carrotButtons[1]);
+                        switchToDark(carrotButtons[0]);
+                    }
+  
+                    // if in the middle, 
+                    if (atMidOfBaseCarousel) {
+                        switchToBright(carrotButtons[0], carrotButtons[1])
+                    }
+
+                    // if on the last slide,
+                    if (atEndOfBaseCarousel) {
+                        switchToBright(carrotButtons[0]);
+                        switchToDark(carrotButtons[1]);
+                    }
+
+                    break;
+                
+                // likewise logic
+                case ("mod"):
+                    if (atStartOfModCarousel) {
+                        switchToBright(carrotButtons[1]);
+                        switchToDark(carrotButtons[0]);
+                    }
+ 
+                    if (atMidOfModCarousel) {
+                        switchToBright(carrotButtons[0], carrotButtons[1])
+                    }
+
+                    if (atEndOfModCarousel) {
+                        switchToBright(carrotButtons[0]);
+                        switchToDark(carrotButtons[1]);
+                    }
+
+                    break;
+            }
+
             // carousel scrolling functionality
-            // I just grab the width from baseCarousel since it doesn't really matter which carousel I get the width from
+            // I just grab the width from baseCarousel since it doesn't really matter which carousel I get the width from, it's all the same
             var scrollDistance = baseCarousel.getBoundingClientRect().width;
 
             carrotButtons[0].onclick = () => { // left carrot button
                 if (!clickOnTimeout) {
-                    // checking to see what carousel we're trying to move
+                    // this switch checks to see what carousel we're trying to move
                     switch (selectionState) {
                         case ("base"):
-                            // switching the right slde button back on if we were on the last page
+                            // switching the right slde button back on if we are moving off of the last page
                             if (baseSlideNum == baseSlideNumMax) {
                                 switchToBright(carrotButtons[1]);
                             }
 
-                            // Trying to move the slide
+                            // moving the slide
                             baseCarousel.scrollLeft -= scrollDistance;
 
                             // decreasing the slide number if its not already at 1
@@ -461,7 +592,7 @@ MUSIC SCREEN FUNCTIONALITY
                     }
                 };
 
-                // listening for if a solo button has been clicked
+                // solo button functionality
                 soloButton[i].onclick = () => {
                     if (!layerSoloed && songStarted) {
                         if (loadedLayers[i][1].gain.value == mute) { // if the layer we're trying to solo is muted,
@@ -670,25 +801,13 @@ MUSIC SCREEN FUNCTIONALITY
                     loadedLayers[i][0].disconnect();
                 }
 
-                // reseting variables, containers, and button text
-                layerButtonContainer.innerHTML = "";
-                baseCarousel.innerHTML = "";
-                modCarousel.innerHTML = "";
-                slideNum.innerText = "1.";
-                document.title = "Threatmixer";
-                regionButtonClicked = false;
-                divIndex = -1;
-                baseSlideNum = 1;
-                baseSlideNumMax = 0;
-                modSlideNum = 1;
-                modSlideNumMax = 0;
+                clearSelectionScreen();
 
                 // reseting button labels and lighting
                 playAllIcon.src = "assets/images/button_icons/play_all_icon.png";
                 pauseIcon.src = "assets/images/button_icons/pause_icon.png";
                 recordIcon.src = "assets/images/button_icons/rec_icon.png";
-                switchToDark(saveButton, deleteButton, carrotButtons[0]);
-                switchToBright(carrotButtons[1]);
+                switchToDark(saveButton, deleteButton);
 
                 // recursion point
                 runProgram();
@@ -703,13 +822,17 @@ FUNCTIONS
 
 // loading song screen on region button click
 function addOnClick(element, regionData, resolve) {
-    element.onclick = () => {    
-        // preventing this code from running twice via a double click
+    element.onclick = () => {
+        // preventing this code from running twice due to a double click
         if (!regionButtonClicked) {
             regionButtonClicked = true;
             
             hideScreen(selectionScreen);
             showScreen(loadingScreen);
+
+            // first storing the current carousel state to reference for later
+            storedBaseSlide = baseCarousel.scrollLeft;
+            storedModSlide = modCarousel.scrollLeft;
 
             // defining variables
             layerSoloed = false;
@@ -782,7 +905,7 @@ function addOnClick(element, regionData, resolve) {
                 newLayerIcon.style.filter = `${iconFilter}`;
 
                 var newSoloIcon = document.createElement("img");
-                newSoloIcon.classList.add("button_icon");
+                newSoloIcon.classList.add("button_icon", "solo_button_icon");
                 newSoloIcon.src = soloIcon1;
                 newSoloIcon.style.filter = `${iconFilter}`;
 
@@ -1041,7 +1164,7 @@ function startVisualizer() {
     // all credit goes towards QuickCodingTuts for this code
     // find out more about them and their channel in the LICENSE.md
     function animate() {
-        animation = window.requestAnimationFrame(animate)
+        animation = window.requestAnimationFrame(animate);
 
         var x = 0;
         canvasContext.clearRect(0, 0, canvas.clientWidth, canvas.height);
@@ -1057,6 +1180,19 @@ function startVisualizer() {
     }
 
     animate()
+}
+
+// a simple function to handle clearing out the selection screen when necessary
+function clearSelectionScreen() {
+    // reseting variables, containers, and button text
+    layerButtonContainer.innerHTML = "";
+    baseCarousel.innerHTML = "";
+    modCarousel.innerHTML = "";
+    document.title = "Threatmixer";
+    regionButtonClicked = false;
+    divIndex = -1;
+    baseSlideNumMax = 0;
+    modSlideNumMax = 0;
 }
 
 // unhiding the other screens once they've been flattened
