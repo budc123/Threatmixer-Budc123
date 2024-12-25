@@ -676,11 +676,10 @@ MUSIC SCREEN FUNCTIONALITY
 
             // play all button functionality
             playAllButton.onclick = () => {
-                if (!songStarted) { // if we're trying to start all of them,
+                // checking if the audio context is paused and resuming it if it was
+                if (audioContext.state == "suspended") {audioContext.resume();}
 
-                    // checking if the audio context is paused and resuming it if it was
-                    // the layers won't be paused when starting the song over again
-                    if (audioContext.state == "suspended") {audioContext.resume();}
+                if (!songStarted) { // if we're trying to start all of them,
                     songStarted = true;
                     prepSong(arrayBuffer);
 
@@ -755,7 +754,7 @@ MUSIC SCREEN FUNCTIONALITY
 
             // save button functionality
             saveButton.onclick = () => {
-                if (recorder.state == "recording") {
+                if (recorder.state != "inactive") {
                     recorder.stop();
                     recordIcon.src = "assets/images/button_icons/rec_icon.png";
 
