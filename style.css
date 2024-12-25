@@ -278,6 +278,10 @@ progress::-webkit-progress-value {
     width: 100%;
 }
 
+.markdown_link:visited {
+    color: blue;
+}
+
 .back_button {
     font-size: 1.2vw;
     width: 1vw;

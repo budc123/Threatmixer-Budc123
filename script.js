@@ -172,7 +172,11 @@ MDArray.forEach((file) => {
             }
         })
 
-        MDContainer.querySelectorAll("a").forEach((element) => {element.target = "_blank"});
+        // taking the links and applying attributes to them
+        MDContainer.querySelectorAll("a").forEach((element) => {
+            element.classList.add("markdown_link");
+            element.target = "_blank";
+        });
 
         // giving each file their respective class and button
         switch (file) {
@@ -229,6 +233,7 @@ moddedButton.onclick = () => {
     modSlideNum = 1;
     slideNum.innerText = `${modSlideNum}.`
     switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
     baseCarousel.style.display = "none";
     modCarousel.style.display = "flex";
 }
@@ -247,7 +252,8 @@ selectionBackButton.onclick = () => {
 }
 
 beginButton.onclick = () => {
-    hideScreen(homeScreen);
+    hideScreen(homeScreen, selectionScreen);
+    showScreen(loadingScreen);
     runProgram();
 }
 
@@ -266,262 +272,271 @@ function runProgram() {
         return data.json();
     })
     .then((regionData) => {
-        // hiding all other screens except the selection screen
-        hideScreen(musicScreen, loadingScreen);
-        showScreen(selectionScreen);
+        // hiding the music screen for when we leave it to enter the selection screen
+        hideScreen(musicScreen);
 
         // setting the page name
         document.title = "Threatmixer - Selection Screen";
 
-        // we will not move onto the next step until the select button has been clicked
+        // we will not move onto the next step until a region button has been clicked
         return new Promise((resolve) => {
-            // adding buttons to the selection page
-            regionData.forEach((region) => {
 
-                // storing the amount of buttons in each container
-                var baseButtonArray = baseCarousel.querySelectorAll("button");
-                var modButtonArray = modCarousel.querySelectorAll("button");
+            // waiting for all of the buttons to load in before showing the selection screen
+            new Promise((selectionResolve) => {
+                // adding buttons to the selection page
+                regionData.forEach((region) => {
 
-                // this switch case handles updating the carousel slides based on how many buttons there are
-                switch (region.group) {
+                    // storing the amount of buttons in each container
+                    var baseButtonArray = baseCarousel.querySelectorAll("button");
+                    var modButtonArray = modCarousel.querySelectorAll("button");
 
-                    // if it's a vanilla/msc region,
+                    // this switch case handles updating the carousel slides based on how many buttons there are
+                    switch (region.group) {
+
+                        // if it's a vanilla/msc region,
+                        case ("base"):
+                            // add a new slide to that carousel if there's already 6 buttons
+                            if (baseButtonArray.length % 6 == 0) {
+                                divIndex++;
+                                baseSlideNumMax++;
+                                var newDiv = document.createElement("div");
+                                newDiv.classList.add("region_button_container");
+                                baseCarousel.appendChild(newDiv);
+                            }
+
+                            break;
+                        
+                        case ("mods"):
+                            if (modButtonArray.length % 6 == 0) {
+                                divIndex++;
+                                modSlideNumMax++;
+                                var newDiv = document.createElement("div");
+                                newDiv.classList.add("region_button_container");
+                                modCarousel.appendChild(newDiv);
+                            }
+
+                            break;
+                    }
+
+                    // creating a button
+                    var newRegionButton = document.createElement("button");
+                    newRegionButton.classList.add("region_button");
+
+                    // styling
+                    newRegionButton.style.backgroundImage = `url(${region.background})`;
+                    newRegionButton.innerText = region.name;
+                    newRegionButton.style.color = `${region.color}`;
+                    newRegionButton.style.border = `0.3vw solid`;
+
+                    // adding song snippets for when you hover over buttons using howler (if the button has one)
+                    if (region.preview != "N/A") {
+                        var songPreview =  new Howl({
+                            src: [region.preview, "sounds.mp3"],
+                            loop: true,
+                            onplay: () => {songPreview.fade(0, 1, 1000)}
+                        })
+                    }
+
+                    regionButtonContainer[divIndex].appendChild(newRegionButton);
+
+                    // giving each button hover events
+                    newRegionButton.onmouseover = () => {
+                        // making the button glow
+                        newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
+
+                        // fading in the song preview
+                        if (region.preview != "N/A") {
+                            // this setInterval makes it so that if you're hovering over the button while the song is fading out,
+                            // it will fade in again as soon as it's done fading out
+                            hoverCheck = setInterval(() => { 
+                                if (!isFadingOut && !songPreview.playing()) {
+                                    songPreview.play()
+                                    clearInterval(hoverCheck)
+                                }
+                            }, 10)
+                        }
+                    }
+
+                    newRegionButton.onmouseout = () => {
+                        // removing the glow
+                        newRegionButton.style.boxShadow = "";
+
+                        // fading out the song preview
+                        if (region.preview != "N/A") {
+                            clearInterval(hoverCheck)
+                            isFadingOut = true;
+
+                            songPreview.fade(1, 0, 1000)
+                            // waiting for the song to fully fade before stopping it
+                            setTimeout(() => {
+                                songPreview.stop()
+                                isFadingOut = false;
+                            }, 1000)
+                        }
+                    }
+
+                    // this function adds an onclick event to each button that will cause them to begin loading their respective song screen
+                    if (region.name != "Coming Soon!") {
+                        addOnClick(newRegionButton, regionData, resolve);
+                    }
+                });
+                selectionResolve();
+            })
+            .then(() => {
+                hideScreen(loadingScreen);
+                showScreen(selectionScreen);
+
+                // setting the carousel screen
+                baseCarousel.scrollLeft = storedBaseSlide
+                modCarousel.scrollLeft = storedModSlide
+
+                // setting carrot button status based on what screen we got sent to
+                var atMidOfBaseCarousel = storedBaseSlide > 0 && storedBaseSlide < baseCarousel.scrollLeftMax,
+                    atMidOfModCarousel = storedModSlide > 0 && storedModSlide < modCarousel.scrollLeftMax,
+                    atStartOfBaseCarousel = storedBaseSlide == 0,
+                    atStartOfModCarousel = storedModSlide == 0,
+                    atEndOfBaseCarousel = storedBaseSlide == baseCarousel.scrollLeftMax,
+                    atEndOfModCarousel = storedModSlide == modCarousel.scrollLeftMax;
+
+                switch (selectionState) {
                     case ("base"):
-                        // add a new slide to that carousel if there's already 6 buttons
-                        if (baseButtonArray.length % 6 == 0) {
-                            divIndex++;
-                            baseSlideNumMax++;
-                            var newDiv = document.createElement("div");
-                            newDiv.classList.add("region_button_container");
-                            baseCarousel.appendChild(newDiv);
+                        
+                        // if on the first slide,
+                        if (atStartOfBaseCarousel) {
+                            switchToBright(carrotButtons[1]);
+                            switchToDark(carrotButtons[0]);
+                        }
+    
+                        // if in the middle, 
+                        if (atMidOfBaseCarousel) {
+                            switchToBright(carrotButtons[0], carrotButtons[1])
+                        }
+
+                        // if on the last slide,
+                        if (atEndOfBaseCarousel) {
+                            switchToBright(carrotButtons[0]);
+                            switchToDark(carrotButtons[1]);
                         }
 
                         break;
                     
-                    case ("mods"):
-                        if (modButtonArray.length % 6 == 0) {
-                            divIndex++;
-                            modSlideNumMax++;
-                            var newDiv = document.createElement("div");
-                            newDiv.classList.add("region_button_container");
-                            modCarousel.appendChild(newDiv);
+                    // likewise logic
+                    case ("mod"):
+                        if (atStartOfModCarousel) {
+                            switchToBright(carrotButtons[1]);
+                            switchToDark(carrotButtons[0]);
+                        }
+    
+                        if (atMidOfModCarousel) {
+                            switchToBright(carrotButtons[0], carrotButtons[1])
+                        }
+
+                        if (atEndOfModCarousel) {
+                            switchToBright(carrotButtons[0]);
+                            switchToDark(carrotButtons[1]);
                         }
 
                         break;
                 }
 
-                // creating a button
-                var newRegionButton = document.createElement("button");
-                newRegionButton.classList.add("region_button");
+                // carousel scrolling functionality
+                if (selectionState == "base") {var scrollDistance = baseCarousel.getBoundingClientRect().width;}
+                else if (selectionState == "mods") {var scrollDistance = modCarousel.getBoundingClientRect().width;}
+                
 
-                // styling
-                newRegionButton.style.backgroundImage = `url(${region.background})`;
-                newRegionButton.innerText = region.name;
-                newRegionButton.style.color = `${region.color}`;
-                newRegionButton.style.border = `0.3vw solid`;
+                carrotButtons[0].onclick = () => { // left carrot button
+                    if (!clickOnTimeout) {
+                        // this switch checks to see what carousel we're trying to move
+                        switch (selectionState) {
+                            case ("base"):
+                                // switching the right slde button back on if we are moving off of the last page
+                                if (baseSlideNum == baseSlideNumMax) {
+                                    switchToBright(carrotButtons[1]);
+                                }
 
-                // adding song snippets for when you hover over buttons using howler (if the button has one)
-                if (region.preview != "N/A") {
-                    var songPreview =  new Howl({
-                        src: [region.preview, "sounds.mp3"],
-                        loop: true,
-                        onplay: () => {songPreview.fade(0, 1, 1000)}
-                    })
-                }
+                                // moving the slide
+                                baseCarousel.scrollLeft -= scrollDistance;
 
-                regionButtonContainer[divIndex].appendChild(newRegionButton);
+                                // decreasing the slide number if its not already at 1
+                                if (baseSlideNum > 1) {
+                                    baseSlideNum--;
+                                    slideNum.innerText = `${baseSlideNum}.`;
+                                }
 
-                // giving each button hover events
-                newRegionButton.onmouseover = () => {
-                    // making the button glow
-                    newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
+                                // switching the left carrot button off if we're on the first slide
+                                if (baseSlideNum == 1) {
+                                    switchToDark(carrotButtons[0])
+                                };
 
-                    // fading in the song preview
-                    if (region.preview != "N/A") {
-                        // this setInterval makes it so that if you're hovering over the button while the song is fading out,
-                        // it will fade in again as soon as it's done fading out
-                        hoverCheck = setInterval(() => { 
-                            if (!isFadingOut && !songPreview.playing()) {
-                                songPreview.play()
-                                clearInterval(hoverCheck)
-                            }
-                        }, 10)
+                                break;
+                            
+                            // likewise logic for this case and the other button
+                            case ("mods"):
+                                if (modSlideNum == modSlideNumMax) {
+                                    switchToBright(carrotButtons[1]);
+                                }
+
+                                modCarousel.scrollLeft -= scrollDistance;
+
+                                if (modSlideNum > 1) {
+                                    modSlideNum--;
+                                    slideNum.innerText = `${modSlideNum}.`;
+                                }
+
+                                if (modSlideNum == 1) {
+                                    switchToDark(carrotButtons[0])
+                                }
+                                
+                                break;
+                        }
                     }
+                    setClickTimout();
                 }
 
-                newRegionButton.onmouseout = () => {
-                    // removing the glow
-                    newRegionButton.style.boxShadow = "";
+                carrotButtons[1].onclick = () => { // right carrot button
+                    if (!clickOnTimeout) {
+                        switch (selectionState) {
+                            case ("base"):
+                                if (baseSlideNum == 1) {
+                                    switchToBright(carrotButtons[0]);
+                                }
 
-                    // fading out the song preview
-                    if (region.preview != "N/A") {
-                        clearInterval(hoverCheck)
-                        isFadingOut = true;
+                                baseCarousel.scrollLeft += scrollDistance;
 
-                        songPreview.fade(1, 0, 1000)
-                        // waiting for the song to fully fade before stopping it
-                        setTimeout(() => {
-                            songPreview.stop()
-                            isFadingOut = false;
-                        }, 1000)
+                                if (baseSlideNum < baseSlideNumMax) {
+                                    baseSlideNum++;
+                                    slideNum.innerText = `${baseSlideNum}.`;
+                                }
+                                
+                                if (baseSlideNum == baseSlideNumMax) {
+                                    switchToDark(carrotButtons[1]);
+                                }
+                                
+                                break;
+                            
+                            case ("mods"):
+                                if (modSlideNum == 1) {
+                                    switchToBright(carrotButtons[0]);
+                                }
+
+                                modCarousel.scrollLeft += scrollDistance;
+
+                                if (modSlideNum < modSlideNumMax) {
+                                    modSlideNum++;
+                                    slideNum.innerText = `${modSlideNum}.`;
+                                }
+                                
+                                if (modSlideNum == modSlideNumMax) {
+                                    switchToDark(carrotButtons[1])
+                                }
+
+                                break;
+                        }
                     }
-                }
-
-                // this function adds an onclick event to each button that will cause them to begin loading their respective song screen
-                if (region.name != "Coming Soon!") {
-                    addOnClick(newRegionButton, regionData, resolve);
+                    setClickTimout();
                 }
             });
-
-            // setting the carousel screen
-            baseCarousel.scrollLeft = storedBaseSlide
-            modCarousel.scrollLeft = storedModSlide
-
-            // setting carrot button status based on what screen we got sent to
-            var atMidOfBaseCarousel = storedBaseSlide > 0 && storedBaseSlide < baseCarousel.scrollLeftMax,
-                atMidOfModCarousel = storedModSlide > 0 && storedModSlide < modCarousel.scrollLeftMax,
-                atStartOfBaseCarousel = storedBaseSlide == 0,
-                atStartOfModCarousel = storedModSlide == 0,
-                atEndOfBaseCarousel = storedBaseSlide == baseCarousel.scrollLeftMax,
-                atEndOfModCarousel = storedModSlide == modCarousel.scrollLeftMax;
-
-            switch (selectionState) {
-                case ("base"):
-                    
-                    // if on the first slide,
-                    if (atStartOfBaseCarousel) {
-                        switchToBright(carrotButtons[1]);
-                        switchToDark(carrotButtons[0]);
-                    }
-  
-                    // if in the middle, 
-                    if (atMidOfBaseCarousel) {
-                        switchToBright(carrotButtons[0], carrotButtons[1])
-                    }
-
-                    // if on the last slide,
-                    if (atEndOfBaseCarousel) {
-                        switchToBright(carrotButtons[0]);
-                        switchToDark(carrotButtons[1]);
-                    }
-
-                    break;
-                
-                // likewise logic
-                case ("mod"):
-                    if (atStartOfModCarousel) {
-                        switchToBright(carrotButtons[1]);
-                        switchToDark(carrotButtons[0]);
-                    }
- 
-                    if (atMidOfModCarousel) {
-                        switchToBright(carrotButtons[0], carrotButtons[1])
-                    }
-
-                    if (atEndOfModCarousel) {
-                        switchToBright(carrotButtons[0]);
-                        switchToDark(carrotButtons[1]);
-                    }
-
-                    break;
-            }
-
-            // carousel scrolling functionality
-            // I just grab the width from baseCarousel since it doesn't really matter which carousel I get the width from, it's all the same
-            var scrollDistance = baseCarousel.getBoundingClientRect().width;
-
-            carrotButtons[0].onclick = () => { // left carrot button
-                if (!clickOnTimeout) {
-                    // this switch checks to see what carousel we're trying to move
-                    switch (selectionState) {
-                        case ("base"):
-                            // switching the right slde button back on if we are moving off of the last page
-                            if (baseSlideNum == baseSlideNumMax) {
-                                switchToBright(carrotButtons[1]);
-                            }
-
-                            // moving the slide
-                            baseCarousel.scrollLeft -= scrollDistance;
-
-                            // decreasing the slide number if its not already at 1
-                            if (baseSlideNum > 1) {
-                                baseSlideNum--;
-                                slideNum.innerText = `${baseSlideNum}.`;
-                            }
-
-                            // switching the left carrot button off if we're on the first slide
-                            if (baseSlideNum == 1) {
-                                switchToDark(carrotButtons[0])
-                            };
-
-                            break;
-                        
-                        // likewise logic for this case and the other button
-                        case ("mods"):
-                            if (modSlideNum == modSlideNumMax) {
-                                switchToBright(carrotButtons[1]);
-                            }
-
-                            modCarousel.scrollLeft -= scrollDistance;
-
-                            if (modSlideNum > 1) {
-                                modSlideNum--;
-                                slideNum.innerText = `${modSlideNum}.`;
-                            }
-
-                            if (modSlideNum == 1) {
-                                switchToDark(carrotButtons[0])
-                            }
-                            
-                            break;
-                    }
-                }
-                setClickTimout();
-            }
-
-            carrotButtons[1].onclick = () => { // right carrot button
-                if (!clickOnTimeout) {
-                    switch (selectionState) {
-                        case ("base"):
-                            if (baseSlideNum == 1) {
-                                switchToBright(carrotButtons[0]);
-                            }
-
-                            baseCarousel.scrollLeft += scrollDistance;
-
-                            if (baseSlideNum < baseSlideNumMax) {
-                                baseSlideNum++;
-                                slideNum.innerText = `${baseSlideNum}.`;
-                            }
-                            
-                            if (baseSlideNum == baseSlideNumMax) {
-                                switchToDark(carrotButtons[1]);
-                            }
-                            
-                            break;
-                        
-                        case ("mods"):
-                            if (modSlideNum == 1) {
-                                switchToBright(carrotButtons[0]);
-                            }
-
-                            modCarousel.scrollLeft += scrollDistance;
-
-                            if (modSlideNum < modSlideNumMax) {
-                                modSlideNum++;
-                                slideNum.innerText = `${modSlideNum}.`;
-                            }
-                            
-                            if (modSlideNum == modSlideNumMax) {
-                                switchToDark(carrotButtons[1])
-                            }
-
-                            break;
-                    }
-                }
-                setClickTimout();
-            }
-        });
+        })
     })
     .then(() => {
 
@@ -866,6 +881,21 @@ function addOnClick(element, regionData, resolve) {
                     layerButtonContainer.style.width = "58vw";
                     altColorNeeded = true;
                     break;
+                
+                case 18: // coral caves
+                    layerButtonContainer.style.width = "56vw";
+                    altColorNeeded = true;
+                    break;
+                
+                case 25: // moss fields
+                    layerButtonContainer.style.width = "62vw";
+                    altColorNeeded = true;
+                    break;
+                
+                case 34: // stormy coast
+                    layerButtonContainer.style.width = "49vw";
+                    altColorNeeded = false;
+                    break;
 
                 default: // if none of these things were selected
                     layerButtonContainer.style.width = "100%";
@@ -910,8 +940,10 @@ function addOnClick(element, regionData, resolve) {
                 newSoloIcon.style.filter = `${iconFilter}`;
 
                 // applying alternate colors to buttons if needed
-                if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) ||
-                    (altColorNeeded && regionIndex == 6 && layerButtons.length > 8)) {
+                if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
+                    (altColorNeeded && regionIndex == 6 && layerButtons.length > 8) || // metropolis
+                    (altColorNeeded && regionIndex == 18 && layerButtons.length > 8) ||  // coral caves
+                    (altColorNeeded && regionIndex == 25 && layerButtons.length > 8)) { // moss fields
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;
