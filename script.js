@@ -254,6 +254,8 @@ selectionBackButton.onclick = () => {
 beginButton.onclick = () => {
     hideScreen(homeScreen, selectionScreen);
     showScreen(loadingScreen);
+    storedBaseSlide = 0;
+    storedModSlide = 0;
     runProgram();
 }
 
