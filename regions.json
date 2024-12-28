@@ -291,7 +291,7 @@
         "layers": [
             ["kick_icon.png", "assets/threat_music/mods/BL/TH_BL - KICK.ogg"],
             ["hit_icon.png", "assets/threat_music/mods/BL/TH_BL - THUD.ogg"],
-            ["stop_icon.png", "assets/threat_music/mods/BL/TH_BL - PERC.ogg"],
+            ["perc_icon.png", "assets/threat_music/mods/BL/TH_BL - PERC.ogg"],
             ["stop_icon.png", "assets/threat_music/mods/BL/TH_BL - BONGO.ogg"],
             ["noise_icon.png", "assets/threat_music/mods/BL/TH_BL - NOISE.ogg"],
             ["shaker_icon.png", "assets/threat_music/mods/BL/TH_BL - SHAKER.ogg"],
@@ -310,8 +310,8 @@
         "layers": [
             ["kick_icon.png", "assets/threat_music/mods/CF/TH_CF - KICK.ogg"],
             ["stop_icon.png", "assets/threat_music/mods/CF/TH_CF - DNPERC.ogg"],
-            ["bass_icon.png", "assets/threat_music/mods/CF/TH_CF - ARPBASS.ogg"],
-            ["noise_icon.png", "assets/threat_music/mods/CF/TH_CF - NOISE.ogg"],
+            ["synth_icon.png", "assets/threat_music/mods/CF/TH_CF - ARPBASS.ogg"],
+            ["gas_noise_icon.png", "assets/threat_music/mods/CF/TH_CF - NOISE.ogg"],
             ["pad_icon.png", "assets/threat_music/mods/CF/TH_CF - DUBSTEP.ogg"]  
         ],
         "color": "#e6850f",

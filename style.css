@@ -278,8 +278,12 @@ progress::-webkit-progress-value {
     width: 100%;
 }
 
+.markdown_link {
+    color: lightblue;
+}
+
 .markdown_link:visited {
-    color: blue;
+    color: lightblue;
 }
 
 .back_button {
