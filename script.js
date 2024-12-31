@@ -887,13 +887,18 @@ function addOnClick(element, regionData, resolve) {
                     layerButtonContainer.style.width = "56vw";
                     altColorNeeded = true;
                     break;
+
+                case 24: // luminous cove
+                    layerButtonContainer.style.width = "65vw";
+                    altColorNeeded = true;
+                    break;
                 
-                case 25: // moss fields
+                case 26: // moss fields
                     layerButtonContainer.style.width = "62vw";
                     altColorNeeded = true;
                     break;
                 
-                case 34: // stormy coast
+                case 36: // stormy coast
                     layerButtonContainer.style.width = "49vw";
                     altColorNeeded = false;
                     break;
@@ -944,7 +949,8 @@ function addOnClick(element, regionData, resolve) {
                 if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
                     (altColorNeeded && regionIndex == 6 && layerButtons.length > 8) || // metropolis
                     (altColorNeeded && regionIndex == 18 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 25 && layerButtons.length > 8)) { // moss fields
+                    (altColorNeeded && regionIndex == 24 && layerButtons.length < 10) || // luminous cove
+                    (altColorNeeded && regionIndex == 26 && layerButtons.length > 8)) { // moss fields
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;
@@ -961,6 +967,7 @@ function addOnClick(element, regionData, resolve) {
             
                 // sounds
                 regionThreatLayers.push(new Audio(layer[1]));
+                console.log("loaded")
             });
 
             // creating more style changes for classes

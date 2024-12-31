@@ -406,7 +406,7 @@
             ["stop_icon.png", "assets/threat_music/mods/FO/TH_FO - FOGHORN.ogg"],
             ["synth_icon.png", "assets/threat_music/mods/FO/TH_FO - ARPS.ogg"],
             ["arps_icon.png", "assets/threat_music/mods/FO/TH_FO - PLUCK.ogg"],
-            ["noise_icon.png", "assets/threat_music/mods/FO/TH_FO - NOISE.ogg"]
+            ["gas_noise_icon.png", "assets/threat_music/mods/FO/TH_FO - NOISE.ogg"]
         ],
         "color": "#324F5B",
         "filter": "brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(566%) hue-rotate(152deg) brightness(91%) contrast(84%)",
@@ -451,6 +451,35 @@
         "filter": "brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(2569%) hue-rotate(353deg) brightness(85%) contrast(103%)",
         "background": "assets/images/backgrounds/howling_rift.png",
         "preview": "assets/music_snippets/HC_snippet.MP3"
+    },
+    {   
+        "name": "Luminous Cove",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/threat_music/mods/EU/TH_EU - KICK.ogg"],
+            ["snare_icon.png", "assets/threat_music/mods/EU/TH_EU - SNARE.ogg"],
+            ["perc_icon.png", "assets/threat_music/mods/EU/TH_EU - PERC.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/EU/TH_EU - CLOCK.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/EU/TH_EU - CALL.ogg"],
+            ["synth_icon.png", "assets/threat_music/mods/EU/TH_EU - GRUNGE.ogg"],
+            ["pad_icon.png", "assets/threat_music/mods/EU/TH_EU - VOX.ogg"],
+            ["arps_icon.png", "assets/threat_music/mods/EU/TH_EU - ARPS.ogg"],
+            ["lead_1_icon.png", "assets/threat_music/mods/EU/TH_EU - CHORD.ogg"],
+            ["synth_icon.png", "assets/threat_music/mods/EU/TH_EU - MELODY.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADECLOCK.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADECALL.ogg"],
+            ["synth_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADEGRUNGE.ogg"],
+            ["pad_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADEVOX.ogg"],
+            ["arps_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADEARPS.ogg"],
+            ["lead_1_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADECHORDS.ogg"],
+            ["synth_icon.png", "assets/threat_music/mods/EU/TH_EU - SHADEMELODY.ogg"]
+        ],
+        "color": "#0f6cb9",
+        "altColor": "#46272d",
+        "filter": "brightness(0) saturate(100%) invert(30%) sepia(91%) saturate(1138%) hue-rotate(184deg) brightness(92%) contrast(94%)",
+        "altFilter": "brightness(0) saturate(100%) invert(16%) sepia(21%) saturate(1117%) hue-rotate(298deg) brightness(87%) contrast(91%)",
+        "background": "assets/images/backgrounds/luminous_cove.png",
+        "preview": "assets/music_snippets/EU_snippet.MP3"
     },
     {   
         "name": "Lush Mire",
@@ -530,6 +559,24 @@
         "preview": "assets/music_snippets/PP_snippet.MP3"
     },
     {   
+        "name": "Preservatory",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/threat_music/mods/PV/TH_PV - kick.ogg"],
+            ["shaker_icon.png", "assets/threat_music/mods/PV/TH_PV - shaker.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/PV/TH_PV - chime.ogg"],
+            ["wawa_icon.png", "assets/threat_music/mods/PV/TH_PV - hinge.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/PV/TH_PV - drips.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/PV/TH_PV - pulse.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/PV/TH_PV - riser.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/PV/TH_PV - twang.ogg"]
+        ],
+        "color": "#A9FFA0",
+        "filter": "brightness(0) saturate(100%) invert(92%) sepia(10%) saturate(1639%) hue-rotate(55deg) brightness(100%) contrast(104%)",
+        "background": "assets/images/backgrounds/preservatory.png",
+        "preview": "assets/music_snippets/PV_snippet.MP3"
+    },
+    {   
         "name": "Purification Conduits",
         "group": "mods",
         "layers": [
@@ -577,7 +624,7 @@
             ["bass_icon.png", "assets/threat_music/mods/SD_NIGHT/TH_SD - BASSNIGHT.ogg"],
             ["synth_icon.png", "assets/threat_music/mods/SD_NIGHT/TH_SD - ARPSNIGHT.ogg"],
             ["pad_icon.png", "assets/threat_music/mods/SD_NIGHT/TH_SD - PADNIGHT.ogg"],
-            ["stop_icon.png", "assets/threat_music/mods/SD_NIGHT/TH_SD - LEADNIGHT.ogg"]
+            ["wawa_icon.png", "assets/threat_music/mods/SD_NIGHT/TH_SD - LEADNIGHT.ogg"]
         ],
         "color": "#254163",
         "filter": "brightness(0) saturate(100%) invert(18%) sepia(82%) saturate(437%) hue-rotate(171deg) brightness(97%) contrast(88%)",

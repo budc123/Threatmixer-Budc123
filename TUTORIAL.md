@@ -4,7 +4,7 @@ When you first open the page, you'll be greeted by the home screen, where you ca
 
 ![Selection Screen](assets/images/misc/example_1.png)
 
-All regions are organized alphabetically. Navigate between slides using the left and right carrot buttons. To switch between different groups of regions (i.e. vanilla, modded, and custom regions), click the buttons to the left of the carousel with the types of regions you wish to choose from.
+All regions are organized alphabetically. Navigate between slides using the left and right caret buttons. To switch between different groups of regions (i.e. vanilla, modded, and custom regions), click the buttons to the left of the carousel with the types of regions you wish to choose from.
 
 ## 1. Music screen
 
@@ -41,7 +41,7 @@ Here's how each button is used:
 
 ![Button Icon](assets/images/misc/start_button_example.png)
 
-Before the song begins, you have the option to choose which layers you want to start off with. In order for this button to work, you must have at least 1 layer pre-selected. This is done by clicking on the layer buttons that you want to pre-select, causing them to enlargen to signify that they're active. Once you've chosen all of your layers, you can then click the start button to begin the threat theme. The layers that you've pre-picked will now be audible. Again, **you must click the start button to begin the song before anything can play!**
+Before the song begins, you have the option to choose which layers you want to start off with. In order for this button to work, you must have at least 1 layer pre-selected. This is done by clicking on the layer buttons that you want to pre-select, causing them to enlarge to signify that they're active. Once you've chosen all of your layers, you can then click the start button to begin the threat theme. The layers that you've pre-picked will now be audible. Again, **you must click the start button to begin the song before anything can play!**
 
 ### 2. Play All Button (Stripped Play Icon)
 
@@ -69,13 +69,13 @@ Pressing this button will activate this webpage's recorder, which allows you to 
 
 ![Button Icon](assets/images/misc/save_recording_button_example.png)
 
-Pressing this button will transfer whatever the recorder picked up into an exprotable mp3 file. You'll be prompted to enter the name of your file before its automatically downloaded onto your computer. This file can then be used and shared (hopefully) wherever you please.
+Pressing this button will transfer whatever the recorder picked up into an exportable mp3 file. You'll be prompted to enter the name of your file before it's automatically downloaded onto your computer. This file can then be used and shared (hopefully) wherever you please.
 
 ### 6. Delete Recording Button (Mic + Trash Bin Icon)
 
 ![Button Icon](assets/images/misc/delete_recording_button_example.png)
 
-When pressed, the recording that's currently active will be discarded. A new recording can then begin afterwards, given there's no other recordings currently running. This button will also cancle a queued recording if the song hasn't started yet.
+When pressed, the recording that's currently active will be discarded. A new recording can then begin afterwards, given there's no other recordings currently running. This button will also cancel a queued recording if the song hasn't started yet.
 
 ### 7. Visualizer Toggle (Canvas w/ Waves Icon)
 

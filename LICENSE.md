@@ -1,7 +1,7 @@
 # *Credits*
 
 ## Me
-Hey, I'm rotwall, and I'm responsible for coding the entirity of this webpage. Everything you see inside of the files in the root directory of this page was written by me (with some occasional help of course.)
+Hey, I'm rotwall, and I'm responsible for coding the entirety of this webpage. Everything you see inside of the files in the root directory of this page was written by me (with some occasional help of course.)
 
 Here's some links if you want to find out more about me or see what else I'm working on:
 - [Github](https://github.com/Rotwall72)
@@ -9,8 +9,8 @@ Here's some links if you want to find out more about me or see what else I'm wor
 
 You can also find me on the Official Rain World Discord Server, my username is the same there as anywhere else.
 
-## Contributers
-A huge thanks to ECSP for providing pixel art graphics, as well as general guidance during developemnt. You can find out more about him and what he does on his website: [ecsp.dev](https://ecsp.dev/).
+## Contributors
+A huge thanks to ECSP for providing pixel art graphics, as well as general guidance during developement. You can find out more about him and what he does on his website: [ecsp.dev](https://ecsp.dev/).
 
 Another thank you to everyone who tested this webpage and provided feedback; those being:
 - ECSP
@@ -18,7 +18,7 @@ Another thank you to everyone who tested this webpage and provided feedback; tho
 - AliKirb
 
 ## Videocult
-Rain World is a property of Videocult, and I am not affilated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on Rain World Downpour.
+Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on Rain World Downpour.
 
 ## Music
 All base game threat themes were created by members of Videocult, and can be found in the official [Rain World ost](https://www.youtube.com/playlist?list=PLuX1dXf1Zu0kHEc_TrwqgbKaEkWJOAqlN). Audio files were provided by [Rawry](https://www.youtube.com/@RawryProbably) via google drive.
@@ -56,7 +56,7 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [klumquart](https://steamcommunity.com/profiles/76561199123058149) (Steam)
 - Mikronaut
 - [Mojosoup](https://x.com/MojoMojosoup) (Twitter)
-- [Myr](https://steamcommunity.com/id/myrmice/) (Steam)
+- [Myrmice](https://steamcommunity.com/id/myrmice/) (Steam)
 - [Nautilo](https://www.youtube.com/@nautillo2481) (Youtube)
 - [Notocorda](https://www.deviantart.com/notocordada) (Deviantart)
 - [Pinpoint](https://oliverlollsdesign.com/) (Personal Website)
@@ -67,7 +67,7 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - Tsunochizu
 - [Wrayk](https://steamcommunity.com/profiles/76561197975243281) (Steam)
 
-(For those without a link attached, I was unfortunately unable to find something that I could refer users to which pretains to you and any other things you've worked on. If you wish for me to attach a link to your name or change the one which I have given you, please reach out to me on Discord.)
+(For those without a link attached, I was unfortunately unable to find something that I could refer users to which pertains to you and any other things you've worked on. If you wish for me to attach a link to your name or change the one which I have given you, please reach out to me on Discord.)
 
 And here's the credits by region:
 
@@ -90,7 +90,7 @@ And here's the credits by region:
 - Region, Region Art, and Threat Theme by Don
 
 ## Far Shore:
-- Region by Myr
+- Region by Myrmice
 - Region Art by Nautillo
 - Far Shore Threat Theme by Aki
 - Woven Nest Threat Theme by Snoodle
@@ -108,13 +108,17 @@ And here's the credits by region:
 - Region & Region Art by Nautilo
 - Threat Theme by Snoodle
 
+## Luminous Cove:
+- Region by Myrmice
+- Threat Theme by Aki
+
 ## Lush Mire:
 - Region by Wrayk
 - Region Art by Snugboat
 - Threat Theme by Andrew Man
 
 ## Moss Fields:
-- Region by Myr
+- Region by Myrmice
 - Region Art by Tsunochizu
 - Threat Theme by Aki
 
@@ -127,13 +131,17 @@ And here's the credits by region:
 - Region & Region Art by Nautilo
 - Threat Theme by AzeXir
 
+## Preservatory:
+- Region & Region Art by Fishnoid
+- Threat Theme by Snoodle
+
 ## Purification Conduits:
 - Region by Mojosoup
 - Region Art by Notocorda
 - Threat Theme by Snoodle
 
 ## Scorched District:
-- Region by Myr
+- Region by Myrmice
 - Region Art by Tsunochizu
 - Threat Theme (Day) by Joseph Neid
 - Threat Theme (Night) by Aki
@@ -163,7 +171,7 @@ And here's the credits by region:
 - Region by Wrayk
 - Threat Theme by Wrayk & Pinpoint
 
-Once again, thanks to all of you for allowing Threatmixer to become fully realized and the best possible thing it could be. You're all incredibely talented, and I couldn't be more happy to be in a community full of people like yourselves.
+Once again, thanks to all of you for allowing Threatmixer to become fully realized and the best possible thing it could be. You're all incredibly talented, and I couldn't be more happy to be in a community full of people like yourselves.
 
 # *Licenses*
 
@@ -186,4 +194,4 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # *Final Statement*
-I want to give one last thank you to Videocult and all of the brilliant minds within it for making genuinely one of the most important works of art of my entire life. I've been obsessed with Rain World ever since I first beat it in 2021, and it still occupies a fast majority of my mind today. This game has been a source of inspiration for countless ideas and stories and games and what-have-you that I've been conjuring up in my head over these past few years. I don't think it'd be entirely false to say that this game has played a huge role in turning me into the person I am today. I could literally gush about everything this game has to offer for hours, but I need to keep this to a sizable paragraph. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and checking out my project. I hope you will enjoy, or have enjoyed, this webpage as much as I did making it. Thank you, thank you, thank you.
+I want to give one last thank you to Videocult and all of the brilliant minds within it for making genuinely one of the most important works of art of my entire life. I've been obsessed with Rain World ever since I first beat it in 2021, and it still occupies a vast majority of my mind today. This game has been a source of inspiration for countless ideas and stories and games and what-have-you that I've been conjuring up in my head over these past few years. I don't think it'd be entirely false to say that this game has played a huge role in turning me into the person I am today. I could literally gush about everything this game has to offer for hours, but I need to keep this to a sizable paragraph. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and checking out my project. I hope you will enjoy, or have enjoyed, this webpage as much as I did making it. Thank you, thank you, thank you.
