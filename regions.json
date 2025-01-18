@@ -267,6 +267,22 @@
         "background": "assets/images/backgrounds/waterfront_facility.png",
         "preview": "assets/music_snippets/LM_snippet.MP3"
     },
+    {
+        "name": "Aether Ridge",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/threat_music/mods/AR/TH_AR - KICK.ogg"],
+            ["perc_icon.png", "assets/threat_music/mods/AR/TH_AR - PERC1.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/AR/TH_AR - SNARE.ogg"],
+            ["stop_icon.png", "assets/threat_music/mods/AR/TH_AR - NOISE.ogg"],
+            ["synth_icon.png", "assets/threat_music/mods/AR/TH_AR - ARPS.ogg"],
+            ["pad_icon.png", "assets/threat_music/mods/AR/TH_AR - LEAD.ogg"]
+        ],
+        "color": "#91a6b1",
+        "background": "assets/images/backgrounds/aether_ridge.png",
+        "filter": "brightness(0) saturate(100%) invert(76%) sepia(14%) saturate(355%) hue-rotate(156deg) brightness(84%) contrast(89%)",
+        "preview": "assets/music_snippets/AR_snippet.mp3"
+    },
     {   
         "name": "Aqueducts",
         "group": "mods",

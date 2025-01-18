@@ -883,22 +883,22 @@ function addOnClick(element, regionData, resolve) {
                     altColorNeeded = true;
                     break;
                 
-                case 18: // coral caves
+                case 19: // coral caves
                     layerButtonContainer.style.width = "56vw";
                     altColorNeeded = true;
                     break;
 
-                case 24: // luminous cove
+                case 25: // luminous cove
                     layerButtonContainer.style.width = "65vw";
                     altColorNeeded = true;
                     break;
                 
-                case 26: // moss fields
+                case 27: // moss fields
                     layerButtonContainer.style.width = "62vw";
                     altColorNeeded = true;
                     break;
                 
-                case 36: // stormy coast
+                case 37: // stormy coast
                     layerButtonContainer.style.width = "49vw";
                     altColorNeeded = false;
                     break;
@@ -948,9 +948,9 @@ function addOnClick(element, regionData, resolve) {
                 // applying alternate colors to buttons if needed
                 if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
                     (altColorNeeded && regionIndex == 6 && layerButtons.length > 8) || // metropolis
-                    (altColorNeeded && regionIndex == 18 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 24 && layerButtons.length < 10) || // luminous cove
-                    (altColorNeeded && regionIndex == 26 && layerButtons.length > 8)) { // moss fields
+                    (altColorNeeded && regionIndex == 19 && layerButtons.length > 8) ||  // coral caves
+                    (altColorNeeded && regionIndex == 25 && layerButtons.length < 10) || // luminous cove
+                    (altColorNeeded && regionIndex == 27 && layerButtons.length > 8)) { // moss fields
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;

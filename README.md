@@ -4,10 +4,8 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 # *Development progress*
 
-The Preservatory and Luminous Cove have been added, be sure to check those out! Me and ECSP are still working on making new icons, but I'll still push out minor updates like bugfixes or whatnot. This likely marks the last significant update of the year, and I am still amazed at what I was able to accomplish since Summer of this year. I can't wait to see what 2025 will bring for this project! Thank you shwoing interest in Threatmixer, and happy new year!
+Aether Ridge has been added, and I've now also begun to keep track of this webpage's versions, which you can see on the bottom right of the home screen. I have quite a few ideas as to what to add to this site in the future, but I don't want to jump into anything quite yet without every modded region having its own full set of icons. Stay tuned.
 
 # *TODO:*
 
-1. Extra / Post-release stuff
-    - New icons
-    - Continuous Update of Modded Regions
+- New icons

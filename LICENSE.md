@@ -7,7 +7,7 @@ Here's some links if you want to find out more about me or see what else I'm wor
 - [Github](https://github.com/Rotwall72)
 - [Youtube](https://www.youtube.com/@Rotwall)
 
-You can also find me on the Official Rain World Discord Server, my username is the same there as anywhere else.
+You can also find me on the [Official Rain World Discord Server](https://discord.gg/rainworld), my username is the same there as it is anywhere else.
 
 ## Contributors
 A huge thanks to ECSP for providing pixel art graphics, as well as general guidance during developement. You can find out more about him and what he does on his website: [ecsp.dev](https://ecsp.dev/).
@@ -37,6 +37,9 @@ The visualizer present in the music screen was made by following a tutorial crea
 I also have to give credit to Barrett Sonntag for creating a [CSS filter generator](https://codepen.io/sosuke/pen/Pjoqqp), making finding the filters to use for changing the color of images a hell of a lot easier.
 
 # *Modded Region Credits*
+
+(*Note:* All of the regions which are currently known to be part of the watcher dlc, which includes **Aether Ridge**, **Badlands**, **Stormy Coast**, and **Coral Caves**, are all presented on this site as they were before the release of the watcher's campaign. The soundtracks and, of course, threat themes of these regions are subject to change by the watcher team.)
+
 A humongous thank you to Rain World's modding community for allowing their amazing work to be featured on this page.
 
 Here's a full list of everyone who's region, music, and/or art is shown in this project:
@@ -53,6 +56,7 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [Fishnoid](https://www.youtube.com/channel/UCG-mPR0LtVn4QX0QSmSwCjQ) (Youtube)
 - [Henpemaz](https://www.youtube.com/@henpemaz) (Youtube)
 - [Joseph Nied](https://www.youtube.com/@josephtnied) (Youtube)
+- [Kaeporo](https://www.youtube.com/@Kaeporo) (Youtube)
 - [klumquart](https://steamcommunity.com/profiles/76561199123058149) (Steam)
 - Mikronaut
 - [Mojosoup](https://x.com/MojoMojosoup) (Twitter)
@@ -70,6 +74,9 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 (For those without a link attached, I was unfortunately unable to find something that I could refer users to which pertains to you and any other things you've worked on. If you wish for me to attach a link to your name or change the one which I have given you, please reach out to me on Discord.)
 
 And here's the credits by region:
+
+## Aether Ridge:
+- Region, Region Art, and Threat Theme by Kaeporo
 
 ## Aqueducts:
 - Region & Region Art by Carrotpudding

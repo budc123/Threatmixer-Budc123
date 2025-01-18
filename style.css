@@ -214,14 +214,25 @@ progress::-webkit-progress-value {
     background-image: url(assets/images/backgrounds/home_screen_bg.png);
 }
 
-#disclaimer {
+#disclaimer, #version {
     font-family: RWmenu;
-    font-size: 0.5vw;
     z-index: 999;
     position: absolute;
-    bottom: 0;
+}
+
+#disclaimer {
+    top: 0;
+    font-size: 0.5vw;
     left: 0;
     margin-left: 0.7vw;
+}
+
+#version {
+    font-size: 1vw;
+    bottom: 0;
+    right: 0;
+    margin-right: 1.4vw;
+    margin-bottom: 0.6vw;
 }
 
 #loading_screen, #home_screen {
