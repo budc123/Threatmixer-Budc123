@@ -10,7 +10,7 @@ Here's some links if you want to find out more about me or see what else I'm wor
 You can also find me on the [Official Rain World Discord Server](https://discord.gg/rainworld), my username is the same there as it is anywhere else.
 
 ## Contributors
-A huge thanks to ECSP for providing pixel art graphics, as well as general guidance during developement. You can find out more about him and what he does on his website: [ecsp.dev](https://ecsp.dev/).
+A huge thanks to ECSP for providing pixel art graphics, as well as giving general guidance during developement. You can find out more about her and what she does on his website: [ecsp.dev](https://ecsp.dev/).
 
 Another thank you to everyone who tested this webpage and provided feedback; those being:
 - ECSP

@@ -4,8 +4,11 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 # *Development progress*
 
-Aether Ridge has been added, and I've now also begun to keep track of this webpage's versions, which you can see on the bottom right of the home screen. I have quite a few ideas as to what to add to this site in the future, but I don't want to jump into anything quite yet without every modded region having its own full set of icons. Stay tuned.
+Every modded region now has a full set of button icons! Sorry that this took a little while, conceptualizing, designing, and then creating these icons is a process. Along with the modded regions, some icons for vanilla regions have been changed as well, which was just based on if I thought some sounds could be better represented with the new art we have. This update was mostly cosmetic, but now I have some more "mechanical" changes in mind for the future. I want to keep it somewhat of a suprise, but you can see some of the smaller things I plan to add in the TO DO list below.
 
-# *TODO:*
+# *TO DO:*
 
-- New icons
+- Fading layers
+- Better UI
+- More Controls
+- ???
