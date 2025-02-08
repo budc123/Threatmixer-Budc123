@@ -372,6 +372,7 @@ body, #music_screen {
 
 .layer_button {
     padding: 0.6vw;
+    image-rendering: pixelated;
 }
 
 .button_icon {
@@ -392,6 +393,7 @@ body, #music_screen {
 .other_buttons {
     padding: 0.6vw;
     position: relative;
+    image-rendering: pixelated;
 }
 
 #region_name {
