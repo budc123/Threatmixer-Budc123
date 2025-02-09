@@ -12,10 +12,10 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 ## Contributors
 
 ### Art
-A huge thanks to ECSP for providing pixel art graphics, as well as giving general guidance during developement. You can find out more about her and what she does on his website: [ecsp.dev](https://ecsp.dev/).
+A huge thanks to ECSP for providing pixel art graphics, as well as giving general guidance during developement. You can find out more about her and what she does on her website: [ecsp.dev](https://ecsp.dev/).
 
 ### Playtesting
-Thank you to parrakoot for playtesting, providing creative ideas, and overall just being super enthusiastic and supportive of this project!
+Thank you to parrakoot for playtesting, providing creative ideas, and overall just being super enthusiastic and supportive of this project! He also enjoys making music, and you can find some of his work on his [soundcloud](https://m.soundcloud.com/laurens-wallner-859047082).
 
 ### Other Helpers
 Thank you to everyone who tested this webpage and provided feedback and/or assisted with the code via pull requests. Those would include:
