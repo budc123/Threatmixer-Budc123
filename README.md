@@ -4,11 +4,11 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 # *Development progress*
 
-Every modded region now has a full set of button icons! Sorry that this took a little while, conceptualizing, designing, and then creating these icons is a process. Along with the modded regions, some icons for vanilla regions have been changed as well, which was just based on if I thought some sounds could be better represented with the new art we have. This update was mostly cosmetic, but now I have some more "mechanical" changes in mind for the future. I want to keep it somewhat of a suprise, but you can see some of the smaller things I plan to add in the TO DO list below.
+It's about time I did some organization of my code. Now, adding new features should be much easier now that everthing isn't just in one file anymore. Nothing else was really changed aside from that, except for a few minor changes to how the program goes through its procedures. You can find these changes inside the main.js. Expect some more new features to begin trickling in before the next big update.
 
 # *TO DO:*
 
 - Fading layers
 - Better UI
-- More Controls
+- More customizability
 - ???

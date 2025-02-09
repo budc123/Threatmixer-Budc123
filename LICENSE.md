@@ -10,12 +10,18 @@ Here's some links if you want to find out more about me or see what else I'm wor
 You can also find me on the [Official Rain World Discord Server](https://discord.gg/rainworld), my username is the same there as it is anywhere else.
 
 ## Contributors
+
+### Art
 A huge thanks to ECSP for providing pixel art graphics, as well as giving general guidance during developement. You can find out more about her and what she does on his website: [ecsp.dev](https://ecsp.dev/).
 
-Another thank you to everyone who tested this webpage and provided feedback; those being:
-- ECSP
+### Playtesting
+Thank you to parrakoot for playtesting, providing creative ideas, and overall just being super enthusiastic and supportive of this project!
+
+### Other Helpers
+Thank you to everyone who tested this webpage and provided feedback and/or assisted with the code via pull requests. Those would include:
 - TheLobsterFoam
 - AliKirb
+- MelnCat
 
 ## Videocult
 Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on Rain World Downpour.

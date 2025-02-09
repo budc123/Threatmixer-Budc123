@@ -1,0 +1,272 @@
+/*
+In this file, all of our global variables are declared and certain processes,
+like the visualizer and the recorder, are set up. 
+*/
+
+// element refrences
+const layerButtons = document.getElementsByClassName("layer_button"),
+    soloButton = document.getElementsByClassName("solo_button"),
+    pauseButton = document.getElementById("pause_button"),
+    pauseIcon = pauseButton.querySelector("img"),
+    playAllButton = document.getElementById("play_button"),
+    playAllIcon = playAllButton.querySelector("img"),
+    startButton = document.getElementById("start_button"),
+    aboutButton = document.getElementById("about_button"),
+    helpButton = document.getElementById("help_button"),
+    creditsButton = document.getElementById("credits_button"),
+    recordButton = document.getElementById("record_button"),
+    recordIcon = recordButton.querySelector("img"),
+    saveButton = document.getElementById("save_button"),
+    deleteButton = document.getElementById("delete_button"),
+    beginButton = document.getElementById("begin_button"),
+    exitButton = document.getElementById("exit_button"),
+    visButton = document.getElementById("visualizer_toggle"),
+    visIcon = visButton.querySelector("img"),
+    musicScreen = document.getElementById("music_screen"),
+    loadingScreen = document.getElementById("loading_screen"),
+    homeScreen = document.getElementById("home_screen"),
+    regionButton = document.getElementsByClassName("region_button"),
+    selectionScreen = document.getElementById("selection_screen"),
+    selectionHeader = document.getElementById("selection_header"),
+    moddedButton = document.getElementById("modded_button"),
+    baseButton = document.getElementById("base_button"),
+    baseCarousel = document.getElementById("base_carousel"),
+    modCarousel = document.getElementById("mod_carousel"),
+    carrotButtons = document.getElementsByClassName("carrot_buttons"),
+    regionButtonContainer = document.getElementsByClassName("region_button_container"),
+    slideNum = document.getElementById("slide_number"),
+    selectionBackButton = document.getElementById("selection_back_button"),
+    regionTitle = document.getElementById("region_name"),
+    layerButtonContainer = document.getElementById("layer_button_container"),
+    progressBar = document.getElementById("progress_bar"),
+    canvas = document.getElementById("canvas");
+
+// hiding these screens initially for cleaner page startup
+loadingScreen.style.display = "none";
+musicScreen.style.display = "none";
+selectionScreen.display = "none";
+
+// also setting carousel visibility
+modCarousel.style.display = "none";
+
+// grabbing the audio context and creating an oscillator with it
+let audioContext = new (window.AudioContext || window.webkitAudioContext);
+const oscillator = audioContext.createOscillator();
+oscillator.type = "sine";
+oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+const oscillatorDestination = audioContext.createMediaStreamDestination();
+oscillator.connect(oscillatorDestination);
+
+// creating the recorder
+const recorder = new MediaRecorder(oscillatorDestination.stream);
+
+// saving what the recorder picks up
+recorder.ondataavailable = (noise) => {recordedData.push(noise.data);}
+
+// turning the recorder's data into a file
+recorder.onstop = () => {
+    if (eraseRecording) {
+        recordedData = [];
+        eraseRecording = false;
+    }
+
+    else {
+        // creating the file
+        var audioFile = new Blob(recordedData, {"type": "audio/mp3; codecs=opus"}),
+            fileUrl = URL.createObjectURL(audioFile);
+            
+        // sending the file to the user's computer
+        var link = document.createElement("a");
+        link.href = fileUrl;
+        fileName = prompt("Please enter a name for this recording:");
+        link.download = fileName + ".mp3";
+        link.style.display = "none";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(fileUrl);
+
+        // clearing the recorded data
+        recordedData = [];
+    }
+}
+
+// creating the visualizer
+const visualizer = audioContext.createAnalyser();
+visualizer.fftSize = 512;
+const bufferLength = visualizer.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+const barWidth = canvas.width / bufferLength * 3;
+const canvasContext = canvas.getContext("2d");
+
+// making sure the canvas isn't blurry
+canvasContext.imageSmoothingEnabled = false;
+
+// declaring our global variables
+let layerSoloed, songStarted, eraseRecording, loadedLayers, 
+    layersPlaying, startingLayers, recordedData, regionThreatLayers,
+    songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
+    animation, 
+    clickOnTimeout = false,
+    regionsAddedToSelector = false,
+    recorderQueued = false,
+    visActive = false,
+    programStarted = false,
+    regionButtonClicked = false,
+    isFadingOut = false,
+    divIndex = -1,
+    baseSlideNum = 1,
+    modSlideNum = 1,
+    baseSlideNumMax = 0,
+    modSlideNumMax = 0,
+    storedBaseSlide = 0, 
+    storedModSlide = 0,
+    selectionState = "base";
+
+const brightened = "brightness(100%)",
+    dimmed = "brightness(50%)",
+    unmute = 1,
+    mute = 0,
+    soloIcon1 = "assets/images/button_icons/solo_icon_1.png",
+    soloIcon2 = "assets/images/button_icons/solo_icon_2.png";
+
+// markdown file handling
+let MDArray = ["README.md", "TUTORIAL.md", "LICENSE.md"]
+let MDArrayIndex = 0
+
+MDArray.forEach((file) => {
+    fetch(file).then((rawMD) => {    
+        return rawMD.text();
+    }).then((MDText) => {
+        // adding the containers
+        var MDAndButtonContainer = document.createElement("div");
+        MDAndButtonContainer.classList.add("markdown_and_back_container")
+        document.body.appendChild(MDAndButtonContainer);
+        MDAndButtonContainer.style.visibility = "hidden";
+        MDAndButtonContainer.style.opacity = "0";
+
+        var MDContainer = document.createElement("div");
+        MDContainer.classList.add("markdown_container")
+        MDAndButtonContainer.appendChild(MDContainer);
+
+        // putting the md text into the MDContainer
+        MDContainerContent = marked.parse(MDText);
+        MDContainer.innerHTML = MDContainerContent
+
+        // adding a back button
+        var backButton = document.createElement("button");
+        backButton.classList.add("back_button")
+        backButton.innerText = "X";
+        backButton.onclick = () => {
+            MDAndButtonContainer.style.visibility = "hidden";
+            MDAndButtonContainer.style.opacity = "0";
+        };
+        MDAndButtonContainer.appendChild(backButton);
+
+        // applying classes and other changes to elements within the markdown
+        MDContainer.querySelectorAll("img").forEach((element) => {
+            element.classList.add("markdown_img")
+            
+            if (element.alt == "Button Icon") {
+                element.classList.add("markdown_button_img");
+                element.parentElement.classList.add("markdown_button_img_container")
+            }
+        })
+
+        // taking the links and applying attributes to them
+        MDContainer.querySelectorAll("a").forEach((element) => {
+            element.classList.add("markdown_link");
+            element.target = "_blank";
+        });
+
+        // giving each file their respective class and button
+        switch (file) {
+            case ("README.md"):
+                aboutButton.onclick = () => {
+                    MDAndButtonContainer.style.visibility = "visible";
+                    MDAndButtonContainer.style.opacity = "1";
+                    MDContainer.scrollTop = 0
+                };
+                break;
+
+            case ("TUTORIAL.md"):
+                helpButton.onclick = () => {
+                    MDAndButtonContainer.style.visibility = "visible"
+                    MDAndButtonContainer.style.opacity = "1";
+                    MDContainer.scrollTop = 0
+                };
+                break;
+
+            case ("LICENSE.md"):
+                creditsButton.onclick = () => {
+                    MDAndButtonContainer.style.visibility = "visible"
+                    MDAndButtonContainer.style.opacity = "1";
+                    MDContainer.scrollTop = 0
+                };
+                break;
+        }
+
+        MDArrayIndex++;
+    })
+})
+
+/*
+NON-DYNAMIC ONCLICKS
+*/
+
+// changing displayed information based on which region gorup was clicked
+baseButton.onclick = () => {
+    selectionState = "base";
+    selectionHeader.innerText = "Vanilla / Downpour";
+    modCarousel.scrollLeft = 0;
+    baseSlideNum = 1;
+    slideNum.innerText = `${baseSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    modCarousel.style.display = "none";
+    baseCarousel.style.display = "flex";
+}
+
+moddedButton.onclick = () => {
+    selectionState = "mods";
+    selectionHeader.innerText = "Modded Regions";
+    baseCarousel.scrollLeft = 0;
+    modSlideNum = 1;
+    slideNum.innerText = `${modSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    baseCarousel.style.display = "none";
+    modCarousel.style.display = "flex";
+}
+
+selectionBackButton.onclick = () => {
+    showScreen(homeScreen)
+    hideScreen(selectionScreen)
+    clearSelectionScreen()
+    baseCarousel.scrollLeft = 0;
+    modCarousel.scrollLeft = 0;
+    baseSlideNum = 1;
+    modSlideNum = 1;
+    slideNum.innerText = 1;
+    switchToBright(carrotButtons[1])
+    switchToDark(carrotButtons[0])
+}
+
+beginButton.onclick = () => {
+    hideScreen(homeScreen, selectionScreen);
+    showScreen(loadingScreen);
+    storedBaseSlide = 0;
+    storedModSlide = 0;
+    runProgram();
+}
+
+// hiding all other screens and showing the home screen first
+hideScreen(selectionScreen, musicScreen, loadingScreen);
+showScreen(homeScreen);
+
+// unhiding the other screens once they've been flattened
+setTimeout(() => {
+    loadingScreen.style.display = "flex";
+    musicScreen.style.display = "flex";
+    selectionScreen.style.display = "flex";
+}, 300);

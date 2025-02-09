@@ -1,0 +1,117 @@
+/* Selection Screen */ 
+.region_button {
+    font-family: Rodondo;
+    font-size: 3.1vw;
+    text-shadow: 0.25vw 0.25vw 0.25vw #000000e6;
+    white-space: normal;
+    text-align: center;
+    width: 20vw;
+    height: 14vw;
+    margin-bottom: 3vw;
+    background-size: 25vw;
+    background-position: left;
+}
+
+.region_button:hover {
+    scale: 1.1;
+    animation: sway 8s ease alternate infinite;
+}
+
+#selection_screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+        ),
+        url(/assets/images/backgrounds/selection_screen_bg.png);
+    background-color: white;
+    background-size: cover;
+}
+
+#side_button_container {
+    rotate: 270deg;
+    display: flex;
+    justify-content: end;
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    margin-left: -3.3vw;
+    margin-top: -5vw;
+}
+
+.side_button {
+    color: white;
+    background-color: rgba(44, 44, 44, 0.4);
+    box-shadow: none;
+    border: 0.16vw solid #dadbdd;
+    border-radius: 1vw 1vw 0vw 0vw;
+    margin: 0.1vw;
+    padding-left: 0.4vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.2vw;
+}
+
+#selection_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.16vw solid #dadbdd;
+    border-radius: 1vw;
+    padding: 1vw;
+    background-color: rgba(44, 44, 44, 0.4);
+    height: 43vw;
+}
+
+.region_button_container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    flex-basis: 70vw;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: 2vw;
+}
+
+#base_carousel, #mod_carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    width: 70.1vw;
+}
+
+#carousel_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrot_buttons {
+    font-size: 0.8vw;
+    padding: 0.4vw;
+    height: max-content;
+}
+
+#left_button {
+    padding-left: 0.5vw
+}
+
+#selection_header {
+    font-size: 6vw;
+    letter-spacing: 0.3vw;
+    margin: 1vw;
+}
+
+#slide_number {
+    z-index: 0;
+    position: absolute;
+    right: 13vw;
+    bottom: 0.5vw;
+}

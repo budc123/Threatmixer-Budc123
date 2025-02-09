@@ -1,0 +1,83 @@
+/* General page formatting */
+@font-face {
+    font-family: Rodondo;
+    src: url(/assets/fonts/rodondo.woff2);  
+}
+
+@font-face {
+    font-family: RWmenu;
+    src: url(/assets/fonts/rainworldmenu.woff2);
+}
+
+html, body, #home_screen, #loading_screen, #music_screen {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: Rodondo;
+    font-size: 2vw;
+}
+
+button {
+    padding: 3vw;
+    border-radius: 0.6vw;
+    margin: 0.5vw;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    font-family: RWmenu;
+    font-size: 0.6vw;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0.5vw 0.5vw 0.4vw #000000e6;
+}
+
+.home_buttons, .carrot_buttons, .back_button, .markdown_img {
+    color: #dadbdd;
+    border: 0.2vw solid #dadbdd;
+}
+
+progress {
+    appearance: none;
+    width: 53vw;
+    border-radius: 2vw;
+    background-color: #2a2a2a;
+    border: 0.16vw solid #202222;
+    box-shadow: 0.5vw 0.5vw 0.4vw #000000e6;
+}
+
+progress::-webkit-progress-bar {
+    appearance: none;
+    width: 53vw;
+    border-radius: 2vw;
+    background-color: #2a2a2a;
+    border: 0.16vw solid #202222;
+    box-shadow: 0.5vw 0.5vw 0.4vw #000000e6;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 2vw;
+}
+
+#region_name, #page_name, #loading_header {
+    letter-spacing: 0.3vw;
+}
+
+/* transitions and animations */
+#home_screen, #loading_screen, #selection_screen, #music_screen {
+    transition: height 0.6s ease;
+}
+
+.region_button {
+    transition: all 0.2s ease;
+}
+
+@keyframes sway {
+    from {
+        background-position: left;
+    }
+
+    to {
+        background-position: right;
+    }
+}
