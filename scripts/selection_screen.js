@@ -390,7 +390,23 @@ function addOnClick(element, regionData, resolve) {
                 // creating the icons to put in each button
                 var newLayerIcon = document.createElement("img");
                 newLayerIcon.classList.add("button_icon");
-                newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
+
+                // EASTER EGG 1
+                if (regionIndex == 20 && layer[1].includes("JUG.ogg")){
+                    var potRoll = Math.floor(Math.random() * 10) + 1;
+                    console.log(potRoll)
+
+                    if (potRoll == 1) {
+                        newLayerIcon.src = `assets/images/button_icons/smug_jug_icon.png`;
+                    }
+                    else {
+                        newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
+                    }
+                }
+                else {
+                    newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
+                }
+
                 newLayerIcon.style.filter = `${iconFilter}`;
 
                 var newSoloIcon = document.createElement("img");
