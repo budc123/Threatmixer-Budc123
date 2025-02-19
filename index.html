@@ -20,7 +20,9 @@
 <body>
     <!-- Home Screen -->
     <div id="home_screen">
-        <h1 id="page_name">Threatmixer</h1>
+        <div id="title_and_logo_container">
+            <h1 id="page_name">Threatmixer</h1>
+        </div>
         <h5 id="subheader1" class="subheaders">Created by Rotwall</h2>
         <h5 id="subheader2" class="subheaders">Pixel Art by ECSP</h2>
         <div id="home_button_container">
@@ -30,19 +32,30 @@
             <button class="home_buttons" id="credits_button">CREDITS</button>
         </div>
         <p id="disclaimer">DISCLAIMER: I am not affiliated with Videocult or Akupara Games in any way. This is a fan project, and all background images and music featured on this page are owned by Videocult.</p>
-        <p id="version">Version 1.5.4</p>
+        <p id="version">Version 1.6.5</p>
     </div>
 
     <!-- Selection Screen -->
     <div id="selection_screen">
 
         <!-- Back Button -->
-        <button class="back_button selection_back_button" id="selection_back_button">X</button>
+        <button class="back_button" id="selection_back_button">X</button>
+
+        <!--Preview Toggle -->
+        <button class="back_button" id="preview_toggle_button">Song Previews: On</button> 
 
         <!-- Side Buttons-->
         <div id="side_button_container">
-            <button class="side_button" id="modded_button">Modded Regions</button>
-            <button class="side_button" id="base_button">Vanilla / Downpour</button>
+            <button class="side_button" id="modded_button">
+                <span class="side_button_text">
+                    Modded Regions
+                </span>
+            </button>
+            <button class="side_button extend_button" id="base_button">
+                <span class="side_button_text">
+                    Vanilla / Downpour
+                </span>
+            </button>
         </div>
 
         <!-- Carousel-->
@@ -60,7 +73,7 @@
 
     <!-- Loading Screen-->
     <div id="loading_screen">
-        <h1 id="loading_header">Loading...</h1>
+        <img id="loading_logo" src="assets/images/misc/logo.png">
     </div>
 
     <!-- Music Screen -->

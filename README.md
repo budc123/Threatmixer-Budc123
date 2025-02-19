@@ -4,11 +4,9 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 # *Development progress*
 
-It's about time I did some organization of my code. Now, adding new features should be much easier now that everthing isn't just in one file anymore. Nothing else was really changed aside from that, except for a few minor changes to how the program goes through its procedures. You can find these changes inside the main.js. Expect some more new features to begin trickling in before the next big update.
+A new region has been added, and a couple of bugfixes have been done to the selection screen. You'll also notice the new button on the selection screen as well. I added a toggle to the previews since I found it kinda annoying to accidently go over a region button and then have to hear the preview for a second. Hopefully someone finds it useful. Also, look out for a new spinning face on the loading screen. That's about it for this update, expect some more tidying up in the next couple of updates as well.
 
-# *TO DO:*
+# *TO DO*
 
-- Fading layers
-- Better UI
-- More customizability
+- Tidying up
 - ???

@@ -3,7 +3,6 @@ Here, the selection screen is set up, which involves getting all of the region d
 of the region buttons work.
 */
 
-
 function setUpSelectionScreen(regionData) {
     // hiding the music screen for when we leave it to enter the selection screen
     hideScreen(musicScreen);
@@ -66,7 +65,8 @@ function setUpSelectionScreen(regionData) {
                     var songPreview =  new Howl({
                         src: [region.preview, "sounds.mp3"],
                         loop: true,
-                        onplay: () => {songPreview.fade(0, 1, 1000)}
+                        onplay: () => {songPreview.fade(0, 1, 1000)},
+                        onstop: () => {isFadingOut = false}
                     })
                 }
 
@@ -78,15 +78,20 @@ function setUpSelectionScreen(regionData) {
                     newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
 
                     // fading in the song preview
-                    if (region.preview != "N/A") {
-                        // this setInterval makes it so that if you're hovering over the button while the song is fading out,
-                        // it will fade in again as soon as it's done fading out
-                        hoverCheck = setInterval(() => { 
-                            if (!isFadingOut && !songPreview.playing()) {
-                                songPreview.play()
-                                clearInterval(hoverCheck)
-                            }
-                        }, 10)
+                    if (region.preview != "N/A" && canPlay && !loadingRegion && previewsOn) {
+                        // first checking if another preview is currently trying to fade out
+                        if (isFadingOut) {
+                            // if so, stop it
+                            currentPreviewPlaying.stop()
+                            clearTimeout(fadeCheck);
+                            isFadingOut = false;
+                        }
+                        
+                        // if we're not fading out and the current songPreview isn't playing,
+                        if (!isFadingOut && !songPreview.playing() && !loadingRegion && previewsOn) {
+                            songPreview.play()
+                            currentPreviewPlaying = songPreview
+                        }
                     }
                 }
 
@@ -95,16 +100,11 @@ function setUpSelectionScreen(regionData) {
                     newRegionButton.style.boxShadow = "";
 
                     // fading out the song preview
-                    if (region.preview != "N/A") {
-                        clearInterval(hoverCheck)
+                    if (region.preview != "N/A" && canPlay) {
                         isFadingOut = true;
-
                         songPreview.fade(1, 0, 1000)
                         // waiting for the song to fully fade before stopping it
-                        setTimeout(() => {
-                            songPreview.stop()
-                            isFadingOut = false;
-                        }, 1000)
+                        fadeCheck = setTimeout(() => {songPreview.stop()}, 1000)
                     }
                 }
 
@@ -120,8 +120,12 @@ function setUpSelectionScreen(regionData) {
 
         // once button set up is complete,
         Promise.all(buttonSetUp).then(() => {
-            hideScreen(loadingScreen);
-            showScreen(selectionScreen);
+            // ensuring that the mod carousel starts at the first slide
+            if (selectionState != "mods") {
+                modCarousel.style.display = "flex";
+                modCarousel.scrollLeft = 0;
+                modCarousel.style.display = "none";
+            }
 
             // setting the carousel screen
             baseCarousel.scrollLeft = storedBaseSlide
@@ -183,6 +187,8 @@ function setUpSelectionScreen(regionData) {
 
             carrotButtons[0].onclick = () => { // left carrot button
                 if (!clickOnTimeout) {
+                    setClickTimout();
+                    
                     // this switch checks to see what carousel we're trying to move
                     switch (selectionState) {
                         case ("base"):
@@ -227,11 +233,11 @@ function setUpSelectionScreen(regionData) {
                             break;
                     }
                 }
-                setClickTimout();
             }
 
             carrotButtons[1].onclick = () => { // right carrot button
                 if (!clickOnTimeout) {
+                    setClickTimout();
                     switch (selectionState) {
                         case ("base"):
                             if (baseSlideNum == 1) {
@@ -270,9 +276,16 @@ function setUpSelectionScreen(regionData) {
                             break;
                     }
                 }
-                setClickTimout();
             }
         });
+
+        // revealing the selection screen
+        hideScreen(loadingScreen);
+        showScreen(selectionScreen);
+        loadingRegion = false;
+
+        // adding a short cooldown to when song previews can begin playing
+        previewCooldown = setTimeout(() => {canPlay = true}, 1000)
     })
 }
 
@@ -282,6 +295,7 @@ function addOnClick(element, regionData, resolve) {
         // preventing this code from running twice due to a double click
         if (!regionButtonClicked) {
             regionButtonClicked = true;
+            loadingRegion = true;
             
             hideScreen(selectionScreen);
             showScreen(loadingScreen);
@@ -328,17 +342,17 @@ function addOnClick(element, regionData, resolve) {
                     altColorNeeded = true;
                     break;
 
-                case 25: // luminous cove
+                case 26: // luminous cove
                     layerButtonContainer.style.width = "65vw";
                     altColorNeeded = true;
                     break;
                 
-                case 27: // moss fields
+                case 28: // moss fields
                     layerButtonContainer.style.width = "62vw";
                     altColorNeeded = true;
                     break;
                 
-                case 37: // stormy coast
+                case 38: // stormy coast
                     layerButtonContainer.style.width = "49vw";
                     altColorNeeded = false;
                     break;
@@ -388,8 +402,8 @@ function addOnClick(element, regionData, resolve) {
                 if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
                     (altColorNeeded && regionIndex == 6 && layerButtons.length > 8) || // metropolis
                     (altColorNeeded && regionIndex == 19 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 25 && layerButtons.length < 10) || // luminous cove
-                    (altColorNeeded && regionIndex == 27 && layerButtons.length > 8)) { // moss fields
+                    (altColorNeeded && regionIndex == 26 && layerButtons.length < 10) || // luminous cove
+                    (altColorNeeded && regionIndex == 28 && layerButtons.length > 8)) { // moss fields
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;

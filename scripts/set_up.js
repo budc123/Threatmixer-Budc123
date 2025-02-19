@@ -36,6 +36,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     regionButtonContainer = document.getElementsByClassName("region_button_container"),
     slideNum = document.getElementById("slide_number"),
     selectionBackButton = document.getElementById("selection_back_button"),
+    previewToggleButton = document.getElementById("preview_toggle_button"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
     progressBar = document.getElementById("progress_bar"),
@@ -106,7 +107,7 @@ canvasContext.imageSmoothingEnabled = false;
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
     songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
-    animation, 
+    animation, currentPreviewPlaying, fadeCheck, 
     clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
@@ -114,6 +115,9 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     programStarted = false,
     regionButtonClicked = false,
     isFadingOut = false,
+    canPlay = false,
+    loadingRegion = false,
+    previewsOn = true,
     divIndex = -1,
     baseSlideNum = 1,
     modSlideNum = 1,
@@ -223,6 +227,8 @@ baseButton.onclick = () => {
     slideNum.innerText = `${baseSlideNum}.`
     switchToDark(carrotButtons[0]);
     switchToBright(carrotButtons[1]);
+    baseButton.classList.add("extend_button")
+    moddedButton.classList.remove("extend_button")
     modCarousel.style.display = "none";
     baseCarousel.style.display = "flex";
 }
@@ -235,6 +241,8 @@ moddedButton.onclick = () => {
     slideNum.innerText = `${modSlideNum}.`
     switchToDark(carrotButtons[0]);
     switchToBright(carrotButtons[1]);
+    moddedButton.classList.add("extend_button")
+    baseButton.classList.remove("extend_button")
     baseCarousel.style.display = "none";
     modCarousel.style.display = "flex";
 }
@@ -250,6 +258,17 @@ selectionBackButton.onclick = () => {
     slideNum.innerText = 1;
     switchToBright(carrotButtons[1])
     switchToDark(carrotButtons[0])
+}
+
+previewToggleButton.onclick = () => {
+    previewsOn = !previewsOn
+
+    if (!previewsOn) {
+        previewToggleButton.innerText = "Song Previews: Off"
+    }
+    else {
+        previewToggleButton.innerText = "Song Previews: On"
+    }
 }
 
 beginButton.onclick = () => {

@@ -72,6 +72,14 @@ progress::-webkit-progress-value {
     transition: all 0.2s ease;
 }
 
+.layer_button_brightened:hover, .layer_button_brightened:hover, .solo_button, 
+    .other_buttons:hover, .recording_buttons:hover, .home_buttons:hover, 
+    #exit_button:hover, #visualizer_toggle:hover, .layer_button_darkened, 
+    .alt_layer_button_darkened, .carrot_buttons:hover, .side_button:hover,
+    .back_button:hover {
+    filter: brightness(60%);
+}
+
 @keyframes sway {
     from {
         background-position: left;
@@ -79,5 +87,15 @@ progress::-webkit-progress-value {
 
     to {
         background-position: right;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

@@ -1,9 +1,7 @@
 # *Credits*
 
 ## Me
-Hey, I'm rotwall, and I'm responsible for coding the entirety of this webpage. Everything you see inside of the files in the root directory of this page was written by me (with some occasional help of course.)
-
-Here's some links if you want to find out more about me or see what else I'm working on:
+Hey, I'm rotwall, and I'm responsible for the coding and designing of this webpage. Here's some links if you want to find out more about me or see what else I'm working on:
 - [Github](https://github.com/Rotwall72)
 - [Youtube](https://www.youtube.com/@Rotwall)
 
@@ -11,31 +9,20 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 
 ## Contributors
 
-### Art
-A huge thanks to ECSP for providing pixel art graphics, as well as giving general guidance during developement. You can find out more about her and what she does on her website: [ecsp.dev](https://ecsp.dev/).
-
-### Playtesting
-Thank you to parrakoot for playtesting, providing creative ideas, and overall just being super enthusiastic and supportive of this project! He also enjoys making music, and you can find some of his work on his [soundcloud](https://m.soundcloud.com/laurens-wallner-859047082).
-
-### Other Helpers
-Thank you to everyone who tested this webpage and provided feedback and/or assisted with the code via pull requests. Those would include:
-- TheLobsterFoam
-- AliKirb
-- MelnCat
+- [ECSP](https://ecsp.dev/) (Personal Website): Pixel Art, Playtesting, and Creative Assistence
+- [Parakoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Music (soon), Playtesting
+- TheLobsterFoam: Playtesting
+- AliKirb: Playtesting
+- MelnCat: Code Assistence
 
 ## Videocult
-Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on Rain World Downpour.
 
-## Music
-All base game threat themes were created by members of Videocult, and can be found in the official [Rain World ost](https://www.youtube.com/playlist?list=PLuX1dXf1Zu0kHEc_TrwqgbKaEkWJOAqlN). Audio files were provided by [Rawry](https://www.youtube.com/@RawryProbably) via google drive.
+Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on Rain World Downpour. All base game threat themes can be found in the official [Rain World ost](https://www.youtube.com/playlist?list=PLuX1dXf1Zu0kHEc_TrwqgbKaEkWJOAqlN). Audio files were provided by [Rawry](https://www.youtube.com/@RawryProbably) via google drive. All base game region background art was provided by the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Official_Art).
 
 ## Fonts
 The Rodondo font (the one used as the title font for Rain World) was created by @ollywood on twitter and uploaded to [dafont.com](https://www.dafont.com/rodondo.font).
 
 The Rain World menu font was recreated by DANNYY1TDM on [fontstruct](https://fontstruct.com/fontstructions/show/2392353/rain-world-menu).
-
-## Images
-All base game region background art were created by members of Videocult and were provided by the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Official_Art).
 
 ## Code
 The visualizer present in the music screen was made by following a tutorial created by [QuickCodingTuts](https://www.youtube.com/watch?v=sb6C1XNqJzA) on YouTube.
@@ -51,6 +38,7 @@ A humongous thank you to Rain World's modding community for allowing their amazi
 Here's a full list of everyone who's region, music, and/or art is shown in this project:
 - [4slugcats](https://x.com/SelenireeArt) (Twitter)
 - [Aki](https://www.youtube.com/@aki7007) (Youtube)
+- [aprilWORSTmonth] (https://steamcommunity.com/profiles/76561198881171789) (Steam)
 - [Andrew Man](https://electricsheap.bandcamp.com/album/chronological-error) (Bandcamp)
 - [AndrewFM](http://www.egg-zero.com/) (Personal Website)
 - [AxeXir](https://www.youtube.com/channel/UCnleE9tJyc5kz6Mt53aQuMw) (Youtube)
@@ -97,6 +85,10 @@ And here's the credits by region:
 
 ## Coral Caves:
 - Region & Region Art by Fishnoid
+- Threat Theme by Snoodle
+
+## Data Manifolds:
+- Region & Region Art by aprilWORSTmonth
 - Threat Theme by Snoodle
 
 ## Deserted Wastelands:
@@ -207,4 +199,4 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # *Final Statement*
-I want to give one last thank you to Videocult and all of the brilliant minds within it for making genuinely one of the most important works of art of my entire life. I've been obsessed with Rain World ever since I first beat it in 2021, and it still occupies a vast majority of my mind today. This game has been a source of inspiration for countless ideas and stories and games and what-have-you that I've been conjuring up in my head over these past few years. I don't think it'd be entirely false to say that this game has played a huge role in turning me into the person I am today. I could literally gush about everything this game has to offer for hours, but I need to keep this to a sizable paragraph. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and checking out my project. I hope you will enjoy, or have enjoyed, this webpage as much as I did making it. Thank you, thank you, thank you.
+I want to give one last thank you to Videocult and all of the brilliant minds within it for making my most favorite video game ever, and changing how I view gaming and art as a whole. I've been obsessed with Rain World ever since I first played it in 2021, and my love for it has hardly waned since. This game has been a source of inspiration for countless stories, ideas, games and what-have-you that I've been conjuring up in my head over these past few years. I think it's safe to say that this game has played a huge role in turning me into the person I am today. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and check out Threatmixer. I hope you will enjoy, or have enjoyed, using this webpage as much as I did making it. Thank you, thank you, thank you.

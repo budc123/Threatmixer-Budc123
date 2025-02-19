@@ -376,6 +376,24 @@
         "preview": "assets/music/music_snippets/RF_snippet.MP3"
     },
     {
+        "name": "Data Manifold",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/MD/TH_MD - KICK.ogg"],
+            ["castanets_icon.png", "assets/music/threat_music/mods/MD/TH_MD - CLAP.ogg"],
+            ["snare_icon.png", "assets/music/threat_music/mods/MD/TH_MD - CHOP.ogg"],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/MD/TH_MD - JUG.ogg"],
+            ["synth_icon.png", "assets/music/threat_music/mods/MD/TH_MD - PLUCK.ogg"],
+            ["arps_icon.png", "assets/music/threat_music/mods/MD/TH_MD - ARP.ogg"],
+            ["wawa_icon.png", "assets/music/threat_music/mods/MD/TH_MD - LEAD.ogg"],
+            ["bass_icon.png", "assets/music/threat_music/mods/MD/TH_MD - BASS.ogg"]
+        ],
+        "color": "#625756",
+        "filter": "brightness(0) saturate(100%) invert(33%) sepia(5%) saturate(881%) hue-rotate(316deg) brightness(98%) contrast(88%)",
+        "background": "assets/images/backgrounds/data_manifold.png",
+        "preview": "assets/music/music_snippets/MD_snippet.MP3"
+    },
+    {
         "name": "Deserted Wastelands",
         "group": "mods",
         "layers": [
