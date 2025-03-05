@@ -10,7 +10,7 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 ## Contributors
 
 - [ECSP](https://ecsp.dev/) (Personal Website): Pixel Art, Playtesting, and Creative Assistence
-- [Parakoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Music (soon), Playtesting
+- [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Music (soon), Playtesting
 - TheLobsterFoam: Playtesting
 - AliKirb: Playtesting
 - MelnCat: Code Assistence
