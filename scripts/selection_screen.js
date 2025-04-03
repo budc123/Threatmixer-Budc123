@@ -21,11 +21,13 @@ function setUpSelectionScreen(regionData) {
                 // storing the amount of buttons in each container
                 var baseButtonArray = baseCarousel.querySelectorAll("button");
                 var modButtonArray = modCarousel.querySelectorAll("button");
+                var mscButtonArray = mscCarousel.querySelectorAll("button");
+                var watchButtonArray = watchCarousel.querySelectorAll("button");
 
                 // this switch case handles updating the carousel slides based on how many buttons there are
                 switch (region.group) {
 
-                    // if it's a vanilla/msc region,
+                    // if it's a vanilla region,
                     case ("base"):
                         // add a new slide to that carousel if there's already 6 buttons
                         if (baseButtonArray.length % 6 == 0) {
@@ -45,6 +47,28 @@ function setUpSelectionScreen(regionData) {
                             var newDiv = document.createElement("div");
                             newDiv.classList.add("region_button_container");
                             modCarousel.appendChild(newDiv);
+                        }
+
+                        break;
+                    
+                    case ("msc"):
+                        if (mscButtonArray.length % 6 == 0) {
+                            divIndex++;
+                            mscSlideNumMax++;
+                            var newDiv = document.createElement("div");
+                            newDiv.classList.add("region_button_container");
+                            mscCarousel.appendChild(newDiv);
+                        }
+
+                        break;
+                
+                    case ("watch"):
+                        if (watchButtonArray.length % 6 == 0) {
+                            divIndex++;
+                            watchSlideNumMax++;
+                            var newDiv = document.createElement("div");
+                            newDiv.classList.add("region_button_container");
+                            watchCarousel.appendChild(newDiv);
                         }
 
                         break;
@@ -120,24 +144,40 @@ function setUpSelectionScreen(regionData) {
 
         // once button set up is complete,
         Promise.all(buttonSetUp).then(() => {
-            // ensuring that the mod carousel starts at the first slide
-            if (selectionState != "mods") {
+            // ensuring that the other carousel starts at the first slide
+            if (selectionState == "base") {
                 modCarousel.style.display = "flex";
                 modCarousel.scrollLeft = 0;
                 modCarousel.style.display = "none";
+                mscCarousel.style.display = "flex";
+                mscCarousel.scrollLeft = 0;
+                mscCarousel.style.display = "none";
+                watchCarousel.style.display = "flex";
+                watchCarousel.scrollLeft = 0;
+                watchCarousel.style.display = "none";
             }
 
             // setting the carousel screen
             baseCarousel.scrollLeft = storedBaseSlide
             modCarousel.scrollLeft = storedModSlide
+            mscCarousel.scrollLeft = storedMscSlide
+            watchCarousel.scrollLeft = storedWatchSlide
 
-            // setting carrot button status based on what screen we got sent to
+            // these variables handle setting carrot button status based on what screen we got sent to
             var atMidOfBaseCarousel = storedBaseSlide > 0 && storedBaseSlide < baseCarousel.scrollLeftMax,
                 atMidOfModCarousel = storedModSlide > 0 && storedModSlide < modCarousel.scrollLeftMax,
-                atStartOfBaseCarousel = storedBaseSlide == 0,
+                atMidOfMscCarousel = storedMscSlide > 0 && storedMscSlide < mscCarousel.scrollLeftMax,
+                atMidOfWatchCarousel = storedWatchSlide > 0 && storedWatchSlide < watchCarousel.scrollLeftMax;
+            
+            var atStartOfBaseCarousel = storedBaseSlide == 0,
                 atStartOfModCarousel = storedModSlide == 0,
-                atEndOfBaseCarousel = storedBaseSlide == baseCarousel.scrollLeftMax,
-                atEndOfModCarousel = storedModSlide == modCarousel.scrollLeftMax;
+                atStartOfMscCarousel = storedMscSlide == 0,
+                atStartOfWatchCarousel = storedWatchSlide == 0;
+            
+            var atEndOfBaseCarousel = storedBaseSlide == baseCarousel.scrollLeftMax,
+                atEndOfModCarousel = storedModSlide == modCarousel.scrollLeftMax,
+                atEndOfMscCarousel = storedMscSlide == mscCarousel.scrollLeftMax,
+                atEndOfWatchCarousel = storedWatchSlide == watchCarousel.scrollLeftMax;
 
             switch (selectionState) {
                 case ("base"):
@@ -159,10 +199,12 @@ function setUpSelectionScreen(regionData) {
                         switchToDark(carrotButtons[1]);
                     }
 
+                    // finally, determining the scroll distance
+                    var scrollDistance = baseCarousel.getBoundingClientRect().width;
                     break;
                 
-                // likewise logic
-                case ("mod"):
+                // likewise logic for the rest of the categories
+                case ("mods"):
                     if (atStartOfModCarousel) {
                         switchToBright(carrotButtons[1]);
                         switchToDark(carrotButtons[0]);
@@ -177,14 +219,46 @@ function setUpSelectionScreen(regionData) {
                         switchToDark(carrotButtons[1]);
                     }
 
+                    var scrollDistance = modCarousel.getBoundingClientRect().width;
+                    break;
+                
+                case ("msc"):
+                    if (atStartOfMscCarousel) {
+                        switchToBright(carrotButtons[1]);
+                        switchToDark(carrotButtons[0]);
+                    }
+
+                    if (atMidOfMscCarousel) {
+                        switchToBright(carrotButtons[0], carrotButtons[1])
+                    }
+
+                    if (atEndOfMscCarousel) {
+                        switchToBright(carrotButtons[0]);
+                        switchToDark(carrotButtons[1]);
+                    }
+
+                    var scrollDistance = mscCarousel.getBoundingClientRect().width;
+                    break;
+                    
+                case ("watch"):
+                    if (atStartOfWatchCarousel) {
+                        switchToBright(carrotButtons[1]);
+                        switchToDark(carrotButtons[0]);
+                    }
+
+                    if (atMidOfWatchCarousel) {
+                        switchToBright(carrotButtons[0], carrotButtons[1])
+                    }
+
+                    if (atEndOfWatchCarousel) {
+                        switchToBright(carrotButtons[0]);
+                        switchToDark(carrotButtons[1]);
+                    }
+
+                    var scrollDistance = watchCarousel.getBoundingClientRect().width;
                     break;
             }
-
-            // carousel scrolling functionality
-            if (selectionState == "base") {var scrollDistance = baseCarousel.getBoundingClientRect().width;}
-            else if (selectionState == "mods") {var scrollDistance = modCarousel.getBoundingClientRect().width;}
             
-
             carrotButtons[0].onclick = () => { // left carrot button
                 if (!clickOnTimeout) {
                     setClickTimout();
@@ -213,7 +287,7 @@ function setUpSelectionScreen(regionData) {
 
                             break;
                         
-                        // likewise logic for this case and the other button
+                        // likewise logic
                         case ("mods"):
                             if (modSlideNum == modSlideNumMax) {
                                 switchToBright(carrotButtons[1]);
@@ -227,6 +301,42 @@ function setUpSelectionScreen(regionData) {
                             }
 
                             if (modSlideNum == 1) {
+                                switchToDark(carrotButtons[0])
+                            }
+                            
+                            break;
+                        
+                        case ("msc"):
+                            if (mscSlideNum == mscSlideNumMax) {
+                                switchToBright(carrotButtons[1]);
+                            }
+
+                            mscCarousel.scrollLeft -= scrollDistance;
+
+                            if (mscSlideNum > 1) {
+                                mscSlideNum--;
+                                slideNum.innerText = `${mscSlideNum}.`;
+                            }
+
+                            if (mscSlideNum == 1) {
+                                switchToDark(carrotButtons[0])
+                            }
+                            
+                            break;
+                            
+                        case ("watch"):
+                            if (watchSlideNum == watchSlideNumMax) {
+                                switchToBright(carrotButtons[1]);
+                            }
+
+                            watchCarousel.scrollLeft -= scrollDistance;
+
+                            if (watchSlideNum > 1) {
+                                watchSlideNum--;
+                                slideNum.innerText = `${watchSlideNum}.`;
+                            }
+
+                            if (watchSlideNum == 1) {
                                 switchToDark(carrotButtons[0])
                             }
                             
@@ -274,6 +384,42 @@ function setUpSelectionScreen(regionData) {
                             }
 
                             break;
+                        
+                        case ("msc"):
+                            if (mscSlideNum == 1) {
+                                switchToBright(carrotButtons[0]);
+                            }
+
+                            mscCarousel.scrollLeft += scrollDistance;
+
+                            if (mscSlideNum < mscSlideNumMax) {
+                                mscSlideNum++;
+                                slideNum.innerText = `${mscSlideNum}.`;
+                            }
+                            
+                            if (mscSlideNum == mscSlideNumMax) {
+                                switchToDark(carrotButtons[1])
+                            }
+
+                            break;
+                    
+                        case ("watch"):
+                            if (watchSlideNum == 1) {
+                                switchToBright(carrotButtons[0]);
+                            }
+
+                            watchCarousel.scrollLeft += scrollDistance;
+
+                            if (watchSlideNum < watchSlideNumMax) {
+                                watchSlideNum++;
+                                slideNum.innerText = `${watchSlideNum}.`;
+                            }
+                            
+                            if (watchSlideNum == watchSlideNumMax) {
+                                switchToDark(carrotButtons[1])
+                            }
+
+                            break;
                     }
                 }
             }
@@ -303,6 +449,8 @@ function addOnClick(element, regionData, resolve) {
             // first storing the current carousel state to reference for later
             storedBaseSlide = baseCarousel.scrollLeft;
             storedModSlide = modCarousel.scrollLeft;
+            storedMscSlide = mscCarousel.scrollLeft;
+            storedWatchSlide = watchCarousel.scrollLeft;
 
             // defining variables
             layerSoloed = false;
@@ -318,7 +466,6 @@ function addOnClick(element, regionData, resolve) {
             var regionButtonArray = Array.from(regionButton),
                 regionIndex = regionButtonArray.indexOf(element),
                 regionChosen = regionData[regionIndex];
-            
             // changing the title of the page
             document.title = `Threatmixer - ${regionChosen.name}`;
             
@@ -332,29 +479,29 @@ function addOnClick(element, regionData, resolve) {
                     altColorNeeded = true;
                     break;
                 
-                case 6: // metroplis
+                case 9: // metroplis
                     layerButtonContainer.style.width = "58vw";
                     altColorNeeded = true;
                     break;
                 
-                case 19: // coral caves
+                case 15: // coral caves
                     layerButtonContainer.style.width = "56vw";
                     altColorNeeded = true;
                     break;
 
-                case 26: // luminous cove
+                case 16: // stormy coast
+                    layerButtonContainer.style.width = "49vw";
+                    altColorNeeded = false;
+                    break;
+
+                case 28: // luminous cove
                     layerButtonContainer.style.width = "65vw";
                     altColorNeeded = true;
                     break;
                 
-                case 28: // moss fields
+                case 30: // moss fields
                     layerButtonContainer.style.width = "62vw";
                     altColorNeeded = true;
-                    break;
-                
-                case 38: // stormy coast
-                    layerButtonContainer.style.width = "49vw";
-                    altColorNeeded = false;
                     break;
 
                 default: // if none of these things were selected
@@ -392,9 +539,8 @@ function addOnClick(element, regionData, resolve) {
                 newLayerIcon.classList.add("button_icon");
 
                 // EASTER EGG 1
-                if (regionIndex == 20 && layer[1].includes("JUG.ogg")){
+                if (regionIndex == 22 && layer[1].includes("JUG.ogg")){
                     var potRoll = Math.floor(Math.random() * 10) + 1;
-                    console.log(potRoll)
 
                     if (potRoll == 1) {
                         newLayerIcon.src = `assets/images/button_icons/smug_jug_icon.png`;
@@ -416,10 +562,10 @@ function addOnClick(element, regionData, resolve) {
 
                 // applying alternate colors to buttons if needed
                 if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
-                    (altColorNeeded && regionIndex == 6 && layerButtons.length > 8) || // metropolis
-                    (altColorNeeded && regionIndex == 19 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 26 && layerButtons.length < 10) || // luminous cove
-                    (altColorNeeded && regionIndex == 28 && layerButtons.length > 8)) { // moss fields
+                    (altColorNeeded && regionIndex == 9 && layerButtons.length > 8) || // metropolis
+                    (altColorNeeded && regionIndex == 15 && layerButtons.length > 8) ||  // coral caves
+                    (altColorNeeded && regionIndex == 28 && layerButtons.length < 10) || // luminous cove
+                    (altColorNeeded && regionIndex == 30 && layerButtons.length > 8)) { // moss fields
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;

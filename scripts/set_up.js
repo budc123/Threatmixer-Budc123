@@ -4,6 +4,7 @@ like the visualizer and the recorder, are set up.
 */
 
 // element refrences
+
 const layerButtons = document.getElementsByClassName("layer_button"),
     soloButton = document.getElementsByClassName("solo_button"),
     pauseButton = document.getElementById("pause_button"),
@@ -28,10 +29,14 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     regionButton = document.getElementsByClassName("region_button"),
     selectionScreen = document.getElementById("selection_screen"),
     selectionHeader = document.getElementById("selection_header"),
-    moddedButton = document.getElementById("modded_button"),
     baseButton = document.getElementById("base_button"),
+    moddedButton = document.getElementById("modded_button"),
+    mscButton = document.getElementById("downpour_button"),
+    watchButton = document.getElementById("watcher_button"),
     baseCarousel = document.getElementById("base_carousel"),
     modCarousel = document.getElementById("mod_carousel"),
+    mscCarousel = document.getElementById("downpour_carousel"),
+    watchCarousel = document.getElementById("watcher_carousel"),
     carrotButtons = document.getElementsByClassName("carrot_buttons"),
     regionButtonContainer = document.getElementsByClassName("region_button_container"),
     slideNum = document.getElementById("slide_number"),
@@ -49,6 +54,8 @@ selectionScreen.display = "none";
 
 // also setting carousel visibility
 modCarousel.style.display = "none";
+mscCarousel.style.display = "none";
+watchCarousel.style.display = "none";
 
 // grabbing the audio context and creating an oscillator with it
 let audioContext = new (window.AudioContext || window.webkitAudioContext);
@@ -120,11 +127,17 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     previewsOn = true,
     divIndex = -1,
     baseSlideNum = 1,
-    modSlideNum = 1,
     baseSlideNumMax = 0,
-    modSlideNumMax = 0,
     storedBaseSlide = 0, 
+    modSlideNum = 1,
+    modSlideNumMax = 0,
     storedModSlide = 0,
+    mscSlideNum = 1,
+    mscSlideNumMax = 0,
+    storedMscSlide = 0,
+    watchSlideNum = 1,
+    watchSlideNumMax = 0,
+    storedWatchSlide = 0,
     selectionState = "base";
 
 const brightened = "brightness(100%)",
@@ -221,15 +234,21 @@ NON-DYNAMIC ONCLICKS
 // changing displayed information based on which region gorup was clicked
 baseButton.onclick = () => {
     selectionState = "base";
-    selectionHeader.innerText = "Vanilla / Downpour";
+    selectionHeader.innerText = "Vanilla Regions";
     modCarousel.scrollLeft = 0;
+    mscCarousel.scrollLeft = 0;
+    watchCarousel.scrollLeft = 0;
     baseSlideNum = 1;
     slideNum.innerText = `${baseSlideNum}.`
     switchToDark(carrotButtons[0]);
     switchToBright(carrotButtons[1]);
     baseButton.classList.add("extend_button")
     moddedButton.classList.remove("extend_button")
+    mscButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
     modCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
     baseCarousel.style.display = "flex";
 }
 
@@ -237,14 +256,60 @@ moddedButton.onclick = () => {
     selectionState = "mods";
     selectionHeader.innerText = "Modded Regions";
     baseCarousel.scrollLeft = 0;
+    mscCarousel.scrollLeft = 0;
+    watchCarousel.scrollLeft = 0;
     modSlideNum = 1;
     slideNum.innerText = `${modSlideNum}.`
     switchToDark(carrotButtons[0]);
     switchToBright(carrotButtons[1]);
     moddedButton.classList.add("extend_button")
+    mscButton.classList.remove("extend_button")
     baseButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
     baseCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
     modCarousel.style.display = "flex";
+}
+
+mscButton.onclick = () => {
+    selectionState = "msc";
+    selectionHeader.innerText = "Downpour Regions";
+    baseCarousel.scrollLeft = 0;
+    modCarousel.scrollLeft = 0;
+    watchCarousel.scrollLeft = 0;
+    mscSlideNum = 1;
+    slideNum.innerText = `${mscSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToDark(carrotButtons[1]);
+    mscButton.classList.add("extend_button")
+    moddedButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    modCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
+    mscCarousel.style.display = "flex";
+}
+
+watchButton.onclick = () => {
+    selectionState = "watch";
+    selectionHeader.innerText = "Watcher Regions";
+    baseCarousel.scrollLeft = 0;
+    mscCarousel.scrollLeft = 0;
+    modCarousel.scrollLeft = 0;
+    watchSlideNum = 1;
+    slideNum.innerText = `${watchSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToDark(carrotButtons[1]);
+    watchButton.classList.add("extend_button")
+    mscButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    moddedButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    modCarousel.style.display = "none";
+    watchCarousel.style.display = "flex";
 }
 
 selectionBackButton.onclick = () => {
@@ -253,8 +318,12 @@ selectionBackButton.onclick = () => {
     clearSelectionScreen()
     baseCarousel.scrollLeft = 0;
     modCarousel.scrollLeft = 0;
+    mscCarousel.scrollLeft = 0;
+    watchCarousel.scrollLeft = 0;
     baseSlideNum = 1;
     modSlideNum = 1;
+    mscSlideNum = 1;
+    watchSlideNum = 1;
     slideNum.innerText = 1;
     switchToBright(carrotButtons[1])
     switchToDark(carrotButtons[0])
@@ -276,6 +345,8 @@ beginButton.onclick = () => {
     showScreen(loadingScreen);
     storedBaseSlide = 0;
     storedModSlide = 0;
+    storedMscSlide = 0;
+    storedWatchSlide = 0;
     runProgram();
 }
 

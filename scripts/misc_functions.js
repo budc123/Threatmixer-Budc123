@@ -142,9 +142,13 @@ function clearSelectionScreen() {
     layerButtonContainer.innerHTML = "";
     baseCarousel.innerHTML = "";
     modCarousel.innerHTML = "";
+    mscCarousel.innerHTML = "";
+    watchCarousel.innerHTML = "";
     document.title = "Threatmixer";
     regionButtonClicked = false;
     divIndex = -1;
     baseSlideNumMax = 0;
     modSlideNumMax = 0;
+    mscSlideNumMax = 0;
+    watchSlideNumMax = 0;
 }

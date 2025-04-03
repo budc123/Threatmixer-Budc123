@@ -1,6 +1,6 @@
 # *3/28/25 Note*
 
-As I'm sure most of those using this webpage know, today is the day which The Watcher dlc has released. This new dlc brings some new and unique threat themes for the new regions, alongside some community made threat themes which have existed before this dlc (namely Coral Caves, Aether Ridge, Stormy Coast, etc.). A "Watcher" category of threat themes will be added including the new and returning songs featured in the dlc. However, I will likely wait a couple of weeks before making this change; just to prevent spoilers and to let the community get a bit more familiar with contents of the dlc, including myself.
+As I'm sure most of those using this webpage know, today is the day which The Watcher dlc has released. This new dlc brings some new and unique threat themes for the new regions, alongside some community made threat themes which have existed before this dlc (namely Coral Caves, Aether Ridge, Stormy Coast, etc.). A "Watcher" category of threat themes will be added including the new and returning songs featured in the dlc. However, I will likely wait a couple of weeks before making this change; just to prevent spoilers and to let the community get a bit more familiar with the contents of the dlc, including myself.
 
 # *What is Threatmixer?*
 
@@ -8,9 +8,8 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 # *Development progress*
 
-A new region has been added, and a couple of bugfixes have been done to the selection screen. You'll also notice the new button on the selection screen as well. I added a toggle to the previews since I found it kinda annoying to accidently go over a region button and then have to hear the preview for a second. Hopefully someone finds it useful. Also, look out for a new spinning face on the loading screen. That's about it for this update, expect some more tidying up in the next couple of updates as well.
+Just did a bit of organization in preparation for the new watcher regions, not much else aside from that (though I did change the main menu background, which I just think looks a bit cooler.) As said in the note, I am gonna be waiting for just a while longer before actually adding these new regions. Keep an eye out for that.
 
 # *TO DO*
 
-- Tidying up
-- ???
+- Add new watcher regions
