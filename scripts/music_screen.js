@@ -16,7 +16,14 @@ function setUpMusicScreen() {
     Promise.all(loadSounds).then((arrayBuffer) => {
         hideScreen(loadingScreen);
         showScreen(musicScreen);
-        
+
+        // ensuring that each layer loops at the exact same time
+        arrayBuffer.forEach((layer) => {
+            if (layer.duration < globalDuration) {
+                globalDuration = layer.duration
+            }
+        });
+
         // if we paused the audioContext, resume it
         if (audioContext.state == "suspended") {audioContext.resume();}
 
@@ -283,6 +290,9 @@ function setUpMusicScreen() {
             recordIcon.src = "assets/images/button_icons/rec_icon.png";
             switchToDark(saveButton, deleteButton);
 
+            // resetting the value of globalDuration
+            globalDuration = 9999;
+
             // recursion point
             runProgram();
         };
@@ -291,13 +301,13 @@ function setUpMusicScreen() {
 
 // this function stores the methods for how the layers will be set up
 function prepSong(arrayBuffer) {
-
     // creating an AudioBufferSourceNode each time this function is called
     arrayBuffer.forEach((audioBuffer, index) => {
         // creating the bufferSource
         var bufferSource = audioContext.createBufferSource();
         bufferSource.buffer = audioBuffer;
         bufferSource.loop = true;
+        bufferSource.loopEnd = globalDuration
         
         // creating a gainNode and connecting it to the oscillator
         var gainNode = audioContext.createGain();

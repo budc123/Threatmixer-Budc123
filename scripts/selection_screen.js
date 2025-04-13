@@ -15,7 +15,10 @@ function setUpSelectionScreen(regionData) {
     return new Promise((resolve) => {
 
         // waiting for all of the buttons to load in before showing the selection screen
-        var buttonSetUp = regionData.map((region) => {
+        var buttonSetUp = regionData.map((region, index) => {
+            
+            // console.log(`${index}: ${region.name}`)
+
             return new Promise((buttonResolve) => {
 
                 // storing the amount of buttons in each container
@@ -483,23 +486,28 @@ function addOnClick(element, regionData, resolve) {
                     layerButtonContainer.style.width = "58vw";
                     altColorNeeded = true;
                     break;
+
+                case 14: // aether ridge
+                    layerButtonContainer.style.width = "56vw";
+                    altColorNeeded = false;
+                    break;
                 
-                case 15: // coral caves
+                case 16: // coral caves
                     layerButtonContainer.style.width = "56vw";
                     altColorNeeded = true;
                     break;
 
-                case 16: // stormy coast
+                case 21: // stormy coast
                     layerButtonContainer.style.width = "49vw";
                     altColorNeeded = false;
                     break;
 
-                case 28: // luminous cove
+                case 35: // luminous cove
                     layerButtonContainer.style.width = "65vw";
                     altColorNeeded = true;
                     break;
                 
-                case 30: // moss fields
+                case 37: // moss fields
                     layerButtonContainer.style.width = "62vw";
                     altColorNeeded = true;
                     break;
@@ -563,9 +571,9 @@ function addOnClick(element, regionData, resolve) {
                 // applying alternate colors to buttons if needed
                 if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
                     (altColorNeeded && regionIndex == 9 && layerButtons.length > 8) || // metropolis
-                    (altColorNeeded && regionIndex == 15 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 28 && layerButtons.length < 10) || // luminous cove
-                    (altColorNeeded && regionIndex == 30 && layerButtons.length > 8)) { // moss fields
+                    (altColorNeeded && regionIndex == 16 && layerButtons.length > 8) ||  // coral caves
+                    (altColorNeeded && regionIndex == 35 && layerButtons.length < 10) || // luminous cove
+                    (altColorNeeded && regionIndex == 37 && layerButtons.length > 8)) { // moss fields
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;

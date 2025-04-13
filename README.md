@@ -8,8 +8,9 @@ Threatmixer is a webpage which will allow the user to play with and mix the vari
 
 # *Development progress*
 
-Just did a bit of organization in preparation for the new watcher regions, not much else aside from that (though I did change the main menu background, which I just think looks a bit cooler.) As said in the note, I am gonna be waiting for just a while longer before actually adding these new regions. Keep an eye out for that.
+Watcher regions have been added!! Also, a new button leading to a feedback form has been added to the home screen. Defenitely use that if you have anything you'd like to suggest or saw about the webpage. No emails will be collected from anyone taking the form, and all submissions are anonymous. Look forward to more features and visual improvements in the future. 
 
 # *TO DO*
 
-- Add new watcher regions
+- New features
+- Improved UI

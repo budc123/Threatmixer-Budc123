@@ -18,7 +18,7 @@ This file contains the stylization for the home and laoding screens, as well as 
     margin: 0vw;
 }
 
-#subheader2 {
+#subheader3 {
     margin-bottom: 3vw;
 }
 
@@ -147,4 +147,21 @@ This file contains the stylization for the home and laoding screens, as well as 
     padding-left: 0.9vw;
     padding-top: 0.5vw;
     padding-bottom: 2.5vw;
+}
+
+/* EASTER EGG 2*/
+#name1 {
+    text-decoration: none;
+    color: #dadbdd;
+}
+
+#name1:hover {
+    cursor: auto;
+}
+
+#bird {
+    z-index: 999;
+    position: absolute;
+    right: -16vw;
+    top: 3vw;
 }

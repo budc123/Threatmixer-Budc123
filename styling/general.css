@@ -99,3 +99,13 @@ progress::-webkit-progress-value {
         transform: rotate(360deg);
     }
 }
+
+@keyframes bounce {
+    from {
+        right: -16vw;
+    }
+
+    to {
+        right: 0vw;
+    }
+}

@@ -17,7 +17,7 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 
 ## Videocult
 
-Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on Rain World Downpour. All base game threat themes can be found in the official [Rain World ost](https://www.youtube.com/playlist?list=PLuX1dXf1Zu0kHEc_TrwqgbKaEkWJOAqlN). Audio files were provided by [Rawry](https://www.youtube.com/@RawryProbably) via google drive. All base game region background art was provided by the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Official_Art).
+Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on the Downpour and Watcher. All base game threat themes can be found in the official [Rain World ost](https://www.youtube.com/playlist?list=PLuX1dXf1Zu0kHEc_TrwqgbKaEkWJOAqlN). All audio files and images were either ripped from the game using [AssetRipper](https://assetripper.github.io/AssetRipper/) or were provided by the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Official_Art).
 
 ## Fonts
 The Rodondo font (the one used as the title font for Rain World) was created by @ollywood on twitter and uploaded to [dafont.com](https://www.dafont.com/rodondo.font).
@@ -30,8 +30,6 @@ The visualizer present in the music screen was made by following a tutorial crea
 I also have to give credit to Barrett Sonntag for creating a [CSS filter generator](https://codepen.io/sosuke/pen/Pjoqqp), making finding the filters to use for changing the color of images a hell of a lot easier.
 
 # *Modded Region Credits*
-
-(*Note:* All of the regions which are currently known to be part of the watcher dlc, which includes **Aether Ridge**, **Badlands**, **Stormy Coast**, and **Coral Caves**, are all presented on this site as they were before the release of the watcher's campaign. The soundtracks and, of course, threat themes of these regions are subject to change by the watcher team.)
 
 A humongous thank you to Rain World's modding community for allowing their amazing work to be featured on this page.
 
@@ -76,7 +74,7 @@ And here's the credits by region:
 - Region & Region Art by Carrotpudding
 - Threat Theme by Pinpoint
 
-## Badlands:
+## Badlands (Legacy):
 - Region & Region Art by Fishnoid
 - Threat Theme by Snoodle
 

@@ -15,6 +15,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     aboutButton = document.getElementById("about_button"),
     helpButton = document.getElementById("help_button"),
     creditsButton = document.getElementById("credits_button"),
+    feedbackButton = document.getElementById("feedback_button"),
     recordButton = document.getElementById("record_button"),
     recordIcon = recordButton.querySelector("img"),
     saveButton = document.getElementById("save_button"),
@@ -45,7 +46,9 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
     progressBar = document.getElementById("progress_bar"),
-    canvas = document.getElementById("canvas");
+    canvas = document.getElementById("canvas"),
+    name2 = document.getElementById("name2"),
+    bird = document.getElementById("bird");
 
 // hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
@@ -114,7 +117,7 @@ canvasContext.imageSmoothingEnabled = false;
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
     songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
-    animation, currentPreviewPlaying, fadeCheck, 
+    animation, currentPreviewPlaying, fadeCheck,
     clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
@@ -125,6 +128,7 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     canPlay = false,
     loadingRegion = false,
     previewsOn = true,
+    canBounce = true,
     divIndex = -1,
     baseSlideNum = 1,
     baseSlideNumMax = 0,
@@ -138,6 +142,7 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     watchSlideNum = 1,
     watchSlideNumMax = 0,
     storedWatchSlide = 0,
+    globalDuration = 9999999,
     selectionState = "base";
 
 const brightened = "brightness(100%)",
@@ -301,7 +306,7 @@ watchButton.onclick = () => {
     watchSlideNum = 1;
     slideNum.innerText = `${watchSlideNum}.`
     switchToDark(carrotButtons[0]);
-    switchToDark(carrotButtons[1]);
+    switchToBright(carrotButtons[1]);
     watchButton.classList.add("extend_button")
     mscButton.classList.remove("extend_button")
     baseButton.classList.remove("extend_button")
@@ -350,6 +355,16 @@ beginButton.onclick = () => {
     runProgram();
 }
 
+feedbackButton.onclick = () => {
+    var link = document.createElement("a");
+    link.href = "https://forms.gle/R7q3uP9jSBQfEmuF8";
+    link.target = "blank_"
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 // hiding all other screens and showing the home screen first
 hideScreen(selectionScreen, musicScreen, loadingScreen);
 showScreen(homeScreen);
@@ -360,3 +375,18 @@ setTimeout(() => {
     musicScreen.style.display = "flex";
     selectionScreen.style.display = "flex";
 }, 300);
+
+/* EASTER EGG 3*/
+name2.onclick = () => {
+    if (canBounce) {
+        bird.style.animation = "bounce 1s ease alternate 2";
+        var squeak = new Audio("assets/music/music_snippets/squeak.wav")
+        squeak.play()
+        canBounce = false;
+
+        setTimeout(() => {
+            bird.style.animation = "";
+            canBounce = true;
+        }, 2000)
+    }
+}
