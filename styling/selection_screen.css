@@ -62,7 +62,7 @@
     align-items: end;
     z-index: 0;
     position: absolute;
-    left: 0;
+    left: -0.01vw;
     margin-left: -6.9vw;
     margin-top: 2vw;
     max-height: 2.9vw;
