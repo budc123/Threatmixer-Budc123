@@ -102,7 +102,7 @@ progress::-webkit-progress-value {
 
 @keyframes bounce {
     from {
-        right: -16vw;
+        right: -50vw;
     }
 
     to {

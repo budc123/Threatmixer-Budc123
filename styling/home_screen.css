@@ -160,8 +160,10 @@ This file contains the stylization for the home and laoding screens, as well as 
 }
 
 #bird {
+    display: block;
     z-index: 999;
     position: absolute;
-    right: -16vw;
+    width: 17vw;
+    right: -100vw;
     top: 3vw;
 }

@@ -379,12 +379,14 @@ setTimeout(() => {
 /* EASTER EGG 3*/
 name2.onclick = () => {
     if (canBounce) {
+        bird.style.display = "block";
         bird.style.animation = "bounce 1s ease alternate 2";
         var squeak = new Audio("assets/music/music_snippets/squeak.wav")
         squeak.play()
         canBounce = false;
 
         setTimeout(() => {
+            bird.style.display = "none";
             bird.style.animation = "";
             canBounce = true;
         }, 2000)
