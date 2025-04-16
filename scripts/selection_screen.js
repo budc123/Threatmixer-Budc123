@@ -547,7 +547,7 @@ function addOnClick(element, regionData, resolve) {
                 newLayerIcon.classList.add("button_icon");
 
                 // EASTER EGG 1
-                if (regionIndex == 22 && layer[1].includes("JUG.ogg")){
+                if (regionIndex == 29 && layer[1].includes("JUG.ogg")){
                     var potRoll = Math.floor(Math.random() * 10) + 1;
 
                     if (potRoll == 1) {
