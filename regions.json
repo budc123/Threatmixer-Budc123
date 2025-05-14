@@ -63,7 +63,7 @@
             ["bongos_icon.png", "assets/music/threat_music/base/GW/TH_GW - PERC1.ogg"],
             ["bass_icon.png", "assets/music/threat_music/base/GW/TH_GW - BASS.ogg"],
             ["perc_icon.png", "assets/music/threat_music/base/GW/TH_GW - PERC2.ogg"],
-            ["weird_icon.png", "assets/music/threat_music/base/GW/TH_GW - WEIRD.ogg"],
+            ["frog_icon.png", "assets/music/threat_music/base/GW/TH_GW - WEIRD.ogg"],
             ["scug_sing_icon.png", "assets/music/threat_music/base/GW/TH_GW - VOX.ogg"],
             ["lead_4_icon.png", "assets/music/threat_music/base/GW/TH_GW - LEAD.ogg"],
             ["underwater_icon.png", "assets/music/threat_music/base/GW/TH_GW - NOISE.ogg"]
@@ -136,7 +136,7 @@
             ["weird_sine_wave_icon.png", "assets/music/threat_music/base/SI/TH_SI - WEIRD.ogg"],
             ["spear_tap_icon.png", "assets/music/threat_music/base/SI/TH_SI - PERC1.ogg"],
             ["bass_icon.png", "assets/music/threat_music/base/SI/TH_SI - BASS.ogg"],
-            ["arps_icon.png", "assets/music/threat_music/base/SI/TH_SI - ARPS.ogg"],
+            ["synth_icon.png", "assets/music/threat_music/base/SI/TH_SI - ARPS.ogg"],
             ["hat_icon.png", "assets/music/threat_music/base/SI/TH_SI - SNARE.ogg"],
             ["radio_icon.png", "assets/music/threat_music/base/SI/TH_SI - NOISE.ogg"]
         ],
@@ -415,10 +415,16 @@
             ["siren_icon.png", "assets/music/threat_music/watch/SK/TH_SK - HORN.ogg"],
             ["xylo_icon.png", "assets/music/threat_music/watch/SK/TH_SK - ARP.ogg"],
             ["scug_sing_icon.png", "assets/music/threat_music/watch/SK/TH_SK - MELODY.ogg"],
-            ["scug_sing_icon.png", "assets/music/threat_music/watch/SK/TH_SK - LEAD.ogg"]
+            ["scug_sing_icon.png", "assets/music/threat_music/watch/SK/TH_SK - LEAD.ogg"],
+            ["pad_icon.png", "assets/music/threat_music/watch/SK/TH_SK - Bop.ogg"],
+            ["synth_icon.png", "assets/music/threat_music/watch/SK/TH_SK - Synth.ogg"],
+            ["xylo_icon.png", "assets/music/threat_music/watch/SK/TH_SK - Bells.ogg"],
+            ["lead_1_icon.png", "assets/music/threat_music/watch/SK/TH_SK - Strings.ogg"]
         ],
         "color": "#2d3e4a",
+        "altColor": "#1f6879",
         "filter": "brightness(0) saturate(100%) invert(21%) sepia(28%) saturate(575%) hue-rotate(162deg) brightness(89%) contrast(87%)",
+        "altFilter": "brightness(0) saturate(100%) invert(36%) sepia(7%) saturate(4559%) hue-rotate(144deg) brightness(87%) contrast(83%)",
         "background": "assets/images/backgrounds/stormy_coast.png",
         "preview": "assets/music/music_snippets/SK_snippet.MP3"
     },
@@ -609,6 +615,25 @@
         "background": "assets/images/backgrounds/fog_gulch.png",
         "preview": "assets/music/music_snippets/FO_snippet.MP3"
     },
+    {
+        "name": "Gray Urban",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/GU/TH_GU - KICK.ogg"],
+            ["hat_icon.png", "assets/music/threat_music/mods/GU/TH_GU - RIDE.ogg"],
+            ["xylo_icon.png", "assets/music/threat_music/mods/GU/TH_GU - PERC.ogg"],
+            ["bass_icon.png", "assets/music/threat_music/mods/GU/TH_GU - BASS.ogg"],
+            ["pad_icon.png", "assets/music/threat_music/mods/GU/TH_GU - SNARE.ogg"],
+            ["arps_icon.png", "assets/music/threat_music/mods/GU/TH_GU - SLAP.ogg"],
+            ["synth_icon.png", "assets/music/threat_music/mods/GU/TH_GU - ARP.ogg"],
+            ["pad_icon.png", "assets/music/threat_music/mods/GU/TH_GU - KEYS.ogg"],
+            ["radio_icon.png", "assets/music/threat_music/mods/GU/TH_GU - LEAD.ogg"]
+        ],
+        "color": "#777c91",
+        "filter": "brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(927%) hue-rotate(191deg) brightness(89%) contrast(90%)",
+        "background": "assets/images/backgrounds/gray_urban.png",
+        "preview": "assets/music/music_snippets/GU_snippet.MP3"
+    },
     {   
         "name": "Hanging Gardens",
         "group": "mods",
@@ -736,6 +761,22 @@
         "filter": "brightness(0) saturate(100%) invert(19%) sepia(7%) saturate(2073%) hue-rotate(293deg) brightness(95%) contrast(81%)",
         "background": "assets/images/backgrounds/oil_station.png",
         "preview": "assets/music/music_snippets/OS_snippet.MP3"
+    },
+    {   
+        "name": "Pilgrims' Ascent",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/PA/TH_PA - KICK.ogg"],
+            ["snare_icon.png", "assets/music/threat_music/mods/PA/TH_PA - PERCLOOP.ogg"],
+            ["hat_icon.png", "assets/music/threat_music/mods/PA/TH_PA - HAT.ogg"],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/PA/TH_PA - DRONE.ogg"],
+            ["tom_icon.png", "assets/music/threat_music/mods/PA/TH_PA - HIT.ogg"],
+            ["synth_icon.png", "assets/music/threat_music/mods/PA/TH_PA - ARP.ogg"]
+        ],
+        "color": "#678835",
+        "filter": "brightness(0) saturate(100%) invert(47%) sepia(37%) saturate(628%) hue-rotate(42deg) brightness(95%) contrast(89%)",
+        "background": "assets/images/backgrounds/pilgrims_ascent.png",
+        "preview": "assets/music/music_snippets/PA_snippet.MP3"
     },
     {   
         "name": "Power Plant",
@@ -958,7 +999,7 @@
             ["big_spider_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_SCUTTLE.ogg"],
             ["big_spider_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_SCRAPER.ogg"],
             ["arps_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_DESCENT.ogg"],
-            ["big_spider_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_ARP.ogg"],
+            ["weird_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_ARP.ogg"],
             ["wawa_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_LEAD.ogg"],
             ["snare_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_BREAK.ogg"]
         ],

@@ -26,8 +26,8 @@ This file contains the stylization for the home and laoding screens, as well as 
     border-radius: 0.9vw;
     margin: 0.5vw;
     padding: 0.5vw;
-    padding-left: 3vw;
-    padding-right: 3vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 
 #home_button_container {
@@ -147,6 +147,28 @@ This file contains the stylization for the home and laoding screens, as well as 
     padding-left: 0.9vw;
     padding-top: 0.5vw;
     padding-bottom: 2.5vw;
+}
+
+#discord_button {
+    image-rendering: pixelated;
+    top: auto;
+    bottom: 0.6vw;
+    left: 1.1vw;
+    padding-right: 3.6vw;
+    padding-left: 0.6vw;
+    padding-top: 0.5vw;
+    padding-bottom: 3.7vw;
+    border-color: #5865f2;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+#discord_button:hover {
+    filter: brightness(100%);
+    box-shadow: 0vw 0vw 1.3vw 0.4vw #5865f299;
+}
+
+#discord_icon {
+    width: 3vw;
 }
 
 /* EASTER EGG 2*/

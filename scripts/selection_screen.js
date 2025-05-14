@@ -147,6 +147,8 @@ function setUpSelectionScreen(regionData) {
 
         // once button set up is complete,
         Promise.all(buttonSetUp).then(() => {
+            
+
             // ensuring that the other carousel starts at the first slide
             if (selectionState == "base") {
                 modCarousel.style.display = "flex";
@@ -498,16 +500,16 @@ function addOnClick(element, regionData, resolve) {
                     break;
 
                 case 21: // stormy coast
-                    layerButtonContainer.style.width = "49vw";
-                    altColorNeeded = false;
+                    layerButtonContainer.style.width = "56vw";
+                    altColorNeeded = true;
                     break;
 
-                case 35: // luminous cove
+                case 36: // luminous cove
                     layerButtonContainer.style.width = "65vw";
                     altColorNeeded = true;
                     break;
                 
-                case 37: // moss fields
+                case 38: // moss fields
                     layerButtonContainer.style.width = "62vw";
                     altColorNeeded = true;
                     break;
@@ -520,8 +522,8 @@ function addOnClick(element, regionData, resolve) {
 
             // storing the color changes we'll need based on the chosen region
             if (altColorNeeded) {
-                var altColor = regionChosen.altColor
-                var altFilter = regionChosen.altFilter
+                var altColor = regionChosen.altColor;
+                var altFilter = regionChosen.altFilter;
             }
             var pageStyle = regionChosen.color;
             var iconFilter = regionChosen.filter;
@@ -537,10 +539,26 @@ function addOnClick(element, regionData, resolve) {
                 var newLayerButton = document.createElement("button"); 
                 newLayerButton.classList.add("layer_button", "layer_button_darkened");
                 newLayerButton.style.border = `0.16vw solid ${pageStyle}`;
+                newLayerButton.dataset.title = " (Muted)";
 
+                // giving the button a title
+                var rawLayerSrc = layer[1],
+                    strIndex = -4,
+                    layerName = "";
+
+                for (let i = 0; i < rawLayerSrc.length; i++) {
+                    if (rawLayerSrc.at(strIndex) == " " || rawLayerSrc.at(strIndex) == "_") {
+                        layerName = rawLayerSrc.slice(strIndex + 1, -4);
+                        break;          
+                    }
+                    else {strIndex--;}
+                }
+
+                // creating a solo button
                 var newSoloButton = document.createElement("button");
                 newSoloButton.classList.add("solo_button", "darken_button");
                 newSoloButton.style.border = `0.16vw solid ${pageStyle}`;
+                newSoloButton.dataset.title = "Solo Layer (Mute Others)";
 
                 // creating the icons to put in each button
                 var newLayerIcon = document.createElement("img");
@@ -569,17 +587,26 @@ function addOnClick(element, regionData, resolve) {
                 newSoloIcon.style.filter = `${iconFilter}`;
 
                 // applying alternate colors to buttons if needed
+                var tippyStyle = "dynamic-style";
+
                 if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
                     (altColorNeeded && regionIndex == 9 && layerButtons.length > 8) || // metropolis
                     (altColorNeeded && regionIndex == 16 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 35 && layerButtons.length < 10) || // luminous cove
-                    (altColorNeeded && regionIndex == 37 && layerButtons.length > 8)) { // moss fields
+                    (altColorNeeded && regionIndex == 21 && layerButtons.length > 13) ||  // stormy coast
+                    (altColorNeeded && regionIndex == 36 && layerButtons.length < 10) || // luminous cove
+                    (altColorNeeded && regionIndex == 38 && layerButtons.length > 8)) { // moss fields
+                    tippyStyle = "alt-dynamic-style"
                     newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
                     newLayerButton.style.border = `0.16vw solid ${altColor}`;
                     newSoloButton.style.border = `0.16vw solid ${altColor}`;
                     newLayerIcon.style.filter = `${altFilter}`;
                     newSoloIcon.style.filter = `${altFilter}`;
                 }
+
+                // creating a pop-up tip for each button
+                createTippy(newLayerButton, tippyStyle, layerName, true);
+                createTippy(newSoloButton, tippyStyle, newSoloButton.dataset.title, false);
+                layerNameArray.push(layerName);
 
                 // adding our new elements onto the page
                 newLayerButton.appendChild(newLayerIcon);
@@ -595,11 +622,11 @@ function addOnClick(element, regionData, resolve) {
             // creating more style changes for classes
             var styleChanges = document.createElement("style");
             styleChanges.textContent = `
-            #exit_button, #region_name, #visualizer_toggle, .other_buttons {
+            #exit_button, #region_name, #visualizer_toggle, .other_buttons, #timer, #fade_button {
                 color: ${pageStyle};
             }
 
-            #exit_button, #visualizer_toggle, .other_buttons {
+            #exit_button, #visualizer_toggle, #timer_container, .other_buttons, #fade_button, #timer_container {
                 border: 0.16vw solid ${pageStyle};
             }
 
@@ -622,12 +649,29 @@ function addOnClick(element, regionData, resolve) {
             progress::-webkit-progress-value {
                 background-color: ${pageStyle};
             }
+
+            .tippy-box[data-theme~="dynamic-style"] {
+                color: ${pageStyle};
+                border: 0.2vw solid ${pageStyle};
+            }
+
+            .tippy-box[data-theme~="alt-dynamic-style"] {
+                color: ${altColor};
+                border: 0.2vw solid ${altColor};
+            }
             `;
             
             // adding these changes
             document.head.appendChild(styleChanges);
 
             // changing the background image depending on the region
+            
+            /* Potentially scrapping this
+            var backgroundGradient = `linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%)`;
+            var backgroundImage = `url(${regionChosen.background}) center/cover no-repeat`;
+            musicScreen.style.background = `${backgroundGradient}, ${backgroundImage}`;
+            */
+            
             musicScreen.style.backgroundImage = `url(${regionChosen.background})`;
 
             // changing the color of the visualizer

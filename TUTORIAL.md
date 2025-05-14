@@ -1,3 +1,13 @@
+# *Known Issues*
+
+## Mixes missing metadata
+
+When exporting a mix from Google Chrome, Microsoft Edge, or really (to my knowledge) any other web browser aside from Firefox, the resulting audio file will likely be in the .webm format and won't have any metadata. This means that you likely won't be able to control the file's playback in your device's media player nor edit it in an audio/video editing software. To convert these files to a different format and restore the metadata, I recommend that you use a file converter like [Cloud Convert]("https://cloudconvert.com/).
+
+## Incompatibility with mobile devices
+
+I've yet to make the website fully compatible for phones and other devices besides a pc/laptop, but making it so is one of my top priorities at the moment. A fix to resolve these incompatability issues will be made soon.
+
 # *Tutorial*
 
 When you first open the page, you'll be greeted by the home screen, where you can learn more about this project before getting started. When you click the "BEGIN!" button, you'll be brought to the region selection screen, where you can begin choosing which threat theme you want to play with.

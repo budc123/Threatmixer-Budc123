@@ -11,6 +11,9 @@
     <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.3/marked.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocktimer/1.1.1/tock.min.js" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="scripts/misc_functions.js" defer></script>
     <script src="scripts/set_up.js" defer></script>
     <script src="scripts/main.js" defer></script>
@@ -23,18 +26,31 @@
         <div id="title_and_logo_container">
             <h1 id="page_name">Threatmixer</h1>
         </div>
+
         <h5 id="subheader1" class="subheaders">Created by Rotwall</h2>
-        <h5 id="subheader2" class="subheaders">Pixel Art by <a id="name1" href="https://maps.app.goo.gl/MAWB3mufiDEarDXL6" target="_blank">ECSP</a></h2>
-        <h5 id="subheader3" class="subheaders">Playtested by <span id="name2">ParraKoot</span></h2>
+        <h5 id="subheader2" class="subheaders">Pixel Art by <a id="name1" href="https://maps.app.goo.gl/VNufuofzo4jLEgFp9" target="_blank">ECSP</a></h2>
+        <h5 id="subheader3" class="subheaders">Menu Music by <span id="name2">ParraKoot</span></h2>
+
         <div id="home_button_container">
             <button class="home_buttons" id="begin_button">BEGIN!</button>
             <button class="home_buttons" id="about_button">ABOUT</button>
             <button class="home_buttons" id="help_button">HELP</button>
             <button class="home_buttons" id="credits_button">CREDITS</button>
-            <button class="home_buttons" id="feedback_button">FEEDBACK</button>
+            <button class="home_buttons" id="feedback_button">GIVE FEEDBACK</button>
         </div>
+
+        <!-- Menu Music Toggle -->
+        <button data-title="Menu Music Toggle (On)" class="back_button" id="menu_music_toggle_button">
+            <img id="menu_music_toggle_icon" src="assets\images\button_icons\menu_music_enabled_icon.png">
+        </button>
+
+        <!-- Link Buttons -->
+        <button data-title="Join the Discord!" class="back_button" id="discord_button">
+            <img id="discord_icon" src="assets\images\button_icons\discord_icon.png">
+        </button> 
+
         <p id="disclaimer">DISCLAIMER: I am not affiliated with Videocult or Akupara Games in any way. This is a fan project, and I own none of the images or music featured on this page. Also, beware major main game and dlc spoilers!</p>
-        <p id="version">Version 1.7.12</p>
+        <p id="version">Version 1.8.15</p>
 
         <img id="bird" src="assets\images\misc\vanillabean.png">
     </div>
@@ -46,7 +62,9 @@
         <button class="back_button" id="selection_back_button">X</button>
 
         <!--Preview Toggle -->
-        <button class="back_button" id="preview_toggle_button">Song Previews: On</button> 
+        <button data-title="Preview Toggle (On)" class="back_button" id="preview_toggle_button">
+            <img id="preview_toggle_icon" src="assets\images\button_icons\preview_enabled_icon.png">
+        </button> 
 
         <!-- Side Buttons-->
         <div id="side_button_container">
@@ -105,8 +123,13 @@
         <!-- Header -->
         <h1 id="region_name"></h1>
 
-        <!-- Song Progress Bar -->
-        <progress id="progress_bar" value="0" max="100"></progress>
+        <!-- Song Timer &  Progress Bar -->
+        <div id="progress_and_timer_div">
+            <progress id="progress_bar" value="0" max="100"></progress>
+            <div id="timer_container">
+                <p id="timer">MM:SS</p>
+            </div>
+        </div>
 
         <!-- Layer and solo buttons -->
         <div id="layer_button_container"></div>
@@ -114,29 +137,34 @@
         <!-- Other buttons -->
         <div id="option_buttons_container">
             <!-- Music control -->
-            <button class="other_buttons darken_button" id="start_button">
+            <button data-title="Start Song" class="other_buttons darken_button" id="start_button">
                 <img class="other_button_icons" src="assets/images/button_icons/start_icon.png">
             </button>
-            <button class="other_buttons" id="play_button">
+            <button data-title="Play All Layers" class="other_buttons" id="play_button">
                 <img class="other_button_icons" src="assets/images/button_icons/play_all_icon.png">
             </button>
-            <button class="other_buttons darken_button" id="pause_button">
+            <button data-title="Pause Song & Recording" class="other_buttons darken_button" id="pause_button">
                 <img class="other_button_icons" src="assets/images/button_icons/pause_icon.png">
             </button>
         
-        <!-- Recording control -->
-            <button class="other_buttons recording_buttons" id="record_button">
+            <!-- Recording control -->
+            <button data-title="Start Recording" class="other_buttons recording_buttons" id="record_button">
                 <img class="other_button_icons" src="assets/images/button_icons/rec_icon.png">
             </button>
-            <button class="other_buttons recording_buttons darken_button" id="save_button">
+            <button data-title="Save Recording" class="other_buttons recording_buttons darken_button" id="save_button">
                 <img class="other_button_icons" src="assets/images/button_icons/save_icon.png">
             </button>
-            <button class="other_buttons recording_buttons darken_button" id="delete_button">
+            <button data-title="Discard Recording" class="other_buttons recording_buttons darken_button" id="delete_button">
                 <img class="other_button_icons" src="assets/images/button_icons/delete_icon.png">
             </button>
 
+            <!-- Fade toggle -->
+            <button data-title="Fade Toggle (Off)" class="other_buttons" id="fade_toggle">
+                <img class="other_button_icons" id="fade_toggle_icon" src="assets/images/button_icons/fade_disabled_icon.png">
+            </button>
+
             <!-- Visualizer toggle -->
-            <button class="other_buttons" id="visualizer_toggle">
+            <button data-title="Visualizer Toggle (On)" class="other_buttons" id="visualizer_toggle">
                 <img class="other_button_icons" src="assets/images/button_icons/vis_enabled_icon.png">
             </button>
         </div>

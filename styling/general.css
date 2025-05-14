@@ -20,8 +20,7 @@ body {
 }
 
 button {
-    padding: 3vw;
-    border-radius: 0.6vw;
+    padding: 3vw;   
     margin: 0.5vw;
     transition: filter 0.3s ease;
     cursor: pointer;
@@ -30,6 +29,28 @@ button {
     font-size: 0.6vw;
     background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0.5vw 0.5vw 0.4vw #000000e6;
+    border-radius: 0.6vw;
+}
+
+.tippy-box[data-theme~="default-style"], .tippy-box[data-theme~="dynamic-style"],
+    .tippy-box[data-theme~="alt-dynamic-style"] {
+    font-family: RWmenu;
+    font-size: 0.6vw;
+    padding: 0.3vw;
+    color: #dadbdd;
+    border: 0.2vw solid #dadbdd;
+    border-radius: 0.6vw;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.tippy-box[data-theme~="discord-button-style"] {
+    font-family: RWmenu;
+    font-size: 0.6vw;
+    padding: 0.3vw;
+    color: #5865f2;
+    border: 0.2vw solid #5865f2;
+    border-radius: 0.6vw;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .home_buttons, .carrot_buttons, .back_button, .markdown_img {
@@ -74,9 +95,9 @@ progress::-webkit-progress-value {
 
 .layer_button_brightened:hover, .layer_button_brightened:hover, .solo_button, 
     .other_buttons:hover, .recording_buttons:hover, .home_buttons:hover, 
-    #exit_button:hover, #visualizer_toggle:hover, .layer_button_darkened, 
-    .alt_layer_button_darkened, .carrot_buttons:hover, .side_button:hover,
-    .back_button:hover {
+    #exit_button:hover, #visualizer_toggle:hover, #menu_music_toggle:hover,
+    .layer_button_darkened, .alt_layer_button_darkened, .carrot_buttons:hover, 
+    .side_button:hover, .back_button:hover {
     filter: brightness(60%);
 }
 

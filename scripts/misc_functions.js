@@ -66,7 +66,7 @@ function showScreen(...screens) {
 }
 
 // these next functions handles the song progress bar
-function startUpdatingBar(arrayBuffer) {
+function startUpdatingBar(globalDuration, songTimer) {
     // storing the time at which the audio started
     var startTime = audioContext.currentTime;
 
@@ -74,7 +74,7 @@ function startUpdatingBar(arrayBuffer) {
         // storing the amount of time that has passed since starting
         // this is a way of getting the current time of the audioBuffers since you can't just use .currentTime
         var ellapsedTime = audioContext.currentTime - startTime;
-        var duration = arrayBuffer[0].duration;
+        var duration = globalDuration;
         var progressPercent = (ellapsedTime / duration) * 100;
 
         progressBar.value = progressPercent;
@@ -83,6 +83,11 @@ function startUpdatingBar(arrayBuffer) {
         if (progressBar.value == 100) {
             progressBar.value = 0;
             startTime = audioContext.currentTime
+
+            // also reseting the timer
+            //songTimer.reset()
+            songTimer.stop()
+            songTimer.start()
         }
     }, 10);
 }
@@ -151,4 +156,75 @@ function clearSelectionScreen() {
     modSlideNumMax = 0;
     mscSlideNumMax = 0;
     watchSlideNumMax = 0;
+}
+
+function startLayerFadeIn(layer) {
+    if (audioContext.state == "suspended" && songPaused) {
+        pendingFadeIns.push(layer)
+        return 0;
+    }
+
+    layer.isFadingIn = true;
+    layer.volume.gain.value = mute;
+
+    if (layersPlaying.includes(layer)) {
+        var fadeIn = setInterval(() => {
+            if (layer.volume.gain.value < 1 && !layer.isFadingOut) {
+                // only continuing the fade in if the song isn't paused 
+                if (audioContext.state != "suspended") {layer.volume.gain.value += 0.01;}
+            }
+            else {
+                clearInterval(fadeIn);
+                layer.isFadingIn = false;
+                layer.volume.gain.value = unmute;
+            }
+        }, 30);
+    }
+    else {layer.isFadingIn = false;}
+}
+
+function startLayerFadeOut(layer, shouldEndLayer) {
+    if (audioContext.state == "suspended" && songPaused) {
+        pendingFadeOuts.push(layer)
+        return 0;
+    }
+    
+    layer.isFadingOut = true;
+    
+    var fadeOut = setInterval(() => {
+        if (layer.volume.gain.value > 0 && !layer.isFadingIn) {
+            // only continuing the fade out if the song isn't paused 
+            if (audioContext.state != "suspended") {layer.volume.gain.value -= 0.01;}
+        }
+        else {
+            clearInterval(fadeOut);
+            layer.isFadingOut = false;
+            if (shouldEndLayer) {
+                layer.bufferSource.stop();
+                layer.bufferSource.disconnect();
+            }
+            else {
+                layer.volume.gain.value = mute;
+            }
+        }
+    }, 30);
+}
+
+// tippys
+function createTippy(element, theme, content) {
+    tippy(element, {
+        theme: theme,
+        content: content,
+        trigger: "mouseenter",
+        arrow: false,
+        followCursor: true,
+        hideOnClick: false,
+        delay: [1300, 0]
+    });
+}
+
+function updateTippyContent(element, content, isLayerButton) {
+    var buttonTip = element._tippy
+    if (isLayerButton) {buttonTip.setContent(content + element.dataset.title)}
+    else {buttonTip.setContent(content)}
 }

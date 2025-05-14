@@ -24,6 +24,21 @@ function setUpMusicScreen() {
             }
         });
 
+        // formatting the timer
+        var songLength = () => {
+            var roundedDuration = Math.round(globalDuration, 2),
+                minutes = Math.floor(roundedDuration / 60),
+                seconds = roundedDuration % 60
+            
+            if (seconds < 10) {seconds = `0${seconds}`}
+
+            return `${minutes}:${seconds}`
+        }
+
+        timer.innerText = `00:00 / ${songLength()}`
+
+        instanceSongLength = songLength()
+
         // if we paused the audioContext, resume it
         if (audioContext.state == "suspended") {audioContext.resume();}
 
@@ -35,11 +50,15 @@ function setUpMusicScreen() {
                     // these if statements handle pre-selecting layers
                     // we keep track of what layers have been chosen by simply storing the value of i
                     if (!startingLayers.includes(i)) {
+                        layerButtons[i].dataset.title = " (Pre-selected)";
+                        updateTippyContent(layerButtons[i], layerNameArray[i], true);
                         startingLayers.push(i);
                         switchToBright(layerButtons[i]);
                     }
 
                     else {
+                        layerButtons[i].dataset.title = " (Muted)";
+                        updateTippyContent(layerButtons[i], layerNameArray[i], true);
                         var startingLayerIndex = startingLayers.indexOf(i)
                         startingLayers.splice(startingLayerIndex, 1);
                         switchToDark(layerButtons[i]);
@@ -48,16 +67,25 @@ function setUpMusicScreen() {
 
                 // muting and unmuting audio
                 else if (!layerSoloed) {
-                    if (loadedLayers[i][1].gain.value == mute) {
-                        loadedLayers[i][1].gain.value = unmute;
+                    if (loadedLayers[i].volume.gain.value <= mute) {
+                        layerButtons[i].dataset.title = " (Playing)";
+                        updateTippyContent(layerButtons[i], layerNameArray[i], true);
                         layersPlaying.push(loadedLayers[i]);
+                         
+                        if (!layersCanFade) {loadedLayers[i].volume.gain.value = unmute;}
+                        else {startLayerFadeIn(loadedLayers[i]);}
+
                         switchToBright(layerButtons[i]);
                     }
 
                     else {
-                        loadedLayers[i][1].gain.value = mute
+                        layerButtons[i].dataset.title = " (Muted)";
+                        updateTippyContent(layerButtons[i], layerNameArray[i], true);
                         var indexOfLayer = layersPlaying.indexOf(loadedLayers[i])
                         layersPlaying.splice(indexOfLayer, 1);
+
+                        if (!layersCanFade) {loadedLayers[i].volume.gain.value = mute;}
+                        else {startLayerFadeOut(loadedLayers[i], false);}
                         switchToDark(layerButtons[i]);
                     }
                 }
@@ -77,38 +105,44 @@ function setUpMusicScreen() {
             // solo button functionality
             soloButton[i].onclick = () => {
                 if (!layerSoloed && songStarted) {
-                    if (loadedLayers[i][1].gain.value == mute) { // if the layer we're trying to solo is muted,
-                        loadedLayers[i][1].gain.value = unmute; // unmute it,
+                    updateTippyContent(soloButton[i], "Solo Layer (Unmute All Others)", false);
+
+                    if (loadedLayers[i].volume.gain.value == mute) { // if the layer we're trying to solo is muted,
+                        loadedLayers[i].volume.gain.value = unmute; // unmute it,
+                        layerButtons[i].dataset.title = " (Playing)";
+                        updateTippyContent(layerButtons[i], loadedLayers[i].name, true);
                         layersPlaying.push(loadedLayers[i]); // add it to this array
-                        soloButton[loadedLayers[i][2]].style.filter = brightened; // and brighten both buttons
-                        soloButton[loadedLayers[i][2]].querySelector("img").src = soloIcon2;
-                        switchToBright(layerButtons[loadedLayers[i][2]]);
+                        soloButton[loadedLayers[i].index].style.filter = brightened; // and brighten both buttons
+                        soloButton[loadedLayers[i].index].querySelector("img").src = soloIcon2;
+                        switchToBright(layerButtons[loadedLayers[i].index]);
                     }
 
                     for (let j = 0; j < layersPlaying.length; j++) {
                         if (layersPlaying[j] != loadedLayers[i]) { // if this layer doesn't match the layer we're trying to mute,
-                            layersPlaying[j][1].gain.value = mute; // mute it
-                            switchToDark(layerButtons[layersPlaying[j][2]]);
+                            layersPlaying[j].volume.gain.value = mute; // mute it
+                            switchToDark(layerButtons[layersPlaying[j].index]);
                         }
 
                         else { // if it does,
-                            soloButton[layersPlaying[j][2]].style.filter = brightened; // brighten the solo button
-                            soloButton[layersPlaying[j][2]].querySelector("img").src = soloIcon2;
+                            soloButton[layersPlaying[j].index].style.filter = brightened; // brighten the solo button
+                            soloButton[layersPlaying[j].index].querySelector("img").src = soloIcon2;
                         }
                     }
                     layerSoloed = true;
                 }
 
                 // this if statement handles un-soloing the song
-                else if (loadedLayers[i][1].gain.value != mute) {
+                else if (loadedLayers[i].volume.gain.value != mute) {
+                    updateTippyContent(soloButton[i], "Solo Layer (Mute All Others)", false);
+
                     for (let j = 0; j < layersPlaying.length; j++) {
-                        layersPlaying[j][1].gain.value = 1;
+                        layersPlaying[j].volume.gain.value = 1;
                         // brightening the other layer buttons that were playing before, making sure to skip over the one that's already bright
-                        if (loadedLayers[i][2] != layersPlaying[j][2]) {
-                            switchToBright(layerButtons[layersPlaying[j][2]]);
+                        if (loadedLayers[i].index != layersPlaying[j].index) {
+                            switchToBright(layerButtons[layersPlaying[j].index]);
                         }
-                        soloButton[layersPlaying[j][2]].style.filter = dimmed;
-                        soloButton[layersPlaying[j][2]].querySelector("img").src = soloIcon1;
+                        soloButton[layersPlaying[j].index].style.filter = dimmed;
+                        soloButton[layersPlaying[j].index].querySelector("img").src = soloIcon1;
                     }
                     layerSoloed = false;
                 }
@@ -121,26 +155,43 @@ function setUpMusicScreen() {
                 prepSong(arrayBuffer);
                 songStarted = true;
                 switchToDark(startButton);
+                updateTippyContent(playAllButton, "End Song", false);
             }
         };
 
         // pause button functionality
         pauseButton.onclick = () => {
             if (songStarted && !(audioContext.state == "suspended")) {
+                updateTippyContent(pauseButton, "Resume Song & Recording", false);
                 audioContext.suspend();
+                songPaused = true;
                 if (recorder.state == "recording") {recorder.pause();}
+                songTimer.pause()
                 pauseIcon.src = "assets/images/button_icons/resume_icon.png";
             }
 
             else if (songStarted) {
+                updateTippyContent(pauseButton, "Pause Song & Recording", false);
                 audioContext.resume();
+                songPaused = false;
                 if (recorder.state == "paused") {recorder.resume();}
+                songTimer.pause();
                 pauseIcon.src = "assets/images/button_icons/pause_icon.png";
+
+                // starting any fade outs/ins that may have been initiated when the song was paused
+                if (pendingFadeIns.length > 0 || pendingFadeOuts.length > 0) {
+                    pendingFadeIns.forEach((layer) => {startLayerFadeIn(layer)});
+                    pendingFadeIns = []
+                    pendingFadeOuts.forEach((layer) => {startLayerFadeOut(layer, false)});
+                    pendingFadeOuts = []
+                }
             }
         };
 
         // play all button functionality
         playAllButton.onclick = () => {
+            updateTippyContent(playAllButton, "End Song", false);
+
             // checking if the audio context is paused and resuming it if it was
             if (audioContext.state == "suspended") {audioContext.resume();}
 
@@ -160,12 +211,15 @@ function setUpMusicScreen() {
             }
             
             else { // if we're trying to end all of them,
+                updateTippyContent(playAllButton, "Play All Layers", false);
 
                 // clearing AudioBufferSourceNodes and darkening layer buttons
                 loadedLayers.forEach((audio, index) => {
-                    audio[0].stop();
-                    audio[0].disconnect();
+                    audio.bufferSource.stop();
+                    audio.bufferSource.disconnect();
                     switchToDark(layerButtons[index]);
+                    layerButtons[index].dataset.title = " (Muted)"
+                    updateTippyContent(layerButtons[index], audio.name, true);
                 }) 
 
                 // darkening the solo buttons
@@ -181,6 +235,7 @@ function setUpMusicScreen() {
                 // stopping recording if is has started
                 if (recorder.state != "inactive") {
                     recorder.stop();
+                    updateTippyContent(recordButton, "Start Recording", false);
                     eraseRecording = true;
                     recordIcon.src = "assets/images/button_icons/rec_icon.png";
                     switchToDark(saveButton, deleteButton);
@@ -195,6 +250,10 @@ function setUpMusicScreen() {
                 playAllIcon.src = "assets/images/button_icons/play_all_icon.png";
                 pauseIcon.src = "assets/images/button_icons/pause_icon.png"
                 stopUpdatingBar();
+
+                // stopping the timer
+                songTimer.stop()
+                timer.innerText = `00:00 / ${instanceSongLength}`
             }
         };
 
@@ -202,12 +261,14 @@ function setUpMusicScreen() {
         recordButton.onclick = () => {
             if (recorder.state == "inactive") {
                 if (!songStarted) { // if we're trying to que the recording,
+                    updateTippyContent(recordButton, "Recording Queued", false);
                     recorderQueued = true;
                     recordIcon.src = "assets/images/button_icons/rec_pending_icon.png";
                     switchToBright(deleteButton);
                 }
 
                 else {
+                    updateTippyContent(recordButton, "Recording...", false);
                     recorder.start();
                     recordIcon.src = "assets/images/button_icons/rec_progress_icon.png"
 
@@ -220,6 +281,7 @@ function setUpMusicScreen() {
         // save button functionality
         saveButton.onclick = () => {
             if (recorder.state != "inactive") {
+                updateTippyContent(recordButton, "Start Recording", false);
                 recorder.stop();
                 recordIcon.src = "assets/images/button_icons/rec_icon.png";
 
@@ -230,9 +292,12 @@ function setUpMusicScreen() {
 
         // delete button functionality
         deleteButton.onclick = () => {
-            if (recorder.state != "innactive" && !recorderQueued) {
+            updateTippyContent(recordButton, "Start Recording", false);
+
+            if (recorder.state != "inactive" && !recorderQueued) {
                 eraseRecording = true;
                 recorder.stop();
+                updateTippyContent(recordButton, "Start Recording", false);
                 recordIcon.src = "assets/images/button_icons/rec_icon.png";
 
                 // switching the other buttons off
@@ -247,23 +312,12 @@ function setUpMusicScreen() {
             }
         };
 
-        // visualizer toggle functionality
-        visButton.onclick = () => {
-            canvas.classList.toggle("hide_canvas")
-
-            if (canvas.classList.contains("hide_canvas")) {
-                visIcon.src = "assets/images/button_icons/vis_disabled_icon.png";
-            }
-
-            else {
-                visIcon.src = "assets/images/button_icons/vis_enabled_icon.png";
-            }
-        }
-
         // exit button functionality
         exitButton.onclick = () => {
             // stoping all audio and any recordings
             songStarted = false;
+            layersCanFade = false;
+            fadeToggleIcon.src = "assets/images/button_icons/fade_disabled_icon.png";
             audioContext.suspend();
             if (recorder.state != "inactive") {
                 recorder.stop();
@@ -278,8 +332,8 @@ function setUpMusicScreen() {
 
             // deleting all audioBufferSourceNodes to prevent memory leaks
             for (let i = 0; i < loadedLayers.length; i++) {
-                loadedLayers[i][0].stop();
-                loadedLayers[i][0].disconnect();
+                loadedLayers[i].bufferSource.stop();
+                loadedLayers[i].bufferSource.disconnect();
             }
 
             clearSelectionScreen();
@@ -290,9 +344,19 @@ function setUpMusicScreen() {
             recordIcon.src = "assets/images/button_icons/rec_icon.png";
             switchToDark(saveButton, deleteButton);
 
-            // resetting the value of globalDuration
+            // resetting the value of global variables
             globalDuration = 9999;
+            layerNameArray = [];
 
+            // resetting tippy contents
+            updateTippyContent(playAllButton, "Play All Layers", false);
+            updateTippyContent(pauseButton, "Pause Song & Recording", false);
+            updateTippyContent(recordButton, "Start Recording", false);
+            updateTippyContent(fadeToggleButton, "Fade Toggle (Off)", false);
+
+            // stopping the timer
+            if (timerExists) {songTimer.stop()}
+            
             // recursion point
             runProgram();
         };
@@ -307,7 +371,7 @@ function prepSong(arrayBuffer) {
         var bufferSource = audioContext.createBufferSource();
         bufferSource.buffer = audioBuffer;
         bufferSource.loop = true;
-        bufferSource.loopEnd = globalDuration
+        bufferSource.loopEnd = globalDuration;
         
         // creating a gainNode and connecting it to the oscillator
         var gainNode = audioContext.createGain();
@@ -321,7 +385,8 @@ function prepSong(arrayBuffer) {
         gainNode.connect(visualizer);
 
         // returning the buffer, gain, and index of the layer in an array for easy accessibility
-        loadedLayers.push([bufferSource, gainNode, index]);
+        // the second to last two items in the list determine if the layer is fading in or out respectively
+        loadedLayers.push(new Layer(bufferSource, gainNode, index, false, false, layerNameArray[index]))
     });
     
 
@@ -335,6 +400,7 @@ function prepSong(arrayBuffer) {
 
     // starting the recorder if it was queued
     if (recorderQueued) {
+        updateTippyContent(recordButton, "Recording...", false);
         recorder.start();
         recordIcon.src = "assets/images/button_icons/rec_progress_icon.png";
         recorderQueued = false;
@@ -350,21 +416,33 @@ function prepSong(arrayBuffer) {
         // 1. If any layers have been chosen to start first, or
         // 2. If the play all button has been clicked
         if (startingLayers.includes(i) || songStarted) {
-            loadedLayers[i][1].gain.value = unmute;
+            loadedLayers[i].volume.gain.value = unmute;
+            layerButtons[i].dataset.title = " (Playing)";
+            updateTippyContent(layerButtons[i], loadedLayers[i].name, true);
             layersPlaying.push(loadedLayers[i]);
         }
 
-        // if neither of these are true, that must means this layer has to start muted
-        else {
-            loadedLayers[i][1].gain.value = mute;
-        }
+        // if neither of these are true, that must mean this layer has to start off muted
+        else {loadedLayers[i].volume.gain.value = mute;}
 
-        loadedLayers[i][0].start(audioContext.currentTime);
+        loadedLayers[i].bufferSource.start(audioContext.currentTime);
+        if (layersCanFade) {startLayerFadeIn(loadedLayers[i]);}
     }
 
     playAllIcon.src = "assets/images/button_icons/stop_icon.png";
 
+    // starting the timer
+    timerExists = true;
+    songTimer = new Tock({
+        callback: () => {
+            var currentPlayback = songTimer.msToTime(songTimer.lap()).slice(0, -4)
+            timer.innerText = `${currentPlayback} / ${instanceSongLength}`
+        }
+    })
+
+    songTimer.start()
+
     // starting the progress bar and visualizer
     if (!visActive) {startVisualizer();}
-    startUpdatingBar(arrayBuffer);
+    startUpdatingBar(globalDuration, songTimer);
 }

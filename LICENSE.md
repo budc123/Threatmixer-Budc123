@@ -1,6 +1,7 @@
 # *Credits*
 
 ## Me
+
 Hey, I'm rotwall, and I'm responsible for the coding and designing of this webpage. Here's some links if you want to find out more about me or see what else I'm working on:
 - [Github](https://github.com/Rotwall72)
 - [Youtube](https://www.youtube.com/@Rotwall)
@@ -10,7 +11,7 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 ## Contributors
 
 - [ECSP](https://ecsp.dev/) (Personal Website): Pixel Art, Playtesting, and Creative Assistence
-- [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Music (soon), Playtesting
+- [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Main menu music, Playtesting, and Creative Assistence
 - TheLobsterFoam: Playtesting
 - AliKirb: Playtesting
 - MelnCat: Code Assistence
@@ -20,11 +21,13 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 Rain World is a property of Videocult, and I am not affiliated with Videocult or Akupara Games in any way. All assets inside of the threat_music and region_backgrounds folders were created by members of Videocult as well as others who worked on the Downpour and Watcher. All base game threat themes can be found in the official [Rain World ost](https://www.youtube.com/playlist?list=PLuX1dXf1Zu0kHEc_TrwqgbKaEkWJOAqlN). All audio files and images were either ripped from the game using [AssetRipper](https://assetripper.github.io/AssetRipper/) or were provided by the [official Rain World wiki](https://rainworld.miraheze.org/wiki/Official_Art).
 
 ## Fonts
+
 The Rodondo font (the one used as the title font for Rain World) was created by @ollywood on twitter and uploaded to [dafont.com](https://www.dafont.com/rodondo.font).
 
 The Rain World menu font was recreated by DANNYY1TDM on [fontstruct](https://fontstruct.com/fontstructions/show/2392353/rain-world-menu).
 
 ## Code
+
 The visualizer present in the music screen was made by following a tutorial created by [QuickCodingTuts](https://www.youtube.com/watch?v=sb6C1XNqJzA) on YouTube.
 
 I also have to give credit to Barrett Sonntag for creating a [CSS filter generator](https://codepen.io/sosuke/pen/Pjoqqp), making finding the filters to use for changing the color of images a hell of a lot easier.
@@ -36,10 +39,11 @@ A humongous thank you to Rain World's modding community for allowing their amazi
 Here's a full list of everyone who's region, music, and/or art is shown in this project:
 - [4slugcats](https://x.com/SelenireeArt) (Twitter)
 - [Aki](https://www.youtube.com/@aki7007) (Youtube)
-- [aprilWORSTmonth] (https://steamcommunity.com/profiles/76561198881171789) (Steam)
+- [aprilWORSTmonth](https://steamcommunity.com/profiles/76561198881171789) (Steam)
 - [Andrew Man](https://electricsheap.bandcamp.com/album/chronological-error) (Bandcamp)
 - [AndrewFM](http://www.egg-zero.com/) (Personal Website)
 - [AxeXir](https://www.youtube.com/channel/UCnleE9tJyc5kz6Mt53aQuMw) (Youtube)
+- Beep
 - [Bro](https://www.youtube.com/channel/UCGRoe1Z5loGEVcYnPBvXEew) (Youtube)
 - [Carrotpudding](https://www.youtube.com/@carrotpudding2191) (Youtube)
 - Classick
@@ -56,7 +60,7 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [Nautilo](https://www.youtube.com/@nautillo2481) (Youtube)
 - [Notocorda](https://www.deviantart.com/notocordada) (Deviantart)
 - [Pinpoint](https://oliverlollsdesign.com/) (Personal Website)
-- [Serpanoy](https://x.com/serpanoy) (Twitter)
+- [Serpanoy](https://serpanoy.carrd.co/) (Personal Site)
 - [Snoodle](https://snoodle-stuff.carrd.co/) (Personal Website)
 - [Snugboat](https://x.com/SnugBoat11) (Twitter)
 - Spog_frog
@@ -103,6 +107,11 @@ And here's the credits by region:
 - Region Art by Notocorda
 - Threat Themes by Snoodle
 
+## Gray Urban
+- Region by Region Jam Contributers
+- Region Art by Notocorda
+- Threat Theme by Aki
+
 ## Hanging Gardens:
 - Region & Region Art by Fishnoid
 - Threat Theme by Snoodle
@@ -129,6 +138,11 @@ And here's the credits by region:
 - Regions & Threat Themes by FishSwallower
 - Region Art by 4slugcats & snugboat
 - Other Contributors: Bro, Solar
+
+## Pilgrims' Ascent:
+- Region by Myrmice
+- Region Art by Beep
+- Threat Theme by Aki
 
 ## Power Plant:
 - Region & Region Art by Nautilo
@@ -195,6 +209,48 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Tock
+Copyright (c) 2014 Jacob Gully
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+## Tippyjs
+Copyright (c) 2017-present atomiks
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 # *Final Statement*
 I want to give one last thank you to Videocult and all of the brilliant minds within it for making my most favorite video game ever, and changing how I view gaming and art as a whole. I've been obsessed with Rain World ever since I first played it in 2021, and my love for it has hardly waned since. This game has been a source of inspiration for countless stories, ideas, games and what-have-you that I've been conjuring up in my head over these past few years. I think it's safe to say that this game has played a huge role in turning me into the person I am today. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and check out Threatmixer. I hope you will enjoy, or have enjoyed, using this webpage as much as I did making it. Thank you, thank you, thank you.

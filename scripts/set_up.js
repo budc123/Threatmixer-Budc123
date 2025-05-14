@@ -7,6 +7,7 @@ like the visualizer and the recorder, are set up.
 
 const layerButtons = document.getElementsByClassName("layer_button"),
     soloButton = document.getElementsByClassName("solo_button"),
+    otherButtons = document.getElementsByClassName("other_buttons"),
     pauseButton = document.getElementById("pause_button"),
     pauseIcon = pauseButton.querySelector("img"),
     playAllButton = document.getElementById("play_button"),
@@ -23,6 +24,8 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     beginButton = document.getElementById("begin_button"),
     exitButton = document.getElementById("exit_button"),
     visButton = document.getElementById("visualizer_toggle"),
+    fadeToggleButton = document.getElementById("fade_toggle"),
+    fadeToggleIcon = document.getElementById("fade_toggle_icon"),
     visIcon = visButton.querySelector("img"),
     musicScreen = document.getElementById("music_screen"),
     loadingScreen = document.getElementById("loading_screen"),
@@ -43,12 +46,17 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     slideNum = document.getElementById("slide_number"),
     selectionBackButton = document.getElementById("selection_back_button"),
     previewToggleButton = document.getElementById("preview_toggle_button"),
+    previewToggleIcon = document.getElementById("preview_toggle_icon"),
     regionTitle = document.getElementById("region_name"),
     layerButtonContainer = document.getElementById("layer_button_container"),
     progressBar = document.getElementById("progress_bar"),
+    timer = document.getElementById("timer"),
     canvas = document.getElementById("canvas"),
     name2 = document.getElementById("name2"),
-    bird = document.getElementById("bird");
+    bird = document.getElementById("bird"),
+    menuMusicToggleButton = document.getElementById("menu_music_toggle_button"),
+    menuMusicToggleIcon = document.getElementById("menu_music_toggle_icon"),
+    discordButton = document.getElementById("discord_button");
 
 // hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
@@ -69,7 +77,18 @@ const oscillatorDestination = audioContext.createMediaStreamDestination();
 oscillator.connect(oscillatorDestination);
 
 // creating the recorder
-const recorder = new MediaRecorder(oscillatorDestination.stream);
+let mime;
+if (MediaRecorder.isTypeSupported('audio/ogg;codecs=opus')) {
+    mime = {mimeType: 'audio/ogg; odecs=opus'};
+}
+else if (MediaRecorder.isTypeSupported("audio/webm; codecs=opus")) {
+    mime = {mimeType: "audio/webm; codecs=opus"}
+} 
+else {
+    mime = {mimeType: ''};
+}
+
+const recorder = new MediaRecorder(oscillatorDestination.stream, mime);
 
 // saving what the recorder picks up
 recorder.ondataavailable = (noise) => {recordedData.push(noise.data);}
@@ -82,15 +101,20 @@ recorder.onstop = () => {
     }
 
     else {
+        // pausing the timer and the song
+        songTimer.pause()
+        pauseButton.click()
+
         // creating the file
-        var audioFile = new Blob(recordedData, {"type": "audio/mp3; codecs=opus"}),
+        var audioFile = new Blob(recordedData, {"type": recorder.mimeType}),// "audio/mp3; codecs=opus"}),
             fileUrl = URL.createObjectURL(audioFile);
             
         // sending the file to the user's computer
         var link = document.createElement("a");
         link.href = fileUrl;
-        fileName = prompt("Please enter a name for this recording:");
-        link.download = fileName + ".mp3";
+        fileName = prompt(`Please enter a name for this recording: 
+(NOTE: If you are using a web browser that isn't Firefox, then the resulting file may not have any metadata. See the HELP section on the home screen for more info.)`);
+        link.download = fileName + ".ogg";
         link.style.display = "none";
         document.body.appendChild(link);
         link.click();
@@ -99,6 +123,10 @@ recorder.onstop = () => {
 
         // clearing the recorded data
         recordedData = [];
+
+        // resuming the timer and the song
+        songTimer.pause()
+        pauseButton.click()
     }
 }
 
@@ -117,7 +145,9 @@ canvasContext.imageSmoothingEnabled = false;
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
     songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
-    animation, currentPreviewPlaying, fadeCheck,
+    animation, currentPreviewPlaying, fadeCheck, instanceSongLength,
+    menuMusicTimeout,
+    menuMusicPlaying = false,
     clickOnTimeout = false,
     regionsAddedToSelector = false,
     recorderQueued = false,
@@ -129,6 +159,10 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     loadingRegion = false,
     previewsOn = true,
     canBounce = true,
+    layersCanFade = false,
+    timerExists = false,
+    preparingTip = false,
+    menuMusicEnabled = true,
     divIndex = -1,
     baseSlideNum = 1,
     baseSlideNumMax = 0,
@@ -143,7 +177,10 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     watchSlideNumMax = 0,
     storedWatchSlide = 0,
     globalDuration = 9999999,
-    selectionState = "base";
+    selectionState = "base",
+    pendingFadeIns = [],
+    pendingFadeOuts = [],
+    layerNameArray = [];
 
 const brightened = "brightness(100%)",
     dimmed = "brightness(50%)",
@@ -153,8 +190,8 @@ const brightened = "brightness(100%)",
     soloIcon2 = "assets/images/button_icons/solo_icon_2.png";
 
 // markdown file handling
-let MDArray = ["README.md", "TUTORIAL.md", "LICENSE.md"]
-let MDArrayIndex = 0
+let MDArray = ["README.md", "TUTORIAL.md", "LICENSE.md"];
+let MDArrayIndex = 0;
 
 MDArray.forEach((file) => {
     fetch(file).then((rawMD) => {    
@@ -231,6 +268,18 @@ MDArray.forEach((file) => {
         MDArrayIndex++;
     })
 })
+
+// initializing layer constructor
+class Layer {
+    constructor(bufferSource, gainNode, index, isFadingIn, isFadingOut, name) {
+        this.bufferSource = bufferSource;
+        this.volume = gainNode;
+        this.index = index,
+        this.isFadingIn = isFadingIn;
+        this.isFadingOut = isFadingOut;
+        this.name = name;
+    }
+}
 
 /*
 NON-DYNAMIC ONCLICKS
@@ -330,18 +379,71 @@ selectionBackButton.onclick = () => {
     mscSlideNum = 1;
     watchSlideNum = 1;
     slideNum.innerText = 1;
-    switchToBright(carrotButtons[1])
-    switchToDark(carrotButtons[0])
+    switchToBright(carrotButtons[1]);
+    switchToDark(carrotButtons[0]);
+
+    // restarting the menu music check
+    menuMusicCheck = setInterval(() => {
+        if (homeScreen.style.height == "100%" && !menuMusicPlaying && menuMusicEnabled) {
+            menuMusicPlaying = true;
+            menuMusic.volume(0.3);
+            menuMusicTimeout = setTimeout(() => {menuMusic.play()}, 2000);
+        }
+    }, 1000)
 }
 
 previewToggleButton.onclick = () => {
     previewsOn = !previewsOn
 
     if (!previewsOn) {
-        previewToggleButton.innerText = "Song Previews: Off"
+        previewToggleIcon.src = "assets/images/button_icons/preview_disabled_icon.png";
+        updateTippyContent(previewToggleButton, "Preview Toggle (Off)", false);
     }
     else {
-        previewToggleButton.innerText = "Song Previews: On"
+        previewToggleIcon.src = "assets/images/button_icons/preview_enabled_icon.png";
+        updateTippyContent(previewToggleButton, "Preview Toggle (On)", false);
+    }
+}
+
+menuMusicToggleButton.onclick = () => {
+    menuMusicEnabled = !menuMusicEnabled
+
+    if (!menuMusicEnabled) {
+        if (menuMusicPlaying) {menuMusic.stop()}
+        clearTimeout(menuMusicTimeout);
+        menuMusicToggleIcon.src = "assets/images/button_icons/menu_music_disabled_icon.png";
+        updateTippyContent(menuMusicToggleButton, "Menu Music Toggle (Off)", false);
+    }
+    else {
+        menuMusic.play()
+        menuMusicToggleIcon.src = "assets/images/button_icons/menu_music_enabled_icon.png";
+        updateTippyContent(menuMusicToggleButton, "Menu Music Toggle (On)", false);
+    }
+}
+
+fadeToggleButton.onclick = () => {
+    layersCanFade = !layersCanFade
+
+    if (!layersCanFade) {
+        fadeToggleIcon.src = "assets/images/button_icons/fade_disabled_icon.png";
+        updateTippyContent(fadeToggleButton, "Fade Toggle (Off)", false);
+    }
+    else {
+        fadeToggleIcon.src = "assets/images/button_icons/fade_enabled_icon.png";
+        updateTippyContent(fadeToggleButton, "Fade Toggle (On)", false);
+    }
+}
+
+visButton.onclick = () => {
+    canvas.classList.toggle("hide_canvas")
+
+    if (canvas.classList.contains("hide_canvas")) {
+        visIcon.src = "assets/images/button_icons/vis_disabled_icon.png";
+        updateTippyContent(visButton, "Visualizer Toggle (Off)", false);
+    }
+    else {
+        visIcon.src = "assets/images/button_icons/vis_enabled_icon.png";
+        updateTippyContent(visButton, "Visualizer Toggle (On)", false);
     }
 }
 
@@ -352,6 +454,9 @@ beginButton.onclick = () => {
     storedModSlide = 0;
     storedMscSlide = 0;
     storedWatchSlide = 0;
+    if (menuMusicPlaying && menuMusicEnabled) {menuMusic.fade(menuMusic.volume(), 0, 3000)}
+    clearInterval(menuMusicCheck)
+    clearTimeout(menuMusicTimeout)
     runProgram();
 }
 
@@ -364,6 +469,42 @@ feedbackButton.onclick = () => {
     link.click();
     document.body.removeChild(link);
 }
+
+discordButton.onclick = () => {
+    var link = document.createElement("a");
+    link.href = "https://discord.gg/BCU2UbMRBc";
+    link.target = "blank_"
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// button tips
+createTippy(previewToggleButton, "default-style", previewToggleButton.dataset.title)
+createTippy(menuMusicToggleButton, "default-style", menuMusicToggleButton.dataset.title)
+createTippy(discordButton, "discord-button-style", discordButton.dataset.title)
+console.log(discordButton._tippy)
+Array.from(otherButtons).forEach((button) => {createTippy(button, "dynamic-style", button.dataset.title)})
+
+// menu music handling
+let menuMusic = new Howl({
+    src: "assets/music/misc/menu_music.mp3",
+    loop: true,
+    onplay: () => {menuMusicPlaying = true;},
+    onstop: () => {menuMusicPlaying = false;}
+})
+
+menuMusic.on("volume", () => {if (menuMusic.volume() == 0) {menuMusic.stop()}})
+
+// checking if the menu music can be played
+let menuMusicCheck = setInterval(() => {
+    if (homeScreen.style.height == "100%" && !menuMusicPlaying && menuMusicEnabled) {
+        menuMusicPlaying = true;
+        menuMusic.volume(0.3);
+        menuMusicTimeout = setTimeout(() => {menuMusic.play()}, 2000);
+    }
+    }, 1000)
 
 // hiding all other screens and showing the home screen first
 hideScreen(selectionScreen, musicScreen, loadingScreen);
