@@ -17,7 +17,7 @@ function setUpSelectionScreen(regionData) {
         // waiting for all of the buttons to load in before showing the selection screen
         var buttonSetUp = regionData.map((region, index) => {
             
-            // console.log(`${index}: ${region.name}`)
+            console.log(`${index}: ${region.name}`)
 
             return new Promise((buttonResolve) => {
 
@@ -502,6 +502,12 @@ function addOnClick(element, regionData, resolve) {
                 case 21: // stormy coast
                     layerButtonContainer.style.width = "56vw";
                     altColorNeeded = true;
+                    break;
+                
+                case 31: // far shore
+                    layerButtonContainer.style.width = "100%";
+                    altColorNeeded = false;
+                    farShoreSelected = true;
                     break;
 
                 case 36: // luminous cove

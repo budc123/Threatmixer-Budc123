@@ -147,6 +147,7 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
     animation, currentPreviewPlaying, fadeCheck, instanceSongLength,
     menuMusicTimeout,
+    farShoreSelected = false,
     menuMusicPlaying = false,
     clickOnTimeout = false,
     regionsAddedToSelector = false,
@@ -484,7 +485,6 @@ discordButton.onclick = () => {
 createTippy(previewToggleButton, "default-style", previewToggleButton.dataset.title)
 createTippy(menuMusicToggleButton, "default-style", menuMusicToggleButton.dataset.title)
 createTippy(discordButton, "discord-button-style", discordButton.dataset.title)
-console.log(discordButton._tippy)
 Array.from(otherButtons).forEach((button) => {createTippy(button, "dynamic-style", button.dataset.title)})
 
 // menu music handling

@@ -18,11 +18,18 @@ function setUpMusicScreen() {
         showScreen(musicScreen);
 
         // ensuring that each layer loops at the exact same time
-        arrayBuffer.forEach((layer) => {
-            if (layer.duration < globalDuration) {
-                globalDuration = layer.duration
-            }
-        });
+        if (!farShoreSelected) {
+            arrayBuffer.forEach((layer) => {
+                if (layer.duration < globalDuration) {
+                    globalDuration = layer.duration
+                }
+            });
+        }
+        else {
+            globalDuration = 63.99999;
+            farShoreSelected = false;
+        }
+        console.log(globalDuration)
 
         // formatting the timer
         var songLength = () => {

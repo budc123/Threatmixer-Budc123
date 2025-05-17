@@ -461,7 +461,7 @@
         "preview": "assets/music/music_snippets/VW_snippet.MP3"
     },
     {
-        "name": "Infection (Unused)",
+        "name": "Rotted Regions",
         "group": "watch",
         "layers": [
             ["kick_icon.png", "assets/music/threat_music/watch/IF/TH_W8 - KICK.ogg"],
