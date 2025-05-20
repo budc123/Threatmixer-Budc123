@@ -218,8 +218,7 @@ function createTippy(element, theme, content) {
         trigger: "mouseenter",
         arrow: false,
         followCursor: true,
-        hideOnClick: false,
-        delay: [1300, 0]
+        hideOnClick: false
     });
 }
 
