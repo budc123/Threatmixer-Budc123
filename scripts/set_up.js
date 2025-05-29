@@ -3,8 +3,12 @@ In this file, all of our global variables are declared and certain processes,
 like the visualizer and the recorder, are set up. 
 */
 
-// element refrences
+// first figuring out if the user is using a mobile device
+let deviceName = navigator.userAgent,
+    mobileNames = /android|iphone|kindle|ipad/i,
+    isMobileDevice = mobileNames.test(deviceName);
 
+// element refrences
 const layerButtons = document.getElementsByClassName("layer_button"),
     soloButton = document.getElementsByClassName("solo_button"),
     otherButtons = document.getElementsByClassName("other_buttons"),
@@ -56,7 +60,10 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     bird = document.getElementById("bird"),
     menuMusicToggleButton = document.getElementById("menu_music_toggle_button"),
     menuMusicToggleIcon = document.getElementById("menu_music_toggle_icon"),
-    discordButton = document.getElementById("discord_button");
+    discordButton = document.getElementById("discord_button"),
+    loadingText = document.getElementById("loading_text"),
+    loadingDetails = document.getElementById("loading_details"),
+    loadingErrorResponse = document.getElementById("loading_error_response");
 
 // hiding these screens initially for cleaner page startup
 loadingScreen.style.display = "none";
@@ -135,7 +142,15 @@ const visualizer = audioContext.createAnalyser();
 visualizer.fftSize = 512;
 const bufferLength = visualizer.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
-const barWidth = canvas.width / bufferLength * 3;
+
+/* 
+Thank you Haizlbliek for the code to improve
+how the visualizer looked. I would have just merged
+your changes to main but github wasn't letting me
+for some reason, so this'll have to do lol
+*/
+const barWidth = 3;
+canvas.width = barWidth * bufferLength;
 const canvasContext = canvas.getContext("2d");
 
 // making sure the canvas isn't blurry
@@ -290,9 +305,6 @@ NON-DYNAMIC ONCLICKS
 baseButton.onclick = () => {
     selectionState = "base";
     selectionHeader.innerText = "Vanilla Regions";
-    modCarousel.scrollLeft = 0;
-    mscCarousel.scrollLeft = 0;
-    watchCarousel.scrollLeft = 0;
     baseSlideNum = 1;
     slideNum.innerText = `${baseSlideNum}.`
     switchToDark(carrotButtons[0]);
@@ -305,14 +317,12 @@ baseButton.onclick = () => {
     mscCarousel.style.display = "none";
     watchCarousel.style.display = "none";
     baseCarousel.style.display = "flex";
+    baseCarousel.scrollLeft = 0;
 }
 
 moddedButton.onclick = () => {
     selectionState = "mods";
     selectionHeader.innerText = "Modded Regions";
-    baseCarousel.scrollLeft = 0;
-    mscCarousel.scrollLeft = 0;
-    watchCarousel.scrollLeft = 0;
     modSlideNum = 1;
     slideNum.innerText = `${modSlideNum}.`
     switchToDark(carrotButtons[0]);
@@ -325,14 +335,12 @@ moddedButton.onclick = () => {
     mscCarousel.style.display = "none";
     watchCarousel.style.display = "none";
     modCarousel.style.display = "flex";
+    modCarousel.scrollLeft = 0;
 }
 
 mscButton.onclick = () => {
     selectionState = "msc";
     selectionHeader.innerText = "Downpour Regions";
-    baseCarousel.scrollLeft = 0;
-    modCarousel.scrollLeft = 0;
-    watchCarousel.scrollLeft = 0;
     mscSlideNum = 1;
     slideNum.innerText = `${mscSlideNum}.`
     switchToDark(carrotButtons[0]);
@@ -345,14 +353,12 @@ mscButton.onclick = () => {
     modCarousel.style.display = "none";
     watchCarousel.style.display = "none";
     mscCarousel.style.display = "flex";
+    mscCarousel.scrollLeft = 0;
 }
 
 watchButton.onclick = () => {
     selectionState = "watch";
     selectionHeader.innerText = "Watcher Regions";
-    baseCarousel.scrollLeft = 0;
-    mscCarousel.scrollLeft = 0;
-    modCarousel.scrollLeft = 0;
     watchSlideNum = 1;
     slideNum.innerText = `${watchSlideNum}.`
     switchToDark(carrotButtons[0]);
@@ -365,6 +371,7 @@ watchButton.onclick = () => {
     mscCarousel.style.display = "none";
     modCarousel.style.display = "none";
     watchCarousel.style.display = "flex";
+    watchCarousel.scrollLeft = 0;
 }
 
 selectionBackButton.onclick = () => {
@@ -450,21 +457,22 @@ visButton.onclick = () => {
 
 beginButton.onclick = () => {
     hideScreen(homeScreen, selectionScreen);
+    loadingText.innerText = "Preparing selection screen...";
     showScreen(loadingScreen);
     storedBaseSlide = 0;
     storedModSlide = 0;
     storedMscSlide = 0;
     storedWatchSlide = 0;
-    if (menuMusicPlaying && menuMusicEnabled) {menuMusic.fade(menuMusic.volume(), 0, 3000)}
-    clearInterval(menuMusicCheck)
-    clearTimeout(menuMusicTimeout)
+    if (menuMusicPlaying && menuMusicEnabled) {menuMusic.fade(menuMusic.volume(), 0, 3000);}
+    clearInterval(menuMusicCheck);
+    clearTimeout(menuMusicTimeout);
     runProgram();
 }
 
 feedbackButton.onclick = () => {
     var link = document.createElement("a");
     link.href = "https://forms.gle/R7q3uP9jSBQfEmuF8";
-    link.target = "blank_"
+    link.target = "blank_";
     link.style.display = "none";
     document.body.appendChild(link);
     link.click();
@@ -474,7 +482,7 @@ feedbackButton.onclick = () => {
 discordButton.onclick = () => {
     var link = document.createElement("a");
     link.href = "https://discord.gg/BCU2UbMRBc";
-    link.target = "blank_"
+    link.target = "blank_";
     link.style.display = "none";
     document.body.appendChild(link);
     link.click();
@@ -493,7 +501,7 @@ let menuMusic = new Howl({
     loop: true,
     onplay: () => {menuMusicPlaying = true;},
     onstop: () => {menuMusicPlaying = false;}
-})
+});
 
 menuMusic.on("volume", () => {if (menuMusic.volume() == 0) {menuMusic.stop()}})
 

@@ -4,18 +4,37 @@ which is where the user is sent upon selecting their region.
 */
 
 function setUpMusicScreen() {
+    // loading screen handling
+    var processingProgress = 0;
+    var processingGoal = regionThreatLayers.length
+    updateLoadingInfo(0, processingGoal)
+
+    var waitingForError = true;
+    var errorListener = setTimeout(() => {
+        loadingErrorResponse.style.opacity = "100%";
+        waitingForError = false;
+    }, 20000);
+
     // more web API junk
     loadSounds = 
         regionThreatLayers.map((audio) => {
             return fetch(audio.src)
                 .then((result) => {return result.arrayBuffer();}) // turning the audio into an array buffer
-                .then((arrayBuffer) => {return audioContext.decodeAudioData(arrayBuffer);}) // decoding that buffer
+                .then((arrayBuffer) => {return audioContext.decodeAudioData(arrayBuffer);}) // decoding that buffer 
+                .then((arrayBuffer) => {
+                    processingProgress++;
+                    updateLoadingInfo(processingProgress, processingGoal);
+                    return arrayBuffer;
+                }) // updating the loading screen
         });
 
     // we wait for all of the sounds to be buffered, then proceed
     Promise.all(loadSounds).then((arrayBuffer) => {
         hideScreen(loadingScreen);
         showScreen(musicScreen);
+
+        if (waitingForError) {clearTimeout(errorListener);}
+        loadingErrorResponse.style.opacity = "0%";
 
         // ensuring that each layer loops at the exact same time
         if (!farShoreSelected) {
@@ -29,7 +48,7 @@ function setUpMusicScreen() {
             globalDuration = 63.99999;
             farShoreSelected = false;
         }
-        console.log(globalDuration)
+        // console.log(globalDuration)
 
         // formatting the timer
         var songLength = () => {

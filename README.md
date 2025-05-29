@@ -14,9 +14,10 @@ If you wish to use any pixel art on the page for whatever purpose, please contac
 
 # *Development progress*
 
-A handful of new, highly requested features have been added, including but not limited to:
-- A fade toggle
-- Button tips
-- Menu music
-and some more!
-To be honest, this update did take me a little longer to make than I wanted it to, but I'm very glad to have finaly just gotten it out. My main priority right now is to look over everyone's feedback and implement the most highly requested features. Thank you to everyone who has left me some feedback through the feedback form or through some other means, I take all of your words to heart and I'm more than elated to know that people are enjoying my project <3
+I'm kinda tired so I'll keep this brief. I added:
+- Better mobile compatability
+- More loading screen info
+- Improved visualizer visuals
+- Small tweaks to the selection screen
+
+Just some more minor improvements. Expect a bunch of new songs next update though, that'll be more exciting.

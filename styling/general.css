@@ -9,12 +9,17 @@
     src: url(/assets/fonts/rainworldmenu.woff2);
 }
 
-html, body, #home_screen, #loading_screen, #music_screen {
+html, body, #home_screen, #loading_screen, #music_screen, #screen_cover {
     height: 100%;
 }
 
-body {
+html, body {
+    width: 100%;
     overflow: hidden;
+    position: absolute;
+}
+
+body {
     font-family: Rodondo;
     font-size: 2vw;
 }
@@ -84,6 +89,31 @@ progress::-webkit-progress-value {
     letter-spacing: 0.3vw;
 }
 
+/* Screen Cover */
+#screen_cover {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 999999;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-size: 2vw;
+    font-family: RWmenu;
+}
+
+/* Loading Screen */
+.loading_info {
+    font-family: RWmenu;
+    font-size: 1vw;
+}
+
+#loading_error_response {
+    opacity: 0%;
+    transition: opacity 0.5s ease;
+}
+
 /* transitions and animations */
 #home_screen, #loading_screen, #selection_screen, #music_screen {
     transition: height 0.6s ease;
@@ -128,5 +158,12 @@ progress::-webkit-progress-value {
 
     to {
         right: 0vw;
+    }
+}
+
+/* Responsiveness */
+@media only screen and (orientation: portrait) {
+    #screen_cover {
+        display: flex;
     }
 }

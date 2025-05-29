@@ -4,6 +4,12 @@ of the region buttons work.
 */
 
 function setUpSelectionScreen(regionData) {
+    // switching previews off if we're on mobile
+    if (isMobileDevice) {
+        previewsOn = false;
+        previewToggleButton.style.display = "none";
+    }
+
     // hiding the music screen for when we leave it to enter the selection screen
     hideScreen(musicScreen);
     showScreen(loadingScreen);
@@ -17,7 +23,7 @@ function setUpSelectionScreen(regionData) {
         // waiting for all of the buttons to load in before showing the selection screen
         var buttonSetUp = regionData.map((region, index) => {
             
-            console.log(`${index}: ${region.name}`)
+            // console.log(`${index}: ${region.name}`)
 
             return new Promise((buttonResolve) => {
 
@@ -148,7 +154,6 @@ function setUpSelectionScreen(regionData) {
         // once button set up is complete,
         Promise.all(buttonSetUp).then(() => {
             
-
             // ensuring that the other carousel starts at the first slide
             if (selectionState == "base") {
                 modCarousel.style.display = "flex";
@@ -447,6 +452,9 @@ function addOnClick(element, regionData, resolve) {
         if (!regionButtonClicked) {
             regionButtonClicked = true;
             loadingRegion = true;
+
+            loadingText.innerText = "Preparing music screen...";
+            loadingDetails.innerText = "Processed layers: (0/0)"
             
             hideScreen(selectionScreen);
             showScreen(loadingScreen);
@@ -535,7 +543,7 @@ function addOnClick(element, regionData, resolve) {
             var iconFilter = regionChosen.filter;
 
             // here, we dynamically create as many buttons and sounds as we need based on what's in the json
-            regionChosen.layers.forEach((layer) => {
+            regionChosen.layers.forEach((layer, index) => {
 
                 // creating a div to hold each of the buttons
                 var newDiv = document.createElement("div");
@@ -621,8 +629,8 @@ function addOnClick(element, regionData, resolve) {
                 newDiv.appendChild(newSoloButton);
                 layerButtonContainer.appendChild(newDiv);
             
-                // sotring audio files
-                regionThreatLayers.push(new Audio(layer[1]));
+                // storing audio files
+                regionThreatLayers.push(new Audio(layer[1])); 
             });
 
             // creating more style changes for classes
@@ -645,7 +653,7 @@ function addOnClick(element, regionData, resolve) {
             }
 
             .other_button_icons {
-                filter: ${iconFilter}
+                filter: ${iconFilter};
             }
 
             progress::-moz-progress-bar {

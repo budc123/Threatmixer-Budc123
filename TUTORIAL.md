@@ -4,9 +4,9 @@
 
 When exporting a mix from Google Chrome, Microsoft Edge, or really (to my knowledge) any other web browser aside from Firefox, the resulting audio file will likely be in the .webm format and won't have any metadata. This means that you likely won't be able to control the file's playback in your device's media player nor edit it in an audio/video editing software. To convert these files to a different format and restore the metadata, I recommend that you use a file converter like [Cloud Convert]("https://cloudconvert.com/).
 
-## Incompatibility with mobile devices
+## Music screen refusing to load
 
-I've yet to make the website fully compatible for phones and other devices besides a pc/laptop, but making it so is one of my top priorities at the moment. A fix to resolve these incompatability issues will be made soon.
+Issues like this are typically due to restrictions or device complications on the user's end. Try researching and changing any settings on your browser that may be blocking this webpage from functioning properly.
 
 # *Tutorial*
 

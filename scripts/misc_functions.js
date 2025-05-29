@@ -215,7 +215,7 @@ function createTippy(element, theme, content) {
     tippy(element, {
         theme: theme,
         content: content,
-        trigger: "mouseenter",
+        trigger: tippyTarget(),
         arrow: false,
         followCursor: true,
         hideOnClick: false
@@ -226,4 +226,13 @@ function updateTippyContent(element, content, isLayerButton) {
     var buttonTip = element._tippy
     if (isLayerButton) {buttonTip.setContent(content + element.dataset.title)}
     else {buttonTip.setContent(content)}
+}
+
+function tippyTarget() {
+    if (isMobileDevice) {return "focus";}
+    else {return "mouseenter";}
+}
+
+function updateLoadingInfo(progress, goal) {
+    loadingDetails.innerText = `Processed layers: (${progress}/${goal})`;
 }
