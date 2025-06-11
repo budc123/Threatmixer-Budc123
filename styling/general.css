@@ -37,23 +37,12 @@ button {
     border-radius: 0.6vw;
 }
 
-.tippy-box[data-theme~="default-style"], .tippy-box[data-theme~="dynamic-style"],
-    .tippy-box[data-theme~="alt-dynamic-style"] {
+.tippy-box[data-theme~="default-style"], .tippy-box[data-theme~="other-button-style"] {
     font-family: RWmenu;
     font-size: 0.6vw;
     padding: 0.3vw;
-    color: #dadbdd;
-    border: 0.2vw solid #dadbdd;
-    border-radius: 0.6vw;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.tippy-box[data-theme~="discord-button-style"] {
-    font-family: RWmenu;
-    font-size: 0.6vw;
-    padding: 0.3vw;
-    color: #5865f2;
-    border: 0.2vw solid #5865f2;
+    color: var(--tippy-color, #dadbdd);
+    border: 0.2vw solid var(--tippy-color, #dadbdd);
     border-radius: 0.6vw;
     background-color: rgba(0, 0, 0, 0.9);
 }
@@ -99,8 +88,13 @@ progress::-webkit-progress-value {
     z-index: 999999;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.9);
-    font-size: 2vw;
+    font-size: 1.8vw;
     font-family: RWmenu;
+}
+
+#rotate_screen_icon {
+    image-rendering: pixelated;
+    width: 15vw;
 }
 
 /* Loading Screen */
@@ -126,7 +120,7 @@ progress::-webkit-progress-value {
 .layer_button_brightened:hover, .layer_button_brightened:hover, .solo_button, 
     .other_buttons:hover, .recording_buttons:hover, .home_buttons:hover, 
     #exit_button:hover, #visualizer_toggle:hover, #menu_music_toggle:hover,
-    .layer_button_darkened, .alt_layer_button_darkened, .carrot_buttons:hover, 
+    .layer_button_darkened, .carrot_buttons:hover, 
     .side_button:hover, .back_button:hover {
     filter: brightness(60%);
 }

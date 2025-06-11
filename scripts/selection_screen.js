@@ -23,7 +23,7 @@ function setUpSelectionScreen(regionData) {
         // waiting for all of the buttons to load in before showing the selection screen
         var buttonSetUp = regionData.map((region, index) => {
             
-            // console.log(`${index}: ${region.name}`)
+            console.log(`${index}: ${region.name}`);
 
             return new Promise((buttonResolve) => {
 
@@ -32,54 +32,30 @@ function setUpSelectionScreen(regionData) {
                 var modButtonArray = modCarousel.querySelectorAll("button");
                 var mscButtonArray = mscCarousel.querySelectorAll("button");
                 var watchButtonArray = watchCarousel.querySelectorAll("button");
+                var customButtonArray = customCarousel.querySelectorAll("button");
 
                 // this switch case handles updating the carousel slides based on how many buttons there are
                 switch (region.group) {
-
                     // if it's a vanilla region,
                     case ("base"):
                         // add a new slide to that carousel if there's already 6 buttons
-                        if (baseButtonArray.length % 6 == 0) {
-                            divIndex++;
-                            baseSlideNumMax++;
-                            var newDiv = document.createElement("div");
-                            newDiv.classList.add("region_button_container");
-                            baseCarousel.appendChild(newDiv);
-                        }
-
+                        baseSlideNumMax = newSlideCheck(baseButtonArray, baseSlideNumMax, baseCarousel);
                         break;
                     
                     case ("mods"):
-                        if (modButtonArray.length % 6 == 0) {
-                            divIndex++;
-                            modSlideNumMax++;
-                            var newDiv = document.createElement("div");
-                            newDiv.classList.add("region_button_container");
-                            modCarousel.appendChild(newDiv);
-                        }
-
+                        modSlideNumMax = newSlideCheck(modButtonArray, modSlideNumMax,  modCarousel);
                         break;
                     
                     case ("msc"):
-                        if (mscButtonArray.length % 6 == 0) {
-                            divIndex++;
-                            mscSlideNumMax++;
-                            var newDiv = document.createElement("div");
-                            newDiv.classList.add("region_button_container");
-                            mscCarousel.appendChild(newDiv);
-                        }
-
+                        mscSlideNumMax = newSlideCheck(mscButtonArray, mscSlideNumMax,  mscCarousel);
                         break;
                 
                     case ("watch"):
-                        if (watchButtonArray.length % 6 == 0) {
-                            divIndex++;
-                            watchSlideNumMax++;
-                            var newDiv = document.createElement("div");
-                            newDiv.classList.add("region_button_container");
-                            watchCarousel.appendChild(newDiv);
-                        }
-
+                        watchSlideNumMax = newSlideCheck(watchButtonArray, watchSlideNumMax,  watchCarousel);
+                        break;
+                    
+                    case ("custom"):
+                        customSlideNumMax = newSlideCheck(customButtonArray, customSlideNumMax, customCarousel);
                         break;
                 }
 
@@ -90,7 +66,7 @@ function setUpSelectionScreen(regionData) {
                 // styling
                 newRegionButton.style.backgroundImage = `url(${region.background})`;
                 newRegionButton.innerText = region.name;
-                newRegionButton.style.color = `${region.color}`;
+                newRegionButton.style.color = `${region.colors[0]}`;
                 newRegionButton.style.border = `0.3vw solid`;
 
                 // adding song snippets for when you hover over buttons using howler (if the button has one)
@@ -165,6 +141,9 @@ function setUpSelectionScreen(regionData) {
                 watchCarousel.style.display = "flex";
                 watchCarousel.scrollLeft = 0;
                 watchCarousel.style.display = "none";
+                customCarousel.style.display = "flex";
+                customCarousel.scrollLeft = 0;
+                customCarousel.style.display = "none";
             }
 
             // setting the carousel screen
@@ -172,100 +151,47 @@ function setUpSelectionScreen(regionData) {
             modCarousel.scrollLeft = storedModSlide
             mscCarousel.scrollLeft = storedMscSlide
             watchCarousel.scrollLeft = storedWatchSlide
+            customCarousel.scrollLeft = storedCustomSlide
 
             // these variables handle setting carrot button status based on what screen we got sent to
             var atMidOfBaseCarousel = storedBaseSlide > 0 && storedBaseSlide < baseCarousel.scrollLeftMax,
                 atMidOfModCarousel = storedModSlide > 0 && storedModSlide < modCarousel.scrollLeftMax,
                 atMidOfMscCarousel = storedMscSlide > 0 && storedMscSlide < mscCarousel.scrollLeftMax,
-                atMidOfWatchCarousel = storedWatchSlide > 0 && storedWatchSlide < watchCarousel.scrollLeftMax;
+                atMidOfWatchCarousel = storedWatchSlide > 0 && storedWatchSlide < watchCarousel.scrollLeftMax,
+                atMidOfCustomCarousel = storedCustomSlide > 0 && storedCustomSlide < customCarousel.scrollLeftMax;
             
             var atStartOfBaseCarousel = storedBaseSlide == 0,
                 atStartOfModCarousel = storedModSlide == 0,
                 atStartOfMscCarousel = storedMscSlide == 0,
-                atStartOfWatchCarousel = storedWatchSlide == 0;
+                atStartOfWatchCarousel = storedWatchSlide == 0,
+                atStartOfCustomCarousel = storedCustomSlide == 0;
             
             var atEndOfBaseCarousel = storedBaseSlide == baseCarousel.scrollLeftMax,
                 atEndOfModCarousel = storedModSlide == modCarousel.scrollLeftMax,
                 atEndOfMscCarousel = storedMscSlide == mscCarousel.scrollLeftMax,
-                atEndOfWatchCarousel = storedWatchSlide == watchCarousel.scrollLeftMax;
+                atEndOfWatchCarousel = storedWatchSlide == watchCarousel.scrollLeftMax,
+                atEndOfCustomCarousel = storedCustomSlide == customCarousel.scrollLeftMax;
 
             switch (selectionState) {
                 case ("base"):
-                    
-                    // if on the first slide,
-                    if (atStartOfBaseCarousel) {
-                        switchToBright(carrotButtons[1]);
-                        switchToDark(carrotButtons[0]);
-                    }
-
-                    // if in the middle, 
-                    if (atMidOfBaseCarousel) {
-                        switchToBright(carrotButtons[0], carrotButtons[1])
-                    }
-
-                    // if on the last slide,
-                    if (atEndOfBaseCarousel) {
-                        switchToBright(carrotButtons[0]);
-                        switchToDark(carrotButtons[1]);
-                    }
-
-                    // finally, determining the scroll distance
-                    var scrollDistance = baseCarousel.getBoundingClientRect().width;
+                    var scrollDistance = defineSlideHandling(atStartOfBaseCarousel, atMidOfBaseCarousel, atEndOfBaseCarousel, baseCarousel);
                     break;
                 
                 // likewise logic for the rest of the categories
                 case ("mods"):
-                    if (atStartOfModCarousel) {
-                        switchToBright(carrotButtons[1]);
-                        switchToDark(carrotButtons[0]);
-                    }
-
-                    if (atMidOfModCarousel) {
-                        switchToBright(carrotButtons[0], carrotButtons[1])
-                    }
-
-                    if (atEndOfModCarousel) {
-                        switchToBright(carrotButtons[0]);
-                        switchToDark(carrotButtons[1]);
-                    }
-
-                    var scrollDistance = modCarousel.getBoundingClientRect().width;
+                    var scrollDistance = defineSlideHandling(atStartOfModCarousel, atMidOfModCarousel, atEndOfModCarousel, modCarousel);
                     break;
                 
                 case ("msc"):
-                    if (atStartOfMscCarousel) {
-                        switchToBright(carrotButtons[1]);
-                        switchToDark(carrotButtons[0]);
-                    }
-
-                    if (atMidOfMscCarousel) {
-                        switchToBright(carrotButtons[0], carrotButtons[1])
-                    }
-
-                    if (atEndOfMscCarousel) {
-                        switchToBright(carrotButtons[0]);
-                        switchToDark(carrotButtons[1]);
-                    }
-
-                    var scrollDistance = mscCarousel.getBoundingClientRect().width;
+                    var scrollDistance = defineSlideHandling(atStartOfMscCarousel, atMidOfMscCarousel, atEndOfMscCarousel, mscCarousel);
                     break;
                     
                 case ("watch"):
-                    if (atStartOfWatchCarousel) {
-                        switchToBright(carrotButtons[1]);
-                        switchToDark(carrotButtons[0]);
-                    }
-
-                    if (atMidOfWatchCarousel) {
-                        switchToBright(carrotButtons[0], carrotButtons[1])
-                    }
-
-                    if (atEndOfWatchCarousel) {
-                        switchToBright(carrotButtons[0]);
-                        switchToDark(carrotButtons[1]);
-                    }
-
-                    var scrollDistance = watchCarousel.getBoundingClientRect().width;
+                    var scrollDistance = defineSlideHandling(atStartOfWatchCarousel, atMidOfWatchCarousel, atEndOfWatchCarousel, watchCarousel);
+                    break;
+                
+                case ("custom"):
+                    var scrollDistance = defineSlideHandling(atStartOfCustomCarousel, atMidOfCustomCarousel, atEndOfCustomCarousel, customCarousel);
                     break;
             }
             
@@ -276,80 +202,24 @@ function setUpSelectionScreen(regionData) {
                     // this switch checks to see what carousel we're trying to move
                     switch (selectionState) {
                         case ("base"):
-                            // switching the right slde button back on if we are moving off of the last page
-                            if (baseSlideNum == baseSlideNumMax) {
-                                switchToBright(carrotButtons[1]);
-                            }
-
-                            // moving the slide
-                            baseCarousel.scrollLeft -= scrollDistance;
-
-                            // decreasing the slide number if its not already at 1
-                            if (baseSlideNum > 1) {
-                                baseSlideNum--;
-                                slideNum.innerText = `${baseSlideNum}.`;
-                            }
-
-                            // switching the left carrot button off if we're on the first slide
-                            if (baseSlideNum == 1) {
-                                switchToDark(carrotButtons[0])
-                            };
-
+                            baseSlideNum = leftCarrotButtonHandling(baseSlideNum, baseSlideNumMax, scrollDistance, baseCarousel);
                             break;
                         
                         // likewise logic
                         case ("mods"):
-                            if (modSlideNum == modSlideNumMax) {
-                                switchToBright(carrotButtons[1]);
-                            }
-
-                            modCarousel.scrollLeft -= scrollDistance;
-
-                            if (modSlideNum > 1) {
-                                modSlideNum--;
-                                slideNum.innerText = `${modSlideNum}.`;
-                            }
-
-                            if (modSlideNum == 1) {
-                                switchToDark(carrotButtons[0])
-                            }
-                            
+                            modSlideNum = leftCarrotButtonHandling(modSlideNum, modSlideNumMax, scrollDistance, modCarousel);
                             break;
                         
                         case ("msc"):
-                            if (mscSlideNum == mscSlideNumMax) {
-                                switchToBright(carrotButtons[1]);
-                            }
-
-                            mscCarousel.scrollLeft -= scrollDistance;
-
-                            if (mscSlideNum > 1) {
-                                mscSlideNum--;
-                                slideNum.innerText = `${mscSlideNum}.`;
-                            }
-
-                            if (mscSlideNum == 1) {
-                                switchToDark(carrotButtons[0])
-                            }
-                            
+                            mscSlideNum = leftCarrotButtonHandling(mscSlideNum, mscSlideNumMax, scrollDistance, mscCarousel);
                             break;
                             
                         case ("watch"):
-                            if (watchSlideNum == watchSlideNumMax) {
-                                switchToBright(carrotButtons[1]);
-                            }
-
-                            watchCarousel.scrollLeft -= scrollDistance;
-
-                            if (watchSlideNum > 1) {
-                                watchSlideNum--;
-                                slideNum.innerText = `${watchSlideNum}.`;
-                            }
-
-                            if (watchSlideNum == 1) {
-                                switchToDark(carrotButtons[0])
-                            }
-                            
+                            watchSlideNum = leftCarrotButtonHandling(watchSlideNum, watchSlideNumMax, scrollDistance, watchCarousel);
+                            break;
+                        
+                        case ("custom"):
+                            customSlideNum = leftCarrotButtonHandling(customSlideNum, customSlideNumMax, scrollDistance, customCarousel);
                             break;
                     }
                 }
@@ -360,75 +230,23 @@ function setUpSelectionScreen(regionData) {
                     setClickTimout();
                     switch (selectionState) {
                         case ("base"):
-                            if (baseSlideNum == 1) {
-                                switchToBright(carrotButtons[0]);
-                            }
-
-                            baseCarousel.scrollLeft += scrollDistance;
-
-                            if (baseSlideNum < baseSlideNumMax) {
-                                baseSlideNum++;
-                                slideNum.innerText = `${baseSlideNum}.`;
-                            }
-                            
-                            if (baseSlideNum == baseSlideNumMax) {
-                                switchToDark(carrotButtons[1]);
-                            }
-                            
+                            baseSlideNum = rightCarrotButtonHandling(baseSlideNum, baseSlideNumMax, scrollDistance, baseCarousel);
                             break;
                         
                         case ("mods"):
-                            if (modSlideNum == 1) {
-                                switchToBright(carrotButtons[0]);
-                            }
-
-                            modCarousel.scrollLeft += scrollDistance;
-
-                            if (modSlideNum < modSlideNumMax) {
-                                modSlideNum++;
-                                slideNum.innerText = `${modSlideNum}.`;
-                            }
-                            
-                            if (modSlideNum == modSlideNumMax) {
-                                switchToDark(carrotButtons[1])
-                            }
-
+                            modSlideNum = rightCarrotButtonHandling(modSlideNum, modSlideNumMax, scrollDistance, modCarousel);
                             break;
                         
                         case ("msc"):
-                            if (mscSlideNum == 1) {
-                                switchToBright(carrotButtons[0]);
-                            }
-
-                            mscCarousel.scrollLeft += scrollDistance;
-
-                            if (mscSlideNum < mscSlideNumMax) {
-                                mscSlideNum++;
-                                slideNum.innerText = `${mscSlideNum}.`;
-                            }
-                            
-                            if (mscSlideNum == mscSlideNumMax) {
-                                switchToDark(carrotButtons[1])
-                            }
-
+                            mscSlideNum = rightCarrotButtonHandling(mscSlideNum, mscSlideNumMax, scrollDistance, mscCarousel);
                             break;
                     
                         case ("watch"):
-                            if (watchSlideNum == 1) {
-                                switchToBright(carrotButtons[0]);
-                            }
+                            watchSlideNum = rightCarrotButtonHandling(watchSlideNum, watchSlideNumMax, scrollDistance, watchCarousel);
+                            break;
 
-                            watchCarousel.scrollLeft += scrollDistance;
-
-                            if (watchSlideNum < watchSlideNumMax) {
-                                watchSlideNum++;
-                                slideNum.innerText = `${watchSlideNum}.`;
-                            }
-                            
-                            if (watchSlideNum == watchSlideNumMax) {
-                                switchToDark(carrotButtons[1])
-                            }
-
+                        case ("custom"):
+                            customSlideNum = rightCarrotButtonHandling(customSlideNum, customSlideNumMax, scrollDistance, customCarousel);
                             break;
                     }
                 }
@@ -464,6 +282,7 @@ function addOnClick(element, regionData, resolve) {
             storedModSlide = modCarousel.scrollLeft;
             storedMscSlide = mscCarousel.scrollLeft;
             storedWatchSlide = watchCarousel.scrollLeft;
+            storedCustomSlide = customCarousel.scrollLeft;
 
             // defining variables
             layerSoloed = false;
@@ -479,71 +298,48 @@ function addOnClick(element, regionData, resolve) {
             var regionButtonArray = Array.from(regionButton),
                 regionIndex = regionButtonArray.indexOf(element),
                 regionChosen = regionData[regionIndex];
+
             // changing the title of the page
             document.title = `Threatmixer - ${regionChosen.name}`;
             
             // setting the header to the region's name
-            regionTitle.innerText = regionData[regionIndex].name
+            var regionName = regionData[regionIndex].name
 
-            // managing layerButtonContainer width based on how many layers there are
-            switch (regionIndex) {
-                case 0: // chimney canopy
-                    layerButtonContainer.style.width = "52vw";
-                    altColorNeeded = true;
+            switch (regionName) {
+                case ("Nachos Will Never Be The Same"):
+                    regionTitle.innerText = "Garbage Wastes (Inv)";
                     break;
-                
-                case 9: // metroplis
-                    layerButtonContainer.style.width = "58vw";
-                    altColorNeeded = true;
+                case ("Painage System"):
+                    regionTitle.innerText = "Drainage System (Inv)";
                     break;
-
-                case 14: // aether ridge
-                    layerButtonContainer.style.width = "56vw";
-                    altColorNeeded = false;
+                case ("We Forgot To Render This One Sorry"):
+                    regionTitle.innerText = "Outskirts (Inv)"
                     break;
-                
-                case 16: // coral caves
-                    layerButtonContainer.style.width = "56vw";
-                    altColorNeeded = true;
+                case ("TOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOBS"):
+                    regionTitle.innerText = "Pipeyard (inv)";
                     break;
-
-                case 21: // stormy coast
-                    layerButtonContainer.style.width = "56vw";
-                    altColorNeeded = true;
-                    break;
-                
-                case 31: // far shore
-                    layerButtonContainer.style.width = "100%";
-                    altColorNeeded = false;
+                // also checking for Far Shore as well
+                case ("Far Shore"):
                     farShoreSelected = true;
                     break;
-
-                case 36: // luminous cove
-                    layerButtonContainer.style.width = "65vw";
-                    altColorNeeded = true;
-                    break;
-                
-                case 38: // moss fields
-                    layerButtonContainer.style.width = "62vw";
-                    altColorNeeded = true;
-                    break;
-
-                default: // if none of these things were selected
-                    layerButtonContainer.style.width = "100%";
-                    altColorNeeded = false;
+                default:
+                    regionTitle.innerText = regionName;
                     break;
             }
 
-            // storing the color changes we'll need based on the chosen region
-            if (altColorNeeded) {
-                var altColor = regionChosen.altColor;
-                var altFilter = regionChosen.altFilter;
-            }
-            var pageStyle = regionChosen.color;
-            var iconFilter = regionChosen.filter;
+            // finding the default colors for our region
+            var colorArray = regionChosen.colors,
+                filterArray = regionChosen.filters,
+                defaultColor = colorArray[0],
+                defaultFilter = filterArray[0];
+
+            Array.from(otherButtons).forEach((button) => {button.style.setProperty("--tippy-color", defaultColor)})
+
+            // applying layerButtonContainer width
+            layerButtonContainer.style.width = regionChosen.containerWidth;
 
             // here, we dynamically create as many buttons and sounds as we need based on what's in the json
-            regionChosen.layers.forEach((layer, index) => {
+            regionChosen.layers.forEach((layer) => {
 
                 // creating a div to hold each of the buttons
                 var newDiv = document.createElement("div");
@@ -552,7 +348,6 @@ function addOnClick(element, regionData, resolve) {
                 // creating the layer and solo buttons
                 var newLayerButton = document.createElement("button"); 
                 newLayerButton.classList.add("layer_button", "layer_button_darkened");
-                newLayerButton.style.border = `0.16vw solid ${pageStyle}`;
                 newLayerButton.dataset.title = " (Muted)";
 
                 // giving the button a title
@@ -568,10 +363,32 @@ function addOnClick(element, regionData, resolve) {
                     else {strIndex--;}
                 }
 
+                // hardcoding House of Braids tippy names (for now)
+                if (regionName == "House of Braids") {
+                    switch (houseCount) {
+                        case 8:
+                            layerName = "BASS1 (NIGHT)";
+                            break;
+                        case 9:
+                            layerName = "DRUM2 (NIGHT)";
+                            break;
+                        case 10:
+                            layerName = "BREAKS1 (NIGHT)";
+                            break;
+                        case 11:
+                            layerName = "LEAD2 (NIGHT)";
+                            break;
+                        case 12:
+                            layerName = "WAWA (NIGHT)";
+                            break;
+                    }
+
+                    houseCount++;
+                }
+
                 // creating a solo button
                 var newSoloButton = document.createElement("button");
                 newSoloButton.classList.add("solo_button", "darken_button");
-                newSoloButton.style.border = `0.16vw solid ${pageStyle}`;
                 newSoloButton.dataset.title = "Solo Layer (Mute Others)";
 
                 // creating the icons to put in each button
@@ -593,33 +410,25 @@ function addOnClick(element, regionData, resolve) {
                     newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
                 }
 
-                newLayerIcon.style.filter = `${iconFilter}`;
-
                 var newSoloIcon = document.createElement("img");
                 newSoloIcon.classList.add("button_icon", "solo_button_icon");
                 newSoloIcon.src = soloIcon1;
-                newSoloIcon.style.filter = `${iconFilter}`;
 
-                // applying alternate colors to buttons if needed
-                var tippyStyle = "dynamic-style";
+                // applying color to the buttons
+                var buttonColor = colorArray[layer[2]],
+                    buttonFilter = filterArray[layer[2]];
 
-                if ((altColorNeeded && regionIndex == 0 && layerButtons.length > 7) || // chimney canopy
-                    (altColorNeeded && regionIndex == 9 && layerButtons.length > 8) || // metropolis
-                    (altColorNeeded && regionIndex == 16 && layerButtons.length > 8) ||  // coral caves
-                    (altColorNeeded && regionIndex == 21 && layerButtons.length > 13) ||  // stormy coast
-                    (altColorNeeded && regionIndex == 36 && layerButtons.length < 10) || // luminous cove
-                    (altColorNeeded && regionIndex == 38 && layerButtons.length > 8)) { // moss fields
-                    tippyStyle = "alt-dynamic-style"
-                    newLayerButton.classList.replace("layer_button_darkened", "alt_layer_button_darkened")
-                    newLayerButton.style.border = `0.16vw solid ${altColor}`;
-                    newSoloButton.style.border = `0.16vw solid ${altColor}`;
-                    newLayerIcon.style.filter = `${altFilter}`;
-                    newSoloIcon.style.filter = `${altFilter}`;
-                }
+                newLayerButton.style.border = `0.16vw solid ${buttonColor}`;
+                newSoloButton.style.border = `0.16vw solid ${buttonColor}`;
+                newLayerIcon.style.filter = `${buttonFilter}`;
+                newSoloIcon.style.filter = `${buttonFilter}`;
+
+                newLayerButton.style.setProperty("--glow-color", `${buttonColor}99`);
+                newLayerButton.style.setProperty("--tippy-color", `${buttonColor}`);
 
                 // creating a pop-up tip for each button
-                createTippy(newLayerButton, tippyStyle, layerName, true);
-                createTippy(newSoloButton, tippyStyle, newSoloButton.dataset.title, false);
+                createTippy(newLayerButton, layerName, buttonColor);
+                createTippy(newSoloButton, newSoloButton.dataset.title, buttonColor);
                 layerNameArray.push(layerName);
 
                 // adding our new elements onto the page
@@ -637,41 +446,28 @@ function addOnClick(element, regionData, resolve) {
             var styleChanges = document.createElement("style");
             styleChanges.textContent = `
             #exit_button, #region_name, #visualizer_toggle, .other_buttons, #timer, #fade_button {
-                color: ${pageStyle};
+                color: ${defaultColor};
             }
 
             #exit_button, #visualizer_toggle, #timer_container, .other_buttons, #fade_button, #timer_container {
-                border: 0.16vw solid ${pageStyle};
-            }
-
-            .layer_button_brightened {
-                box-shadow: 0vw 0vw 1.3vw 0.4vw ${pageStyle}99;
-            }
-
-            .alt_layer_button_brightened {
-                box-shadow: 0vw 0vw 1.3vw 0.4vw ${altColor}99;
+                border: 0.16vw solid ${defaultColor};
             }
 
             .other_button_icons {
-                filter: ${iconFilter};
+                filter: ${defaultFilter};
             }
 
             progress::-moz-progress-bar {
-                background-color: ${pageStyle};
+                background-color: ${defaultColor};
+            }
+
+            .tippy-box[data-theme~="other-button-style"] {
+                color: ${defaultColor};
+                border: 0.2vw solid ${defaultColor};
             }
 
             progress::-webkit-progress-value {
-                background-color: ${pageStyle};
-            }
-
-            .tippy-box[data-theme~="dynamic-style"] {
-                color: ${pageStyle};
-                border: 0.2vw solid ${pageStyle};
-            }
-
-            .tippy-box[data-theme~="alt-dynamic-style"] {
-                color: ${altColor};
-                border: 0.2vw solid ${altColor};
+                background-color: ${defaultColor};
             }
             `;
             
@@ -679,21 +475,98 @@ function addOnClick(element, regionData, resolve) {
             document.head.appendChild(styleChanges);
 
             // changing the background image depending on the region
-            
-            /* Potentially scrapping this
-            var backgroundGradient = `linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%)`;
-            var backgroundImage = `url(${regionChosen.background}) center/cover no-repeat`;
-            musicScreen.style.background = `${backgroundGradient}, ${backgroundImage}`;
-            */
-            
             musicScreen.style.backgroundImage = `url(${regionChosen.background})`;
 
             // changing the color of the visualizer
-            canvasContext.fillStyle = `${pageStyle}`;
-            canvasContext.strokeStyle = `${pageStyle}`;
+            canvasContext.fillStyle = `${defaultColor}`;
+            canvasContext.strokeStyle = `${defaultColor}`;
 
             // once this has all been done, move onto the next step
             resolve(); 
         }
     }
+}
+
+// Functions to simplify tab handling
+function newSlideCheck(buttonArray, carouselSlideNumMax, carousel) {
+    if (buttonArray.length % 6 == 0) {
+        divIndex++;
+        carouselSlideNumMax++;
+        var newDiv = document.createElement("div");
+        newDiv.classList.add("region_button_container");
+        carousel.appendChild(newDiv);   
+    }
+    return carouselSlideNumMax;
+}
+
+function defineSlideHandling(start, mid, end, carousel) {
+    // if on the first slide,
+    if (start) {
+        switchToBright(carrotButtons[1]);
+        switchToDark(carrotButtons[0]);
+    }
+
+    // if in the middle, 
+    if (mid) {
+        switchToBright(carrotButtons[0], carrotButtons[1])
+    }
+
+    // if on the last slide,
+    if (end) {
+        switchToBright(carrotButtons[0]);
+        switchToDark(carrotButtons[1]);
+    }
+
+    // finally, determining the scroll distance
+    return scrollDistance = carousel.getBoundingClientRect().width;
+}
+
+function leftCarrotButtonHandling(carouselSlideNum, carouselSlideNumMax, scrollDistance, carousel) {
+    // switching the right side button back on if we are moving off of the last page
+    if (carouselSlideNum == carouselSlideNumMax) {
+        switchToBright(carrotButtons[1]);
+    }
+
+    // moving the slide
+    carousel.scrollLeft -= scrollDistance;
+
+    // decreasing the slide number if its not already at 1
+    if (carouselSlideNum > 1) {
+        carouselSlideNum--;
+        slideNum.innerText = `${carouselSlideNum}.`;
+    }
+
+    // switching the left carrot button off if we're on the first slide
+    if (carouselSlideNum == 1) {
+        switchToDark(carrotButtons[0])
+    };
+
+    // checking if we need to change the carousel name
+    if (selectionState == "custom" && carouselSlideNum <= 2) {
+        selectionHeader.innerText = "Extra Threat Themes";
+    }
+
+    return carouselSlideNum;
+}
+
+function rightCarrotButtonHandling(carouselSlideNum, carouselSlideNumMax, scrollDistance, carousel) {
+    if (carouselSlideNum == 1) {
+        switchToBright(carrotButtons[0]);
+    }
+    carousel.scrollLeft += scrollDistance;
+
+    if (carouselSlideNum < carouselSlideNumMax) {
+        carouselSlideNum++;
+        slideNum.innerText = `${carouselSlideNum}.`;
+    }
+
+    if (carouselSlideNum == carouselSlideNumMax) {
+        switchToDark(carrotButtons[1]);
+    }
+
+    if (selectionState == "custom" && carouselSlideNum >= 3) {
+        selectionHeader.innerText = "Roasted's Threat Themes";
+    }
+
+    return carouselSlideNum;
 }

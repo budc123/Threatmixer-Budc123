@@ -191,7 +191,11 @@ function setUpMusicScreen() {
                 updateTippyContent(pauseButton, "Resume Song & Recording", false);
                 audioContext.suspend();
                 songPaused = true;
-                if (recorder.state == "recording") {recorder.pause();}
+                if (recorder.state == "recording") {
+                    recorder.pause();
+                    recordIcon.src = "assets/images/button_icons/rec_paused_icon.png";
+                    updateTippyContent(recordButton, "Recording Paused", false);
+                }
                 songTimer.pause()
                 pauseIcon.src = "assets/images/button_icons/resume_icon.png";
             }
@@ -200,7 +204,11 @@ function setUpMusicScreen() {
                 updateTippyContent(pauseButton, "Pause Song & Recording", false);
                 audioContext.resume();
                 songPaused = false;
-                if (recorder.state == "paused") {recorder.resume();}
+                if (recorder.state == "paused") {
+                    recorder.resume();
+                    recordIcon.src = "assets/images/button_icons/rec_progress_icon.png";
+                    updateTippyContent(recordButton, "Recording...", false);
+                }
                 songTimer.pause();
                 pauseIcon.src = "assets/images/button_icons/pause_icon.png";
 
@@ -262,7 +270,7 @@ function setUpMusicScreen() {
                 if (recorder.state != "inactive") {
                     recorder.stop();
                     updateTippyContent(recordButton, "Start Recording", false);
-                    eraseRecording = true;
+                    // eraseRecording = true;
                     recordIcon.src = "assets/images/button_icons/rec_icon.png";
                     switchToDark(saveButton, deleteButton);
                 }
@@ -368,7 +376,7 @@ function setUpMusicScreen() {
             playAllIcon.src = "assets/images/button_icons/play_all_icon.png";
             pauseIcon.src = "assets/images/button_icons/pause_icon.png";
             recordIcon.src = "assets/images/button_icons/rec_icon.png";
-            switchToDark(saveButton, deleteButton);
+            switchToDark(saveButton, deleteButton, pauseButton);
 
             // resetting the value of global variables
             globalDuration = 9999;

@@ -34,6 +34,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     musicScreen = document.getElementById("music_screen"),
     loadingScreen = document.getElementById("loading_screen"),
     homeScreen = document.getElementById("home_screen"),
+    screenCover = document.getElementById("screen_cover"),
     regionButton = document.getElementsByClassName("region_button"),
     selectionScreen = document.getElementById("selection_screen"),
     selectionHeader = document.getElementById("selection_header"),
@@ -41,10 +42,12 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     moddedButton = document.getElementById("modded_button"),
     mscButton = document.getElementById("downpour_button"),
     watchButton = document.getElementById("watcher_button"),
+    customButton = document.getElementById("custom_button"),
     baseCarousel = document.getElementById("base_carousel"),
     modCarousel = document.getElementById("mod_carousel"),
     mscCarousel = document.getElementById("downpour_carousel"),
     watchCarousel = document.getElementById("watcher_carousel"),
+    customCarousel = document.getElementById("custom_carousel"),
     carrotButtons = document.getElementsByClassName("carrot_buttons"),
     regionButtonContainer = document.getElementsByClassName("region_button_container"),
     slideNum = document.getElementById("slide_number"),
@@ -74,6 +77,7 @@ selectionScreen.display = "none";
 modCarousel.style.display = "none";
 mscCarousel.style.display = "none";
 watchCarousel.style.display = "none";
+customCarousel.style.display = "none";
 
 // grabbing the audio context and creating an oscillator with it
 let audioContext = new (window.AudioContext || window.webkitAudioContext);
@@ -159,8 +163,8 @@ canvasContext.imageSmoothingEnabled = false;
 // declaring our global variables
 let layerSoloed, songStarted, eraseRecording, loadedLayers, 
     layersPlaying, startingLayers, recordedData, regionThreatLayers,
-    songDuration, barUpdateInterval, altColorNeeded, hoverCheck,
-    animation, currentPreviewPlaying, fadeCheck, instanceSongLength,
+    songDuration, barUpdateInterval, hoverCheck, animation, 
+    currentPreviewPlaying, fadeCheck, instanceSongLength,
     menuMusicTimeout,
     farShoreSelected = false,
     menuMusicPlaying = false,
@@ -192,6 +196,10 @@ let layerSoloed, songStarted, eraseRecording, loadedLayers,
     watchSlideNum = 1,
     watchSlideNumMax = 0,
     storedWatchSlide = 0,
+    customSlideNum = 1,
+    customSlideNumMax = 0,
+    storedCustomSlide = 0,
+    houseCount = 0,
     globalDuration = 9999999,
     selectionState = "base",
     pendingFadeIns = [],
@@ -313,9 +321,11 @@ baseButton.onclick = () => {
     moddedButton.classList.remove("extend_button")
     mscButton.classList.remove("extend_button")
     watchButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
     modCarousel.style.display = "none";
     mscCarousel.style.display = "none";
     watchCarousel.style.display = "none";
+    customCarousel.style.display = "none";
     baseCarousel.style.display = "flex";
     baseCarousel.scrollLeft = 0;
 }
@@ -331,9 +341,11 @@ moddedButton.onclick = () => {
     mscButton.classList.remove("extend_button")
     baseButton.classList.remove("extend_button")
     watchButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
     baseCarousel.style.display = "none";
     mscCarousel.style.display = "none";
     watchCarousel.style.display = "none";
+    customCarousel.style.display = "none";
     modCarousel.style.display = "flex";
     modCarousel.scrollLeft = 0;
 }
@@ -349,9 +361,11 @@ mscButton.onclick = () => {
     moddedButton.classList.remove("extend_button")
     baseButton.classList.remove("extend_button")
     watchButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
     baseCarousel.style.display = "none";
     modCarousel.style.display = "none";
     watchCarousel.style.display = "none";
+    customCarousel.style.display = "none";
     mscCarousel.style.display = "flex";
     mscCarousel.scrollLeft = 0;
 }
@@ -367,11 +381,33 @@ watchButton.onclick = () => {
     mscButton.classList.remove("extend_button")
     baseButton.classList.remove("extend_button")
     moddedButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
     baseCarousel.style.display = "none";
     mscCarousel.style.display = "none";
     modCarousel.style.display = "none";
+    customCarousel.style.display = "none";
     watchCarousel.style.display = "flex";
     watchCarousel.scrollLeft = 0;
+}
+
+customButton.onclick = () => {
+    selectionState = "custom";
+    selectionHeader.innerText = "Extra Threat Themes";
+    customSlideNum = 1;
+    slideNum.innerText = `${customSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    customButton.classList.add("extend_button")
+    mscButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    moddedButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    modCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
+    customCarousel.style.display = "flex";
+    customCarousel.scrollLeft = 0;
 }
 
 selectionBackButton.onclick = () => {
@@ -382,10 +418,12 @@ selectionBackButton.onclick = () => {
     modCarousel.scrollLeft = 0;
     mscCarousel.scrollLeft = 0;
     watchCarousel.scrollLeft = 0;
+    customCarousel.scrollLeft = 0;
     baseSlideNum = 1;
     modSlideNum = 1;
     mscSlideNum = 1;
     watchSlideNum = 1;
+    customSlideNum = 1;
     slideNum.innerText = 1;
     switchToBright(carrotButtons[1]);
     switchToDark(carrotButtons[0]);
@@ -463,6 +501,7 @@ beginButton.onclick = () => {
     storedModSlide = 0;
     storedMscSlide = 0;
     storedWatchSlide = 0;
+    storedCustomSlide = 0;
     if (menuMusicPlaying && menuMusicEnabled) {menuMusic.fade(menuMusic.volume(), 0, 3000);}
     clearInterval(menuMusicCheck);
     clearTimeout(menuMusicTimeout);
@@ -489,11 +528,13 @@ discordButton.onclick = () => {
     document.body.removeChild(link);
 }
 
+screenCover.addEventListener("click", () => {screenCover.style.display = "none";}) 
+
 // button tips
-createTippy(previewToggleButton, "default-style", previewToggleButton.dataset.title)
-createTippy(menuMusicToggleButton, "default-style", menuMusicToggleButton.dataset.title)
-createTippy(discordButton, "discord-button-style", discordButton.dataset.title)
-Array.from(otherButtons).forEach((button) => {createTippy(button, "dynamic-style", button.dataset.title)})
+Array.from(otherButtons).forEach((button) => {createTippy(button, button.dataset.title, "#ffffff")});
+createTippy(previewToggleButton, previewToggleButton.dataset.title, "#dadbdd");
+createTippy(menuMusicToggleButton, menuMusicToggleButton.dataset.title, "#dadbdd");
+createTippy(discordButton, discordButton.dataset.title, "#5865f2");
 
 // menu music handling
 let menuMusic = new Howl({

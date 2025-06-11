@@ -39,6 +39,7 @@ A humongous thank you to Rain World's modding community for allowing their amazi
 Here's a full list of everyone who's region, music, and/or art is shown in this project:
 - [4slugcats](https://x.com/SelenireeArt) (Twitter)
 - [Aki](https://www.youtube.com/@aki7007) (Youtube)
+- [Alekus](https://www.youtube.com/@Alekus43) (Youtube)
 - [aprilWORSTmonth](https://steamcommunity.com/profiles/76561198881171789) (Steam)
 - [Andrew Man](https://electricsheap.bandcamp.com/album/chronological-error) (Bandcamp)
 - [AndrewFM](http://www.egg-zero.com/) (Personal Website)
@@ -54,17 +55,22 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [Joseph Nied](https://www.youtube.com/@josephtnied) (Youtube)
 - [Kaeporo](https://www.youtube.com/@Kaeporo) (Youtube)
 - [klumquart](https://steamcommunity.com/profiles/76561199123058149) (Steam)
+- [LudoCrypt](https://ludocrypt.bandcamp.com/music) (Bandcamp)
 - Mikronaut
 - [Mojosoup](https://x.com/MojoMojosoup) (Twitter)
 - [Myrmice](https://steamcommunity.com/id/myrmice/) (Steam)
 - [Nautilo](https://www.youtube.com/@nautillo2481) (Youtube)
 - [Notocorda](https://www.deviantart.com/notocordada) (Deviantart)
+- [Parageist](https://steamcommunity.com/id/Parageist) (Steam)
 - [Pinpoint](https://oliverlollsdesign.com/) (Personal Website)
-- [Serpanoy](https://serpanoy.carrd.co/) (Personal Site)
+- [Roasted AND Toasted](https://www.youtube.com/@roastedandtoasted187/videos) (Youtube)
+- [Serpanoy](https://serpanoy.carrd.co/) (Personal Website)
 - [Snoodle](https://snoodle-stuff.carrd.co/) (Personal Website)
 - [Snugboat](https://x.com/SnugBoat11) (Twitter)
 - Spog_frog
+- [Tronsx](https://www.youtube.com/@tronsx8480) (Youtube)
 - Tsunochizu
+- [Wolfycatt](https://wolfycatt.crd.co/) (Personal Website)
 - [Wrayk](https://steamcommunity.com/profiles/76561197975243281) (Steam)
 
 (For those without a link attached, I was unfortunately unable to find something that I could refer users to which pertains to you and any other things you've worked on. If you wish for me to attach a link to your name or change the one which I have given you, please reach out to me on Discord.)
@@ -89,6 +95,11 @@ And here's the credits by region:
 - Region & Region Art by Fishnoid
 - Threat Theme by Snoodle
 
+## Cliffside:
+- Region by Parageist
+- Region Art by Wolfycatt
+- Threat Theme by LudoCrypt
+
 ## Data Manifolds:
 - Region & Region Art by aprilWORSTmonth
 - Threat Theme by Snoodle
@@ -101,6 +112,11 @@ And here's the credits by region:
 - Region Art by Nautillo
 - Far Shore Threat Theme by Aki
 - Woven Nest Threat Theme by Snoodle
+
+## Forsaken Station:
+- Region by Tronsx
+- Region Art by aprilWORSTmonth
+- Threat Theme by Roasted AND Toasted
 
 ## Shrouded Assembly (Fog Gulch / Steaming Edifice):
 - Regions by Klumquart
@@ -188,7 +204,39 @@ And here's the credits by region:
 - Region by Wrayk
 - Threat Theme by Wrayk & Pinpoint
 
-Once again, thanks to all of you for allowing Threatmixer to become fully realized and the best possible thing it could be. You're all incredibly talented, and I couldn't be more happy to be in a community full of people like yourselves.
+## Urban Reservoir
+- Region & Threat Theme by LudoCrypt
+
+## Weakened Platform
+- Region & Threat Theme by Alekus
+
+# *Extra Threat Themes Credits*
+
+[Extra Threat Themes](https://steamcommunity.com/sharedfiles/filedetails/?id=2986709902) is a mod created and organized by [Tryn](https://www.youtube.com/channel/UCUyZevvGPZ2NXrR_8tzYhOw) which features custom threat themes for region/subregions that don't have one in the base game.
+
+The artists whose music is featured in this mod and now this webpage are:
+- [Aki](https://www.youtube.com/@aki7007) (Youtube)
+    - The Precipice
+- [Axye](https://www.youtube.com/@axye1024) (Youtube)
+    - The Wall (Day & Night)
+- [BeanieBongle](https://www.youtube.com/@BeanieBongle777) (Youtube)
+    - Undergrowth
+- [BruhNo U](https://www.youtube.com/@Albertable) (Youtube)
+    - Underhang
+- [Kaylestuffs](https://www.youtube.com/@thingsarepostedhere) (Youtube)
+    - Drainage System, Silent Construct, Submerged Superstructe, & House of Braids
+- [Sidera](https://www.youtube.com/@SideraMusic) (Youtube)
+    - Subterranean, Filtration System
+- [Snoodle](https://snoodle-stuff.carrd.co/) (Personal Website)
+    - Shaded Citadel
+
+# *Roasted's Threat Themes Credits*
+
+[Roasted's Threat Themes](https://steamcommunity.com/sharedfiles/filedetails/?id=3150619909) is a mod created and organized by DeltaTime, Kidi, Teacup of DOOM, and Roasted AND Toasted, which does the same thing as the Extra Threat Themes mod and adds a plethora of new threat themes to the game.
+
+All of the songs featured in this mod, which can be accessed from the third slide of the custom tab and onwards, were produced by [Roasted AND Toasted](https://www.youtube.com/@roastedandtoasted187) (Youtube).
+
+### Once again, thanks to all of you for allowing your amazing works to become a part of Threatmixer. You're all incredibly talented, and I couldn't be more elated to be in a community full of people like yourselves.
 
 # *Licenses*
 
@@ -253,4 +301,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 # *Final Statement*
-I want to give one last thank you to Videocult and all of the brilliant minds within it for making my most favorite video game ever, and changing how I view gaming and art as a whole. I've been obsessed with Rain World ever since I first played it in 2021, and my love for it has hardly waned since. This game has been a source of inspiration for countless stories, ideas, games and what-have-you that I've been conjuring up in my head over these past few years. I think it's safe to say that this game has played a huge role in turning me into the person I am today. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and check out Threatmixer. I hope you will enjoy, or have enjoyed, using this webpage as much as I did making it. Thank you, thank you, thank you.
+I want to give one last thank you to the brilliant minds within Videocult, Akupara Games, and the MSC and Watcher dev teams for making the most influential video game I've ever played. I've been obsessed with Rain World ever since I first played it in 2021, and my love for it has hardly waned since. This game has been a source of inspiration for countless stories, ideas, games and what-have-you that I've been conjuring up in my head over these past few years. I think it's safe to say that this game has played a huge role in turning me into the person I am today. In making this project, I'm finally able to give back to this game and its community in my own unique way, and that in itself is a blessing I'll never take for granted. Again, thank you Rain World devs and to everyone who's helped and supported me along this journey. And a special thanks to *you* for taking the time to read this and check out Threatmixer. I hope you will enjoy, or have enjoyed, using this webpage as much as I did making it. Thank you, thank you, thank you.

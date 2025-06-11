@@ -149,13 +149,16 @@ function clearSelectionScreen() {
     modCarousel.innerHTML = "";
     mscCarousel.innerHTML = "";
     watchCarousel.innerHTML = "";
+    customCarousel.innerHTML = "";
     document.title = "Threatmixer";
     regionButtonClicked = false;
     divIndex = -1;
     baseSlideNumMax = 0;
     modSlideNumMax = 0;
     mscSlideNumMax = 0;
-    watchSlideNumMax = 0;
+    watchSlideNumMax = 0
+    customSlideNumMax = 0;
+    houseCount = 0;
 }
 
 function startLayerFadeIn(layer) {
@@ -211,14 +214,21 @@ function startLayerFadeOut(layer, shouldEndLayer) {
 }
 
 // tippys
-function createTippy(element, theme, content) {
+function createTippy(element, content, color) {
+    var theme = "default-style";
+    if (Array.from(otherButtons).includes(element)) {theme = "other-button-style"}
+
     tippy(element, {
         theme: theme,
         content: content,
         trigger: tippyTarget(),
         arrow: false,
         followCursor: true,
-        hideOnClick: false
+        hideOnClick: false,
+        onMount(instance) {
+            instance.popper.querySelector(".tippy-box")
+            .style.setProperty("--tippy-color", `${color}`)
+        }
     });
 }
 

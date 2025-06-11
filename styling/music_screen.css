@@ -112,17 +112,19 @@ body, #music_screen {
     top: 0;
 }
 
-.layer_button_brightened, .alt_layer_button_brightened,
-    .layer_button_darkened, .alt_layer_button_darkened {
+.layer_button_brightened {
+    box-shadow: 0vw 0vw 1.3vw 0.4vw var(--glow-color);
+}
+
+.layer_button_brightened, .layer_button_darkened {
     transition: all 0.3s ease;
 }
 
-.layer_button_darkened:hover, .alt_layer_button_darkened:hover,
-    .layer_button_brightened, .alt_layer_button_brightened {
+.layer_button_darkened:hover, .layer_button_brightened {
     filter: brightness(100%);
 }
 
-.layer_button_brightened, .alt_layer_button_brightened {
+.layer_button_brightened {
     scale: 1.125;
 }
 

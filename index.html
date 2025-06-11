@@ -24,7 +24,9 @@
 
     <!-- Screen Cover -->
     <div id="screen_cover">
-        Please rotate the device to best enjoy the webpage!
+        <p>Please rotate the device to best enjoy the webpage!</p>
+        <p>If you wish to stay in portrait mode though, just tap the screen.</p>
+        <img id="rotate_screen_icon" src="assets/images/button_icons/rotate_screen_icon.png">
     </div>
 
     <!-- Home Screen -->
@@ -56,7 +58,7 @@
         </button> 
 
         <p id="disclaimer">DISCLAIMER: I am not affiliated with Videocult or Akupara Games in any way. This is a fan project, and I own none of the images or music featured on this page. Also, beware major main game and dlc spoilers!</p>
-        <p id="version">Version 1.9.20</p>
+        <p id="version">Version 1.10.21</p>
 
         <img id="bird" src="assets\images\misc\vanillabean.png">
     </div>
@@ -74,6 +76,11 @@
 
         <!-- Side Buttons-->
         <div id="side_button_container">
+            <button class="side_button" id="custom_button">
+                <span class="side_button_text">
+                    Custom
+                </span>
+            </button>
             <button class="side_button" id="modded_button">
                 <span class="side_button_text">
                     Modded
@@ -101,10 +108,11 @@
             <h1 id="selection_header">Vanilla Regions</h1>
             <div id="carousel_container">
                 <button class="carrot_buttons brighten_button" id="left_button">&lt;</button>
-                <div id="base_carousel"></div>
-                <div id="downpour_carousel"></div>
-                <div id="watcher_carousel"></div>
-                <div id="mod_carousel"></div>
+                <div class="carousel" id="base_carousel"></div>
+                <div class="carousel" id="downpour_carousel"></div>
+                <div class="carousel" id="watcher_carousel"></div>
+                <div class="carousel" id="mod_carousel"></div>
+                <div class="carousel" id="custom_carousel"></div>
                 <button class="carrot_buttons brighten_button" id="right_button">&gt;</button>
             </div>
             <p id="slide_number">1.</p>
