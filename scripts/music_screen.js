@@ -37,7 +37,7 @@ function setUpMusicScreen() {
         loadingErrorResponse.style.opacity = "0%";
 
         // ensuring that each layer loops at the exact same time
-        if (!farShoreSelected) {
+        if (!farShoreSelected && !ETTWallDaySelected && !ETTWallNightSelected) {
             arrayBuffer.forEach((layer) => {
                 if (layer.duration < globalDuration) {
                     globalDuration = layer.duration
@@ -45,10 +45,21 @@ function setUpMusicScreen() {
             });
         }
         else {
-            globalDuration = 63.99999;
-            farShoreSelected = false;
+            if (farShoreSelected) {
+                globalDuration = 63.99999;
+                farShoreSelected = false;
+            }
+
+            else if (ETTWallDaySelected) {
+                globalDuration = 104.722;
+                ETTWallDaySelected = false;
+            }
+
+            else if (ETTWallNightSelected) {
+                globalDuration = 116.361;
+                ETTWallNightSelected = false;
+            }
         }
-        // console.log(globalDuration)
 
         // formatting the timer
         var songLength = () => {
