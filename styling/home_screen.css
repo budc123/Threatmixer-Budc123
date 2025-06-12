@@ -149,25 +149,25 @@ This file contains the stylization for the home and laoding screens, as well as 
     padding-bottom: 2.5vw;
 }
 
-#discord_button {
+.link_button {
     image-rendering: pixelated;
     top: auto;
     bottom: 0.6vw;
-    left: 1.1vw;
+    left: var(--left-distance);
     padding-right: 3.6vw;
     padding-left: 0.6vw;
     padding-top: 0.5vw;
     padding-bottom: 3.7vw;
-    border-color: #5865f2;
+    border-color: var(--border-color);
     transition: box-shadow 0.2s ease-in-out;
 }
 
-#discord_button:hover {
+.link_button:hover {
     filter: brightness(100%);
-    box-shadow: 0vw 0vw 1.3vw 0.4vw #5865f299;
+    box-shadow: 0vw 0vw 1.3vw 0.4vw var(--glow-color);
 }
 
-#discord_icon {
+.link_icon {
     width: 3vw;
 }
 

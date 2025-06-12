@@ -1274,10 +1274,10 @@
         "group": "custom",
         "layers": [
             ["spear_tap_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - DRUM1.ogg", 0],
-            ["tom_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - BASS1.ogg", 0],
+            ["handpan_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - BASS1.ogg", 0],
             ["spear_tap_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - DRUM2.ogg", 0],
             ["xylo_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - ARP1.ogg", 0],
-            ["hat_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - DRUM3.ogg", 0],
+            ["tambourine_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - DRUM3.ogg", 0],
             ["xylo_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - BELL1.ogg", 0],
             ["tribal_drums_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - DRUM4.ogg", 0],
             ["sine_wave_icon.png", "assets/music/threat_music/custom/ETT/MS/TH_MS - LEAD1.ogg", 0],
@@ -1322,7 +1322,7 @@
             ["arps_icon.png", "assets/music/threat_music/custom/ETT/UG/TH_UG - ARPS.ogg", 0],
             ["hat_icon.png", "assets/music/threat_music/custom/ETT/UG/TH_UG - PERC2.ogg", 0],
             ["synth_icon.png", "assets/music/threat_music/custom/ETT/UG/TH_UG - PANFLUTE.ogg", 0],
-            ["tribal_drums_icon.png", "assets/music/threat_music/custom/ETT/UG/TH_UG - HANDPAN.ogg", 0],
+            ["handpan_icon.png", "assets/music/threat_music/custom/ETT/UG/TH_UG - HANDPAN.ogg", 0],
             ["scug_sing_icon.png", "assets/music/threat_music/custom/ETT/UG/TH_UG - SYNTH.ogg", 0]
         ],
         "colors": ["#6A7142"],

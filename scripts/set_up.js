@@ -64,6 +64,7 @@ const layerButtons = document.getElementsByClassName("layer_button"),
     menuMusicToggleButton = document.getElementById("menu_music_toggle_button"),
     menuMusicToggleIcon = document.getElementById("menu_music_toggle_icon"),
     discordButton = document.getElementById("discord_button"),
+    githubButton = document.getElementById("github_button"),
     loadingText = document.getElementById("loading_text"),
     loadingDetails = document.getElementById("loading_details"),
     loadingErrorResponse = document.getElementById("loading_error_response");
@@ -528,6 +529,16 @@ discordButton.onclick = () => {
     document.body.removeChild(link);
 }
 
+githubButton.onclick = () => {
+    var link = document.createElement("a");
+    link.href = "https://github.com/Rotwall72/Threatmixer";
+    link.target = "blank_";
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 screenCover.addEventListener("click", () => {screenCover.style.display = "none";}) 
 
 // button tips
@@ -535,6 +546,7 @@ Array.from(otherButtons).forEach((button) => {createTippy(button, button.dataset
 createTippy(previewToggleButton, previewToggleButton.dataset.title, "#dadbdd");
 createTippy(menuMusicToggleButton, menuMusicToggleButton.dataset.title, "#dadbdd");
 createTippy(discordButton, discordButton.dataset.title, "#5865f2");
+createTippy(githubButton, githubButton.dataset.title, "#f0f6fc");
 
 // menu music handling
 let menuMusic = new Howl({
@@ -554,6 +566,14 @@ let menuMusicCheck = setInterval(() => {
         menuMusicTimeout = setTimeout(() => {menuMusic.play()}, 2000);
     }
     }, 1000)
+
+// setting css values
+discordButton.style.setProperty("--border-color", "#5865f2");
+discordButton.style.setProperty("--glow-color", "#5865f299");
+discordButton.style.setProperty("--left-distance", "1.1vw");
+githubButton.style.setProperty("--border-color", "#f0f6fc");
+githubButton.style.setProperty("--glow-color", "#f0f6fc99");
+githubButton.style.setProperty("--left-distance", "6.5vw");
 
 // hiding all other screens and showing the home screen first
 hideScreen(selectionScreen, musicScreen, loadingScreen);
