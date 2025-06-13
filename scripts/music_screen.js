@@ -37,8 +37,9 @@ function setUpMusicScreen() {
         loadingErrorResponse.style.opacity = "0%";
 
         // ensuring that each layer loops at the exact same time
-        if (!farShoreSelected && !ETTWallDaySelected && !ETTWallNightSelected) {
+        if (!farShoreSelected) {
             arrayBuffer.forEach((layer) => {
+                console.log(layer.duration)
                 if (layer.duration < globalDuration) {
                     globalDuration = layer.duration
                 }
@@ -48,16 +49,6 @@ function setUpMusicScreen() {
             if (farShoreSelected) {
                 globalDuration = 63.99999;
                 farShoreSelected = false;
-            }
-
-            else if (ETTWallDaySelected) {
-                globalDuration = 104.722;
-                ETTWallDaySelected = false;
-            }
-
-            else if (ETTWallNightSelected) {
-                globalDuration = 116.361;
-                ETTWallNightSelected = false;
             }
         }
 

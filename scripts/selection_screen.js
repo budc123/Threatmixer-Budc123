@@ -318,18 +318,10 @@ function addOnClick(element, regionData, resolve) {
                 case ("TOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOBS"):
                     regionTitle.innerText = "Pipeyard (inv)";
                     break;
-                // also checking for these specific regions as well
+                // also checking for other specific regions as well
                 case ("Far Shore"):
                     regionTitle.innerText = regionName;
                     farShoreSelected = true;
-                    break;
-                case ("The Wall (Day)"):
-                    regionTitle.innerText = regionName;
-                    ETTWallDaySelected = true;
-                    break;
-                case ("The Wall (Night)"):
-                    regionTitle.innerText = regionName;
-                    ETTWallNightSelected = true;
                     break;
                 default:
                     regionTitle.innerText = regionName;
