@@ -1053,6 +1053,26 @@
         "background": "assets/images/backgrounds/subway_lines.png",
         "preview": "assets/music/music_snippets/ME_snippet.MP3"
     },
+    {
+        "name": "The Grinder",
+        "group": "mods",
+        "layers": [
+            ["bass_icon.png", "assets/music/threat_music/mods/MT/th_mt - bass.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/MT/th_mt - kick.ogg", 0],
+            ["snare_icon.png", "assets/music/threat_music/mods/MT/th_mt - drum1.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/MT/th_mt - arps.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/MT/th_mt - france.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/MT/th_mt - chords.ogg", 0],
+            ["sine_wave_icon.png", "assets/music/threat_music/mods/MT/th_mt - lead.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/MT/th_mt - arps2.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/MT/th_mt - shot.ogg", 0]
+        ],
+        "colors": ["#cd4311"],
+        "filters": ["brightness(0) saturate(100%) invert(27%) sepia(69%) saturate(1614%) hue-rotate(351deg) brightness(103%) contrast(100%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/the_grinder.png",
+        "preview": "assets/music/music_snippets/MT_snippet.MP3"
+    },
     {   
         "name": "The Mast",
         "group": "mods",

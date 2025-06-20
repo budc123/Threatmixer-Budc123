@@ -43,6 +43,8 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [aprilWORSTmonth](https://steamcommunity.com/profiles/76561198881171789) (Steam)
 - [Andrew Man](https://electricsheap.bandcamp.com/album/chronological-error) (Bandcamp)
 - [AndrewFM](http://www.egg-zero.com/) (Personal Website)
+- [artisticcallycaffeinated](https://www.tumblr.com/artisticcallycaffeinated) (Tumblr)
+- [Atom](https://www.youtube.com/channel/UCvaQ90JC05F6wo3y_2T_WRA) (Youtube)
 - [AxeXir](https://www.youtube.com/channel/UCnleE9tJyc5kz6Mt53aQuMw) (Youtube)
 - Beep
 - [Bro](https://www.youtube.com/channel/UCGRoe1Z5loGEVcYnPBvXEew) (Youtube)
@@ -63,6 +65,7 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [Notocorda](https://www.deviantart.com/notocordada) (Deviantart)
 - [Parageist](https://steamcommunity.com/id/Parageist) (Steam)
 - [Pinpoint](https://oliverlollsdesign.com/) (Personal Website)
+- [Ren is Taking Ten](https://www.youtube.com/channel/UCwbD6t3L5doFdyyKr6d6Qqg) (Youtube)
 - [Roasted AND Toasted](https://www.youtube.com/@roastedandtoasted187/videos) (Youtube)
 - [Serpanoy](https://serpanoy.carrd.co/) (Personal Website)
 - [Snoodle](https://snoodle-stuff.carrd.co/) (Personal Website)
@@ -191,6 +194,11 @@ And here's the credits by region:
 - Region by Wrayk
 - Region Art by Notocordia
 - Threat Theme by Serpanoy
+
+## The Grinder:
+- Region by Atom
+- Threat Theme by Atom & Ren is Taking Ten
+- Region Art by artisticcallycaffeinated
 
 ## The Mast:
 - Region & Threat Theme by Snoodle
