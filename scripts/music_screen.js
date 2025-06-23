@@ -39,7 +39,6 @@ function setUpMusicScreen() {
         // ensuring that each layer loops at the exact same time
         if (!farShoreSelected) {
             arrayBuffer.forEach((layer) => {
-                console.log(layer.duration)
                 if (layer.duration < globalDuration) {
                     globalDuration = layer.duration
                 }
