@@ -586,7 +586,6 @@ setTimeout(() => {
     selectionScreen.style.display = "flex";
 }, 300);
 
-/* EASTER EGG 3*/
 name2.onclick = () => {
     if (canBounce) {
         bird.style.display = "block";

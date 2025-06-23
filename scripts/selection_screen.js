@@ -396,8 +396,7 @@ function addOnClick(element, regionData, resolve) {
                 var newLayerIcon = document.createElement("img");
                 newLayerIcon.classList.add("button_icon");
 
-                // EASTER EGG 1
-                if (regionIndex == 29 && layer[1].includes("JUG.ogg")){
+                if (regionName == "Data Manifold" && layer[1].includes("JUG.ogg")){
                     var potRoll = Math.floor(Math.random() * 10) + 1;
 
                     if (potRoll == 1) {
