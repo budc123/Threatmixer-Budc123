@@ -2,6 +2,8 @@
 
 * Split the start and end of The Precipice (Roasted) into 2 threat themes <br>
 * Added Shadowed Smokestacks
+* Added Crystal Peaks
+* Added Western Intake
 
 # *What is Threatmixer?*
 
