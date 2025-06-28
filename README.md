@@ -1,7 +1,7 @@
 # *Changes*
 
-Split the start and end of The Precipice (Roasted) into 2 threat themes
-Added Shadowed Smokestacks
+* Split the start and end of The Precipice (Roasted) into 2 threat themes <br>
+* Added Shadowed Smokestacks
 
 # *What is Threatmixer?*
 
