@@ -736,6 +736,24 @@
         "background": "assets/images/backgrounds/gray_urban.png",
         "preview": "assets/music/music_snippets/GU_snippet.MP3"
     },
+    {
+        "name": "Shadowed Smokestack",
+        "group": "mods",
+        "layers": [
+            ["hit_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - KickPerc.ogg", 0],
+            ["crusher_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Shot.ogg", 0],
+            ["alt_bass_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Bass.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Arps.ogg", 0],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Lead.ogg", 0],
+            ["gas_noise_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Noise.ogg", 0]
+
+        ],
+        "colors": ["#574642"],
+        "filters": ["brightness(0) saturate(100%) invert(28%) sepia(12%) saturate(725%) hue-rotate(324deg) brightness(91%) contrast(90%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/shadowed_smokestack.png",
+        "preview": "assets/music/music_snippets/DGS_snippet.mp3"
+    },
     {   
         "name": "Hanging Gardens",
         "group": "mods",
@@ -1785,7 +1803,7 @@
             ["kick_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICEKICK.ogg", 0],
             ["snare_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICECLAPS.ogg", 0],
             ["bass_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICEBASS.ogg", 0],
-            ["pad_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICEPERC.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICEPERC.ogg", 0],
             ["arps_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICECHORDS.ogg", 0],
             ["synth_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICEARPS.ogg", 0],
             ["scug_sing_icon.png", "assets/music/threat_music/custom/RTT/LMPR/TH_LM - PRECIPICELEAD.ogg", 0],
@@ -1795,7 +1813,26 @@
         "filters": ["brightness(0) saturate(100%) invert(23%) sepia(18%) saturate(435%) hue-rotate(248deg) brightness(92%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_precipice.png",
-        "preview": "assets/music/music_snippets/LMPR_snippet.MP3"
+        "preview": "assets/music/music_snippets/LMPR_snippet.mp3"
+    },
+    {
+        "name": "The Precipice (alt)",
+        "group": "custom",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICEKICKALT.ogg", 0],
+            ["gas_noise_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICECLAPSALT.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICEBASSALT.ogg", 0],
+            ["hit_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICEPERCALT.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICECHORDSALT.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICEARPSALT.ogg", 0],
+            ["wawa_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICELEADALT.ogg", 0],
+            ["noise_icon.png", "assets/music/threat_music/custom/RTT/LMP2/TH_LM - PRECIPICENOISEALT.ogg", 0]
+        ],
+        "colors": ["#44454a"],
+        "filters": ["brightness(0) saturate(100%) invert(23%) sepia(3%) saturate(1146%) hue-rotate(193deg) brightness(98%) contrast(84%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/alt2_precipice.png",
+        "preview": "assets/music/music_snippets/LMP2_snippet.mp3"
     },
     {
         "name": "The Rot",
