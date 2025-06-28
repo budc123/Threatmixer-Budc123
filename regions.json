@@ -595,6 +595,28 @@
         "background": "assets/images/backgrounds/concealed_gardens.png",
         "preview": "assets/music/music_snippets/CG_snippet.MP3"
     },
+    {   
+        "name": "Crystal Peaks",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/CP/TH_CP - KICK.ogg", 0],
+            ["hat_icon.png", "assets/music/threat_music/mods/CP/TH_CP - SHAKER.ogg", 0],
+            ["tom_icon.png", "assets/music/threat_music/mods/CP/TH_CP - PERC1.ogg", 0],
+            ["spear_tap_icon.png", "assets/music/threat_music/mods/CP/TH_CP - PERC2.ogg", 0],
+            ["weird_icon.png", "assets/music/threat_music/mods/CP/TH_CP - WEIRD.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/CP/TH_CP - BASS.ogg", 0],
+            ["atmos_icon.png", "assets/music/threat_music/mods/CP/TH_CP - CHIMES.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/CP/TH_CP - ARPS.ogg", 0],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/CP/TH_CP - LEAD.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/CP/TH_CP - MELODY.ogg", 0],
+            ["noise_icon.png", "assets/music/threat_music/mods/CP/TH_CP - NOISE.ogg", 0]
+        ],
+        "colors": ["#ff6dc9"],
+        "filters": ["brightness(0) saturate(100%) invert(63%) sepia(15%) saturate(6506%) hue-rotate(289deg) brightness(101%) contrast(104%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/crystal_peaks.png",
+        "preview": "assets/music/music_snippets/CP_snippet.mp3"
+    },
     {
         "name": "Data Manifold",
         "group": "mods",
@@ -1180,6 +1202,38 @@
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/weakened_platform.png",
         "preview": "assets/music/music_snippets/WP_snippet.MP3"
+    },
+    {
+        "name": "Western Intake",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/1W/TH_1W - KICK.ogg", 0],
+            ["spear_tap_icon.png", "assets/music/threat_music/mods/1W/TH_1W - PERC1.ogg", 0],
+            ["shaker_icon.png", "assets/music/threat_music/mods/1W/TH_1W - SHAKER.ogg", 0],
+            ["sine_wave_icon.png", "assets/music/threat_music/mods/1W/TH_1W - PAD.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/1W/TH_1W - WESTERNPERC.ogg", 1],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/1W/TH_1W - WESTERNWEIRD.ogg", 1],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/1W/TH_1W - WESTERNLEAD.ogg", 1],
+            ["bass_icon.png", "assets/music/threat_music/mods/1W/TH_1W - CISTERNBASS.ogg", 2],
+            ["arps_icon.png", "assets/music/threat_music/mods/1W/TH_1W - CISTERNARP.ogg", 2],
+            ["wawa_icon.png", "assets/music/threat_music/mods/1W/TH_1W - CISTERNLEAD.ogg", 2],
+            ["rave_icon.png", "assets/music/threat_music/mods/1W/TH_1W - DISTANTBASS.ogg", 3],
+            ["synth_icon.png", "assets/music/threat_music/mods/1W/TH_1W - DISTANTARP.ogg", 3],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/1W/TH_1W - DISTANTLEAD.ogg", 3],
+            ["perc_icon.png", "assets/music/threat_music/mods/1W/TH_1W - ALTPERC.ogg", 4],
+            ["arps_icon.png", "assets/music/threat_music/mods/1W/TH_1W - ALTARPS.ogg", 4]
+            
+
+        ],
+        "colors": ["#363663","#95464d","#368b60","#d48bb6","#84c0fe"],
+        "filters": ["brightness(0) saturate(100%) invert(19%) sepia(24%) saturate(1394%) hue-rotate(202deg) brightness(96%) contrast(88%)",
+                    "brightness(0) saturate(100%) invert(31%) sepia(28%) saturate(1185%) hue-rotate(305deg) brightness(95%) contrast(82%)",
+                    "brightness(0) saturate(100%) invert(41%) sepia(24%) saturate(934%) hue-rotate(97deg) brightness(106%) contrast(87%)",
+                    "brightness(0) saturate(100%) invert(72%) sepia(65%) saturate(423%) hue-rotate(286deg) brightness(87%) contrast(89%)",
+                    "brightness(0) saturate(100%) invert(60%) sepia(57%) saturate(324%) hue-rotate(172deg) brightness(107%) contrast(99%)"],
+        "containerWidth": "52vw",
+        "background": "assets/images/backgrounds/western_intake.png",
+        "preview": "assets/music/music_snippets/1W_snippet.mp3"
     },
     {
         "name": "Woven Nest",
