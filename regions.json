@@ -474,10 +474,10 @@
         "group": "watch",
         "layers": [
             ["kick_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - KICK.ogg", 0],
-            ["pad_icon.png", "assets/music/threat_music/watch/Vw/TH_W4 - PERC.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - PERC.ogg", 0],
             ["bass_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - BASS.ogg", 0],
             ["weird_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - PERC2.ogg", 0],
-            ["synth_icon.png", "assets/music/threat_music/watch/Vw/TH_W4 - ARP.ogg", 0]
+            ["synth_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - ARP.ogg", 0]
         ],
         "colors": ["#b0df4d"],
         "filters": ["brightness(0) saturate(100%) invert(97%) sepia(11%) saturate(2257%) hue-rotate(20deg) brightness(86%) contrast(104%)"],
@@ -759,20 +759,27 @@
         "preview": "assets/music/music_snippets/GU_snippet.MP3"
     },
     {
-        "name": "Shadowed Smokestack",
+        "name": "Grimy Canal",
         "group": "mods",
         "layers": [
-            ["hit_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - KickPerc.ogg", 0],
-            ["crusher_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Shot.ogg", 0],
-            ["alt_bass_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Bass.ogg", 0],
-            ["synth_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Arps.ogg", 0],
-            ["scug_sing_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Lead.ogg", 0],
-            ["gas_noise_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - Noise.ogg", 0]
+            ["snare_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - MAINKICKSNARE.ogg", 0],
+            ["shaker_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - MAINSHAKER.ogg", 0],
+            ["gear_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - MAINWEIRD.ogg", 0],
+            ["atmos_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - MAINSUB.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - MAINARPS.ogg", 0],
+            ["sine_wave_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - MAINSYNTH.ogg", 0],
+            ["hit_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - SMOKEKICKPERC.ogg", 1],
+            ["crusher_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - SMOKESHOT.ogg", 1],
+            ["alt_bass_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - SMOKEBASS.ogg", 1],
+            ["synth_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - SMOKEARPS.ogg", 1],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - SMOKELEAD.ogg", 1],
+            ["gas_noise_icon.png", "assets/music/threat_music/mods/DGS/TH_DGS - SMOKENOISE.ogg", 1]
 
         ],
-        "colors": ["#574642"],
-        "filters": ["brightness(0) saturate(100%) invert(28%) sepia(12%) saturate(725%) hue-rotate(324deg) brightness(91%) contrast(90%)"],
-        "containerWidth": "100%",
+        "colors": ["#264846","#574642"],
+        "filters": ["brightness(0) saturate(100%) invert(25%) sepia(16%) saturate(976%) hue-rotate(127deg) brightness(95%) contrast(95%)",
+                    "brightness(0) saturate(100%) invert(28%) sepia(12%) saturate(725%) hue-rotate(324deg) brightness(91%) contrast(90%)"],
+        "containerWidth": "42vw",
         "background": "assets/images/backgrounds/shadowed_smokestack.png",
         "preview": "assets/music/music_snippets/DGS_snippet.mp3"
     },

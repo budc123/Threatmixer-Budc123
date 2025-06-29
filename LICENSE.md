@@ -10,6 +10,7 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 
 ## Contributors
 
+- [Budc](https://budc123.github.io/) (Personal Website): Creating this fork
 - [ECSP](https://ecsp.dev/) (Personal Website): Pixel Art, Playtesting, and Creative Assistence
 - [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Main menu music, Playtesting, and Creative Assistence
 - TheLobsterFoam: Playtesting
@@ -75,6 +76,8 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - Tsunochizu
 - [Wolfycatt](https://wolfycatt.crd.co/) (Personal Website)
 - [Wrayk](https://steamcommunity.com/profiles/76561197975243281) (Steam)
+- [SaymonPorko](https://www.youtube.com/@SaymonPorko23) (Youtube)
+- [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud)
 
 (For those without a link attached, I was unfortunately unable to find something that I could refer users to which pertains to you and any other things you've worked on. If you wish for me to attach a link to your name or change the one which I have given you, please reach out to me on Discord.)
 
@@ -103,6 +106,9 @@ And here's the credits by region:
 - Region Art by Wolfycatt
 - Threat Theme by LudoCrypt
 
+## Crystal Peaks:
+- Threat Theme & Region Art by ParraKoot
+
 ## Data Manifolds:
 - Region & Region Art by aprilWORSTmonth
 - Threat Theme by Snoodle
@@ -130,6 +136,10 @@ And here's the credits by region:
 - Region by Region Jam Contributers
 - Region Art by Notocorda
 - Threat Theme by Aki
+
+## Grimy Canal
+- Region by "Project Redemption"
+- Threat Theme by SaymonPorko
 
 ## Hanging Gardens:
 - Region & Region Art by Fishnoid
