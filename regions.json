@@ -106,10 +106,12 @@
             ["hit_icon.png", "assets/music/threat_music/base/SU/TH_SU - HITS.ogg", 0],
             ["arps_icon.png", "assets/music/threat_music/base/SU/TH_SU - ARPS.ogg", 0],
             ["wawa_icon.png", "assets/music/threat_music/base/SU/TH_SU - LEAD.ogg", 0],
-            ["noise_icon.png", "assets/music/threat_music/base/SU/TH_SU - NOISE.ogg", 0]
+            ["noise_icon.png", "assets/music/threat_music/base/SU/TH_SU - NOISE.ogg", 0],
+            ["xylo_icon.png", "assets/music/threat_music/base/SU/TH_SU - ALTARPS.ogg", 1]
         ],
-        "colors": ["#516664"],
-        "filters": ["invert(39%) sepia(21%) saturate(350%) hue-rotate(125deg) brightness(92%) contrast(82%)"],
+        "colors": ["#516664", "#84c0fe"],
+        "filters": ["invert(39%) sepia(21%) saturate(350%) hue-rotate(125deg) brightness(92%) contrast(82%)",
+                    "brightness(0) saturate(100%) invert(79%) sepia(11%) saturate(6942%) hue-rotate(182deg) brightness(103%) contrast(99%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/outskirts.png",
         "preview": "assets/music/music_snippets/SU_snippet.mp3"

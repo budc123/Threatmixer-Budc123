@@ -4,6 +4,7 @@
 * Added Shadowed Smokestacks
 * Added Crystal Peaks
 * Added Western Intake
+* Added the unused Outskirts arp
 
 # *What is Threatmixer?*
 
