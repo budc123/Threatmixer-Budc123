@@ -19,7 +19,7 @@
                     "invert(35%) sepia(42%) saturate(685%) hue-rotate(346deg) brightness(92%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/chimney_canopy.png",
-        "preview": "assets/music/music_snippets/CC_snippet.MP3"
+        "preview": "assets/music/music_snippets/CC_snippet.mp3"
     },
     {
         "name": "Farm Arrays",
@@ -38,7 +38,7 @@
         "filters": ["invert(29%) sepia(7%) saturate(3588%) hue-rotate(335deg) brightness(99%) contrast(92%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/farm_arrays.png",
-        "preview": "assets/music/music_snippets/LF_snippet.MP3"
+        "preview": "assets/music/music_snippets/LF_snippet.mp3"
     },
     {
         "name": "Five Pebbles",
@@ -54,7 +54,7 @@
         "filters": ["invert(15%) sepia(93%) saturate(4199%) hue-rotate(250deg) brightness(89%) contrast(123%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/five_pebbles.png",
-        "preview": "assets/music/music_snippets/SS_snippet.MP3"
+        "preview": "assets/music/music_snippets/SS_snippet.mp3"
     },
     {
         "name": "Garbage Wastes",
@@ -74,7 +74,7 @@
         "filters": ["invert(63%) sepia(6%) saturate(3156%) hue-rotate(31deg) brightness(97%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/garbage_wastes.png",
-        "preview": "assets/music/music_snippets/GW_snippet.MP3"
+        "preview": "assets/music/music_snippets/GW_snippet.mp3"
     },
     {
         "name": "Industrial Complex",
@@ -93,7 +93,7 @@
         "filters": ["invert(36%) sepia(10%) saturate(960%) hue-rotate(103deg) brightness(91%) contrast(94%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/industrial_complex.png",
-        "preview": "assets/music/music_snippets/HI_snippet.MP3"
+        "preview": "assets/music/music_snippets/HI_snippet.mp3"
     },
     {
         "name": "Outskirts",
@@ -112,7 +112,7 @@
         "filters": ["invert(39%) sepia(21%) saturate(350%) hue-rotate(125deg) brightness(92%) contrast(82%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/outskirts.png",
-        "preview": "assets/music/music_snippets/SU_snippet.MP3"
+        "preview": "assets/music/music_snippets/SU_snippet.mp3"
     },
     {
         "name": "Shoreline",
@@ -131,7 +131,7 @@
         "filters": ["invert(56%) sepia(13%) saturate(312%) hue-rotate(77deg) brightness(90%) contrast(86%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/shoreline.png",
-        "preview": "assets/music/music_snippets/SL_snippet.MP3"
+        "preview": "assets/music/music_snippets/SL_snippet.mp3"
     },
     {
         "name": "Sky Islands",
@@ -150,7 +150,7 @@
         "filters": ["invert(62%) sepia(32%) saturate(651%) hue-rotate(323deg) brightness(95%) contrast(84%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/sky_islands.png",
-        "preview": "assets/music/music_snippets/SI_snippet.MP3"
+        "preview": "assets/music/music_snippets/SI_snippet.mp3"
     },
     {
         "name": "Looks to the Moon",
@@ -167,7 +167,7 @@
         "filters": ["invert(33%) sepia(17%) saturate(4801%) hue-rotate(216deg) brightness(90%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/looks_to_the_moon.png",
-        "preview": "assets/music/music_snippets/DM_snippet.MP3"
+        "preview": "assets/music/music_snippets/DM_snippet.mp3"
     },
     {
         "name": "Metropolis",
@@ -197,7 +197,7 @@
                     "invert(21%) sepia(66%) saturate(1409%) hue-rotate(205deg) brightness(93%) contrast(92%)"],
         "containerWidth": "58vw",
         "background": "assets/images/backgrounds/metropolis.png",
-        "preview": "assets/music/music_snippets/LC_snippet.MP3"
+        "preview": "assets/music/music_snippets/LC_snippet.mp3"
     },
     {
         "name": "Outer Expanse",
@@ -217,7 +217,7 @@
                     "brightness(0) saturate(100%) invert(30%) sepia(7%) saturate(4038%) hue-rotate(333deg) brightness(95%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/outer_expanse.png",
-        "preview": "assets/music/music_snippets/OE_snippet.MP3"
+        "preview": "assets/music/music_snippets/OE_snippet.mp3"
     },
     {
         "name": "Pipeyard",
@@ -237,7 +237,7 @@
         "filters": ["invert(53%) sepia(40%) saturate(379%) hue-rotate(323deg) brightness(93%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/pipeyard.png",
-        "preview": "assets/music/music_snippets/VS_snippet.MP3"
+        "preview": "assets/music/music_snippets/VS_snippet.mp3"
     },
     {
         "name": "Rubicon",
@@ -258,7 +258,7 @@
         "filters": ["invert(77%) sepia(67%) saturate(439%) hue-rotate(360deg) brightness(104%) contrast(95%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/rubicon.png",
-        "preview": "assets/music/music_snippets/HR_snippet.MP3"
+        "preview": "assets/music/music_snippets/HR_snippet.mp3"
     },
     {
         "name": "Waterfront Facility",
@@ -278,7 +278,7 @@
         "filters": ["invert(50%) sepia(8%) saturate(1833%) hue-rotate(5deg) brightness(95%) contrast(79%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/waterfront_facility.png",
-        "preview": "assets/music/music_snippets/LM_snippet.MP3"
+        "preview": "assets/music/music_snippets/LM_snippet.mp3"
     },
     {
         "name": "Aether Ridge",
@@ -311,7 +311,7 @@
                     "brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(1984%) hue-rotate(167deg) brightness(94%) contrast(92%)"],
         "containerWidth": "56vw",
         "background": "assets/images/backgrounds/aether_ridge.png",
-        "preview": "assets/music/music_snippets/AR_snippet.MP3"
+        "preview": "assets/music/music_snippets/AR_snippet.mp3"
     },
     {
         "name": "Badlands",
@@ -328,7 +328,7 @@
         "filters": ["brightness(0) saturate(100%) invert(34%) sepia(35%) saturate(811%) hue-rotate(336deg) brightness(92%) contrast(88%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/watcher_badlands.png",
-        "preview": "assets/music/music_snippets/watcher_BL_snippet.MP3"
+        "preview": "assets/music/music_snippets/watcher_BL_snippet.mp3"
     },
     {
         "name": "Coral Caves",
@@ -352,7 +352,7 @@
                     "brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(451%) hue-rotate(150deg) brightness(101%) contrast(96%)"],
         "containerWidth": "56vw",
         "background": "assets/images/backgrounds/coral_caves.png",
-        "preview": "assets/music/music_snippets/RF_snippet.MP3"
+        "preview": "assets/music/music_snippets/RF_snippet.mp3"
     },
     {
         "name": "Desolate Tracts",
@@ -368,7 +368,7 @@
         "filters": ["brightness(0) saturate(100%) invert(98%) sepia(4%) saturate(183%) hue-rotate(30deg) brightness(94%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/desolate_tracts.png",
-        "preview": "assets/music/music_snippets/TDB_snippet.MP3"
+        "preview": "assets/music/music_snippets/TDB_snippet.mp3"
     },
     {
         "name": "Fetid Glen",
@@ -385,7 +385,7 @@
         "filters": ["brightness(0) saturate(100%) invert(21%) sepia(29%) saturate(2717%) hue-rotate(339deg) brightness(95%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/fetid_glen.png",
-        "preview": "assets/music/music_snippets/ARC_snippet.MP3"
+        "preview": "assets/music/music_snippets/ARC_snippet.mp3"
     },
     {
         "name": "Rusted Wrecks",
@@ -402,7 +402,7 @@
         "filters": ["brightness(0) saturate(100%) invert(53%) sepia(4%) saturate(2134%) hue-rotate(331deg) brightness(104%) contrast(96%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/rusted_wrecks.png",
-        "preview": "assets/music/music_snippets/RR_snippet.MP3"
+        "preview": "assets/music/music_snippets/RR_snippet.mp3"
     },
     {
         "name": "Signal Spires",
@@ -419,7 +419,7 @@
         "filters": ["brightness(0) saturate(100%) invert(92%) sepia(84%) saturate(3180%) hue-rotate(280deg) brightness(106%) contrast(99%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_signal_spires.png",
-        "preview": "assets/music/music_snippets/PT_snippet.MP3"
+        "preview": "assets/music/music_snippets/PT_snippet.mp3"
     },
     {
         "name": "Stormy Coast",
@@ -449,7 +449,7 @@
                     "brightness(0) saturate(100%) invert(36%) sepia(7%) saturate(4559%) hue-rotate(144deg) brightness(87%) contrast(83%)"],
         "containerWidth": "56vw",
         "background": "assets/images/backgrounds/stormy_coast.png",
-        "preview": "assets/music/music_snippets/SK_snippet.MP3"
+        "preview": "assets/music/music_snippets/SK_snippet.mp3"
     },
     {
         "name": "Torrid Desert",
@@ -467,23 +467,23 @@
         "filters": ["brightness(0) saturate(100%) invert(51%) sepia(57%) saturate(300%) hue-rotate(342deg) brightness(96%) contrast(88%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/torrid_desert.png",
-        "preview": "assets/music/music_snippets/TDA_snippet.MP3"
+        "preview": "assets/music/music_snippets/TDA_snippet.mp3"
     },
     {
         "name": "Verdant Waterways",
         "group": "watch",
         "layers": [
             ["kick_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - KICK.ogg", 0],
-            ["pad_icon.png", "assets/music/threat_music/watch/Vw/TH_W4 - PERC.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - PERC.ogg", 0],
             ["bass_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - BASS.ogg", 0],
             ["weird_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - PERC2.ogg", 0],
-            ["synth_icon.png", "assets/music/threat_music/watch/Vw/TH_W4 - ARP.ogg", 0]
+            ["synth_icon.png", "assets/music/threat_music/watch/VW/TH_W4 - ARP.ogg", 0]
         ],
         "colors": ["#b0df4d"],
         "filters": ["brightness(0) saturate(100%) invert(97%) sepia(11%) saturate(2257%) hue-rotate(20deg) brightness(86%) contrast(104%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/verdant_waterways.png",
-        "preview": "assets/music/music_snippets/VW_snippet.MP3"
+        "preview": "assets/music/music_snippets/VW_snippet.mp3"
     },
     {
         "name": "Rotted Regions",
@@ -499,7 +499,7 @@
         "filters": ["brightness(0) saturate(100%) invert(22%) sepia(89%) saturate(1233%) hue-rotate(240deg) brightness(88%) contrast(95%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/infection.png",
-        "preview": "assets/music/music_snippets/IF_snippet.MP3"
+        "preview": "assets/music/music_snippets/IF_snippet.mp3"
     },
     {   
         "name": "Aqueducts",
@@ -518,7 +518,7 @@
         "filters": ["brightness(0) saturate(100%) invert(57%) sepia(13%) saturate(887%) hue-rotate(331deg) brightness(90%) contrast(84%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/aqueducts.png",
-        "preview": "assets/music/music_snippets/OA_snippet.MP3"
+        "preview": "assets/music/music_snippets/OA_snippet.mp3"
     },
     {
         "name": "Badlands (Legacy)",
@@ -538,7 +538,7 @@
         "filters": ["invert(45%) sepia(12%) saturate(5741%) hue-rotate(351deg) brightness(86%) contrast(78%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/badlands.png",
-        "preview": "assets/music/music_snippets/BL_snippet.MP3"
+        "preview": "assets/music/music_snippets/BL_snippet.mp3"
     },
     {
         "name": "Central Factory",
@@ -554,7 +554,7 @@
         "filters": ["invert(52%) sepia(61%) saturate(3147%) hue-rotate(9deg) brightness(105%) contrast(88%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/central_factory.png",
-        "preview": "assets/music/music_snippets/CF_snippet.MP3"
+        "preview": "assets/music/music_snippets/CF_snippet.mp3"
     },
     {
         "name": "Cliffside",
@@ -576,7 +576,7 @@
         "filters": ["brightness(0) saturate(100%) invert(46%) sepia(23%) saturate(359%) hue-rotate(324deg) brightness(93%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/cliffside.png",
-        "preview": "assets/music/music_snippets/LI_snippet.MP3"
+        "preview": "assets/music/music_snippets/LI_snippet.mp3"
     },
     {   
         "name": "Concealed Gardens",
@@ -593,7 +593,7 @@
         "filters": ["brightness(0) saturate(100%) invert(53%) sepia(92%) saturate(386%) hue-rotate(35deg) brightness(102%) contrast(96%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/concealed_gardens.png",
-        "preview": "assets/music/music_snippets/CG_snippet.MP3"
+        "preview": "assets/music/music_snippets/CG_snippet.mp3"
     },
     {
         "name": "Data Manifold",
@@ -612,7 +612,7 @@
         "filters": ["brightness(0) saturate(100%) invert(33%) sepia(5%) saturate(881%) hue-rotate(316deg) brightness(98%) contrast(88%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/data_manifold.png",
-        "preview": "assets/music/music_snippets/MD_snippet.MP3"
+        "preview": "assets/music/music_snippets/MD_snippet.mp3"
     },
     {
         "name": "Deserted Wastelands",
@@ -630,7 +630,7 @@
         "filters": ["brightness(0) saturate(100%) invert(34%) sepia(14%) saturate(2440%) hue-rotate(328deg) brightness(104%) contrast(91%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/deserted_wastelands.png",
-        "preview": "assets/music/music_snippets/DW_snippet.MP3"
+        "preview": "assets/music/music_snippets/DW_snippet.mp3"
     },
     {
         "name": "Far Shore",
@@ -650,7 +650,7 @@
         "filters": ["brightness(0) saturate(100%) invert(80%) sepia(99%) saturate(6897%) hue-rotate(328deg) brightness(92%) contrast(97%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/far_shore.png",
-        "preview": "assets/music/music_snippets/FR_snippet.MP3"
+        "preview": "assets/music/music_snippets/FR_snippet.mp3"
     },
     {   
         "name": "Fog Gulch",
@@ -669,7 +669,7 @@
         "filters": ["brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(566%) hue-rotate(152deg) brightness(91%) contrast(84%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/fog_gulch.png",
-        "preview": "assets/music/music_snippets/FO_snippet.MP3"
+        "preview": "assets/music/music_snippets/FO_snippet.mp3"
     },
     {   
         "name": "Forsaken Station (A)",
@@ -691,7 +691,7 @@
                     "brightness(0) saturate(100%) invert(79%) sepia(22%) saturate(0%) hue-rotate(153deg) brightness(109%) contrast(56%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/forsaken_station.png",
-        "preview": "assets/music/music_snippets/FTA_snippet.MP3"
+        "preview": "assets/music/music_snippets/FTA_snippet.mp3"
     },
     {   
         "name": "Forsaken Station (B)",
@@ -714,7 +714,7 @@
         "filters": ["brightness(0) saturate(100%) invert(52%) sepia(27%) saturate(316%) hue-rotate(160deg) brightness(90%) contrast(86%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/forlorn_valley.png",
-        "preview": "assets/music/music_snippets/FTB_snippet.MP3"
+        "preview": "assets/music/music_snippets/FTB_snippet.mp3"
     },
     {
         "name": "Gray Urban",
@@ -734,7 +734,7 @@
         "filters": ["brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(927%) hue-rotate(191deg) brightness(89%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/gray_urban.png",
-        "preview": "assets/music/music_snippets/GU_snippet.MP3"
+        "preview": "assets/music/music_snippets/GU_snippet.mp3"
     },
     {   
         "name": "Hanging Gardens",
@@ -754,7 +754,7 @@
         "filters": ["brightness(0) saturate(100%) invert(58%) sepia(29%) saturate(311%) hue-rotate(115deg) brightness(97%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/hanging_gardens.png",
-        "preview": "assets/music/music_snippets/GH_snippet.MP3"
+        "preview": "assets/music/music_snippets/GH_snippet.mp3"
     },
     {   
         "name": "Howling Rift",
@@ -775,7 +775,7 @@
         "filters": ["brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(2569%) hue-rotate(353deg) brightness(85%) contrast(103%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/howling_rift.png",
-        "preview": "assets/music/music_snippets/HC_snippet.MP3"
+        "preview": "assets/music/music_snippets/HC_snippet.mp3"
     },
     {   
         "name": "Luminous Cove",
@@ -804,7 +804,7 @@
                     "brightness(0) saturate(100%) invert(16%) sepia(21%) saturate(1117%) hue-rotate(298deg) brightness(87%) contrast(91%)"],
         "containerWidth": "65vw",
         "background": "assets/images/backgrounds/luminous_cove.png",
-        "preview": "assets/music/music_snippets/EU_snippet.MP3"
+        "preview": "assets/music/music_snippets/EU_snippet.mp3"
     },
     {   
         "name": "Lush Mire",
@@ -824,7 +824,7 @@
         "filters": ["brightness(0) saturate(100%) invert(77%) sepia(63%) saturate(7034%) hue-rotate(98deg) brightness(94%) contrast(94%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/lush_mire.png",
-        "preview": "assets/music/music_snippets/LW_snippet.MP3"
+        "preview": "assets/music/music_snippets/LW_snippet.mp3"
     },
     {   
         "name": "Moss Fields",
@@ -851,7 +851,7 @@
                     "brightness(0) saturate(100%) invert(53%) sepia(70%) saturate(275%) hue-rotate(48deg) brightness(93%) contrast(87%)"],
         "containerWidth": "62vw",
         "background": "assets/images/backgrounds/moss_fields.png",
-        "preview": "assets/music/music_snippets/MF_snippet.MP3"
+        "preview": "assets/music/music_snippets/MF_snippet.mp3"
     },
     {
         "name": "Oil Station",
@@ -866,7 +866,29 @@
         "filters": ["brightness(0) saturate(100%) invert(19%) sepia(7%) saturate(2073%) hue-rotate(293deg) brightness(95%) contrast(81%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/oil_station.png",
-        "preview": "assets/music/music_snippets/OS_snippet.MP3"
+        "preview": "assets/music/music_snippets/OS_snippet.mp3"
+    },
+    {   
+        "name": "Peripheral Wreckage",
+        "group": "mods",
+        "layers": [
+            ["gas_noise_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Noise.ogg", 0],
+            ["kick_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Kick.ogg", 0],
+            ["castanets_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Perc1.ogg", 0],
+            ["weird_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Weird.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Bass.ogg", 0],
+            ["pop_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Pop.ogg", 0],
+            ["spear_tap_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Perc2.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Snare.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Synth.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Arps.ogg", 0],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Lead.ogg", 0]
+        ],
+        "colors": ["#4D5955"],
+        "filters": ["brightness(0) saturate(100%) invert(36%) sepia(8%) saturate(472%) hue-rotate(109deg) brightness(90%) contrast(94%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/peripheral_wreckage.png",
+        "preview": "assets/music/music_snippets/P2_snippet.mp3"
     },
     {   
         "name": "Pilgrims' Ascent",
@@ -883,7 +905,7 @@
         "filters": ["brightness(0) saturate(100%) invert(47%) sepia(37%) saturate(628%) hue-rotate(42deg) brightness(95%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/pilgrims_ascent.png",
-        "preview": "assets/music/music_snippets/PA_snippet.MP3"
+        "preview": "assets/music/music_snippets/PA_snippet.mp3"
     },
     {   
         "name": "Power Plant",
@@ -901,7 +923,7 @@
         "filters": ["brightness(0) saturate(100%) invert(48%) sepia(62%) saturate(6132%) hue-rotate(191deg) brightness(88%) contrast(84%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/power_plant.png",
-        "preview": "assets/music/music_snippets/PP_snippet.MP3"
+        "preview": "assets/music/music_snippets/PP_snippet.mp3"
     },
     {   
         "name": "Preservatory",
@@ -920,7 +942,7 @@
         "filters": ["brightness(0) saturate(100%) invert(92%) sepia(10%) saturate(1639%) hue-rotate(55deg) brightness(100%) contrast(104%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/preservatory.png",
-        "preview": "assets/music/music_snippets/PV_snippet.MP3"
+        "preview": "assets/music/music_snippets/PV_snippet.mp3"
     },
     {   
         "name": "Purification Conduits",
@@ -939,7 +961,7 @@
         "filters": ["brightness(0) saturate(100%) invert(71%) sepia(62%) saturate(381%) hue-rotate(11deg) brightness(93%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/purification_conduits.png",
-        "preview": "assets/music/music_snippets/BY_snippet.MP3"
+        "preview": "assets/music/music_snippets/BY_snippet.mp3"
     },
     {   
         "name": "Scorched District (Day)",
@@ -959,7 +981,7 @@
         "filters": ["brightness(0) saturate(100%) invert(28%) sepia(51%) saturate(675%) hue-rotate(331deg) brightness(94%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/scorched_district_day.png",
-        "preview": "assets/music/music_snippets/SD_DAY_snippet.MP3"
+        "preview": "assets/music/music_snippets/SD_DAY_snippet.mp3"
     },
     {   
         "name": "Scorched District (Night)",
@@ -978,7 +1000,7 @@
         "filters": ["brightness(0) saturate(100%) invert(18%) sepia(82%) saturate(437%) hue-rotate(171deg) brightness(97%) contrast(88%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/scorched_district_night.png",
-        "preview": "assets/music/music_snippets/SD_NIGHT_snippet.MP3"
+        "preview": "assets/music/music_snippets/SD_NIGHT_snippet.mp3"
     },
     {   
         "name": "Scrapped Peaks",
@@ -995,7 +1017,7 @@
         "filters": ["brightness(0) saturate(100%) invert(41%) sepia(13%) saturate(1906%) hue-rotate(111deg) brightness(94%) contrast(86%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/scrapped_peaks.png",
-        "preview": "assets/music/music_snippets/SPS_snippet.MP3"
+        "preview": "assets/music/music_snippets/SPS_snippet.mp3"
     },
     {   
         "name": "Side House",
@@ -1014,7 +1036,27 @@
         "filters": ["brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(197%) hue-rotate(353deg) brightness(87%) contrast(97%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/side_house.png",
-        "preview": "assets/music/music_snippets/RW_snippet.MP3"
+        "preview": "assets/music/music_snippets/RW_snippet.mp3"
+    },
+        {   
+        "name": "Soaring Lookout",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - KICK.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - SNARE.ogg", 0],
+            ["spear_tap_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - PERC1.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - BASS.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - GUITAR.ogg", 0],
+            ["tom_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - PERC2.ogg", 0],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - PERC3.ogg", 0],
+            ["snare_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - BREAKS.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - NOISE.ogg", 0]
+        ],
+        "colors": ["#fcaf56"],
+        "filters": ["brightness(0) saturate(100%) invert(74%) sepia(19%) saturate(1447%) hue-rotate(339deg) brightness(102%) contrast(98%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/soaring_lookout.png",
+        "preview": "assets/music/music_snippets/JJ_snippet.mp3"
     },
     {   
         "name": "Steaming Edifice",
@@ -1034,7 +1076,7 @@
         "filters": ["brightness(0) saturate(100%) invert(48%) sepia(25%) saturate(872%) hue-rotate(308deg) brightness(96%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/steaming_edifice.png",
-        "preview": "assets/music/music_snippets/SE_snippet.MP3"
+        "preview": "assets/music/music_snippets/SE_snippet.mp3"
     },
     {   
         "name": "Subway Lines",
@@ -1051,7 +1093,44 @@
         "filters": ["brightness(0) saturate(100%) invert(13%) sepia(70%) saturate(7154%) hue-rotate(353deg) brightness(75%) contrast(106%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/subway_lines.png",
-        "preview": "assets/music/music_snippets/ME_snippet.MP3"
+        "preview": "assets/music/music_snippets/ME_snippet.mp3"
+    },
+    {   
+        "name": "The Abyss",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSKICK.ogg", 0],
+            ["atmos_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSRISE.ogg", 0],
+            ["noise_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSNOISE1.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSNOISE2.ogg", 0],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSGATE.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSPERC.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSPAD.ogg", 0]
+        ],
+        "colors": ["#55482a"],
+        "filters": ["brightness(0) saturate(100%) invert(22%) sepia(77%) saturate(327%) hue-rotate(4deg) brightness(92%) contrast(82%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/abyss.png",
+        "preview": "assets/music/music_snippets/F1A_snippet.mp3"
+    },
+    {   
+        "name": "The Core",
+        "group": "mods",
+        "layers": [            
+            ["kick_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREKICK.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREBREAKS.ogg", 0],
+            ["weird_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREHATS.ogg", 0],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREPERC.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREBASS.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREPAD.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREARPS.ogg", 0],
+            ["xylo_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREBELL.ogg", 0]
+        ],
+        "colors": ["#3a8346"],
+        "filters": ["brightness(0) saturate(100%) invert(43%) sepia(7%) saturate(3119%) hue-rotate(78deg) brightness(99%) contrast(95%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/core.png",
+        "preview": "assets/music/music_snippets/F1C_snippet.mp3"
     },
     {
         "name": "The Grinder",
@@ -1071,7 +1150,7 @@
         "filters": ["brightness(0) saturate(100%) invert(27%) sepia(69%) saturate(1614%) hue-rotate(351deg) brightness(103%) contrast(100%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/the_grinder.png",
-        "preview": "assets/music/music_snippets/MT_snippet.MP3"
+        "preview": "assets/music/music_snippets/MT_snippet.mp3"
     },
     {   
         "name": "The Mast",
@@ -1090,7 +1169,45 @@
         "filters": ["brightness(0) saturate(100%) invert(47%) sepia(19%) saturate(597%) hue-rotate(331deg) brightness(94%) contrast(85%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/the_mast.png",
-        "preview": "assets/music/music_snippets/TM_snippet.MP3"
+        "preview": "assets/music/music_snippets/TM_snippet.mp3"
+    },
+    {   
+        "name": "The Overgrowth",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHKICK.ogg", 0],
+            ["snare_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHSNARE.ogg", 0],
+            ["hat_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHHATS.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHPERC.ogg", 0],
+            ["sine_wave_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHBASS.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHPAD.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHARPS.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHLEAD.ogg", 0]
+        ],
+        "colors": ["#61704c"],
+        "filters": ["brightness(0) saturate(100%) invert(39%) sepia(25%) saturate(477%) hue-rotate(43deg) brightness(97%) contrast(88%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/overgrowth.png",
+        "preview": "assets/music/music_snippets/F1G_snippet.mp3"
+    },
+    {   
+        "name": "The Roof",
+        "group": "mods",
+        "layers": [
+            ["perc_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFKICK.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFSNARE.ogg", 0],
+            ["gear_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFHATS.ogg", 0],
+            ["hit_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFPERC.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFBASS.ogg", 0],
+            ["siren_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFHORN.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFARPS.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFPIANO.ogg", 0]
+        ],
+        "colors": ["#223d47"],
+        "filters": ["brightness(0) saturate(100%) invert(18%) sepia(20%) saturate(1121%) hue-rotate(150deg) brightness(98%) contrast(88%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/roof.png",
+        "preview": "assets/music/music_snippets/F1R_snippet.mp3"
     },
     {
         "name": "Underbelly",
@@ -1107,7 +1224,7 @@
         "filters": ["brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(352%) hue-rotate(201deg) brightness(101%) contrast(85%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/underbelly.png",
-        "preview": "assets/music/music_snippets/UB_snippet.MP3"
+        "preview": "assets/music/music_snippets/UB_snippet.mp3"
     },
     {
         "name": "Undersea",
@@ -1124,7 +1241,7 @@
         "filters": ["brightness(0) saturate(100%) invert(21%) sepia(41%) saturate(2468%) hue-rotate(192deg) brightness(101%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/undersea.png",
-        "preview": "assets/music/music_snippets/US_snippet.MP3"
+        "preview": "assets/music/music_snippets/US_snippet.mp3"
     },
     {
         "name": "Urban Reservoir",
@@ -1143,7 +1260,7 @@
         "filters": ["brightness(0) saturate(100%) invert(46%) sepia(57%) saturate(364%) hue-rotate(330deg) brightness(86%) contrast(94%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/urban_reservoir.png",
-        "preview": "assets/music/music_snippets/RV_snippet.MP3"
+        "preview": "assets/music/music_snippets/RV_snippet.mp3"
     },
     {
         "name": "Weakened Platform",
@@ -1161,7 +1278,7 @@
         "filters": ["brightness(0) saturate(100%) invert(42%) sepia(36%) saturate(922%) hue-rotate(323deg) brightness(99%) contrast(94%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/weakened_platform.png",
-        "preview": "assets/music/music_snippets/WP_snippet.MP3"
+        "preview": "assets/music/music_snippets/WP_snippet.mp3"
     },
     {
         "name": "Woven Nest",
@@ -1177,13 +1294,15 @@
             ["arps_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_DESCENT.ogg", 0],
             ["weird_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_ARP.ogg", 0],
             ["wawa_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_LEAD.ogg", 0],
-            ["snare_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_BREAK.ogg", 0]
+            ["snare_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_BREAK.ogg", 1],
+            ["cabron.png", "assets/music/threat_music/mods/WN/TH_FR - fard.ogg", 1]
         ],
-        "colors": ["#3d3934"],
-        "filters": ["brightness(0) saturate(100%) invert(19%) sepia(22%) saturate(270%) hue-rotate(354deg) brightness(88%) contrast(85%)"],
+        "colors": ["#3d3934", "#272f19", "#272f19"],
+        "filters": ["brightness(0) saturate(100%) invert(19%) sepia(22%) saturate(270%) hue-rotate(354deg) brightness(88%) contrast(85%)",
+                    "brightness(0) saturate(100%) invert(12%) sepia(8%) saturate(3747%) hue-rotate(40deg) brightness(89%) contrast(83%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/woven_nest.png",
-        "preview": "assets/music/music_snippets/WN_snippet.MP3"
+        "preview": "assets/music/music_snippets/WN_snippet.mp3"
     },
     {
         "name": "Drainage System",
@@ -1204,7 +1323,7 @@
         "filters": ["brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1002%) hue-rotate(335deg) brightness(101%) contrast(92%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/drainage_system.png",
-        "preview": "assets/music/music_snippets/DS_snippet.MP3"
+        "preview": "assets/music/music_snippets/DS_snippet.mp3"
     },
     {
         "name": "Filtration System",
@@ -1223,7 +1342,7 @@
         "filters": ["brightness(0) saturate(100%) invert(11%) sepia(69%) saturate(4513%) hue-rotate(359deg) brightness(95%) contrast(114%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/filtration_system.png",
-        "preview": "assets/music/music_snippets/SBF_snippet.MP3"
+        "preview": "assets/music/music_snippets/SBF_snippet.mp3"
     },
     {
         "name": "House of Braids",
@@ -1248,7 +1367,7 @@
                     "invert(21%) sepia(66%) saturate(1409%) hue-rotate(205deg) brightness(93%) contrast(92%)"],
         "containerWidth": "55vw",
         "background": "assets/images/backgrounds/alt_metropolis.png",
-        "preview": "assets/music/music_snippets/HOB_snippet.MP3"
+        "preview": "assets/music/music_snippets/HOB_snippet.mp3"
     },
     {
         "name": "Shaded Citadel",
@@ -1268,7 +1387,7 @@
         "filters": ["brightness(0) saturate(100%) invert(18%) sepia(5%) saturate(1119%) hue-rotate(318deg) brightness(96%) contrast(85%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/shaded_citadel.png",
-        "preview": "assets/music/music_snippets/SH_snippet.MP3"
+        "preview": "assets/music/music_snippets/SH_snippet.mp3"
     },
     {
         "name": "Silent Construct",
@@ -1287,7 +1406,7 @@
         "filters": ["brightness(0) saturate(100%) invert(58%) sepia(6%) saturate(245%) hue-rotate(210deg) brightness(85%) contrast(90%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/silent_construct.png",
-        "preview": "assets/music/music_snippets/CL_snippet.MP3"
+        "preview": "assets/music/music_snippets/CL_snippet.mp3"
     },
     {
         "name": "Submerged Superstructure",
@@ -1309,7 +1428,7 @@
                     "brightness(0) saturate(100%) invert(79%) sepia(11%) saturate(6942%) hue-rotate(182deg) brightness(103%) contrast(99%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_submerged_superstructure.png",
-        "preview": "assets/music/music_snippets/MS_snippet.MP3"
+        "preview": "assets/music/music_snippets/MS_snippet.mp3"
     },
     {
         "name": "Subterranean",
@@ -1328,7 +1447,7 @@
         "filters": ["brightness(0) saturate(100%) invert(14%) sepia(27%) saturate(4733%) hue-rotate(345deg) brightness(94%) contrast(92%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/subterranean.png",
-        "preview": "assets/music/music_snippets/SB_snippet.MP3"
+        "preview": "assets/music/music_snippets/SB_snippet.mp3"
     },
     {
         "name": "Undergrowth",
@@ -1349,7 +1468,7 @@
         "filters": ["brightness(0) saturate(100%) invert(43%) sepia(22%) saturate(692%) hue-rotate(29deg) brightness(92%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/undergrowth.png",
-        "preview": "assets/music/music_snippets/UG_snippet.MP3"
+        "preview": "assets/music/music_snippets/UG_snippet.mp3"
     },
     {
         "name": "The Precipice",
@@ -1369,7 +1488,7 @@
         "filters": ["brightness(0) saturate(100%) invert(40%) sepia(5%) saturate(563%) hue-rotate(245deg) brightness(91%) contrast(84%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/precipice.png",
-        "preview": "assets/music/music_snippets/LMP_snippet.MP3"
+        "preview": "assets/music/music_snippets/LMP_snippet.mp3"
     },
     {
         "name": "The Underhang",
@@ -1387,7 +1506,7 @@
         "filters": ["brightness(0) saturate(100%) invert(23%) sepia(28%) saturate(577%) hue-rotate(354deg) brightness(93%) contrast(93%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/underhang.png",
-        "preview": "assets/music/music_snippets/UH_snippet.MP3"
+        "preview": "assets/music/music_snippets/UH_snippet.mp3"
     },
     {
         "name": "The Wall (Day)",
@@ -1405,7 +1524,7 @@
         "filters": ["brightness(0) saturate(100%) invert(46%) sepia(11%) saturate(868%) hue-rotate(329deg) brightness(93%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/wall_day.png",
-        "preview": "assets/music/music_snippets/TWD_snippet.MP3"
+        "preview": "assets/music/music_snippets/TWD_snippet.mp3"
     },
     {
         "name": "The Wall (Night)",
@@ -1424,7 +1543,7 @@
         "filters": ["brightness(0) saturate(100%) invert(14%) sepia(50%) saturate(603%) hue-rotate(170deg) brightness(87%) contrast(88%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/wall_night.png",
-        "preview": "assets/music/music_snippets/TWN_snippet.MP3"
+        "preview": "assets/music/music_snippets/TWN_snippet.mp3"
     },
     {
         "name": "Bitter Aerie",
@@ -1443,7 +1562,7 @@
         "filters": ["brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(232deg) brightness(102%) contrast(101%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/bitter_aerie.png",
-        "preview": "assets/music/music_snippets/MSBA_snippet.MP3"
+        "preview": "assets/music/music_snippets/MSBA_snippet.mp3"
     },
     {
         "name": "Chimney Canopy (Inv)",
@@ -1461,7 +1580,7 @@
         "filters": ["brightness(0) saturate(100%) invert(34%) sepia(39%) saturate(321%) hue-rotate(227deg) brightness(95%) contrast(91%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_chimney_canopy.png",
-        "preview": "assets/music/music_snippets/CCI_snippet.MP3"
+        "preview": "assets/music/music_snippets/CCI_snippet.mp3"
     },
     {
         "name": "Drainage System",
@@ -1481,7 +1600,7 @@
         "filters": ["brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1002%) hue-rotate(335deg) brightness(101%) contrast(92%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_drainage_system.png",
-        "preview": "assets/music/music_snippets/DSR_snippet.MP3"
+        "preview": "assets/music/music_snippets/DSR_snippet.mp3"
     },
     {
         "name": "Filtration System",
@@ -1500,7 +1619,7 @@
         "filters": ["brightness(0) saturate(100%) invert(11%) sepia(69%) saturate(4513%) hue-rotate(359deg) brightness(95%) contrast(114%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_filtration_system.png",
-        "preview": "assets/music/music_snippets/SBFR_snippet.MP3"
+        "preview": "assets/music/music_snippets/SBFR_snippet.mp3"
     },
     {
         "name": "Five Pebbles (Inv)",
@@ -1521,7 +1640,7 @@
         "filters": ["brightness(0) saturate(100%) invert(51%) sepia(85%) saturate(317%) hue-rotate(6deg) brightness(92%) contrast(91%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_five_pebbles.png",
-        "preview": "assets/music/music_snippets/SSI_snippet.MP3"
+        "preview": "assets/music/music_snippets/SSI_snippet.mp3"
     },
     {
         "name": "Garbage Wastes (Past)",
@@ -1540,7 +1659,7 @@
         "filters": ["brightness(0) saturate(100%) invert(50%) sepia(78%) saturate(320%) hue-rotate(65deg) brightness(89%) contrast(91%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/past_garbage_wastes.png",
-        "preview": "assets/music/music_snippets/GWP_snippet.MP3"
+        "preview": "assets/music/music_snippets/GWP_snippet.mp3"
     },
     {
         "name": "Industrial Complex (Inv)",
@@ -1559,7 +1678,7 @@
         "filters": ["invert(36%) sepia(10%) saturate(960%) hue-rotate(103deg) brightness(91%) contrast(94%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_industrial_complex.png",
-        "preview": "assets/music/music_snippets/HII_snippet.MP3"
+        "preview": "assets/music/music_snippets/HII_snippet.mp3"
     },
     {
         "name": "LTTM (Struts & Vents)",
@@ -1583,7 +1702,7 @@
                     "brightness(0) saturate(100%) invert(27%) sepia(34%) saturate(1037%) hue-rotate(141deg) brightness(93%) contrast(89%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_looks_to_the_moon.png",
-        "preview": "assets/music/music_snippets/DMR_snippet.MP3"
+        "preview": "assets/music/music_snippets/DMR_snippet.mp3"
     },
     {
         "name": "Luna",
@@ -1609,10 +1728,11 @@
                     "brightness(0) saturate(100%) invert(11%) sepia(59%) saturate(6309%) hue-rotate(224deg) brightness(80%) contrast(118%)"],
         "containerWidth": "49vw",
         "background": "assets/images/backgrounds/luna.png",
-        "preview": "assets/music/music_snippets/MSL_snippet.MP3"
+        "preview": "assets/music/music_snippets/MSL_snippet.mp3"
     },
     {
         "name": "Nachos Will Never Be The Same",
+        "trueName": "Garbage Wastes (Inv)",
         "group": "custom",
         "layers": [
             ["pad_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSBREAKS.ogg", 0],
@@ -1621,7 +1741,7 @@
             ["sine_wave_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSBASS.ogg", 0],
             ["hit_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSSTING.ogg", 0],
             ["weird_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSNOISE.ogg", 0],
-            ["xylo_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSPERC.ogg", 0],
+            ["handpan_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSPERC.ogg", 0],
             ["synth_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSARPS.ogg", 0],
             ["arps_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSKEYS.ogg", 0]
         ],
@@ -1629,10 +1749,11 @@
         "filters": ["brightness(0) saturate(100%) invert(51%) sepia(50%) saturate(2967%) hue-rotate(349deg) brightness(91%) contrast(107%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_garbage_wastes.png",
-        "preview": "assets/music/music_snippets/GWI_snippet.MP3"
+        "preview": "assets/music/music_snippets/GWI_snippet.mp3"
     },
     {
         "name": "Painage System",
+        "trueName": "Drainage System (Inv)",
         "group": "custom",
         "layers": [
             ["weird_sine_wave_icon.png", "assets/music/threat_music/custom/RTT/DSI/TH_DS - BONUSNOISE.ogg", 0],
@@ -1647,7 +1768,7 @@
         "filters": ["brightness(0) saturate(100%) invert(37%) sepia(100%) saturate(230%) hue-rotate(28deg) brightness(88%) contrast(85%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt2_drainage_system.png",
-        "preview": "assets/music/music_snippets/DSI_snippet.MP3"
+        "preview": "assets/music/music_snippets/DSI_snippet.mp3"
     },
     {
         "name": "Memory Crypts",
@@ -1666,7 +1787,7 @@
         "filters": ["brightness(0) saturate(100%) invert(18%) sepia(12%) saturate(2872%) hue-rotate(193deg) brightness(94%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/memory_crypts.png",
-        "preview": "assets/music/music_snippets/SHMR_snippet.MP3"
+        "preview": "assets/music/music_snippets/SHMR_snippet.mp3"
     },
     {
         "name": "Rubicon",
@@ -1675,7 +1796,7 @@
             ["kick_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - KICK.ogg", 0],
             ["weird_sine_wave_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - RIDES.ogg", 0],
             ["hat_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - HATS.ogg", 0],
-            ["perc_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - PERC1.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - PERC1.ogg", 0],
             ["snare_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - PERC2.ogg", 0],
             ["machine_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - INDUSTRIAL.ogg", 0],
             ["tom_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - SNARE.ogg", 0],
@@ -1690,7 +1811,7 @@
         "filters": ["invert(77%) sepia(67%) saturate(439%) hue-rotate(360deg) brightness(104%) contrast(95%)"],
         "containerWidth": "45vw",
         "background": "assets/images/backgrounds/alt_rubicon.png",
-        "preview": "assets/music/music_snippets/HRR_snippet.MP3"
+        "preview": "assets/music/music_snippets/HRR_snippet.mp3"
     },
     {
         "name": "Shaded Citadel",
@@ -1709,7 +1830,7 @@
         "filters": ["brightness(0) saturate(100%) invert(18%) sepia(5%) saturate(1119%) hue-rotate(318deg) brightness(96%) contrast(85%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_shaded_citadel.png",
-        "preview": "assets/music/music_snippets/SHR_snippet.MP3"
+        "preview": "assets/music/music_snippets/SHR_snippet.mp3"
     },
     {
         "name": "Submerged Superstructure",
@@ -1731,7 +1852,7 @@
         "filters": ["brightness(0) saturate(100%) invert(79%) sepia(8%) saturate(4071%) hue-rotate(79deg) brightness(74%) contrast(73%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/submerged_superstructure.png",
-        "preview": "assets/music/music_snippets/MSR_snippet.MP3"
+        "preview": "assets/music/music_snippets/MSR_snippet.mp3"
     },
     {
         "name": "Subterranean",
@@ -1751,7 +1872,7 @@
         "filters": ["brightness(0) saturate(100%) invert(14%) sepia(27%) saturate(4733%) hue-rotate(345deg) brightness(94%) contrast(92%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_subterranean.png",
-        "preview": "assets/music/music_snippets/SBR_snippet.MP3"
+        "preview": "assets/music/music_snippets/SBR_snippet.mp3"
     },
     {
         "name": "Sump Tunnel",
@@ -1776,7 +1897,7 @@
                     "brightness(0) saturate(100%) invert(37%) sepia(3%) saturate(2010%) hue-rotate(71deg) brightness(91%) contrast(78%)"],
         "containerWidth": "60vw",
         "background": "assets/images/backgrounds/sump_tunnel.png",
-        "preview": "assets/music/music_snippets/VSSR_snippet.MP3"
+        "preview": "assets/music/music_snippets/VSSR_snippet.mp3"
     },
     {
         "name": "The Precipice",
@@ -1795,7 +1916,7 @@
         "filters": ["brightness(0) saturate(100%) invert(23%) sepia(18%) saturate(435%) hue-rotate(248deg) brightness(92%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_precipice.png",
-        "preview": "assets/music/music_snippets/LMPR_snippet.MP3"
+        "preview": "assets/music/music_snippets/LMPR_snippet.mp3"
     },
     {
         "name": "The Rot",
@@ -1813,7 +1934,7 @@
         "filters": ["invert(15%) sepia(93%) saturate(4199%) hue-rotate(250deg) brightness(89%) contrast(123%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/the_rot.png",
-        "preview": "assets/music/music_snippets/RM_snippet.MP3"
+        "preview": "assets/music/music_snippets/RM_snippet.mp3"
     },
     {
         "name": "The Underhang",
@@ -1835,7 +1956,7 @@
         "filters": ["brightness(0) saturate(100%) invert(23%) sepia(28%) saturate(577%) hue-rotate(354deg) brightness(93%) contrast(93%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_underhang.png",
-        "preview": "assets/music/music_snippets/UHR_snippet.MP3"
+        "preview": "assets/music/music_snippets/UHR_snippet.mp3"
     },
     {
         "name": "The Wall",
@@ -1854,10 +1975,11 @@
         "filters": ["brightness(0) saturate(100%) invert(58%) sepia(44%) saturate(245%) hue-rotate(329deg) brightness(96%) contrast(86%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_wall.png",
-        "preview": "assets/music/music_snippets/TWR_snippet.MP3"
+        "preview": "assets/music/music_snippets/TWR_snippet.mp3"
     },
     {
         "name": "TOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOBS",
+        "trueName": "Pipeyard (Inv)",
         "group": "custom",
         "layers": [
             ["spear_tap_icon.png", "assets/music/threat_music/custom/RTT/VSI/TH_VS - BONUSDROPS.ogg", 0],
@@ -1876,10 +1998,11 @@
         "filters": ["invert(53%) sepia(40%) saturate(379%) hue-rotate(323deg) brightness(93%) contrast(87%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_pipeyard.png",
-        "preview": "assets/music/music_snippets/VSI_snippet.MP3"
+        "preview": "assets/music/music_snippets/VSI_snippet.mp3"
     },
     {
         "name": "We Forgot To Render This One Sorry",
+        "trueName": "Outskirts (Inv)",
         "group": "custom",
         "layers": [
             ["weird_sine_wave_icon.png", "assets/music/threat_music/custom/RTT/SUI/TH_SU - BONUSNOISE.ogg", 0],
@@ -1893,10 +2016,10 @@
             ["pad_icon.png", "assets/music/threat_music/custom/RTT/SUI/TH_SU - BONUSRISER.ogg", 0],
             ["synth_icon.png", "assets/music/threat_music/custom/RTT/SUI/TH_SU - BONUSALARM.ogg", 0]
         ],
-        "colors": ["#ab0000"],
-        "filters": ["brightness(0) saturate(100%) invert(10%) sepia(86%) saturate(4370%) hue-rotate(356deg) brightness(96%) contrast(116%)"],
+        "colors": ["#ce0707"],
+        "filters": ["brightness(0) saturate(100%) invert(11%) sepia(91%) saturate(7121%) hue-rotate(15deg) brightness(86%) contrast(111%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_outskirts.png",
-        "preview": "assets/music/music_snippets/SUI_snippet.MP3"
+        "preview": "assets/music/music_snippets/SUI_snippet.mp3"
     }
 ]

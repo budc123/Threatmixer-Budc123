@@ -3,6 +3,9 @@ Here, the selection screen is set up, which involves getting all of the region d
 of the region buttons work.
 */
 
+// BUTTON TIPS
+createTippy(previewToggleButton, previewToggleButton.dataset.title, "#dadbdd");
+
 function setUpSelectionScreen(regionData) {
     // switching previews off if we're on mobile
     if (isMobileDevice) {
@@ -23,10 +26,10 @@ function setUpSelectionScreen(regionData) {
         // waiting for all of the buttons to load in before showing the selection screen
         var buttonSetUp = regionData.map((region, index) => {
             
-            // console.log(`${index}: ${region.name}`);
+            // uncomment for a full list of the regions within the console
+            // console.log(`${index + 1}: ${region.name}`);
 
             return new Promise((buttonResolve) => {
-
                 // storing the amount of buttons in each container
                 var baseButtonArray = baseCarousel.querySelectorAll("button");
                 var modButtonArray = modCarousel.querySelectorAll("button");
@@ -75,7 +78,7 @@ function setUpSelectionScreen(regionData) {
                         src: [region.preview, "sounds.mp3"],
                         loop: true,
                         onplay: () => {songPreview.fade(0, 1, 1000)},
-                        onstop: () => {isFadingOut = false}
+                        onstop: () => {previewIsFadingOut = false}
                     })
                 }
 
@@ -87,17 +90,17 @@ function setUpSelectionScreen(regionData) {
                     newRegionButton.style.boxShadow = `0vw 0vw 1.3vw 0.4vw ${region.color}99`;
 
                     // fading in the song preview
-                    if (region.preview != "N/A" && canPlay && !loadingRegion && previewsOn) {
+                    if (region.preview != "N/A" && previewCanPlay && !loadingRegion && previewsOn) {
                         // first checking if another preview is currently trying to fade out
-                        if (isFadingOut) {
+                        if (previewIsFadingOut) {
                             // if so, stop it
                             currentPreviewPlaying.stop()
                             clearTimeout(fadeCheck);
-                            isFadingOut = false;
+                            previewIsFadingOut = false;
                         }
                         
                         // if we're not fading out and the current songPreview isn't playing,
-                        if (!isFadingOut && !songPreview.playing() && !loadingRegion && previewsOn) {
+                        if (!previewIsFadingOut && !songPreview.playing() && !loadingRegion && previewsOn) {
                             songPreview.play()
                             currentPreviewPlaying = songPreview
                         }
@@ -109,8 +112,8 @@ function setUpSelectionScreen(regionData) {
                     newRegionButton.style.boxShadow = "";
 
                     // fading out the song preview
-                    if (region.preview != "N/A" && canPlay) {
-                        isFadingOut = true;
+                    if (region.preview != "N/A" && previewCanPlay) {
+                        previewIsFadingOut = true;
                         songPreview.fade(1, 0, 1000)
                         // waiting for the song to fully fade before stopping it
                         fadeCheck = setTimeout(() => {songPreview.stop()}, 1000)
@@ -259,7 +262,7 @@ function setUpSelectionScreen(regionData) {
         loadingRegion = false;
 
         // adding a short cooldown to when song previews can begin playing
-        previewCooldown = setTimeout(() => {canPlay = true}, 1000)
+        previewCooldown = setTimeout(() => {previewCanPlay = true}, 1000)
     })
 }
 
@@ -285,7 +288,7 @@ function addOnClick(element, regionData, resolve) {
             storedCustomSlide = customCarousel.scrollLeft;
 
             // defining variables
-            layerSoloed = false;
+            songSoloed = false;
             songStarted = false;
             eraseRecording = false;
             loadedLayers = [];
@@ -298,33 +301,19 @@ function addOnClick(element, regionData, resolve) {
             var regionButtonArray = Array.from(regionButton),
                 regionIndex = regionButtonArray.indexOf(element),
                 regionChosen = regionData[regionIndex];
-
-            // changing the title of the page
-            document.title = `Threatmixer - ${regionChosen.name}`;
             
             // setting the header to the region's name
-            var regionName = regionData[regionIndex].name
+            if (regionChosen.trueName == undefined) {var regionName = regionChosen.name;}
+            else {var regionName = regionChosen.trueName;}
+            regionTitle.innerText = regionName;
 
+            // and the title of the tab as well
+            document.title = `Threatmixer - ${regionName}`;
+
+            // also checking for other specific regions as well
             switch (regionName) {
-                case ("Nachos Will Never Be The Same"):
-                    regionTitle.innerText = "Garbage Wastes (Inv)";
-                    break;
-                case ("Painage System"):
-                    regionTitle.innerText = "Drainage System (Inv)";
-                    break;
-                case ("We Forgot To Render This One Sorry"):
-                    regionTitle.innerText = "Outskirts (Inv)"
-                    break;
-                case ("TOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOBS"):
-                    regionTitle.innerText = "Pipeyard (inv)";
-                    break;
-                // also checking for other specific regions as well
                 case ("Far Shore"):
-                    regionTitle.innerText = regionName;
                     farShoreSelected = true;
-                    break;
-                default:
-                    regionTitle.innerText = regionName;
                     break;
             }
 
@@ -334,146 +323,154 @@ function addOnClick(element, regionData, resolve) {
                 defaultColor = colorArray[0],
                 defaultFilter = filterArray[0];
 
-            Array.from(otherButtons).forEach((button) => {button.style.setProperty("--tippy-color", defaultColor)})
-
             // applying layerButtonContainer width
             layerButtonContainer.style.width = regionChosen.containerWidth;
 
             // here, we dynamically create as many buttons and sounds as we need based on what's in the json
-            regionChosen.layers.forEach((layer) => {
+            regionChosen.layers.forEach((layer, index) => {
+                    // creating a div to hold each of the buttons
+                    var newDiv = document.createElement("div");
+                    newDiv.classList.add("layer_options");
 
-                // creating a div to hold each of the buttons
-                var newDiv = document.createElement("div");
-                newDiv.classList.add("layer_options");
+                    // creating the layer and solo buttons
+                    var newLayerButton = document.createElement("button"); 
+                    newLayerButton.classList.add("layer_button", "layer_button_darkened");
+                    newLayerButton.dataset.title = " (Muted)";
 
-                // creating the layer and solo buttons
-                var newLayerButton = document.createElement("button"); 
-                newLayerButton.classList.add("layer_button", "layer_button_darkened");
-                newLayerButton.dataset.title = " (Muted)";
+                    // giving the button a title
+                    var rawLayerSrc = layer[1],
+                        strIndex = -4,
+                        layerName = "";
 
-                // giving the button a title
-                var rawLayerSrc = layer[1],
-                    strIndex = -4,
-                    layerName = "";
-
-                for (let i = 0; i < rawLayerSrc.length; i++) {
-                    if (rawLayerSrc.at(strIndex) == " " || rawLayerSrc.at(strIndex) == "_") {
-                        layerName = rawLayerSrc.slice(strIndex + 1, -4);
-                        break;          
-                    }
-                    else {strIndex--;}
-                }
-
-                // hardcoding House of Braids tippy names (for now)
-                if (regionName == "House of Braids") {
-                    switch (houseCount) {
-                        case 8:
-                            layerName = "BASS1 (NIGHT)";
-                            break;
-                        case 9:
-                            layerName = "DRUM2 (NIGHT)";
-                            break;
-                        case 10:
-                            layerName = "BREAKS1 (NIGHT)";
-                            break;
-                        case 11:
-                            layerName = "LEAD2 (NIGHT)";
-                            break;
-                        case 12:
-                            layerName = "WAWA (NIGHT)";
-                            break;
+                    for (let i = 0; i < rawLayerSrc.length; i++) {
+                        if (rawLayerSrc.at(strIndex) == " " || rawLayerSrc.at(strIndex) == "_") {
+                            layerName = rawLayerSrc.slice(strIndex + 1, -4);
+                            break;          
+                        }
+                        else {strIndex--;}
                     }
 
-                    houseCount++;
-                }
+                    // hardcoding House of Braids tippy names (for now)
+                    if (regionName == "House of Braids") {
+                        switch (houseCount) {
+                            case 8:
+                                layerName = "BASS1 (NIGHT)";
+                                break;
+                            case 9:
+                                layerName = "DRUM2 (NIGHT)";
+                                break;
+                            case 10:
+                                layerName = "BREAKS1 (NIGHT)";
+                                break;
+                            case 11:
+                                layerName = "LEAD2 (NIGHT)";
+                                break;
+                            case 12:
+                                layerName = "WAWA (NIGHT)";
+                                break;
+                        }
 
-                // creating a solo button
-                var newSoloButton = document.createElement("button");
-                newSoloButton.classList.add("solo_button", "darken_button");
-                newSoloButton.dataset.title = "Solo Layer (Mute Others)";
+                        houseCount++;
+                    }
+                    else if (regionName == "Woven Nest" && index == 11) {
+                        layerName = "Thanks Snoodle";
+                    }
 
-                // creating the icons to put in each button
-                var newLayerIcon = document.createElement("img");
-                newLayerIcon.classList.add("button_icon");
+                    // creating a solo button
+                    var newSoloButton = document.createElement("button");
+                    newSoloButton.classList.add("solo_button", "darken_button");
+                    newSoloButton.dataset.title = "Solo Layer (Mute Others)";
 
-                // EASTER EGG 1
-                if (regionIndex == 29 && layer[1].includes("JUG.ogg")){
-                    var potRoll = Math.floor(Math.random() * 10) + 1;
+                    // creating the icons to put in each button
+                    var newLayerIcon = document.createElement("img");
+                    newLayerIcon.classList.add("button_icon");
 
-                    if (potRoll == 1) {
-                        newLayerIcon.src = `assets/images/button_icons/smug_jug_icon.png`;
+                    if (regionName == "Data Manifold" && index == 3) {
+                        var potRoll = Math.floor(Math.random() * 10) + 1;
+
+                        if (potRoll == 1) {
+                            newLayerIcon.src = `assets/images/button_icons/smug_jug_icon.png`;
+                        }
+                        else {
+                            newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
+                        }
                     }
                     else {
                         newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
                     }
-                }
-                else {
-                    newLayerIcon.src = `assets/images/button_icons/${layer[0]}`;
-                }
 
-                var newSoloIcon = document.createElement("img");
-                newSoloIcon.classList.add("button_icon", "solo_button_icon");
-                newSoloIcon.src = soloIcon1;
+                    var newSoloIcon = document.createElement("img");
+                    newSoloIcon.classList.add("button_icon", "solo_button_icon");
+                    newSoloIcon.src = soloIcon1;
 
-                // applying color to the buttons
-                var buttonColor = colorArray[layer[2]],
-                    buttonFilter = filterArray[layer[2]];
+                    // applying color to the buttons
+                    var buttonColor = colorArray[layer[2]],
+                        buttonFilter = filterArray[layer[2]];
 
-                newLayerButton.style.border = `0.16vw solid ${buttonColor}`;
-                newSoloButton.style.border = `0.16vw solid ${buttonColor}`;
-                newLayerIcon.style.filter = `${buttonFilter}`;
-                newSoloIcon.style.filter = `${buttonFilter}`;
+                    newLayerButton.style.border = `0.16vw solid ${buttonColor}`;
+                    newSoloButton.style.border = `0.16vw solid ${buttonColor}`;
+                    if (layerName != "Thanks Snoodle") {newLayerIcon.style.filter = `${buttonFilter}`};
+                    newSoloIcon.style.filter = `${buttonFilter}`;
 
-                newLayerButton.style.setProperty("--glow-color", `${buttonColor}99`);
-                newLayerButton.style.setProperty("--tippy-color", `${buttonColor}`);
+                    newLayerButton.style.setProperty("--glow-color", `${buttonColor}99`);
+                    newLayerButton.style.setProperty("--tippy-color", `${buttonColor}`);
+                    
+                    // adding our new elements onto the page
+                    newLayerButton.appendChild(newLayerIcon);
+                    newSoloButton.appendChild(newSoloIcon);
+                    newDiv.appendChild(newLayerButton);
+                    newDiv.appendChild(newSoloButton);
+                    layerButtonContainer.appendChild(newDiv);
 
-                // creating a pop-up tip for each button
-                createTippy(newLayerButton, layerName, buttonColor);
-                createTippy(newSoloButton, newSoloButton.dataset.title, buttonColor);
-                layerNameArray.push(layerName);
+                    if (regionName == "Woven Nest" && index == 11 && !beenFound) {
+                        newDiv.style.opacity = "0";
+                        newLayerButton.style.pointerEvents = "none";
+                        newSoloButton.style.pointerEvents = "none";
+                        newDiv.style.transition = "opacity 1s ease";
 
-                // adding our new elements onto the page
-                newLayerButton.appendChild(newLayerIcon);
-                newSoloButton.appendChild(newSoloIcon);
-                newDiv.appendChild(newLayerButton);
-                newDiv.appendChild(newSoloButton);
-                layerButtonContainer.appendChild(newDiv);
-            
-                // storing audio files
-                regionThreatLayers.push(new Audio(layer[1])); 
+                        var him = document.getElementById("c");
+                        him.style.display = "block";
+
+                        him.onclick = () => {
+                            newDiv.style.opacity = "1";
+                            him.style.display = "none";
+                            newLayerButton.style.pointerEvents = "auto";
+                            newSoloButton.style.pointerEvents = "auto";
+
+                            heArrives = new Audio("assets/music/misc/manifest.mp3");
+                            heArrives.play();
+                            beenFound = true;
+                        }
+                    }
+
+                    // creating a pop-up tip for each button
+                    createTippy(newLayerButton, layerName, buttonColor);
+                    createTippy(newSoloButton, newSoloButton.dataset.title, buttonColor);
+                    layerNameArray.push(layerName);
+                
+                    // storing audio files
+                    regionThreatLayers.push(new Audio(layer[1]));
+                
             });
 
-            // creating more style changes for classes
+            // creating dynamic style changes
             var styleChanges = document.createElement("style");
             styleChanges.textContent = `
-            #exit_button, #region_name, #visualizer_toggle, .other_buttons, #timer, #fade_button {
-                color: ${defaultColor};
-            }
-
-            #exit_button, #visualizer_toggle, #timer_container, .other_buttons, #fade_button, #timer_container {
-                border: 0.16vw solid ${defaultColor};
-            }
-
-            .other_button_icons {
-                filter: ${defaultFilter};
-            }
-
-            progress::-moz-progress-bar {
-                background-color: ${defaultColor};
-            }
-
             .tippy-box[data-theme~="other-button-style"] {
                 color: ${defaultColor};
                 border: 0.2vw solid ${defaultColor};
-            }
-
-            progress::-webkit-progress-value {
-                background-color: ${defaultColor};
             }
             `;
             
             // adding these changes
             document.head.appendChild(styleChanges);
+            
+            setDynamicColor([exitButton, settingsButton, settingsContainer, regionTitle, 
+                visButton, timer, fadeToggleButton, progressBar, 
+                document.getElementById("timer_container")], defaultColor);
+            
+            setDynamicColor(Array.from(otherButtons), defaultColor);
+            setDynamicFilter(Array.from(otherButtonIcons), defaultFilter);
 
             // changing the background image depending on the region
             musicScreen.style.backgroundImage = `url(${regionChosen.background})`;
@@ -488,7 +485,7 @@ function addOnClick(element, regionData, resolve) {
     }
 }
 
-// Functions to simplify tab handling
+// Functions to simplify slide handling
 function newSlideCheck(buttonArray, carouselSlideNumMax, carousel) {
     if (buttonArray.length % 6 == 0) {
         divIndex++;
@@ -570,4 +567,186 @@ function rightCarrotButtonHandling(carouselSlideNum, carouselSlideNumMax, scroll
     }
 
     return carouselSlideNum;
+}
+
+// on clicks
+baseButton.onclick = () => {
+    selectionState = "base";
+    selectionHeader.innerText = "Vanilla Regions";
+    baseSlideNum = 1;
+    slideNum.innerText = `${baseSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    baseButton.classList.add("extend_button")
+    moddedButton.classList.remove("extend_button")
+    mscButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
+    modCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
+    customCarousel.style.display = "none";
+    baseCarousel.style.display = "flex";
+    baseCarousel.scrollLeft = 0;
+}
+
+moddedButton.onclick = () => {
+    selectionState = "mods";
+    selectionHeader.innerText = "Modded Regions";
+    modSlideNum = 1;
+    slideNum.innerText = `${modSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    moddedButton.classList.add("extend_button")
+    mscButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
+    customCarousel.style.display = "none";
+    modCarousel.style.display = "flex";
+    modCarousel.scrollLeft = 0;
+}
+
+mscButton.onclick = () => {
+    selectionState = "msc";
+    selectionHeader.innerText = "Downpour Regions";
+    mscSlideNum = 1;
+    slideNum.innerText = `${mscSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToDark(carrotButtons[1]);
+    mscButton.classList.add("extend_button")
+    moddedButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    modCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
+    customCarousel.style.display = "none";
+    mscCarousel.style.display = "flex";
+    mscCarousel.scrollLeft = 0;
+}
+
+watchButton.onclick = () => {
+    selectionState = "watch";
+    selectionHeader.innerText = "Watcher Regions";
+    watchSlideNum = 1;
+    slideNum.innerText = `${watchSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    watchButton.classList.add("extend_button")
+    mscButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    moddedButton.classList.remove("extend_button")
+    customButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    modCarousel.style.display = "none";
+    customCarousel.style.display = "none";
+    watchCarousel.style.display = "flex";
+    watchCarousel.scrollLeft = 0;
+}
+
+customButton.onclick = () => {
+    selectionState = "custom";
+    selectionHeader.innerText = "Extra Threat Themes";
+    customSlideNum = 1;
+    slideNum.innerText = `${customSlideNum}.`
+    switchToDark(carrotButtons[0]);
+    switchToBright(carrotButtons[1]);
+    customButton.classList.add("extend_button")
+    mscButton.classList.remove("extend_button")
+    baseButton.classList.remove("extend_button")
+    moddedButton.classList.remove("extend_button")
+    watchButton.classList.remove("extend_button")
+    baseCarousel.style.display = "none";
+    mscCarousel.style.display = "none";
+    modCarousel.style.display = "none";
+    watchCarousel.style.display = "none";
+    customCarousel.style.display = "flex";
+    customCarousel.scrollLeft = 0;
+}
+
+selectionBackButton.onclick = () => {
+    showScreen(homeScreen)
+    hideScreen(selectionScreen)
+    clearSelectionScreen()
+    baseCarousel.scrollLeft = 0;
+    modCarousel.scrollLeft = 0;
+    mscCarousel.scrollLeft = 0;
+    watchCarousel.scrollLeft = 0;
+    customCarousel.scrollLeft = 0;
+    baseSlideNum = 1;
+    modSlideNum = 1;
+    mscSlideNum = 1;
+    watchSlideNum = 1;
+    customSlideNum = 1;
+    slideNum.innerText = 1;
+    switchToBright(carrotButtons[1]);
+    switchToDark(carrotButtons[0]);
+
+    // restarting the menu music check
+    menuMusicCheck = setInterval(() => {
+        if (homeScreen.style.height == "100%" && !menuMusicPlaying && menuMusicEnabled) {
+            menuMusicPlaying = true;
+            menuMusic.volume(0.3);
+            menuMusicTimeout = setTimeout(() => {menuMusic.play()}, 2000);
+        }
+    }, 1000)
+}
+
+previewToggleButton.onclick = () => {
+    previewsOn = !previewsOn
+
+    if (!previewsOn) {
+        previewToggleIcon.src = "assets/images/button_icons/preview_disabled_icon.png";
+        updateTippyContent(previewToggleButton, "Preview Toggle (Off)");
+    }
+    else {
+        previewToggleIcon.src = "assets/images/button_icons/preview_enabled_icon.png";
+        updateTippyContent(previewToggleButton, "Preview Toggle (On)");
+    }
+}
+
+// MISC FUNCTIONS
+function setClickTimout() { // to prevent carrot button spam
+    clickOnTimeout = true;
+    setTimeout(() => {clickOnTimeout = false;}, 500); // half of a second
+}
+
+function clearSelectionScreen() {
+    layerButtonContainer.innerHTML = "";
+    baseCarousel.innerHTML = "";
+    modCarousel.innerHTML = "";
+    mscCarousel.innerHTML = "";
+    watchCarousel.innerHTML = "";
+    customCarousel.innerHTML = "";
+    document.title = "Threatmixer";
+    regionButtonClicked = false;
+    divIndex = -1;
+    baseSlideNumMax = 0;
+    modSlideNumMax = 0;
+    mscSlideNumMax = 0;
+    watchSlideNumMax = 0
+    customSlideNumMax = 0;
+    houseCount = 0;
+}
+
+function setDynamicColor(elementArray, color) {
+    elementArray.forEach((element) => {
+        element.style.setProperty("--dynamic-color", color);
+    })
+}
+
+function setDynamicFilter(iconArray, filter) {
+    iconArray.forEach((icon) => {
+        icon.style.setProperty("--dynamic-filter", filter);
+    })
+}
+
+function updateLoadingInfo(progress, goal) {
+    loadingDetails.innerText = `Processed layers: (${progress}/${goal})`;
 }

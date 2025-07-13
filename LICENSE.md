@@ -12,9 +12,7 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 
 - [ECSP](https://ecsp.dev/) (Personal Website): Pixel Art, Playtesting, and Creative Assistence
 - [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Main menu music, Playtesting, and Creative Assistence
-- TheLobsterFoam: Playtesting
-- AliKirb: Playtesting
-- MelnCat: Code Assistence
+- [Budc](https://budc123.github.io/) (Personal Website): Code Assistence and Playtesting
 
 ## Videocult
 
@@ -48,12 +46,15 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [AxeXir](https://www.youtube.com/channel/UCnleE9tJyc5kz6Mt53aQuMw) (Youtube)
 - Beep
 - [Bro](https://www.youtube.com/channel/UCGRoe1Z5loGEVcYnPBvXEew) (Youtube)
+- BubbleGUMz
 - [Carrotpudding](https://www.youtube.com/@carrotpudding2191) (Youtube)
 - Classick
 - [Don](https://www.youtube.com/@donschnulione6646) (Youtube)
 - Fishswallower
 - [Fishnoid](https://www.youtube.com/channel/UCG-mPR0LtVn4QX0QSmSwCjQ) (Youtube)
 - [Henpemaz](https://www.youtube.com/@henpemaz) (Youtube)
+- [Hessi](https://www.youtube.com/@hessi_943/videos) (Youtube)
+- Inspectnerd
 - [Joseph Nied](https://www.youtube.com/@josephtnied) (Youtube)
 - [Kaeporo](https://www.youtube.com/@Kaeporo) (Youtube)
 - [klumquart](https://steamcommunity.com/profiles/76561199123058149) (Steam)
@@ -63,6 +64,7 @@ Here's a full list of everyone who's region, music, and/or art is shown in this 
 - [Myrmice](https://steamcommunity.com/id/myrmice/) (Steam)
 - [Nautilo](https://www.youtube.com/@nautillo2481) (Youtube)
 - [Notocorda](https://www.deviantart.com/notocordada) (Deviantart)
+- [Nytrok07](www.youtube.com/@filonplaysgames) (Youtube)
 - [Parageist](https://steamcommunity.com/id/Parageist) (Steam)
 - [Pinpoint](https://oliverlollsdesign.com/) (Personal Website)
 - [Ren is Taking Ten](https://www.youtube.com/channel/UCwbD6t3L5doFdyyKr6d6Qqg) (Youtube)
@@ -116,6 +118,10 @@ And here's the credits by region:
 - Far Shore Threat Theme by Aki
 - Woven Nest Threat Theme by Snoodle
 
+## Forsaken Factory (Abyss, Core, Overgrowth, & Roof)
+- Regions by Nytrok07
+- Threat Themes by Roasted AND Toasted
+
 ## Forsaken Station:
 - Region by Tronsx
 - Region Art by aprilWORSTmonth
@@ -158,6 +164,10 @@ And here's the credits by region:
 - Region Art by 4slugcats & snugboat
 - Other Contributors: Bro, Solar
 
+## Peripheral Wreckage
+- Region by BubbleGUMz
+- Threat Theme by Hessi
+
 ## Pilgrims' Ascent:
 - Region by Myrmice
 - Region Art by Beep
@@ -189,6 +199,11 @@ And here's the credits by region:
 ## Side House:
 - Region & Region Art by AndrewFM
 - Threat Theme by Mikronaut
+
+## Soaring Lookout:
+- Region by Inspectnerd
+- Region Art by Notocorda
+- Threat Theme by Roasted AND Toasted
 
 ## Stormy Coast:
 - Region by Wrayk
