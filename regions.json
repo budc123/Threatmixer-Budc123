@@ -918,6 +918,28 @@
         "preview": "assets/music/music_snippets/OS_snippet.mp3"
     },
     {   
+        "name": "Peripheral Wreckage",
+        "group": "mods",
+        "layers": [
+            ["gas_noise_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Noise.ogg", 0],
+            ["kick_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Kick.ogg", 0],
+            ["castanets_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Perc1.ogg", 0],
+            ["weird_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Weird.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Bass.ogg", 0],
+            ["pop_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Pop.ogg", 0],
+            ["spear_tap_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Perc2.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Snare.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Synth.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Arps.ogg", 0],
+            ["scug_sing_icon.png", "assets/music/threat_music/mods/P2/TH_P2 - Lead.ogg", 0]
+        ],
+        "colors": ["#4D5955"],
+        "filters": ["brightness(0) saturate(100%) invert(36%) sepia(8%) saturate(472%) hue-rotate(109deg) brightness(90%) contrast(94%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/peripheral_wreckage.png",
+        "preview": "assets/music/music_snippets/P2_snippet.mp3"
+    },
+    {   
         "name": "Pilgrims' Ascent",
         "group": "mods",
         "layers": [
@@ -1065,6 +1087,26 @@
         "background": "assets/images/backgrounds/side_house.png",
         "preview": "assets/music/music_snippets/RW_snippet.mp3"
     },
+        {   
+        "name": "Soaring Lookout",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - KICK.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - SNARE.ogg", 0],
+            ["spear_tap_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - PERC1.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - BASS.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - GUITAR.ogg", 0],
+            ["tom_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - PERC2.ogg", 0],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - PERC3.ogg", 0],
+            ["snare_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - BREAKS.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/JJ/TH_JJ - NOISE.ogg", 0]
+        ],
+        "colors": ["#fcaf56"],
+        "filters": ["brightness(0) saturate(100%) invert(74%) sepia(19%) saturate(1447%) hue-rotate(339deg) brightness(102%) contrast(98%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/soaring_lookout.png",
+        "preview": "assets/music/music_snippets/JJ_snippet.mp3"
+    },
     {   
         "name": "Steaming Edifice",
         "group": "mods",
@@ -1101,6 +1143,43 @@
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/subway_lines.png",
         "preview": "assets/music/music_snippets/ME_snippet.mp3"
+    },
+    {   
+        "name": "The Abyss",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSKICK.ogg", 0],
+            ["atmos_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSRISE.ogg", 0],
+            ["noise_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSNOISE1.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSNOISE2.ogg", 0],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSGATE.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSPERC.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ABYSSPAD.ogg", 0]
+        ],
+        "colors": ["#55482a"],
+        "filters": ["brightness(0) saturate(100%) invert(22%) sepia(77%) saturate(327%) hue-rotate(4deg) brightness(92%) contrast(82%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/abyss.png",
+        "preview": "assets/music/music_snippets/F1A_snippet.mp3"
+    },
+    {   
+        "name": "The Core",
+        "group": "mods",
+        "layers": [            
+            ["kick_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREKICK.ogg", 0],
+            ["radio_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREBREAKS.ogg", 0],
+            ["weird_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREHATS.ogg", 0],
+            ["weird_sine_wave_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREPERC.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREBASS.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREPAD.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREARPS.ogg", 0],
+            ["xylo_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - COREBELL.ogg", 0]
+        ],
+        "colors": ["#3a8346"],
+        "filters": ["brightness(0) saturate(100%) invert(43%) sepia(7%) saturate(3119%) hue-rotate(78deg) brightness(99%) contrast(95%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/core.png",
+        "preview": "assets/music/music_snippets/F1C_snippet.mp3"
     },
     {
         "name": "The Grinder",
@@ -1140,6 +1219,44 @@
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/the_mast.png",
         "preview": "assets/music/music_snippets/TM_snippet.mp3"
+    },
+    {   
+        "name": "The Overgrowth",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHKICK.ogg", 0],
+            ["snare_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHSNARE.ogg", 0],
+            ["hat_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHHATS.ogg", 0],
+            ["perc_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHPERC.ogg", 0],
+            ["sine_wave_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHBASS.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHPAD.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHARPS.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - GROWTHLEAD.ogg", 0]
+        ],
+        "colors": ["#61704c"],
+        "filters": ["brightness(0) saturate(100%) invert(39%) sepia(25%) saturate(477%) hue-rotate(43deg) brightness(97%) contrast(88%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/overgrowth.png",
+        "preview": "assets/music/music_snippets/F1G_snippet.mp3"
+    },
+    {   
+        "name": "The Roof",
+        "group": "mods",
+        "layers": [
+            ["perc_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFKICK.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFSNARE.ogg", 0],
+            ["gear_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFHATS.ogg", 0],
+            ["hit_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFPERC.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFBASS.ogg", 0],
+            ["siren_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFHORN.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFARPS.ogg", 0],
+            ["arps_icon.png", "assets/music/threat_music/mods/F1/TH_F1 - ROOFPIANO.ogg", 0]
+        ],
+        "colors": ["#223d47"],
+        "filters": ["brightness(0) saturate(100%) invert(18%) sepia(20%) saturate(1121%) hue-rotate(150deg) brightness(98%) contrast(88%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/roof.png",
+        "preview": "assets/music/music_snippets/F1R_snippet.mp3"
     },
     {
         "name": "Underbelly",
@@ -1258,10 +1375,12 @@
             ["arps_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_DESCENT.ogg", 0],
             ["weird_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_ARP.ogg", 0],
             ["wawa_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_LEAD.ogg", 0],
-            ["snare_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_BREAK.ogg", 0]
+            ["snare_icon.png", "assets/music/threat_music/mods/WN/TH_FR - NEST_BREAK.ogg", 1],
+            ["cabron.png", "assets/music/threat_music/mods/WN/TH_FR - fard.ogg", 1]
         ],
-        "colors": ["#3d3934"],
-        "filters": ["brightness(0) saturate(100%) invert(19%) sepia(22%) saturate(270%) hue-rotate(354deg) brightness(88%) contrast(85%)"],
+        "colors": ["#3d3934", "#272f19", "#272f19"],
+        "filters": ["brightness(0) saturate(100%) invert(19%) sepia(22%) saturate(270%) hue-rotate(354deg) brightness(88%) contrast(85%)",
+                    "brightness(0) saturate(100%) invert(12%) sepia(8%) saturate(3747%) hue-rotate(40deg) brightness(89%) contrast(83%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/woven_nest.png",
         "preview": "assets/music/music_snippets/WN_snippet.mp3"
@@ -1694,6 +1813,7 @@
     },
     {
         "name": "Nachos Will Never Be The Same",
+        "trueName": "Garbage Wastes (Inv)",
         "group": "custom",
         "layers": [
             ["pad_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSBREAKS.ogg", 0],
@@ -1702,7 +1822,7 @@
             ["sine_wave_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSBASS.ogg", 0],
             ["hit_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSSTING.ogg", 0],
             ["weird_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSNOISE.ogg", 0],
-            ["xylo_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSPERC.ogg", 0],
+            ["handpan_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSPERC.ogg", 0],
             ["synth_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSARPS.ogg", 0],
             ["arps_icon.png", "assets/music/threat_music/custom/RTT/GWI/TH_GW - BONUSKEYS.ogg", 0]
         ],
@@ -1714,6 +1834,7 @@
     },
     {
         "name": "Painage System",
+        "trueName": "Drainage System (Inv)",
         "group": "custom",
         "layers": [
             ["weird_sine_wave_icon.png", "assets/music/threat_music/custom/RTT/DSI/TH_DS - BONUSNOISE.ogg", 0],
@@ -1756,7 +1877,7 @@
             ["kick_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - KICK.ogg", 0],
             ["weird_sine_wave_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - RIDES.ogg", 0],
             ["hat_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - HATS.ogg", 0],
-            ["perc_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - PERC1.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - PERC1.ogg", 0],
             ["snare_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - PERC2.ogg", 0],
             ["machine_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - INDUSTRIAL.ogg", 0],
             ["tom_icon.png", "assets/music/threat_music/custom/RTT/HRR/TH_HR - SNARE.ogg", 0],
@@ -1958,6 +2079,7 @@
     },
     {
         "name": "TOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOBS",
+        "trueName": "Pipeyard (Inv)",
         "group": "custom",
         "layers": [
             ["spear_tap_icon.png", "assets/music/threat_music/custom/RTT/VSI/TH_VS - BONUSDROPS.ogg", 0],
@@ -1980,6 +2102,7 @@
     },
     {
         "name": "We Forgot To Render This One Sorry",
+        "trueName": "Outskirts (Inv)",
         "group": "custom",
         "layers": [
             ["weird_sine_wave_icon.png", "assets/music/threat_music/custom/RTT/SUI/TH_SU - BONUSNOISE.ogg", 0],
@@ -1993,8 +2116,8 @@
             ["pad_icon.png", "assets/music/threat_music/custom/RTT/SUI/TH_SU - BONUSRISER.ogg", 0],
             ["synth_icon.png", "assets/music/threat_music/custom/RTT/SUI/TH_SU - BONUSALARM.ogg", 0]
         ],
-        "colors": ["#ab0000"],
-        "filters": ["brightness(0) saturate(100%) invert(10%) sepia(86%) saturate(4370%) hue-rotate(356deg) brightness(96%) contrast(116%)"],
+        "colors": ["#ce0707"],
+        "filters": ["brightness(0) saturate(100%) invert(11%) sepia(91%) saturate(7121%) hue-rotate(15deg) brightness(86%) contrast(111%)"],
         "containerWidth": "100%",
         "background": "assets/images/backgrounds/alt_outskirts.png",
         "preview": "assets/music/music_snippets/SUI_snippet.mp3"

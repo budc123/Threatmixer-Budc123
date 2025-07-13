@@ -23,3 +23,4 @@ If you wish to use any pixel art on the page for whatever purpose, please contac
 # *Community*
 
 If you want to see developement logs, share mixes, or just hang out with other fans of Threatmixer, join our [Discord server!](https://discord.gg/BCU2UbMRBc)
+
