@@ -10,10 +10,9 @@ You can also find me on the [Official Rain World Discord Server](https://discord
 
 ## Contributors
 
-- [Budc](https://budc123.github.io/) (Personal Website): Creating this fork
 - [ECSP](https://ecsp.dev/) (Personal Website): Pixel Art, Playtesting, and Creative Assistence
 - [ParraKoot](https://m.soundcloud.com/laurens-wallner-859047082) (Soundcloud): Main menu music, Playtesting, and Creative Assistence
-- [Budc](https://budc123.github.io/) (Personal Website): Code Assistence and Playtesting
+- [Budc](https://budc123.github.io/) (Personal Website): Code Assistence and Playtesting, Creating this fork
 
 ## Videocult
 

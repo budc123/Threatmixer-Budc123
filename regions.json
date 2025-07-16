@@ -504,6 +504,29 @@
         "preview": "assets/music/music_snippets/IF_snippet.mp3"
     },
     {   
+        "name": "Budc Threat 1",
+        "group": "mods",
+        "layers": [
+            ["kick_icon.png", "assets/music/threat_music/mods/XX/TH_XX - KICK.ogg", 0],
+            ["shaker_icon.png", "assets/music/threat_music/mods/XX/TH_XX - SHAKER.ogg", 0],
+            ["hat_icon.png", "assets/music/threat_music/mods/XX/TH_XX - CYMBAL.ogg", 0],
+            ["pad_icon.png", "assets/music/threat_music/mods/XX/TH_XX - CRASH.ogg", 0],
+            ["noise_icon.png", "assets/music/threat_music/mods/XX/TH_XX - NOISE.ogg", 0],
+            ["bass_icon.png", "assets/music/threat_music/mods/XX/TH_XX - BASS.ogg", 0],
+            ["siren_icon.png", "assets/music/threat_music/mods/XX/TH_XX - SIREN.ogg", 0],
+            ["synth_icon.png", "assets/music/threat_music/mods/XX/TH_XX - ARPS.ogg", 0],
+            ["sine_wave_icon.png", "assets/music/threat_music/mods/XX/TH_XX - LEAD.ogg", 0],
+            ["xylo_icon.png", "assets/music/threat_music/mods/XX/TH_XX - BONUSBELL.ogg", 0]
+
+
+        ],
+        "colors": ["#a47d6e"],
+        "filters": ["brightness(0) saturate(100%) invert(57%) sepia(13%) saturate(887%) hue-rotate(331deg) brightness(90%) contrast(84%)"],
+        "containerWidth": "100%",
+        "background": "assets/images/backgrounds/aqueducts.png",
+        "preview": "assets/music/music_snippets/OA_snippet.mp3"
+    },
+    {   
         "name": "Aqueducts",
         "group": "mods",
         "layers": [
